@@ -1,24 +1,52 @@
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/security.html
+# app/config/security.yml
 security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
 
-    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    role_hierarchy:
+        ROLE_ADMIN:         [ROLE_ADMIN,ROLE_RESP,ROLE_ENSEIG]
+        ROLE_RESP:          ROLE_RESP
+        ROLE_ENSEIG:        ROLE_ENSEIG        
+
     providers:
-        in_memory:
-            memory: ~
+        fos_userbundle:
+            id: fos_user.user_provider.username
 
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
         main:
-            anonymous: ~
-            # activate different ways to authenticate
+            pattern: ^/
+            form_login:
+                provider:               fos_userbundle
+                csrf_token_generator:   security.csrf.token_manager
+                login_path:             fos_user_security_login
+                # Si l'utilisateur tente de revenir en arrière 
+                use_forward:            false 
+                check_path:             fos_user_security_check   
+                # Redirection vers la page de login
+                failure_path:           null
+                #à  changer -> on implémentera une classe pour la redirection automatique
+                default_target_path:    /admin/users
+                remember_me:            true
+                
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            logout:       
+                path:                   fos_user_security_logout
+                # Redirection vers 'une URL valide' 
+                # ici fos_user_security_login représente la page d'authentification
+                target:                 fos_user_security_login
+            anonymous:                  true
+            
+            remember_me:
+                key:            %secret%
+                lifetime:       3000000
+                path:           /
+                domain:        ~
+            
+             
+    access_control:
+        - { path: ^/Connexion, role: IS_AUTHENTICATED_ANONYMOUSLY }    # authentification
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }  # enregistrement
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY } # changement de mot de passe
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/responsable/, role: ROLE_RESP }
+        - { path: ^/enseignant/, role: ROLE_ENSEIG }

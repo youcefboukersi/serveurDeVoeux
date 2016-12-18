@@ -1,9 +1,6 @@
 <?php
-
 namespace SRVDV\ServerBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Utilisateur
  *
@@ -20,70 +17,59 @@ class Utilisateur
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
      * @var integer
      *
      * @ORM\Column(name="DateUtilisateur", type="integer")
      */
     private $dateUtilisateur;
-
     /**
      * @var string
      *
      * @ORM\Column(name="Nom", type="string", length=50)
      */
     private $nom;
-
     /**
      * @var string
      *
      * @ORM\Column(name="Prenom", type="string", length=50)
      */
     private $prenom;
-
     
-
     /**
      * @var string
      *
      * @ORM\Column(name="Login", type="string", length=50)
      */
     private $login;
-
     /**
      * @var string
      *
      * @ORM\Column(name="MotDePasse", type="string", length=50)
      */
     private $motDePasse;
-
     /**
      * @var string
      *
      * @ORM\Column(name="Mail", type="string", length=255)
      */
     private $mail;
-
   
-
     /**
-	 * @ORM\ManyToOne(targetEntity="Role")
+     * @ORM\ManyToOne(targetEntity="Role")
      */
     private $role;
-
     /**
-	 * @ORM\ManyToOne(targetEntity="TypeUtilisateur")
+     * @ORM\ManyToOne(targetEntity="TypeUtilisateur")
      */
     private $type;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="NombreHeurTheo", type="integer")
      */
     private $nombreHeurTheo;
-
         public function __toString(){
             return $this->nom.' '.$this->prenom;
         }
@@ -96,7 +82,6 @@ class Utilisateur
     {
         return $this->id;
     }
-
     /**
      * Set dateUtilisateur
      *
@@ -109,7 +94,6 @@ class Utilisateur
     
         return $this;
     }
-
     /**
      * Get dateUtilisateur
      *
@@ -119,7 +103,6 @@ class Utilisateur
     {
         return $this->dateUtilisateur;
     }
-
     /**
      * Set nom
      *
@@ -132,7 +115,6 @@ class Utilisateur
     
         return $this;
     }
-
     /**
      * Get nom
      *
@@ -142,7 +124,6 @@ class Utilisateur
     {
         return $this->nom;
     }
-
     /**
      * Set prenom
      *
@@ -155,7 +136,6 @@ class Utilisateur
     
         return $this;
     }
-
     /**
      * Get prenom
      *
@@ -165,7 +145,6 @@ class Utilisateur
     {
         return $this->prenom;
     }
-
     
     /**
      * Set login
@@ -179,7 +158,6 @@ class Utilisateur
     
         return $this;
     }
-
     /**
      * Get login
      *
@@ -189,7 +167,6 @@ class Utilisateur
     {
         return $this->login;
     }
-
     /**
      * Set motDePasse
      *
@@ -202,7 +179,6 @@ class Utilisateur
     
         return $this;
     }
-
     /**
      * Get motDePasse
      *
@@ -212,7 +188,6 @@ class Utilisateur
     {
         return $this->motDePasse;
     }
-
     /**
      * Set mail
      *
@@ -225,7 +200,6 @@ class Utilisateur
     
         return $this;
     }
-
     /**
      * Get mail
      *
@@ -235,9 +209,7 @@ class Utilisateur
     {
         return $this->mail;
     }
-
  
-
     /**
      * Set role
      *
@@ -250,7 +222,6 @@ class Utilisateur
     
         return $this;
     }
-
     /**
      * Get role
      *
@@ -260,7 +231,6 @@ class Utilisateur
     {
         return $this->role;
     }
-
     /**
      * Set type
      *
@@ -273,7 +243,6 @@ class Utilisateur
     
         return $this;
     }
-
     /**
      * Get type
      *
@@ -283,7 +252,6 @@ class Utilisateur
     {
         return $this->type;
     }
-
     /**
      * Set nombreHeurTheo
      *
@@ -296,7 +264,6 @@ class Utilisateur
     
         return $this;
     }
-
     /**
      * Get nombreHeurTheo
      *

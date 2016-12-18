@@ -6,3 +6,24 @@ srvdv_server:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+# app/config/routing.yml
+fos_user_security:
+    resource: "@SRVDVServerBundle/Resources/config/routing/security.xml"
+    prefix: /
+
+fos_user_profile:
+    resource: "@SRVDVServerBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@SRVDVServerBundle/Resources/config/routing/inscription.xml"
+    prefix: /admin/users
+
+fos_user_resetting:
+    resource: "@SRVDVServerBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@SRVDVServerBundle/Resources/config/routing/changer_mot_de_passe.xml"
+    prefix: /changer

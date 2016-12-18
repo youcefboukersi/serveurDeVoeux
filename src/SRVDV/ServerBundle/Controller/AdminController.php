@@ -55,7 +55,7 @@ class AdminController extends Controller
          $form->handleRequest($req);
 
             if ($form->isValid()) {
-                // On l'enregistre notre objet $advert dans la base de données, par exemple
+                // On enregistre notre objet $advert dans la base de données, par exemple
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($u);
                 $em->flush();
