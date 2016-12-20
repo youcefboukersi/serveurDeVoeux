@@ -1,0 +1,85 @@
+<html>
+{% include "SRVDVServerBundle:home:Menu.html.twig" %}
+
+
+{# nous ajoutond un underscore dans la clé #}
+
+{% set tempArray = {} %}
+	{% for item in Reserves %}
+
+		{% if tempArray['_'~item.Matier.id] is defined %}
+			{% set tempArray = tempArray|merge({('_'~item.Matier.id):(tempArray['_'~item.Matier.id]+item.nbHeur)}) %}
+		{% else %}
+			{% set tempArray = tempArray|merge({('_'~item.Matier.id):(item.nbHeur)}) %}
+		{% endif %}
+
+	        
+	{% endfor %}
+
+
+
+<div id="contenthome">
+
+			<div class="table-responsive">
+                <table id="example" class="display" cellspacing="0" width="100%" >
+                	<thead>
+					<tr><th>Date </th><th>heures </th><th>Enseignant</th><th>e-mail</th><th>Cat Ens</th><th>Semestre</th><th>Matiere</th><th>filiere</th><th>Type </th><th>Somme</th><th>Total</th></tr>
+				   </thead>
+				   <tbody>
+						{% for r in Reserves %}
+
+						{% if tempArray['_'~r.Matier.id] >  (r.Matier.nbrHeurGroupe * r.Matier.NombreGroupe )%}
+							{% set color21='#FE2E2E' %}						
+						{% endif %}
+						{% if tempArray['_'~r.Matier.id] ==  (r.Matier.nbrHeurGroupe * r.Matier.NombreGroupe ) %}
+							{% set color21='#58FA58' %}						
+						{% endif %}
+
+						{% if tempArray['_'~r.Matier.id] <  (r.Matier.nbrHeurGroupe * r.Matier.NombreGroupe ) %}
+							{% set color21='#F3F781' %}						
+						{% endif %}
+
+						
+						
+							<tr style="background-color:{{color21}}">
+								
+								<td>{{ r.dateInscription | date('Y-m-d') }}</td>
+								<td>{{ r.nbHeur }}</td>
+								<td>{{ r.Utilisateur.nom }}&nbsp;{{ r.Utilisateur.prenom }}</td>
+								<td>{{ r.Utilisateur.mail}}</td>
+								<td>{{ r.Utilisateur.type.libelle}}</td>
+								<td>{{ r.Matier.semestre }}</td>
+								<td>{{ r.Matier.nom}}&nbsp;({{ r.Matier.AnneeMatiere}})</td>
+								<td>{{ r.Matier.filiere.nom }}</td>
+								<td>{{ r.Matier.TypeEnseignant.libelle }}</td>
+								<td>{{ tempArray['_'~r.Matier.id]  }}</td>
+								<td>{{ r.Matier.nbrHeurGroupe * r.Matier.NombreGroupe  }}</td>
+								
+							</tr>	
+						{% endfor %}
+                   </tbody>
+				</table> 
+            
+		</div>
+	
+</div>
+
+
+
+
+<script type="text/javascript" charset="utf-8" >
+
+$(document).ready(function() {
+    $('#example').DataTable(
+      
+      
+         
+
+    );
+} );
+
+
+</script>
+
+
+{% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}
