@@ -16,7 +16,10 @@ use SRVDV\ServerBundle\Entity\Role;
 use SRVDV\ServerBundle\Entity\TypeUtilisateur;
 use SRVDV\ServerBundle\Entity\Filiere;
 use SRVDV\ServerBundle\Entity\TypeEnseignant;
+<<<<<<< HEAD
 use SRVDV\ServerBundle\Entity\Inscription;
+=======
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
 
 class AdminController extends Controller
 {
@@ -56,7 +59,11 @@ class AdminController extends Controller
          $form->handleRequest($req);
 
             if ($form->isValid()) {
+<<<<<<< HEAD
                 // On l'enregistre notre objet $advert dans la base de données, par exemple
+=======
+                // On enregistre notre objet $advert dans la base de données, par exemple
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($u);
                 $em->flush();
@@ -360,7 +367,11 @@ class AdminController extends Controller
          $a=new \Datetime("Y");
          $ann= date('Y');
 
+<<<<<<< HEAD
           $filiere->setAnneeFiliere($ann);
+=======
+          $filiere->setAnneeFilier($ann);
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
           $filiere->setDateFiliere($a);
 
             // On crée le FormBuilder grâce au service form factory

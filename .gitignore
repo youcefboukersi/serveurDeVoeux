@@ -10,3 +10,7 @@
 /vendor/
 /bin/
 /composer.phar
+<<<<<<< HEAD
+=======
+/nbproject/private/
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c

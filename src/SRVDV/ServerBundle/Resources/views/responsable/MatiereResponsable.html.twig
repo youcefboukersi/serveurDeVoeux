@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 {% include "SRVDVServerBundle:responsable:MenuResponsable.html.twig" %}
+=======
+{% include "SRVDVServerBundle:admin:MenuAdmin.html.twig" %}
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
 
 <div id="nav" >
 	<div id="enseignant" class="ouvert">
@@ -23,6 +27,7 @@
 					{{ form_widget(f.nom,{'attr':{'class':'form-control'}})}}
 					</div>
 					<div class="form-group">
+<<<<<<< HEAD
 					{{ form_label(f.NombreGroupe,'Nombre de groupe : ')}}
 					{{ form_widget(f.NombreGroupe,{'attr':{'class':'form-control'}})}}
 					</div>
@@ -31,6 +36,15 @@
 					{{ form_widget(f.nbrHeurGroupe,{'attr':{'class':'form-control'}})}}
 					</div>
 					
+=======
+					{{ form_label(f.nbrHeurGroupe,'Nombre d\'heures par groupe : ')}}
+					{{ form_widget(f.nbrHeurGroupe,{'attr':{'class':'form-control'}})}}
+					</div>
+					<div class="form-group">
+					{{ form_label(f.NombreGroupe,'Nombre de groupe : ')}}
+					{{ form_widget(f.NombreGroupe,{'attr':{'class':'form-control'}})}}
+					</div>
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
 					<div class="form-group">
 					{{ form_label(f.AnneeMatiere,'Année : ')}}
 					{{ form_widget(f.AnneeMatiere,{'attr':{'class':'form-control'}})}}

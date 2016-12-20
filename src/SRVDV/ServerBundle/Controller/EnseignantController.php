@@ -9,7 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+<<<<<<< HEAD
 use Doctrine\ORM\EntityRepository;
+=======
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
 
 use SRVDV\ServerBundle\Entity\Matiere;
 use SRVDV\ServerBundle\Entity\Filiere;
@@ -38,6 +41,7 @@ class EnseignantController extends Controller
     $formBuilder = $this->get('form.factory')->createBuilder('form',  $res);
 
     $formBuilder
+<<<<<<< HEAD
      
      -> add('nbHeur','integer')
      -> add('Utilisateur','entity',array(
@@ -51,6 +55,24 @@ class EnseignantController extends Controller
           "class" => "SRVDV\ServerBundle\Entity\Matiere",
          
       ))     
+=======
+     -> add('dateInscription','date' )
+     -> add('nbHeur','integer')
+     -> add('TypeEnseignant','entity',array(
+          "class" => "SRVDV\ServerBundle\Entity\TypeEnseignant",
+          "property" => "libelle"
+      ))
+     -> add('Utilisateur','entity',array(
+      "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
+         
+      ))
+              
+     -> add('Matiere','entity',array(
+          "class" => "SRVDV\ServerBundle\Entity\Matiere",
+          "property" => "nom"
+      ))
+     
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
      -> add('save','submit')
      -> add('reset','reset');
 
@@ -93,6 +115,7 @@ class EnseignantController extends Controller
     $formBuilder = $this->get('form.factory')->createBuilder('form',  $res);
 
     $formBuilder
+<<<<<<< HEAD
      -> add('nbHeur','integer')
      -> add('Utilisateur','entity',array(
       "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
@@ -105,6 +128,25 @@ class EnseignantController extends Controller
           "class" => "SRVDV\ServerBundle\Entity\Matiere",
          
       ))     
+=======
+     -> add('dateInscription','date' )
+     -> add('nbHeur','integer')
+     -> add('TypeEnseignant','entity',array(
+          "class" => "SRVDV\ServerBundle\Entity\TypeEnseignant",
+          "property" => "libelle"
+      ))
+     -> add('Utilisateur','entity',array(
+      "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
+      "property" => "nom"
+          
+      ))
+              
+     -> add('Matiere','entity',array(
+          "class" => "SRVDV\ServerBundle\Entity\Matiere",
+          "property" => "nom"
+      ))
+     
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
      -> add('save','submit')
      -> add('reset','reset');
 

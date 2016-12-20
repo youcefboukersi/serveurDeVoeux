@@ -88,7 +88,11 @@ class Filiere
      * @param integer $anneeFiliere
      * @return Filiere
      */
+<<<<<<< HEAD
     public function setAnneeFiliere($anneeFiliere)
+=======
+    public function setAnneeFilier($anneeFiliere)
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     {
         $this->anneeFiliere = $anneeFiliere;
     

@@ -16,7 +16,14 @@
         "symfony/monolog-bundle": "~2.11.3",
         "sensio/distribution-bundle": "~5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
+<<<<<<< HEAD
         "incenteev/composer-parameter-handler": "~2.0"
+=======
+        "incenteev/composer-parameter-handler": "~2.0",
+        "ircmaxell/password-compat": "~1.0",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
+
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

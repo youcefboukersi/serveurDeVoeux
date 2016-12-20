@@ -36,7 +36,15 @@ class Inscription
      */
     private $nbHeur;
 
+<<<<<<< HEAD
    
+=======
+   /**
+     * @ORM\ManyToOne(targetEntity="TypeEnseignant")
+     */
+    private $TypeEnseignant;
+
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * @ORM\ManyToOne(targetEntity="Utilisateur")
      */
@@ -48,7 +56,12 @@ class Inscription
     private $Matier;
 
   
+<<<<<<< HEAD
  
+=======
+
+
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Get id
      *
@@ -108,7 +121,32 @@ class Inscription
     }
 
    
+<<<<<<< HEAD
 
+=======
+/**
+     * Set TypeEnseignant
+     *
+     * @param TypeEnseignant $TypeEnseignant
+     * @return Inscription
+     */
+    public function setTypeEnseignant($TypeEnseignant)
+    {
+        $this->TypeEnseignant = $TypeEnseignant;
+    
+        return $this;
+    }
+
+    /**
+     * Get TypeEnseignant
+     *
+     * @return mixed 
+     */
+    public function getTypeEnseignant()
+    {
+        return $this->TypeEnseignant;
+    }
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
 
     /**
      * Set Utilisateur
@@ -134,6 +172,7 @@ class Inscription
     }
 
     /**
+<<<<<<< HEAD
      * Set Matier
      *
      * @param Matiere $Matier
@@ -142,16 +181,34 @@ class Inscription
     public function setMatier($Matier)
     {
         $this->Matier = $Matier;
+=======
+     * Set Matiere
+     *
+     * @param Matiere $Matiere
+     * @return Inscription
+     */
+    public function setMatiere($Matiere)
+    {
+        $this->Matier = $Matiere;
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     
         return $this;
     }
 
     /**
+<<<<<<< HEAD
      * Get Matier
      *
      * @return mixed 
      */
     public function getMatier()
+=======
+     * Get Matiere
+     *
+     * @return mixed 
+     */
+    public function getMatiere()
+>>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     {
         return $this->Matier;
     }
