@@ -77,11 +77,7 @@
                 "docblock",
                 "parser"
             ],
-<<<<<<< HEAD
-            "time": "2015-08-31T12:32:49+00:00"
-=======
             "time": "2015-08-31 12:32:49"
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
         },
         {
             "name": "doctrine/cache",

@@ -2,7 +2,7 @@
 
 namespace SRVDV\ServerBundle\Controller;
 
-<<<<<<< HEAD
+
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,11 +19,8 @@ use SRVDV\ServerBundle\Entity\Filiere;
 use SRVDV\ServerBundle\Entity\Matiere;
 use SRVDV\ServerBundle\Entity\Inscription;
 
-=======
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
+
+
 
 class DefaultController extends Controller
 {
@@ -34,7 +31,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
 
-<<<<<<< HEAD
+
          $Reserves=$this->getDoctrine()->getRepository("SRVDVServerBundle:Inscription")->findAll(); 
          $Matieres=$this->getDoctrine()->getRepository("SRVDVServerBundle:Matiere")->findAll(); 
 
@@ -42,10 +39,10 @@ class DefaultController extends Controller
                   'Reserves' => $Reserves,
                   'Matieres' => $Matieres,));
 
-    }
+    
 
     
-=======
+
          return $this->render('SRVDVServerBundle:home:index.html.twig');
     }
 
@@ -58,5 +55,4 @@ class DefaultController extends Controller
     	 $somme=$a+$b;
         return array('somme' => $somme);
     }
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
 }

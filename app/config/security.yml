@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/security.html
-security:
-
-    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
-    providers:
-        in_memory:
-            memory: ~
-
-    firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-=======
 # app/config/security.yml
 security:
     encoders:
@@ -31,7 +5,7 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN:         [ROLE_ADMIN,ROLE_RESP,ROLE_ENSEIG]
-        ROLE_RESP:          ROLE_RESP
+        ROLE_RESP:          [ROLE_RESP,ROLE_ENSEIG]
         ROLE_ENSEIG:        ROLE_ENSEIG        
 
     providers:
@@ -51,9 +25,10 @@ security:
                 # Redirection vers la page de login
                 failure_path:           null
                 #à  changer -> on implémentera une classe pour la redirection automatique
-                default_target_path:    /admin/users
-                remember_me:            true
-                
+                #default_target_path:    /
+                success_handler:        redirect.after.login
+                #remember_me:            true
+
 
             logout:       
                 path:                   fos_user_security_logout
@@ -61,19 +36,18 @@ security:
                 # ici fos_user_security_login représente la page d'authentification
                 target:                 fos_user_security_login
             anonymous:                  true
-            
+
             remember_me:
                 key:            %secret%
                 lifetime:       3000000
                 path:           /
                 domain:        ~
-            
-             
+
+
     access_control:
-        - { path: ^/Connexion, role: IS_AUTHENTICATED_ANONYMOUSLY }    # authentification
+        - { path: ^/connexion, role: IS_AUTHENTICATED_ANONYMOUSLY }    # authentification
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }  # enregistrement
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY } # changement de mot de passe
-        - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/responsable/, role: ROLE_RESP }
-        - { path: ^/enseignant/, role: ROLE_ENSEIG }
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
+        #- { path: ^/admin/, role: ROLE_ADMIN }
+        #- { path: ^/responsable/, role: ROLE_RESP }
+        #- { path: ^/enseignant/, role: ROLE_ENSEIG }

@@ -2,3 +2,12 @@ services:
 #    srvdv_server.example:
 #        class: SRVDV\ServerBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    redirect.after.login:
+        class: SRVDV\ServerBundle\Redirection\AfterLoginRedirection
+        arguments: [@router]
+
+    app.form.registration:
+        class: SRVDV\ServerBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: srvdv_user_registration }

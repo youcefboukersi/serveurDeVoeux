@@ -1,14 +1,13 @@
 <?php
-<<<<<<< HEAD
+
 
 namespace SRVDV\ServerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-=======
+
 namespace SRVDV\ServerBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
 /**
  * Utilisateur
  *
@@ -25,74 +24,49 @@ class Utilisateur
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
+
     /**
      * @var integer
      *
      * @ORM\Column(name="DateUtilisateur", type="integer")
      */
     private $dateUtilisateur;
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * @var string
      *
      * @ORM\Column(name="Nom", type="string", length=50)
      */
     private $nom;
-<<<<<<< HEAD
-
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * @var string
      *
      * @ORM\Column(name="Prenom", type="string", length=50)
      */
     private $prenom;
-<<<<<<< HEAD
 
     
-
-=======
-    
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
-    /**
+/**
      * @var string
      *
      * @ORM\Column(name="Login", type="string", length=50)
      */
     private $login;
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * @var string
      *
      * @ORM\Column(name="MotDePasse", type="string", length=50)
      */
     private $motDePasse;
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * @var string
      *
      * @ORM\Column(name="Mail", type="string", length=255)
      */
     private $mail;
-<<<<<<< HEAD
-
-  
-
     /**
 	 * @ORM\ManyToOne(targetEntity="Role")
      */
@@ -103,27 +77,15 @@ class Utilisateur
      */
     private $type;
 
-=======
   
-    /**
-     * @ORM\ManyToOne(targetEntity="Role")
-     */
-    private $role;
-    /**
-     * @ORM\ManyToOne(targetEntity="TypeUtilisateur")
-     */
-    private $type;
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
+    
     /**
      * @var integer
      *
      * @ORM\Column(name="NombreHeurTheo", type="integer")
      */
     private $nombreHeurTheo;
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
         public function __toString(){
             return $this->nom.' '.$this->prenom;
         }
@@ -136,10 +98,6 @@ class Utilisateur
     {
         return $this->id;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Set dateUtilisateur
      *
@@ -152,10 +110,8 @@ class Utilisateur
     
         return $this;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
+
     /**
      * Get dateUtilisateur
      *
@@ -165,10 +121,7 @@ class Utilisateur
     {
         return $this->dateUtilisateur;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Set nom
      *
@@ -181,10 +134,7 @@ class Utilisateur
     
         return $this;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Get nom
      *
@@ -194,10 +144,6 @@ class Utilisateur
     {
         return $this->nom;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Set prenom
      *
@@ -210,10 +156,8 @@ class Utilisateur
     
         return $this;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
+
     /**
      * Get prenom
      *
@@ -223,10 +167,7 @@ class Utilisateur
     {
         return $this->prenom;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     
     /**
      * Set login
@@ -240,10 +181,8 @@ class Utilisateur
     
         return $this;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
+
     /**
      * Get login
      *
@@ -253,10 +192,7 @@ class Utilisateur
     {
         return $this->login;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Set motDePasse
      *
@@ -269,10 +205,7 @@ class Utilisateur
     
         return $this;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Get motDePasse
      *
@@ -282,10 +215,7 @@ class Utilisateur
     {
         return $this->motDePasse;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Set mail
      *
@@ -298,10 +228,7 @@ class Utilisateur
     
         return $this;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Get mail
      *
@@ -311,13 +238,6 @@ class Utilisateur
     {
         return $this->mail;
     }
-<<<<<<< HEAD
-
- 
-
-=======
- 
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Set role
      *
@@ -330,10 +250,6 @@ class Utilisateur
     
         return $this;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Get role
      *
@@ -343,10 +259,6 @@ class Utilisateur
     {
         return $this->role;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Set type
      *
@@ -359,10 +271,7 @@ class Utilisateur
     
         return $this;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Get type
      *
@@ -372,10 +281,6 @@ class Utilisateur
     {
         return $this->type;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Set nombreHeurTheo
      *
@@ -388,10 +293,6 @@ class Utilisateur
     
         return $this;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
     /**
      * Get nombreHeurTheo
      *
@@ -401,8 +302,7 @@ class Utilisateur
     {
         return $this->nombreHeurTheo;
     }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
+
+
