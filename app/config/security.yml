@@ -13,6 +13,9 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
         main:
             pattern: ^/
             form_login:
@@ -25,7 +28,8 @@ security:
                 # Redirection vers la page de login
                 failure_path:           null
                 #à  changer -> on implémentera une classe pour la redirection automatique
-                default_target_path:    /admin/users
+                #default_target_path:    /admin/users
+                success_handler:        redirect.after.login
                 remember_me:            true
                 
 
@@ -45,7 +49,7 @@ security:
              
     access_control:
         - { path: ^/Connexion, role: IS_AUTHENTICATED_ANONYMOUSLY }    # authentification
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }  # enregistrement
+        - { path: ^/inscription, role: IS_AUTHENTICATED_ANONYMOUSLY }  # enregistrement
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY } # changement de mot de passe
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/responsable/, role: ROLE_RESP }

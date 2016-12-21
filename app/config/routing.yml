@@ -18,7 +18,7 @@ fos_user_profile:
 
 fos_user_register:
     resource: "@SRVDVServerBundle/Resources/config/routing/inscription.xml"
-    prefix: /admin/users
+    prefix: /inscription
 
 fos_user_resetting:
     resource: "@SRVDVServerBundle/Resources/config/routing/resetting.xml"

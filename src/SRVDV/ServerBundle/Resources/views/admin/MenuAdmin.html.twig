@@ -49,6 +49,9 @@
 </div>
 
 <p id="deconnexion">
+                 <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
 	<a href="http://localhost:8181/serveurdevoeux/web/app_dev.php/enseignant/inscription">Enseignant </a>
 	<a href="http://localhost:8181/serveurdevoeux/web/app_dev.php/responsable/inscription">Responsable</a>
 	<a href="http://localhost:8181/serveurdevoeux/web/app_dev.php/admin/users">Admin</a>
