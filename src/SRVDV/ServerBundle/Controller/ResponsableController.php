@@ -167,27 +167,20 @@ class ResponsableController extends Controller
     $formBuilder = $this->get('form.factory')->createBuilder('form',  $res);
 
     $formBuilder
-     -> add('dateInscription','date' )
+
      -> add('nbHeur','integer')
-     -> add('TypeEnseignant','entity',array(
-          "class" => "SRVDV\ServerBundle\Entity\TypeEnseignant",
-          "property" => "libelle"
-      ))
      -> add('Utilisateur','entity',array(
       "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
                           'query_builder'=>function(EntityRepository $er){
-                                             return $er->createQueryBuilder('u')                                             
-                                             ->where('u.role <> 1');                                     
-                                       
-                          },
+                            return $er->createQueryBuilder('u')->where('u.role <> 1');                                  
+                           },
           
       ))
               
-     -> add('Matiere','entity',array(
+     -> add('Matier','entity',array(
           "class" => "SRVDV\ServerBundle\Entity\Matiere",
-          "property" => "nom"
-      ))
-     
+          
+          ))
      -> add('save','submit')
      -> add('reset','reset');
 
@@ -230,26 +223,22 @@ class ResponsableController extends Controller
     $formBuilder = $this->get('form.factory')->createBuilder('form',  $res);
 
     $formBuilder
-     -> add('dateInscription','date' )
      -> add('nbHeur','integer')
-     -> add('TypeEnseignant','entity',array(
-          "class" => "SRVDV\ServerBundle\Entity\TypeEnseignant",
-          "property" => "libelle"
-      ))
      -> add('Utilisateur','entity',array(
       "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
-      "property" => "nom,prenom"
+                          'query_builder'=>function(EntityRepository $er){
+                            return $er->createQueryBuilder('u')->where('u.role <> 1');                                  
+                           },
           
       ))
               
-     -> add('Matiere','entity',array(
+     -> add('Matier','entity',array(
           "class" => "SRVDV\ServerBundle\Entity\Matiere",
-          "property" => "nom"
-      ))
-     
+          
+          ))
      -> add('save','submit')
-     -> add('reset','reset');
-
+     -> add('reset','reset');           
+     
          // À partir du formBuilder, on génère le formulaire
     $form = $formBuilder->getForm();
 

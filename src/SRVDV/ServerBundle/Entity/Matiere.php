@@ -67,6 +67,11 @@ class Matiere
     private $semestre;
 
 
+    public function __toString(){
+                $heures = $this->nbrHeurGroupe * $this->NombreGroupe;
+            return $this->TypeEnseignant->getLibelle() .' ('.$heures.') '.$this->nom.' ('.$this->AnneeMatiere.')  ';
+        }
+
     /**
      * Get id
      *

@@ -10,6 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
+use Doctrine\ORM\EntityRepository;
+
+
 use SRVDV\ServerBundle\Entity\Matiere;
 use SRVDV\ServerBundle\Entity\Filiere;
 use SRVDV\ServerBundle\Entity\TypeEnseignant;
@@ -37,22 +40,21 @@ class EnseignantController extends Controller
     $formBuilder = $this->get('form.factory')->createBuilder('form',  $res);
 
     $formBuilder
-     -> add('dateInscription','date' )
+
+     
      -> add('nbHeur','integer')
-     -> add('TypeEnseignant','entity',array(
-          "class" => "SRVDV\ServerBundle\Entity\TypeEnseignant",
-          "property" => "libelle"
-      ))
      -> add('Utilisateur','entity',array(
       "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
-         
+                          'query_builder'=>function(EntityRepository $er){
+                            return $er->createQueryBuilder('u')->where('u.role <> 1');                                  
+                           },
+          
       ))
               
-     -> add('Matiere','entity',array(
+     -> add('Matier','entity',array(
           "class" => "SRVDV\ServerBundle\Entity\Matiere",
-          "property" => "nom"
-      ))
-     
+          
+          ))
      -> add('save','submit')
      -> add('reset','reset');
 
@@ -95,6 +97,20 @@ class EnseignantController extends Controller
     $formBuilder = $this->get('form.factory')->createBuilder('form',  $res);
 
     $formBuilder
+
+     -> add('nbHeur','integer')
+     -> add('Utilisateur','entity',array(
+      "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
+       'query_builder'=>function(EntityRepository $er){
+                            return $er->createQueryBuilder('u')->where('u.role <> 1');                                  
+                           },
+         
+      ))              
+     -> add('Matier','entity',array(
+          "class" => "SRVDV\ServerBundle\Entity\Matiere",
+         
+      ))     
+
      -> add('dateInscription','date' )
      -> add('nbHeur','integer')
      -> add('TypeEnseignant','entity',array(
@@ -112,6 +128,7 @@ class EnseignantController extends Controller
           "property" => "nom"
       ))
      
+
      -> add('save','submit')
      -> add('reset','reset');
 

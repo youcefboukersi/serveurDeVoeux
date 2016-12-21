@@ -36,6 +36,7 @@ class Inscription
      */
     private $nbHeur;
 
+
    /**
      * @ORM\ManyToOne(targetEntity="TypeEnseignant")
      */
@@ -50,8 +51,6 @@ class Inscription
      * @ORM\ManyToOne(targetEntity="Matiere")
      */
     private $Matier;
-
-  
 
 
     /**
@@ -73,7 +72,7 @@ class Inscription
     public function setDateInscription($dateInscription)
     {
         $this->dateInscription = $dateInscription;
-    
+
         return $this;
     }
 
@@ -87,8 +86,6 @@ class Inscription
         return $this->dateInscription;
     }
 
-   
-
     /**
      * Set nbHeur
      *
@@ -98,7 +95,7 @@ class Inscription
     public function setNbHeur($nbHeur)
     {
         $this->nbHeur = $nbHeur;
-    
+
         return $this;
     }
 
@@ -112,24 +109,23 @@ class Inscription
         return $this->nbHeur;
     }
 
-   
-/**
+    /**
      * Set TypeEnseignant
      *
-     * @param TypeEnseignant $TypeEnseignant
+     * @param \SRVDV\ServerBundle\Entity\TypeEnseignant $typeEnseignant
      * @return Inscription
      */
-    public function setTypeEnseignant($TypeEnseignant)
+    public function setTypeEnseignant(\SRVDV\ServerBundle\Entity\TypeEnseignant $typeEnseignant = null)
     {
-        $this->TypeEnseignant = $TypeEnseignant;
-    
+        $this->TypeEnseignant = $typeEnseignant;
+
         return $this;
     }
 
     /**
      * Get TypeEnseignant
      *
-     * @return mixed 
+     * @return \SRVDV\ServerBundle\Entity\TypeEnseignant 
      */
     public function getTypeEnseignant()
     {
@@ -139,20 +135,20 @@ class Inscription
     /**
      * Set Utilisateur
      *
-     * @param Utilisateur $Utilisateur
+     * @param \SRVDV\ServerBundle\Entity\Utilisateur $utilisateur
      * @return Inscription
      */
-    public function setUtilisateur($Utilisateur)
+    public function setUtilisateur(\SRVDV\ServerBundle\Entity\Utilisateur $utilisateur = null)
     {
-        $this->Utilisateur = $Utilisateur;
-    
+        $this->Utilisateur = $utilisateur;
+
         return $this;
     }
 
     /**
-     * Get idUtilisateur
+     * Get Utilisateur
      *
-     * @return mixed 
+     * @return \SRVDV\ServerBundle\Entity\Utilisateur 
      */
     public function getUtilisateur()
     {
@@ -160,27 +156,25 @@ class Inscription
     }
 
     /**
-     * Set Matiere
+     * Set Matier
      *
-     * @param Matiere $Matiere
+     * @param \SRVDV\ServerBundle\Entity\Matiere $matier
      * @return Inscription
      */
-    public function setMatiere($Matiere)
+    public function setMatier(\SRVDV\ServerBundle\Entity\Matiere $matier = null)
     {
-        $this->Matier = $Matiere;
-    
+        $this->Matier = $matier;
+
         return $this;
     }
 
     /**
-     * Get Matiere
+     * Get Matier
      *
-     * @return mixed 
+     * @return mixed
      */
-    public function getMatiere()
+    public function getMatier()
     {
         return $this->Matier;
     }
-
-   
 }

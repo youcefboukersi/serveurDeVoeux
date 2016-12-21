@@ -17,69 +17,38 @@ use SRVDV\ServerBundle\Entity\TypeUtilisateur;
 use SRVDV\ServerBundle\Entity\Filiere;
 use SRVDV\ServerBundle\Entity\TypeEnseignant;
 
+use SRVDV\ServerBundle\Entity\Inscription;
+
+
 class AdminController extends Controller
 {
     /**
      * @Route("/admin/users",name="list_form_utilisateur")
      * @Template()
      */
-    public function indexAction(Request $req)
-    {
-         $u = new Utilisateur();
-
-            // On crée le FormBuilder grâce au service form factory
-          $formBuilder = $this->get('form.factory')->createBuilder('form', $u);
-
-          $formBuilder
-           -> add('nom','text' , array('label' => 'Nom', 'translation_domain' => 'FOSUserBundle'))
-           -> add('prenom','text')
-           -> add('login','text')
-          -> add('DateUtilisateur','integer') 
-          -> add('motDePasse','text')
-           -> add('mail','text')         
-           -> add('role','entity',array(
-                "class" => "SRVDV\ServerBundle\Entity\Role",
-                "property" => "nomRole"
-            ))
-           -> add('type','entity',array(
-                "class" => "SRVDV\ServerBundle\Entity\TypeUtilisateur",
-                "property" => "libelle"
-            ))
-           -> add('nombreHeurTheo','integer')
-           -> add('save','submit')
-           -> add('reset','reset');
+    public function indexAction(Request $req){         
           
-               // À partir du formBuilder, on génère le formulaire
-         $form = $formBuilder->getForm();
-
-         $form->handleRequest($req);
-
-            if ($form->isValid()) {
-                // On enregistre notre objet $advert dans la base de données, par exemple
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($u);
-                $em->flush();
-
-                $url = $this->get('router')->generate('list_form_utilisateur');
-    
-                return new RedirectResponse($url);
-
-            }else{
-                $Users=$this->getDoctrine()->getRepository("SRVDVServerBundle:Utilisateur")->findAll();            
-                 return $this->render('SRVDVServerBundle:admin:UsersAdmin.html.twig', array(
-                  'f' => $form->createView(),
+         
+                $Users = $this->getDoctrine()->getRepository("SRVDVServerBundle:User")->findAll();            
+                 return $this->render('SRVDVServerBundle:admin:UsersAdmin.html.twig', array(                  
                   'Users' => $Users,
+                  ) );       
+    
+     }
 
+<<<<<<< HEAD
                   ) );
             }
            
     }
+=======
+>>>>>>> 4bafa325ca1bcb19219ece9689db03391923f104
 
     /**
      * @Route("admin/ModUsers/{id}")
      * @Template()
      */
-    public function ModUsersAction(Utilisateur $u,Request $req)
+    public function ModUsersAction(User $u,Request $req)
     {      
 
                 
@@ -89,14 +58,11 @@ class AdminController extends Controller
           $formBuilder
            -> add('nom','text' , array('label' => 'Nom', 'translation_domain' => 'FOSUserBundle'))
            -> add('prenom','text')
-           -> add('login','text')
-          -> add('DateUtilisateur','integer') 
-          -> add('motDePasse','text')
-           -> add('mail','text')         
-           -> add('role','entity',array(
-                "class" => "SRVDV\ServerBundle\Entity\Role",
-                "property" => "nomRole"
-            ))
+           -> add('username','text')
+          -> add('dateUtilisateur','integer') 
+          -> add('password','text')
+           -> add('email','text')         
+           -> add('roles','text')
            -> add('type','entity',array(
                 "class" => "SRVDV\ServerBundle\Entity\TypeUtilisateur",
                 "property" => "libelle"
@@ -121,7 +87,7 @@ class AdminController extends Controller
                 return new RedirectResponse($url);
 
             }else{
-                $Users=$this->getDoctrine()->getRepository("SRVDVServerBundle:Utilisateur")->findAll();            
+                $Users=$this->getDoctrine()->getRepository("SRVDVServerBundle:User")->findAll();            
                  return $this->render('SRVDVServerBundle:admin:UsersAdmin.html.twig', array(
                   'f' => $form->createView(),
                   'Users' => $Users,
@@ -136,7 +102,7 @@ class AdminController extends Controller
      * @Route("admin/suppUsers/{id}")
      * @Template()
      */
-    public function SuppUsersAction(Utilisateur $u,Request $req)
+    public function SuppUsersAction(User $u,Request $req)
     {      
 
             $em=$this->getDoctrine()->getManager();
@@ -357,7 +323,8 @@ class AdminController extends Controller
          $a=new \Datetime("Y");
          $ann= date('Y');
 
-          $filiere->setAnneeFilier($ann);
+
+          $filiere->setAnneeFiliere($ann);
           $filiere->setDateFiliere($a);
 
             // On crée le FormBuilder grâce au service form factory

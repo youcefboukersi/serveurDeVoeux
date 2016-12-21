@@ -1,106 +1,86 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<title>SVEDI - accueil</title>
-	<link rel=stylesheet type="text/css" href="../../assets/css/home.css"/>
-	<script type="text/javascript" src="../../assets/javascript/jquery-2.1.1.min.js"></script>
-	<script type="text/javascript" src="../../assets/javascript/search.js"></script>
-	<script type="text/javascript" src="../../assets/javascript/VerifFormulaire.js"></script>
-	<script type="text/javascript" src="../../assets/javascript/Desinscription.js"></script>
-	<script type="text/javascript" src="../../assets/javascript/Notification.js"></script>
+<<<<<<< HEAD
+<html>
+{% include "SRVDVServerBundle:home:Menu.html.twig" %}
 
 
-<?php 
-	if(@$resp == "Y"){
-		echo '<script type="text/javascript" src="../../assets/javascript/isResp.js"></script>';
-		echo '<script type="text/javascript" src="../../assets/javascript/Resp.js"></script>';
-	}else{
-		echo '<script type="text/javascript" src="../../assets/javascript/popUp.js"></script>';
-	}
+{# nous ajoutond un underscore dans la clé #}
 
-?>
+{% set tempArray = {} %}
+	{% for item in Reserves %}
 
-	<style>
-	<?php 
-	$role = $this->session->userdata('Role');
+		{% if tempArray['_'~item.Matier.id] is defined %}
+			{% set tempArray = tempArray|merge({('_'~item.Matier.id):(tempArray['_'~item.Matier.id]+item.nbHeur)}) %}
+		{% else %}
+			{% set tempArray = tempArray|merge({('_'~item.Matier.id):(item.nbHeur)}) %}
+		{% endif %}
 
-if($role > 1){
-	?>
-		#listNotifs{
-			z-index:30;
-			overflow:auto;
-			height: calc(100% - 204px);
-		}
-	<?php
-}else{
-	?>
-		#listNotifs{
-			z-index:30;
-			overflow:auto;
-			height: calc(100% - 163px);
-		}
+	        
+	{% endfor %}
 
-<?php
-}
-?></style>
+
+
+<div id="contenthome">
+
+			<div class="table-responsive">
+                <table id="example" class="display" cellspacing="0" width="100%" >
+                	<thead>
+					<tr><th>Date </th><th>heures </th><th>Enseignant</th><th>e-mail</th><th>Cat Ens</th><th>Semestre</th><th>Matiere</th><th>filiere</th><th>Type </th><th>Somme</th><th>Total</th></tr>
+				   </thead>
+				   <tbody>
+						{% for r in Reserves %}
+
+						{% if tempArray['_'~r.Matier.id] >  (r.Matier.nbrHeurGroupe * r.Matier.NombreGroupe )%}
+							{% set color21='#FE2E2E' %}						
+						{% endif %}
+						{% if tempArray['_'~r.Matier.id] ==  (r.Matier.nbrHeurGroupe * r.Matier.NombreGroupe ) %}
+							{% set color21='#58FA58' %}						
+						{% endif %}
+
+						{% if tempArray['_'~r.Matier.id] <  (r.Matier.nbrHeurGroupe * r.Matier.NombreGroupe ) %}
+							{% set color21='#F3F781' %}						
+						{% endif %}
+
+						
+						
+							<tr style="background-color:{{color21}}">
+								
+								<td>{{ r.dateInscription | date('Y-m-d') }}</td>
+								<td>{{ r.nbHeur }}</td>
+								<td>{{ r.Utilisateur.nom }}&nbsp;{{ r.Utilisateur.prenom }}</td>
+								<td>{{ r.Utilisateur.mail}}</td>
+								<td>{{ r.Utilisateur.type.libelle}}</td>
+								<td>{{ r.Matier.semestre }}</td>
+								<td>{{ r.Matier.nom}}&nbsp;({{ r.Matier.AnneeMatiere}})</td>
+								<td>{{ r.Matier.filiere.nom }}</td>
+								<td>{{ r.Matier.TypeEnseignant.libelle }}</td>
+								<td>{{ tempArray['_'~r.Matier.id]  }}</td>
+								<td>{{ r.Matier.nbrHeurGroupe * r.Matier.NombreGroupe  }}</td>
+								
+							</tr>	
+						{% endfor %}
+                   </tbody>
+				</table> 
+            
+		</div>
 	
-</head>
-<body>
-
-<header>
-<div id="logo">
-	<a href="../controleurHome/"><img alt="svedi" src="../../assets/images/SVEDI-small.png"/></a>
-</div>
-<div id="searchBar">
-		<form id="newsearch" method="get" action="../controleurRecherche/">
-		        <input type="text" value="" class="textinput" name="search" size="35" maxlength="120"><input id="btnLoupe" type="submit" value="" class="buttonSearch">
-		        <img id="loupeSearchBar" alt="loupe" src="../../assets/images/loupe.png"/>
-		</form>
-
 </div>
 
 
-<p id="deconnexion">
-	<a href="../enseignant/">Enseignant </a>
-	<a href="../responsable/">Responsable</a>
-	<a href="../admin/">Admin</a>
-</p>
-
-</header>
-
-<div id="nav">
-	<div id="enseignant" class="ouvert">
-		<h2>Enseignant</h2>
-		<ul>
-			<li><a href="">Mes inscriptions</a></li>
-			<li><a href="">Catalogue de mati&egrave;res</a></li>
-			<li><a href="">Mon profil</a></li>
-		</ul>
-	</div>
 
 
+<script type="text/javascript" charset="utf-8" >
 
-	<div id="responsable" class="ferme">
-		<h2>Responsable</h2>
-		<ul>
-			<li><a href="">Etat g&eacute;n&eacute;ral</a></li>
-		
-			
-			<li><a href="">Modifier ma fili&egrave;re</a></li>
-			<li><a href="">Inscrire un enseignant &agrave; une mati&egrave;re</a></li>
-			<li><a href="">D&eacute;sinscrire un enseignant &agrave; une mati&egrave;re</a></li>
-			
-			
-		</ul>
-	</div>
+$(document).ready(function() {
+    $('#example').DataTable(
+      
+      
+         
+
+    );
+} );
 
 
-
-	<div id="notifications">
-		<h3>Notifications</h3>
-
-	</div>
-<!-- listes des notifications --->
+</script>
 
 
-
+{% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}
