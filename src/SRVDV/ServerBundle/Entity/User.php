@@ -11,10 +11,7 @@ use SRVDV\ServerBundle\Entity\Role;
  * @ORM\Table(name="User")
  */
 class User extends BaseUser {
-<<<<<<< HEAD
-=======
 
->>>>>>> 4bafa325ca1bcb19219ece9689db03391923f104
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -55,20 +52,10 @@ class User extends BaseUser {
      */
     private $nombreHeurTheo;
 
-<<<<<<< HEAD
-     /**
-     * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Role", inversedBy="users", cascade={"persist"})
-     * @ORM\JoinTable(name="fos_user_role")
-     */
-    protected $role;
-
-=======
-    
->>>>>>> 4bafa325ca1bcb19219ece9689db03391923f104
     public function __construct() {
         parent::__construct();
         // your own logic
+        $this->roles = array();
     }
 
     /**
@@ -176,17 +163,4 @@ class User extends BaseUser {
         return $this->type;
     }
 
-<<<<<<< HEAD
-
-    /**
-     * Get role
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
-=======
->>>>>>> 4bafa325ca1bcb19219ece9689db03391923f104
 }

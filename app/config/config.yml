@@ -17,9 +17,9 @@ framework:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
     form:            ~
-    csrf_protection: ~
+    csrf_protection: true
     validation:      { enable_annotations: true }
-    #serializer:      { enable_annotations: true }
+    serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
     default_locale:  "%locale%"
@@ -74,3 +74,19 @@ fos_user:
     registration:
         form:
             type: srvdv_user_registration
+        confirmation:
+            # confirmation par mail lors de l'ajout d'un users
+            enabled:    true          
+    from_email:
+        address:        confirmation@serveurdevoeur.com
+        sender_name:    Confirmation   
+    resetting:
+        email:
+            from_email:
+                address:        resetting-password@serveurdevoeur.com
+                sender_name:    Resetting
+    service:
+        #default implementation, and uses Swiftmailer to send emails.
+        mailer: fos_user.mailer.default
+                
+    

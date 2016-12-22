@@ -38,7 +38,8 @@ class RegistrationType extends AbstractType
             ->add('roles', 'collection', array(
                    'type' => 'choice',
                    'options' => array(
-                       'choices' => array(
+                        'label' => false,
+                        'choices' => array(
                            'ROLE_ADMIN' => 'Administarteur',
                            'ROLE_RESP' => 'Responsable',
                            'ROLE_ENSEIG' => 'Enseignant'

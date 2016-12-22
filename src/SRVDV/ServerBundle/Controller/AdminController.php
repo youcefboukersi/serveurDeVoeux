@@ -36,14 +36,6 @@ class AdminController extends Controller
     
      }
 
-<<<<<<< HEAD
-                  ) );
-            }
-           
-    }
-=======
->>>>>>> 4bafa325ca1bcb19219ece9689db03391923f104
-
     /**
      * @Route("admin/ModUsers/{id}")
      * @Template()
@@ -122,7 +114,7 @@ class AdminController extends Controller
     public function listUsersAction()
     {      
 
-            $Users=$this->getDoctrine()->getManager()->getRepository("SRVDVServerBundle:Utilisateur")->findAll();
+            $Users=$this->getDoctrine()->getManager()->getRepository("SRVDVServerBundle:User")->findAll();
 
          return $this->render('SRVDVServerBundle:admin:UsersAdmin.html.twig', array(
           'Users' => $Users,

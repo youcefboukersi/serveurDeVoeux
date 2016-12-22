@@ -43,14 +43,16 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
           return $role->getRole(); 
         }, $roles);
         // If is a Administrator user we redirect to the Liste_form_utilisateur
-        if (in_array('ROLE_ADMIN', $rolesTab, true) || in_array('ROLE_SUPER_ADMIN', $rolesTab, true))
+        if (in_array('ROLE_ADMIN', $rolesTab, true) )
             $redirection = new RedirectResponse($this->router->generate('list_form_utilisateur'));
         // if is a Reponsable user we redirect to the 
         elseif (in_array('ROLE_RESP', $rolesTab, true))
-            $redirection = new RedirectResponse($this->router->generate('crm_homepage'));
-        
-        else // Rôle est ENSEIG -> (Enseignant)
-            $redirection = new RedirectResponse($this->router->generate('member_homepage'));
+            $redirection = new RedirectResponse($this->router->generate('list_form_Matiere'));
+         // Role est ENSEIG -> (Enseignant)
+        elseif (in_array('ROLE_ENSEIG', $rolesTab, true))
+            $redirection = new RedirectResponse($this->router->generate('list_form_inscription_enseignant'));
+        else // autre 
+            $redirection = new RedirectResponse($this->router->generate('/'));
         
         return $redirection;
     }

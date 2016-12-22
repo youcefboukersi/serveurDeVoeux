@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-	<title>SVEDI</title>
-	<link rel=stylesheet type="text/css" href="../assets/css/home.css"/>
-	<script type="text/javascript" src="../assets/javascript/jquery-2.1.1.min.js"></script>
-	<script type="text/javascript" src="../assets/javascript/connexion.js"></script>
-</head>
-
-<body>
-    <h1>Test Lyout</h1>
-<div id="svedi">
-    <img src="../assets/images/svediMoyen.png"/>
-</div>
-
-<div id="connexion">
-	<img src="../assets/images/connexionTop.png"/>
-		<div>
-			<div id="connect">
-			<p>Connectez-vous :</p> 
-        <div>
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
+    <head>
+        <title>SVEDI</title>
+        <link rel=stylesheet type="text/css" href="../assets/css/home.css"/>
+        <script type="text/javascript" src="../assets/javascript/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../assets/javascript/connexion.js"></script>
+    </head>
+    
+    <body>
+        <h1>Test Lyout</h1>
+        <div id="svedi">
+            <img src="../assets/images/svediMoyen.png"/>
         </div>
-			
-
-			<p ><a id="forgot">Mot de passe oubli&eacute; ?</a></p>
-			<p class="full"><?php echo @$error_credentials; ?></p>
-			</div>
-			<div id="recup"><br/>
-				<form action="recupMdp" method="POST">
-				<p>Veuillez saisir votre email,<br/>un mot de passe temporaire vous sera envoy&eacute;.</p><br/>
-				<input type="text" id="mail" name="mailRecup" placeholder="Adresse email"/>
-				<input class="button" type="submit" name="envoiMdp" id="envoiMdp" value="Envoyer"/>
-			</form>
-			</div>
-		</div>
-	<img src="../assets/images/connexionBtm.png"/>
-</div>
-</body>
+    
+        <div id="connexion">
+            <img src="../assets/images/connexionTop.png"/>
+            <div>
+                <div id="connect">
+                    <p>Connectez-vous :</p> 
+                    <div>
+                        {% block fos_user_content %}
+                        {% endblock fos_user_content %}
+                    </div>
+            
+                    <p ><a href={{path ('fos_user_resetting_request')}}>Mot de passe oubli&eacute; ?</a></p>
+                    <p class="full"><?php echo @$error_credentials; ?></p>
+                </div>
+                <!-->
+                <div id="recup"><br/>
+                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                        <p>Veuillez saisir votre email,<br/>un mot de passe temporaire vous sera envoy&eacute;.</p><br/>
+                        <input type="text" id="mail" name="mailRecup" placeholder="Adresse email"/>
+                        <input class="button" type="submit" name="envoiMdp" id="envoiMdp" value="Envoyer"/>
+                    </form>
+                </div>
+                -->
+            </div>
+            <img src="../assets/images/connexionBtm.png"/>
+        </div>
+    </body>
 </html>

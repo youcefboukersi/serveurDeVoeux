@@ -27,18 +27,10 @@ security:
                 check_path:             fos_user_security_check   
                 # Redirection vers la page de login
                 failure_path:           null
-                #à  changer -> on implémentera une classe pour la redirection automatique
-<<<<<<< HEAD
                 #default_target_path:    /admin/users
                 success_handler:        redirect.after.login
                 remember_me:            true
-                
-=======
-                #default_target_path:    /
-                success_handler:        redirect.after.login
-                #remember_me:            true
 
->>>>>>> 4bafa325ca1bcb19219ece9689db03391923f104
 
             logout:       
                 path:                   fos_user_security_logout
@@ -55,14 +47,10 @@ security:
 
 
     access_control:
-<<<<<<< HEAD
         - { path: ^/Connexion, role: IS_AUTHENTICATED_ANONYMOUSLY }    # authentification
         - { path: ^/inscription, role: IS_AUTHENTICATED_ANONYMOUSLY }  # enregistrement
-=======
-        - { path: ^/connexion, role: IS_AUTHENTICATED_ANONYMOUSLY }    # authentification
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }  # enregistrement
->>>>>>> 4bafa325ca1bcb19219ece9689db03391923f104
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY } # changement de mot de passe
-        #- { path: ^/admin/, role: ROLE_ADMIN }
-        #- { path: ^/responsable/, role: ROLE_RESP }
-        #- { path: ^/enseignant/, role: ROLE_ENSEIG }
+        # changement de mot de passe
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY } 
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/responsable/, role: ROLE_RESP }
+        - { path: ^/enseignant/, role: ROLE_ENSEIG }
