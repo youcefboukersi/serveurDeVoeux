@@ -20,6 +20,22 @@ class ResponsableController extends Controller
 {
    
 
+ /**
+    * @Route("/responsable/ChoixFiliereEns" ,name="ChoixFiliereEns_responsable")
+    * @Template()
+    */
+    public function ChoixFiliereEnsAction()
+    {
+
+            
+          $Filieres=$this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findAll();            
+           return $this->render('SRVDVServerBundle:enseignant:ChoixFiliereResponsable.html.twig', array(
+                        'Filieres' => $Filieres,
+
+            ) );
+      
+
+    }
     
 /**
      * @Route("/responsable/Matiere" ,name="list_form_Matiere")
