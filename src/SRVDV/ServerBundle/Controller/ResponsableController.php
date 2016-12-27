@@ -175,10 +175,10 @@ class ResponsableController extends Controller
     }
 
    /**
-    * @Route("/responsable/inscription" ,name="list_form_inscription")
+    * @Route("/responsable/inscription/{id}" ,name="list_form_inscription")
     * @Template()
     */
-    public function InscriptionAction(Filiere $filiere ,Request $req)
+    public function InscriptionAction(Filiere $filiere , Request $req)
     {
 
             $res = new Inscription();
@@ -226,6 +226,7 @@ class ResponsableController extends Controller
            return $this->render('SRVDVServerBundle:responsable:ReserveResponsable.html.twig', array(
             'f' => $form->createView(),
             'reservations' => $reservations,
+            'fil'=>$filiere,
 
             ) );
       }
