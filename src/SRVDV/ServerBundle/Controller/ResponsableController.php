@@ -178,7 +178,7 @@ class ResponsableController extends Controller
     * @Route("/responsable/inscription" ,name="list_form_inscription")
     * @Template()
     */
-    public function InscriptionAction(Request $req)
+    public function InscriptionAction(Filiere $filiere ,Request $req)
     {
 
             $res = new Inscription();
