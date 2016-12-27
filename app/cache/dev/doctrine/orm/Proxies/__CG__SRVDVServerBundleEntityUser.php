@@ -64,10 +64,10 @@ class User extends \SRVDV\ServerBundle\Entity\User implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'dateUtilisateur', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'nom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'prenom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'type', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'nombreHeurTheo', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
+            return array('__isInitialized__', 'id', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'nom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'prenom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'type', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'nombreHeurTheo', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
         }
 
-        return array('__isInitialized__', 'id', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'dateUtilisateur', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'nom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'prenom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'type', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'nombreHeurTheo', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
+        return array('__isInitialized__', 'id', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'nom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'prenom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'type', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\User' . "\0" . 'nombreHeurTheo', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
     }
 
     /**
@@ -182,28 +182,6 @@ class User extends \SRVDV\ServerBundle\Entity\User implements \Doctrine\ORM\Prox
         $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', array());
 
         return parent::__toString();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setDateUtilisateur($dateUtilisateur)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDateUtilisateur', array($dateUtilisateur));
-
-        return parent::setDateUtilisateur($dateUtilisateur);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getDateUtilisateur()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDateUtilisateur', array());
-
-        return parent::getDateUtilisateur();
     }
 
     /**

@@ -56,7 +56,7 @@ class ResponsableController extends Controller
            -> add('semestre','integer')
            -> add('Filiere','entity',array(
                 "class" => "SRVDV\ServerBundle\Entity\Filiere",
-                "property" => "nom"
+                
             ))
            -> add('TypeEnseignant','entity',array(
                 "class" => "SRVDV\ServerBundle\Entity\TypeEnseignant",
@@ -111,7 +111,7 @@ class ResponsableController extends Controller
            -> add('semestre','integer')
            -> add('Filiere','entity',array(
                 "class" => "SRVDV\ServerBundle\Entity\Filiere",
-                "property" => "nom"
+                
             ))
            -> add('TypeEnseignant','entity',array(
                 "class" => "SRVDV\ServerBundle\Entity\TypeEnseignant",
@@ -276,7 +276,7 @@ class ResponsableController extends Controller
            return $this->render('SRVDVServerBundle:responsable:ReserveResponsable.html.twig', array(
             'f' => $form->createView(),
             'reservations' => $reservations,
-
+            'fil'=>$filiere,
             ) );
       }
 

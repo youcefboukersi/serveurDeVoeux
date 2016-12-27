@@ -51,15 +51,7 @@ class AdminController extends Controller
            -> add('nom','text' , array('label' => 'Nom', 'translation_domain' => 'FOSUserBundle'))
            -> add('prenom','text')
            -> add('username','text')
-          -> add('dateUtilisateur','entity',array(
-                "class" => "SRVDV\ServerBundle\Entity\Annee",
-               
-                'query_builder'=>function(EntityRepository $er){
-                                             return $er->createQueryBuilder('u')                                             
-                                             ->where("u.etat = 1  ");                               
-                                       },
-                
-            ))
+         
           -> add('password','text')
            -> add('email','text')         
            -> add('roles','text')
@@ -346,8 +338,20 @@ class AdminController extends Controller
           $formBuilder = $this->get('form.factory')->createBuilder('form', $filiere);
 
           $formBuilder
-           -> add('nom','text' , array('label' => 'Nom', 'translation_domain' => 'FOSUserBundle'))
-                         
+           -> add('nom','text')
+             -> add('anneeFiliere','entity',array(
+                "class" => "SRVDV\ServerBundle\Entity\Annee",
+                
+                'query_builder'=>function(EntityRepository $er){
+                                             return $er->createQueryBuilder('u')                                             
+                                             ->where("u.etat = 1  ");                               
+                                       },
+                
+            ))
+
+             -> add('niveau','text')
+           
+
             -> add('User','entity',array(
             "class" => "SRVDV\ServerBundle\Entity\User",
                        'query_builder'=>function(EntityRepository $er){
@@ -382,11 +386,9 @@ class AdminController extends Controller
                   'Filieres' => $Filieres,
 
                   ) );
-            }
-
-          
-         
+            } 
     }
+         
 
     
     /**
@@ -401,7 +403,18 @@ class AdminController extends Controller
           $formBuilder
            -> add('nom','text' , array('label' => 'Nom', 'translation_domain' => 'FOSUserBundle'))
            
-                         
+             -> add('anneeFiliere','entity',array(
+                "class" => "SRVDV\ServerBundle\Entity\Annee",
+               
+                'query_builder'=>function(EntityRepository $er){
+                                             return $er->createQueryBuilder('u')                                             
+                                             ->where("u.etat = 1  ");                               
+                                       },
+                
+            ))
+
+             -> add('niveau','text')
+                    
             -> add('User','entity',array(
             "class" => "SRVDV\ServerBundle\Entity\User",
             'query_builder'=>function(EntityRepository $er){

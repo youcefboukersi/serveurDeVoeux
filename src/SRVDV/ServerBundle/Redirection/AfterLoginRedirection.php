@@ -50,7 +50,7 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
             $redirection = new RedirectResponse($this->router->generate('list_form_Matiere'));
          // Role est ENSEIG -> (Enseignant)
         elseif (in_array('ROLE_ENSEIG', $rolesTab, true))
-            $redirection = new RedirectResponse($this->router->generate('list_form_inscription_enseignant'));
+            $redirection = new RedirectResponse($this->router->generate('ChoixFiliereEns_enseignant'));
         else // autre 
             $redirection = new RedirectResponse($this->router->generate('/'));
         

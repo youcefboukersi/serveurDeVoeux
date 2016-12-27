@@ -15,8 +15,8 @@ class __TwigTemplate_a75aa604a5dd5f971be21b8517e9405053db2e5f78a9b97ff73a48afe75
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9feb17b15a6308e155c6f262581f6e655569a6a123c0ced70e63162d637536a2 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_9feb17b15a6308e155c6f262581f6e655569a6a123c0ced70e63162d637536a2->enter($__internal_9feb17b15a6308e155c6f262581f6e655569a6a123c0ced70e63162d637536a2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig"));
+        $__internal_50f61e203b443f9847c6aa331d708caa5b899419a19174e2ba796649ceb8000c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_50f61e203b443f9847c6aa331d708caa5b899419a19174e2ba796649ceb8000c->enter($__internal_50f61e203b443f9847c6aa331d708caa5b899419a19174e2ba796649ceb8000c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig"));
 
         // line 1
         $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig", 1)->display($context);
@@ -24,7 +24,7 @@ class __TwigTemplate_a75aa604a5dd5f971be21b8517e9405053db2e5f78a9b97ff73a48afe75
         echo "
 <div id=\"nav\" >
     <div id=\"enseignant\" class=\"ouvert\">
-        <h3>Administrateur</h3>
+        <h3>Enseignant</h3>
         <ul>
           <li  class=\"active\"><a href=\"";
         // line 7
@@ -55,7 +55,7 @@ class __TwigTemplate_a75aa604a5dd5f971be21b8517e9405053db2e5f78a9b97ff73a48afe75
         // line 23
         $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig", 23)->display($context);
         
-        $__internal_9feb17b15a6308e155c6f262581f6e655569a6a123c0ced70e63162d637536a2->leave($__internal_9feb17b15a6308e155c6f262581f6e655569a6a123c0ced70e63162d637536a2_prof);
+        $__internal_50f61e203b443f9847c6aa331d708caa5b899419a19174e2ba796649ceb8000c->leave($__internal_50f61e203b443f9847c6aa331d708caa5b899419a19174e2ba796649ceb8000c_prof);
 
     }
 
@@ -88,7 +88,7 @@ class __TwigTemplate_a75aa604a5dd5f971be21b8517e9405053db2e5f78a9b97ff73a48afe75
 
 <div id=\"nav\" >
     <div id=\"enseignant\" class=\"ouvert\">
-        <h3>Administrateur</h3>
+        <h3>Enseignant</h3>
         <ul>
           <li  class=\"active\"><a href=\"{{ path('form_profile_user_ens')}}\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>   
             <li  ><a href=\"{{path('ChoixFiliereEns_enseignant')}}\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br>

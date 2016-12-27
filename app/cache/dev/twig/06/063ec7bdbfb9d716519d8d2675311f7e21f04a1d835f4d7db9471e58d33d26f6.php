@@ -15,11 +15,11 @@ class __TwigTemplate_e01b5fb22f692b7b9a7f7be2196037a56b8ade210910b41173f1713f15c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d5c6e61ded27c0844026663b0adc3ecec712db7b3eb1a3a77494c01170446e0d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_d5c6e61ded27c0844026663b0adc3ecec712db7b3eb1a3a77494c01170446e0d->enter($__internal_d5c6e61ded27c0844026663b0adc3ecec712db7b3eb1a3a77494c01170446e0d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig"));
+        $__internal_8237c7ba0645d8c8ad8de8da43f8bddbb19d7f340143d5f5502cde08c0ef2d4b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8237c7ba0645d8c8ad8de8da43f8bddbb19d7f340143d5f5502cde08c0ef2d4b->enter($__internal_8237c7ba0645d8c8ad8de8da43f8bddbb19d7f340143d5f5502cde08c0ef2d4b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig"));
 
         // line 1
-        $this->loadTemplate("SRVDVServerBundle:enseignant:MenuEnseignant.html.twig", "SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig", 1)->display($context);
+        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig", 1)->display($context);
         // line 2
         echo "
 <div id=\"nav\" >
@@ -48,7 +48,7 @@ class __TwigTemplate_e01b5fb22f692b7b9a7f7be2196037a56b8ade210910b41173f1713f15c
 \t\t\t<div class=\"table-responsive\">
                 <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"100%\" >
                 \t<thead>
-\t\t\t\t\t<tr><th>#</th><th>Date de création </th><th>nom</th><th>responsable</th><th>Année</th><<th>res</th>/tr>
+\t\t\t\t\t<tr><th>#</th><th>Date de création </th><th>nom</th><th>responsable</th><th>Année</th><th>res</th></tr>
 
 \t\t\t\t   </thead>
 \t\t\t\t   <tbody>
@@ -79,7 +79,7 @@ class __TwigTemplate_e01b5fb22f692b7b9a7f7be2196037a56b8ade210910b41173f1713f15c
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
             // line 33
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["f"], "User", array()), "dateUtilisateur", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "anneeFiliere", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='";
             // line 34
@@ -120,7 +120,7 @@ class __TwigTemplate_e01b5fb22f692b7b9a7f7be2196037a56b8ade210910b41173f1713f15c
         echo "
 ";
         
-        $__internal_d5c6e61ded27c0844026663b0adc3ecec712db7b3eb1a3a77494c01170446e0d->leave($__internal_d5c6e61ded27c0844026663b0adc3ecec712db7b3eb1a3a77494c01170446e0d_prof);
+        $__internal_8237c7ba0645d8c8ad8de8da43f8bddbb19d7f340143d5f5502cde08c0ef2d4b->leave($__internal_8237c7ba0645d8c8ad8de8da43f8bddbb19d7f340143d5f5502cde08c0ef2d4b_prof);
 
     }
 
@@ -149,7 +149,7 @@ class __TwigTemplate_e01b5fb22f692b7b9a7f7be2196037a56b8ade210910b41173f1713f15c
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% include \"SRVDVServerBundle:enseignant:MenuEnseignant.html.twig\" %}
+        return new Twig_Source("{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
 
 <div id=\"nav\" >
 \t<div id=\"enseignant\" class=\"ouvert\">
@@ -171,7 +171,7 @@ class __TwigTemplate_e01b5fb22f692b7b9a7f7be2196037a56b8ade210910b41173f1713f15c
 \t\t\t<div class=\"table-responsive\">
                 <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"100%\" >
                 \t<thead>
-\t\t\t\t\t<tr><th>#</th><th>Date de création </th><th>nom</th><th>responsable</th><th>Année</th><<th>res</th>/tr>
+\t\t\t\t\t<tr><th>#</th><th>Date de création </th><th>nom</th><th>responsable</th><th>Année</th><th>res</th></tr>
 
 \t\t\t\t   </thead>
 \t\t\t\t   <tbody>
@@ -181,7 +181,7 @@ class __TwigTemplate_e01b5fb22f692b7b9a7f7be2196037a56b8ade210910b41173f1713f15c
 \t\t\t\t\t\t\t\t<td>{{ f.dateFiliere | date('Y-m-d') }}</td>
 \t\t\t\t\t\t\t\t<td>{{ f.nom }}</td>
 \t\t\t\t\t\t\t\t<td>{{ f.User.nom }}&nbsp;{{ f.User.prenom }}</td>
-\t\t\t\t\t\t\t\t<td>{{ f.User.dateUtilisateur}}</td>
+\t\t\t\t\t\t\t\t<td>{{ f.anneeFiliere}}</td>
 \t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='{{path('list_form_inscription_enseignant',{'id':f.id }) }}'\"><b ><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></b></button></td>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t

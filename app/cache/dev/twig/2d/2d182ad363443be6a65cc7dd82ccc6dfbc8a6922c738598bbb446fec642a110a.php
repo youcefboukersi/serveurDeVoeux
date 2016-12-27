@@ -15,46 +15,45 @@ class __TwigTemplate_068a3b08779e9efc38ae3e0d148078f8414afaec3e5340d3f82a265ff31
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_58f3962bbc1ad98ec8b14ec370207989161a56ee90b35bf409a524c789f4d283 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_58f3962bbc1ad98ec8b14ec370207989161a56ee90b35bf409a524c789f4d283->enter($__internal_58f3962bbc1ad98ec8b14ec370207989161a56ee90b35bf409a524c789f4d283_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:home:index.html.twig"));
+        $__internal_e184075a59fb0f97af93be55ded216fc13b71ef3c7ebedf7c6ca7f4a610215ab = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e184075a59fb0f97af93be55ded216fc13b71ef3c7ebedf7c6ca7f4a610215ab->enter($__internal_e184075a59fb0f97af93be55ded216fc13b71ef3c7ebedf7c6ca7f4a610215ab_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:home:index.html.twig"));
 
         // line 1
         echo "<html>
 ";
         // line 2
-        $this->loadTemplate("SRVDVServerBundle:home:Menu.html.twig", "SRVDVServerBundle:home:index.html.twig", 2)->display($context);
+        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:home:index.html.twig", 2)->display($context);
         // line 3
         echo "
-
 ";
-        // line 6
+        // line 5
         echo "
 ";
-        // line 7
+        // line 6
         $context["tempArray"] = array();
-        // line 8
+        // line 7
         echo "\t";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["Reserves"] ?? $this->getContext($context, "Reserves")));
         foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
-            // line 9
+            // line 8
             echo "
 \t\t";
-            // line 10
+            // line 9
             if ($this->getAttribute(($context["tempArray"] ?? null), ("_" . $this->getAttribute($this->getAttribute($context["item"], "Matiere", array()), "id", array())), array(), "array", true, true)) {
-                // line 11
+                // line 10
                 echo "\t\t\t";
                 $context["tempArray"] = twig_array_merge(($context["tempArray"] ?? $this->getContext($context, "tempArray")), array(("_" . $this->getAttribute($this->getAttribute($context["item"], "Matiere", array()), "id", array())) => ($this->getAttribute(($context["tempArray"] ?? $this->getContext($context, "tempArray")), ("_" . $this->getAttribute($this->getAttribute($context["item"], "Matiere", array()), "id", array())), array(), "array") + $this->getAttribute($context["item"], "nbHeur", array()))));
-                // line 12
+                // line 11
                 echo "\t\t";
             } else {
-                // line 13
+                // line 12
                 echo "\t\t\t";
                 $context["tempArray"] = twig_array_merge(($context["tempArray"] ?? $this->getContext($context, "tempArray")), array(("_" . $this->getAttribute($this->getAttribute($context["item"], "Matiere", array()), "id", array())) => $this->getAttribute($context["item"], "nbHeur", array())));
-                // line 14
+                // line 13
                 echo "\t\t";
             }
-            // line 15
+            // line 14
             echo "
 \t        
 \t";
@@ -62,7 +61,7 @@ class __TwigTemplate_068a3b08779e9efc38ae3e0d148078f8414afaec3e5340d3f82a265ff31
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 18
+        // line 17
         echo "
 
 
@@ -75,96 +74,96 @@ class __TwigTemplate_068a3b08779e9efc38ae3e0d148078f8414afaec3e5340d3f82a265ff31
 \t\t\t\t   </thead>
 \t\t\t\t   <tbody>
 \t\t\t\t\t\t";
-        // line 29
+        // line 28
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["Reserves"] ?? $this->getContext($context, "Reserves")));
         foreach ($context['_seq'] as $context["_key"] => $context["r"]) {
-            // line 30
+            // line 29
             echo "
 \t\t\t\t\t\t";
-            // line 31
+            // line 30
             if (($this->getAttribute(($context["tempArray"] ?? $this->getContext($context, "tempArray")), ("_" . $this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "id", array())), array(), "array") > ($this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "nbrHeurGroupe", array()) * $this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "NombreGroupe", array())))) {
-                // line 32
+                // line 31
                 echo "\t\t\t\t\t\t\t";
                 $context["color21"] = "#FE2E2E";
                 echo "\t\t\t\t\t\t
 \t\t\t\t\t\t";
             }
-            // line 34
+            // line 33
             echo "\t\t\t\t\t\t";
             if (($this->getAttribute(($context["tempArray"] ?? $this->getContext($context, "tempArray")), ("_" . $this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "id", array())), array(), "array") == ($this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "nbrHeurGroupe", array()) * $this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "NombreGroupe", array())))) {
-                // line 35
+                // line 34
                 echo "\t\t\t\t\t\t\t";
                 $context["color21"] = "#58FA58";
                 echo "\t\t\t\t\t\t
 \t\t\t\t\t\t";
             }
-            // line 37
+            // line 36
             echo "
 \t\t\t\t\t\t";
-            // line 38
+            // line 37
             if (($this->getAttribute(($context["tempArray"] ?? $this->getContext($context, "tempArray")), ("_" . $this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "id", array())), array(), "array") < ($this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "nbrHeurGroupe", array()) * $this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "NombreGroupe", array())))) {
-                // line 39
+                // line 38
                 echo "\t\t\t\t\t\t\t";
                 $context["color21"] = "#F3F781";
                 echo "\t\t\t\t\t\t
 \t\t\t\t\t\t";
             }
-            // line 41
+            // line 40
             echo "
 \t\t\t\t\t\t
 \t\t\t\t\t\t
 \t\t\t\t\t\t\t<tr style=\"background-color:";
-            // line 44
+            // line 43
             echo twig_escape_filter($this->env, ($context["color21"] ?? $this->getContext($context, "color21")), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t<td>";
-            // line 46
+            // line 45
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["r"], "dateInscription", array()), "Y-m-d"), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 47
+            // line 46
             echo twig_escape_filter($this->env, $this->getAttribute($context["r"], "nbHeur", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 48
+            // line 47
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["r"], "User", array()), "nom", array()), "html", null, true);
             echo "&nbsp;";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["r"], "User", array()), "prenom", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 49
+            // line 48
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["r"], "User", array()), "email", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 50
+            // line 49
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "User", array()), "type", array()), "libelle", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 51
+            // line 50
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "semestre", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 52
+            // line 51
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "nom", array()), "html", null, true);
             echo "&nbsp;(";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "Filiere", array()), "User", array()), "dateUtilisateur", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "Filiere", array()), "anneeFiliere", array()), "html", null, true);
             echo ")</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 53
+            // line 52
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "filiere", array()), "nom", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 54
+            // line 53
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "TypeEnseignant", array()), "libelle", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 55
+            // line 54
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tempArray"] ?? $this->getContext($context, "tempArray")), ("_" . $this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "id", array())), array(), "array"), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 56
+            // line 55
             echo twig_escape_filter($this->env, ($this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "nbrHeurGroupe", array()) * $this->getAttribute($this->getAttribute($context["r"], "Matiere", array()), "NombreGroupe", array())), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t
@@ -174,7 +173,7 @@ class __TwigTemplate_068a3b08779e9efc38ae3e0d148078f8414afaec3e5340d3f82a265ff31
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['r'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 60
+        // line 59
         echo "                   </tbody>
 \t\t\t\t</table> 
             
@@ -198,10 +197,10 @@ class __TwigTemplate_068a3b08779e9efc38ae3e0d148078f8414afaec3e5340d3f82a265ff31
 
 
 ";
-        // line 82
-        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:home:index.html.twig", 82)->display($context);
+        // line 81
+        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:home:index.html.twig", 81)->display($context);
         
-        $__internal_58f3962bbc1ad98ec8b14ec370207989161a56ee90b35bf409a524c789f4d283->leave($__internal_58f3962bbc1ad98ec8b14ec370207989161a56ee90b35bf409a524c789f4d283_prof);
+        $__internal_e184075a59fb0f97af93be55ded216fc13b71ef3c7ebedf7c6ca7f4a610215ab->leave($__internal_e184075a59fb0f97af93be55ded216fc13b71ef3c7ebedf7c6ca7f4a610215ab_prof);
 
     }
 
@@ -217,7 +216,7 @@ class __TwigTemplate_068a3b08779e9efc38ae3e0d148078f8414afaec3e5340d3f82a265ff31
 
     public function getDebugInfo()
     {
-        return array (  202 => 82,  178 => 60,  168 => 56,  164 => 55,  160 => 54,  156 => 53,  150 => 52,  146 => 51,  142 => 50,  138 => 49,  132 => 48,  128 => 47,  124 => 46,  119 => 44,  114 => 41,  108 => 39,  106 => 38,  103 => 37,  97 => 35,  94 => 34,  88 => 32,  86 => 31,  83 => 30,  79 => 29,  66 => 18,  58 => 15,  55 => 14,  52 => 13,  49 => 12,  46 => 11,  44 => 10,  41 => 9,  36 => 8,  34 => 7,  31 => 6,  27 => 3,  25 => 2,  22 => 1,);
+        return array (  201 => 81,  177 => 59,  167 => 55,  163 => 54,  159 => 53,  155 => 52,  149 => 51,  145 => 50,  141 => 49,  137 => 48,  131 => 47,  127 => 46,  123 => 45,  118 => 43,  113 => 40,  107 => 38,  105 => 37,  102 => 36,  96 => 34,  93 => 33,  87 => 31,  85 => 30,  82 => 29,  78 => 28,  65 => 17,  57 => 14,  54 => 13,  51 => 12,  48 => 11,  45 => 10,  43 => 9,  40 => 8,  35 => 7,  33 => 6,  30 => 5,  27 => 3,  25 => 2,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -231,8 +230,7 @@ class __TwigTemplate_068a3b08779e9efc38ae3e0d148078f8414afaec3e5340d3f82a265ff31
     public function getSourceContext()
     {
         return new Twig_Source("<html>
-{% include \"SRVDVServerBundle:home:Menu.html.twig\" %}
-
+{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
 
 {# nous ajoutond un underscore dans la clé #}
 
@@ -281,7 +279,7 @@ class __TwigTemplate_068a3b08779e9efc38ae3e0d148078f8414afaec3e5340d3f82a265ff31
 \t\t\t\t\t\t\t\t<td>{{ r.User.email}}</td>
 \t\t\t\t\t\t\t\t<td>{{ r.User.type.libelle}}</td>
 \t\t\t\t\t\t\t\t<td>{{ r.Matiere.semestre }}</td>
-\t\t\t\t\t\t\t\t<td>{{ r.Matiere.nom}}&nbsp;({{ r.Matiere.Filiere.User.dateUtilisateur}})</td>
+\t\t\t\t\t\t\t\t<td>{{ r.Matiere.nom}}&nbsp;({{ r.Matiere.Filiere.anneeFiliere}})</td>
 \t\t\t\t\t\t\t\t<td>{{ r.Matiere.filiere.nom }}</td>
 \t\t\t\t\t\t\t\t<td>{{ r.Matiere.TypeEnseignant.libelle }}</td>
 \t\t\t\t\t\t\t\t<td>{{ tempArray['_'~r.Matiere.id]  }}</td>

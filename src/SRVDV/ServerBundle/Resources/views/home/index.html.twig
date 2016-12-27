@@ -1,6 +1,5 @@
 <html>
-{% include "SRVDVServerBundle:home:Menu.html.twig" %}
-
+{% include "SRVDVServerBundle:admin:MenuAdmin.html.twig" %}
 
 {# nous ajoutond un underscore dans la clé #}
 
@@ -49,7 +48,7 @@
 								<td>{{ r.User.email}}</td>
 								<td>{{ r.User.type.libelle}}</td>
 								<td>{{ r.Matiere.semestre }}</td>
-								<td>{{ r.Matiere.nom}}&nbsp;({{ r.Matiere.Filiere.User.dateUtilisateur}})</td>
+								<td>{{ r.Matiere.nom}}&nbsp;({{ r.Matiere.Filiere.anneeFiliere}})</td>
 								<td>{{ r.Matiere.filiere.nom }}</td>
 								<td>{{ r.Matiere.TypeEnseignant.libelle }}</td>
 								<td>{{ tempArray['_'~r.Matiere.id]  }}</td>

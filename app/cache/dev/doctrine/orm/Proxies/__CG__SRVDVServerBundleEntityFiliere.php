@@ -64,10 +64,10 @@ class Filiere extends \SRVDV\ServerBundle\Entity\Filiere implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'id', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'dateFiliere', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'nom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'User');
+            return array('__isInitialized__', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'id', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'dateFiliere', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'nom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'User', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'anneeFiliere', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'niveau');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'id', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'dateFiliere', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'nom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'User');
+        return array('__isInitialized__', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'id', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'dateFiliere', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'nom', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'User', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'anneeFiliere', '' . "\0" . 'SRVDV\\ServerBundle\\Entity\\Filiere' . "\0" . 'niveau');
     }
 
     /**
@@ -263,6 +263,50 @@ class Filiere extends \SRVDV\ServerBundle\Entity\Filiere implements \Doctrine\OR
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', array());
 
         return parent::getUser();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setNiveau($niveau)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNiveau', array($niveau));
+
+        return parent::setNiveau($niveau);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNiveau()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNiveau', array());
+
+        return parent::getNiveau();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAnneeFiliere(\SRVDV\ServerBundle\Entity\Annee $anneeFiliere = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAnneeFiliere', array($anneeFiliere));
+
+        return parent::setAnneeFiliere($anneeFiliere);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAnneeFiliere()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAnneeFiliere', array());
+
+        return parent::getAnneeFiliere();
     }
 
 }

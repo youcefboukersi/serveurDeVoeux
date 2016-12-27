@@ -15,8 +15,8 @@ class __TwigTemplate_f233ba09f7332a44eef086310ef7a9efffb1ee5d0a4ea2e9cd98d30bff3
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_7c1623b1a1f0ca1b731c6c6847317614f276c0bedf20a92b4f04bcd5f71ba929 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_7c1623b1a1f0ca1b731c6c6847317614f276c0bedf20a92b4f04bcd5f71ba929->enter($__internal_7c1623b1a1f0ca1b731c6c6847317614f276c0bedf20a92b4f04bcd5f71ba929_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:TypeEnsAdmin.html.twig"));
+        $__internal_86d2a193f82602c647735daa1219cc3bf611fa512ca9bf540ff6bf9042c0426a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_86d2a193f82602c647735daa1219cc3bf611fa512ca9bf540ff6bf9042c0426a->enter($__internal_86d2a193f82602c647735daa1219cc3bf611fa512ca9bf540ff6bf9042c0426a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:TypeEnsAdmin.html.twig"));
 
         // line 1
         $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:admin:TypeEnsAdmin.html.twig", 1)->display($context);
@@ -50,7 +50,10 @@ class __TwigTemplate_f233ba09f7332a44eef086310ef7a9efffb1ee5d0a4ea2e9cd98d30bff3
         // line 12
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_typeens");
         echo "\"><span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></span>&nbsp;  Type Enseignement</a></li></br>
-\t\t\t<li><a href=\"\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br>
+\t\t\t<li><a href=\"";
+        // line 13
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("annee_suivante");
+        echo "\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br>
 \t\t\t
 \t\t</ul>
 \t</div>
@@ -176,7 +179,7 @@ function SupprimerUser(id){
         // line 86
         $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:admin:TypeEnsAdmin.html.twig", 86)->display($context);
         
-        $__internal_7c1623b1a1f0ca1b731c6c6847317614f276c0bedf20a92b4f04bcd5f71ba929->leave($__internal_7c1623b1a1f0ca1b731c6c6847317614f276c0bedf20a92b4f04bcd5f71ba929_prof);
+        $__internal_86d2a193f82602c647735daa1219cc3bf611fa512ca9bf540ff6bf9042c0426a->leave($__internal_86d2a193f82602c647735daa1219cc3bf611fa512ca9bf540ff6bf9042c0426a_prof);
 
     }
 
@@ -192,7 +195,7 @@ function SupprimerUser(id){
 
     public function getDebugInfo()
     {
-        return array (  177 => 86,  150 => 61,  141 => 58,  137 => 57,  131 => 54,  127 => 53,  123 => 52,  120 => 51,  116 => 50,  102 => 39,  97 => 37,  93 => 36,  85 => 31,  81 => 30,  75 => 27,  71 => 26,  66 => 24,  51 => 12,  47 => 11,  43 => 10,  39 => 9,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
+        return array (  180 => 86,  153 => 61,  144 => 58,  140 => 57,  134 => 54,  130 => 53,  126 => 52,  123 => 51,  119 => 50,  105 => 39,  100 => 37,  96 => 36,  88 => 31,  84 => 30,  78 => 27,  74 => 26,  69 => 24,  55 => 13,  51 => 12,  47 => 11,  43 => 10,  39 => 9,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -217,7 +220,7 @@ function SupprimerUser(id){
             <li ><a href=\"{{path('list_form_utilisateur')}}\"><span class=\"glyphicon glyphicon-cog\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Users</a></li>\t</br>\t\t
             <li><a href=\"{{path('list_form_filiere')}}\"><span class=\"glyphicon glyphicon-book\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer fili&egrave;r</a></li></br>
             <li class=\"active\"><a  href=\"{{path('list_form_typeens')}}\"><span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></span>&nbsp;  Type Enseignement</a></li></br>
-\t\t\t<li><a href=\"\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br>
+\t\t\t<li><a href=\"{{path('annee_suivante')}}\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br>
 \t\t\t
 \t\t</ul>
 \t</div>

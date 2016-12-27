@@ -15,14 +15,14 @@ class __TwigTemplate_104bb62ab9c6028a6a4fa4ca1ddeecd3fab260313e2c63414de53114591
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a0cca1ce252636ff9de79f677ed6cc0f9abe059351cbbfe1390cfab7e2dc88f7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a0cca1ce252636ff9de79f677ed6cc0f9abe059351cbbfe1390cfab7e2dc88f7->enter($__internal_a0cca1ce252636ff9de79f677ed6cc0f9abe059351cbbfe1390cfab7e2dc88f7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:enseignant:ReserveEnseignant.html.twig"));
+        $__internal_f47b047aa40999bc7e158110769ecc29367376fe0d4bc93773657f479ce2c681 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_f47b047aa40999bc7e158110769ecc29367376fe0d4bc93773657f479ce2c681->enter($__internal_f47b047aa40999bc7e158110769ecc29367376fe0d4bc93773657f479ce2c681_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:enseignant:ReserveEnseignant.html.twig"));
 
         // line 1
-        $this->loadTemplate("SRVDVServerBundle:enseignant:MenuEnseignant.html.twig", "SRVDVServerBundle:enseignant:ReserveEnseignant.html.twig", 1)->display($context);
+        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:enseignant:ReserveEnseignant.html.twig", 1)->display($context);
         // line 2
-        echo "
-<div id=\"nav\" >
+        echo "<div id=\"nav\" >
+
 \t<div id=\"enseignant\" class=\"ouvert\">
 \t\t<h3>Enseignant</h3>
 \t\t<ul>
@@ -45,9 +45,11 @@ class __TwigTemplate_104bb62ab9c6028a6a4fa4ca1ddeecd3fab260313e2c63414de53114591
 \t</br>
 \t<h2> listes des reservations sur la filière \"";
         // line 18
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["fil"] ?? $this->getContext($context, "fil")), "niveau", array()), "html", null, true);
+        echo " ";
         echo twig_escape_filter($this->env, $this->getAttribute(($context["fil"] ?? $this->getContext($context, "fil")), "nom", array()), "html", null, true);
         echo "  ";
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["fil"] ?? $this->getContext($context, "fil")), "User", array()), "dateUtilisateur", array()), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["fil"] ?? $this->getContext($context, "fil")), "anneefiliere", array()), "html", null, true);
         echo "\"</h2>
 \t</br>
 \t\t<div class=\"col-xs-2 col-md-4 col-lg-3 centreVerticalement\">\t  
@@ -195,7 +197,7 @@ function SupprimerUser(id){
         echo "
 ";
         
-        $__internal_a0cca1ce252636ff9de79f677ed6cc0f9abe059351cbbfe1390cfab7e2dc88f7->leave($__internal_a0cca1ce252636ff9de79f677ed6cc0f9abe059351cbbfe1390cfab7e2dc88f7_prof);
+        $__internal_f47b047aa40999bc7e158110769ecc29367376fe0d4bc93773657f479ce2c681->leave($__internal_f47b047aa40999bc7e158110769ecc29367376fe0d4bc93773657f479ce2c681_prof);
 
     }
 
@@ -211,7 +213,7 @@ function SupprimerUser(id){
 
     public function getDebugInfo()
     {
-        return array (  195 => 96,  193 => 95,  164 => 68,  155 => 65,  151 => 64,  147 => 63,  143 => 62,  139 => 61,  133 => 60,  129 => 59,  125 => 58,  121 => 57,  118 => 56,  114 => 55,  96 => 40,  91 => 38,  87 => 37,  77 => 30,  73 => 29,  66 => 25,  62 => 24,  56 => 21,  48 => 18,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
+        return array (  197 => 96,  195 => 95,  166 => 68,  157 => 65,  153 => 64,  149 => 63,  145 => 62,  141 => 61,  135 => 60,  131 => 59,  127 => 58,  123 => 57,  120 => 56,  116 => 55,  98 => 40,  93 => 38,  89 => 37,  79 => 30,  75 => 29,  68 => 25,  64 => 24,  58 => 21,  48 => 18,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -224,9 +226,9 @@ function SupprimerUser(id){
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% include \"SRVDVServerBundle:enseignant:MenuEnseignant.html.twig\" %}
-
+        return new Twig_Source("{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
 <div id=\"nav\" >
+
 \t<div id=\"enseignant\" class=\"ouvert\">
 \t\t<h3>Enseignant</h3>
 \t\t<ul>
@@ -241,7 +243,7 @@ function SupprimerUser(id){
 
 <div id=\"content\">
 \t</br>
-\t<h2> listes des reservations sur la filière \"{{ fil.nom}}  {{ fil.User.dateUtilisateur}}\"</h2>
+\t<h2> listes des reservations sur la filière \"{{ fil.niveau}} {{ fil.nom}}  {{ fil.anneefiliere}}\"</h2>
 \t</br>
 \t\t<div class=\"col-xs-2 col-md-4 col-lg-3 centreVerticalement\">\t  
             {{ form_start(f,{'attr':{'novalidate':'novalidate'}})}}

@@ -19,11 +19,7 @@ class User extends BaseUser {
      */
     protected $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Annee")
-     */
-    private $dateUtilisateur;
-
+    
     /**
      * @var string
      *
@@ -62,28 +58,7 @@ class User extends BaseUser {
         $this->roles = array();
     }
 
-    /**
-     * Set dateUtilisateur
-     *
-     * @param \SRVDV\ServerBundle\Entity\Annee $dateUtilisateur
-     * @return User
-     */
     
-    public function setDateUtilisateur($dateUtilisateur) {
-        $this->dateUtilisateur = $dateUtilisateur;
-
-        return $this;
-    }
-
-    /**
-     * Get dateUtilisateur
-     *
-     * @return \SRVDV\ServerBundle\Entity\Annee 
-     */
-    public function getDateUtilisateur() {
-        return $this->dateUtilisateur;
-    }
-
     /**
      * Set nom
      *

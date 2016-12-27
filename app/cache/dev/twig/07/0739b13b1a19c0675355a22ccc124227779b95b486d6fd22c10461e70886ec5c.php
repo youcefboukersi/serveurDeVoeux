@@ -15,11 +15,11 @@ class __TwigTemplate_44f6e3f59ccc391b844dea927a53d98d60dc383d7d7802a018c715ca83c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ef893cc5a6bbbcb82c3d9f635fcb920ef9526011d930d45182091d22435208f1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_ef893cc5a6bbbcb82c3d9f635fcb920ef9526011d930d45182091d22435208f1->enter($__internal_ef893cc5a6bbbcb82c3d9f635fcb920ef9526011d930d45182091d22435208f1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:responsable:ReserveResponsable.html.twig"));
+        $__internal_7b7752511ad63c6fd40f420449eb3e25da921eed3ad368d70edab2ef9c66c712 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7b7752511ad63c6fd40f420449eb3e25da921eed3ad368d70edab2ef9c66c712->enter($__internal_7b7752511ad63c6fd40f420449eb3e25da921eed3ad368d70edab2ef9c66c712_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:responsable:ReserveResponsable.html.twig"));
 
         // line 1
-        $this->loadTemplate("SRVDVServerBundle:responsable:MenuResponsable.html.twig", "SRVDVServerBundle:responsable:ReserveResponsable.html.twig", 1)->display($context);
+        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:responsable:ReserveResponsable.html.twig", 1)->display($context);
         // line 2
         echo "
 <div id=\"nav\" >
@@ -47,29 +47,38 @@ class __TwigTemplate_44f6e3f59ccc391b844dea927a53d98d60dc383d7d7802a018c715ca83c
 
 <div id=\"content\">
 \t</br>
+\t<h2> listes des reservations sur la filière \" ";
+        // line 19
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["fil"] ?? $this->getContext($context, "fil")), "niveau", array()), "html", null, true);
+        echo " ";
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["fil"] ?? $this->getContext($context, "fil")), "nom", array()), "html", null, true);
+        echo "  ";
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["fil"] ?? $this->getContext($context, "fil")), "anneeFiliere", array()), "html", null, true);
+        echo "\"</h2>
+\t</br>
 \t\t<div class=\"col-xs-2 col-md-4 col-lg-3 centreVerticalement\">\t  
             ";
-        // line 20
+        // line 22
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock(($context["f"] ?? $this->getContext($context, "f")), 'form_start', array("attr" => array("novalidate" => "novalidate")));
         echo "
 \t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t";
-        // line 22
+        // line 24
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "nbHeur", array()), 'label', array("label" => "Nombre d'heures  : "));
         echo "
 \t\t\t\t\t";
-        // line 23
+        // line 25
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "nbHeur", array()), 'widget', array("attr" => array("class" => "form-control")));
         echo "
 \t\t\t\t\t</div>
 \t\t\t\t
 \t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t";
-        // line 27
+        // line 29
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "Matiere", array()), 'label', array("label" => "Matiere : "));
         echo "
 \t\t\t\t\t";
-        // line 28
+        // line 30
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "Matiere", array()), 'widget', array("attr" => array("class" => "form-control")));
         echo "
 
@@ -79,16 +88,16 @@ class __TwigTemplate_44f6e3f59ccc391b844dea927a53d98d60dc383d7d7802a018c715ca83c
 \t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t
 \t\t\t\t\t";
-        // line 35
+        // line 37
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "save", array()), 'widget', array("attr" => array("class" => "btn btn-success")));
         echo "
 \t\t\t\t\t";
-        // line 36
+        // line 38
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "reset", array()), 'widget', array("attr" => array("class" => "btn btn-info")));
         echo "
 \t\t\t\t\t</div>
 \t\t\t";
-        // line 38
+        // line 40
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock(($context["f"] ?? $this->getContext($context, "f")), 'form_end');
         echo "\t\t
 \t\t</div>
@@ -103,50 +112,50 @@ class __TwigTemplate_44f6e3f59ccc391b844dea927a53d98d60dc383d7d7802a018c715ca83c
 \t\t\t\t   </thead>
 \t\t\t\t   <tbody>
 \t\t\t\t\t\t";
-        // line 50
+        // line 52
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["reservations"] ?? $this->getContext($context, "reservations")));
         foreach ($context['_seq'] as $context["_key"] => $context["u"]) {
-            // line 51
+            // line 53
             echo "\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>";
-            // line 52
+            // line 54
             echo twig_escape_filter($this->env, $this->getAttribute($context["u"], "id", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 53
+            // line 55
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["u"], "dateInscription", array()), "Y-m-d"), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 54
+            // line 56
             echo twig_escape_filter($this->env, $this->getAttribute($context["u"], "nbHeur", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 55
+            // line 57
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["u"], "User", array()), "nom", array()), "html", null, true);
             echo "&nbsp;";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["u"], "User", array()), "prenom", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 56
+            // line 58
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["u"], "Matiere", array()), "nom", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 57
+            // line 59
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["u"], "Matiere", array()), "TypeEnseignant", array()), "libelle", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 58
+            // line 60
             echo twig_escape_filter($this->env, ($this->getAttribute($this->getAttribute($context["u"], "Matiere", array()), "nbrHeurGroupe", array()) * $this->getAttribute($this->getAttribute($context["u"], "Matiere", array()), "NombreGroupe", array())), "html", null, true);
             echo "</td>
 
 \t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='";
-            // line 61
+            // line 63
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("ModInscription_responsable", array("id" => $this->getAttribute($context["u"], "id", array()))), "html", null, true);
             echo "'\"><b ><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></b></button></td>
 \t\t\t\t\t\t\t\t<td><button type=\"button\" class=\"btn btn-warning\"  onclick=\"SupprimerUser(";
-            // line 62
+            // line 64
             echo twig_escape_filter($this->env, $this->getAttribute($context["u"], "id", array()), "html", null, true);
             echo ")\"><b><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></b></button></td>
 \t\t\t\t\t\t\t</tr>\t
@@ -155,7 +164,7 @@ class __TwigTemplate_44f6e3f59ccc391b844dea927a53d98d60dc383d7d7802a018c715ca83c
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['u'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 65
+        // line 67
         echo "                   </tbody>
 \t\t\t\t</table> 
             </div>
@@ -184,20 +193,11 @@ function SupprimerUser(id){
 </script>
 
 
-<<<<<<< HEAD
 ";
-        // line 94
-        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:responsable:ReserveResponsable.html.twig", 94)->display($context);
         // line 95
-        echo "=======
-";
-        // line 96
-        $this->loadTemplate("SRVDVServerBundle:responsable:footerResponsable.html.twig", "SRVDVServerBundle:responsable:ReserveResponsable.html.twig", 96)->display($context);
-        // line 97
-        echo ">>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
-";
+        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:responsable:ReserveResponsable.html.twig", 95)->display($context);
         
-        $__internal_ef893cc5a6bbbcb82c3d9f635fcb920ef9526011d930d45182091d22435208f1->leave($__internal_ef893cc5a6bbbcb82c3d9f635fcb920ef9526011d930d45182091d22435208f1_prof);
+        $__internal_7b7752511ad63c6fd40f420449eb3e25da921eed3ad368d70edab2ef9c66c712->leave($__internal_7b7752511ad63c6fd40f420449eb3e25da921eed3ad368d70edab2ef9c66c712_prof);
 
     }
 
@@ -213,7 +213,7 @@ function SupprimerUser(id){
 
     public function getDebugInfo()
     {
-        return array (  197 => 97,  195 => 96,  192 => 95,  190 => 94,  159 => 65,  150 => 62,  146 => 61,  140 => 58,  136 => 57,  132 => 56,  126 => 55,  122 => 54,  118 => 53,  114 => 52,  111 => 51,  107 => 50,  92 => 38,  87 => 36,  83 => 35,  73 => 28,  69 => 27,  62 => 23,  58 => 22,  53 => 20,  39 => 9,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
+        return array (  198 => 95,  168 => 67,  159 => 64,  155 => 63,  149 => 60,  145 => 59,  141 => 58,  135 => 57,  131 => 56,  127 => 55,  123 => 54,  120 => 53,  116 => 52,  101 => 40,  96 => 38,  92 => 37,  82 => 30,  78 => 29,  71 => 25,  67 => 24,  62 => 22,  52 => 19,  39 => 9,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -226,7 +226,7 @@ function SupprimerUser(id){
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% include \"SRVDVServerBundle:responsable:MenuResponsable.html.twig\" %}
+        return new Twig_Source("{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
 
 <div id=\"nav\" >
 \t<div id=\"enseignant\" class=\"ouvert\">
@@ -243,6 +243,8 @@ function SupprimerUser(id){
 
 
 <div id=\"content\">
+\t</br>
+\t<h2> listes des reservations sur la filière \" {{ fil.niveau}} {{ fil.nom}}  {{ fil.anneeFiliere}}\"</h2>
 \t</br>
 \t\t<div class=\"col-xs-2 col-md-4 col-lg-3 centreVerticalement\">\t  
             {{ form_start(f,{'attr':{'novalidate':'novalidate'}})}}
@@ -318,11 +320,7 @@ function SupprimerUser(id){
 </script>
 
 
-<<<<<<< HEAD
 {% include \"SRVDVServerBundle:admin:footerAdmin.html.twig\" %}
-=======
-{% include \"SRVDVServerBundle:responsable:footerResponsable.html.twig\" %}
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
 ", "SRVDVServerBundle:responsable:ReserveResponsable.html.twig", "D:\\wamp64\\www\\serveurDeVoeux\\src\\SRVDV\\ServerBundle/Resources/views/responsable/ReserveResponsable.html.twig");
     }
 }

@@ -27,7 +27,7 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateUtilisateur')
+           
             ->add('nom')
             ->add('prenom')
             -> add('type','entity',array(

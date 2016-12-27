@@ -186,6 +186,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_admin_supptypeens')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppTypeEnsAction',));
             }
 
+            // annee_suivante
+            if ($pathinfo === '/admin/anneeSuivante') {
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AnneeSuivanteController::indexAction',  '_route' => 'annee_suivante',);
+            }
+
+            // generate_Annee_users
+            if (0 === strpos($pathinfo, '/admin/generateUsers') && preg_match('#^/admin/generateUsers/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'generate_Annee_users')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AnneeSuivanteController::generateUsersAction',));
+            }
+
         }
 
         // home

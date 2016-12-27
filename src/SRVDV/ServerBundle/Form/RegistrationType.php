@@ -29,15 +29,7 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            -> add('dateUtilisateur','entity',array(
-                "class" => "SRVDV\ServerBundle\Entity\Annee",
-               
-                'query_builder'=>function(EntityRepository $er){
-                                             return $er->createQueryBuilder('u')                                             
-                                             ->where("u.etat = 1  ");                               
-                                       },
-                
-            ))
+           
             ->add('nom')
             ->add('prenom')
              ->add('nombreHeurTheo')

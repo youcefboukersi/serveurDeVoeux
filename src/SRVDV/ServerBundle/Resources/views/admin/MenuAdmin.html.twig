@@ -40,15 +40,33 @@
         &nbsp;
         <div class="container" style="font-size:17px">
             <ul class="nav navbar-nav" >
-                <li class="active" ><a href="#"><span class="glyphicon glyphicon-home"></span>&nbsp;  Accueil</a></li>
+                <li ><a href="#"><span class="glyphicon glyphicon-home"></span>&nbsp;  Accueil</a></li>
                 <li ><a href="#"> <span class="glyphicon glyphicon-list"></span> &nbsp; Liste des utilisateurs</a></li>
                 <li ><a href="#"><span class="glyphicon glyphicon-folder-close"></span>&nbsp; Liste des filière</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" >
-                <li ><a href="{{path('form_profile_user')}}"><span class="glyphicon glyphicon-user"></span> 
-                        {% if is_granted("ROLE_ADMIN") %}
+                <li class="active"  >
+                    <a 
+                    
+                     {% if is_granted("ROLE_ENSEIG") %}  
+                        href=" {{path('form_profile_user_ens')}}"
+                     {% endif %}
+                                 
+
+                    {% if is_granted("ROLE_ADMIN") %}  
+                        href="{{path('form_profile_user')}}" 
+                    {% endif %}
+                                       
+                         
+                    {% if is_granted("ROLE_RESP") %}  
+                        href=" {{path('form_profile_user_resp')}}"
+                    {% endif %}
+                    >
+                    <span class="glyphicon glyphicon-user"></span>                       
                              {{ app.user.nom }} {{ app.user.prenom }}
-                        {% endif %}</a></li>
+                        </a></li>
+
+
                 <li><a href="{{ path('fos_user_security_logout') }}">
                         {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                         <span class="glyphicon glyphicon-log-out"></span>

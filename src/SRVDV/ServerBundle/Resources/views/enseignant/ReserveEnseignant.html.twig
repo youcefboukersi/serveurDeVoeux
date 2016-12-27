@@ -1,6 +1,6 @@
-{% include "SRVDVServerBundle:enseignant:MenuEnseignant.html.twig" %}
-
+{% include "SRVDVServerBundle:admin:MenuAdmin.html.twig" %}
 <div id="nav" >
+
 	<div id="enseignant" class="ouvert">
 		<h3>Enseignant</h3>
 		<ul>
@@ -15,7 +15,7 @@
 
 <div id="content">
 	</br>
-	<h2> listes des reservations sur la filière "{{ fil.nom}}  {{ fil.User.dateUtilisateur}}"</h2>
+	<h2> listes des reservations sur la filière "{{ fil.niveau}} {{ fil.nom}}  {{ fil.anneefiliere}}"</h2>
 	</br>
 		<div class="col-xs-2 col-md-4 col-lg-3 centreVerticalement">	  
             {{ form_start(f,{'attr':{'novalidate':'novalidate'}})}}

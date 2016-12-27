@@ -15,8 +15,8 @@ class __TwigTemplate_d6efcd65eaddf74438f38ddd5e712e20d5fcb3e00179c420e2569db3539
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9514710753d55cd612f99e721fea4b0370dd951d134aed2d42c5a2c5528af5df = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_9514710753d55cd612f99e721fea4b0370dd951d134aed2d42c5a2c5528af5df->enter($__internal_9514710753d55cd612f99e721fea4b0370dd951d134aed2d42c5a2c5528af5df_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:ProfileAdmin.html.twig"));
+        $__internal_0aeb6b886d339e19d431376453e6991c1bd0f854b62fb8a26955a0c31b8b8020 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_0aeb6b886d339e19d431376453e6991c1bd0f854b62fb8a26955a0c31b8b8020->enter($__internal_0aeb6b886d339e19d431376453e6991c1bd0f854b62fb8a26955a0c31b8b8020_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:ProfileAdmin.html.twig"));
 
         // line 1
         $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:admin:ProfileAdmin.html.twig", 1)->display($context);
@@ -50,7 +50,10 @@ class __TwigTemplate_d6efcd65eaddf74438f38ddd5e712e20d5fcb3e00179c420e2569db3539
         // line 12
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_typeens");
         echo "\"><span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></span>&nbsp;  Type Enseignement</a></li></br>
-            <li><a href=\"\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br> 
+            <li><a href=\"";
+        // line 13
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("annee_suivante");
+        echo "\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br> 
         </ul>
     </div>
 </div>\t
@@ -73,7 +76,7 @@ class __TwigTemplate_d6efcd65eaddf74438f38ddd5e712e20d5fcb3e00179c420e2569db3539
         // line 29
         $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:admin:ProfileAdmin.html.twig", 29)->display($context);
         
-        $__internal_9514710753d55cd612f99e721fea4b0370dd951d134aed2d42c5a2c5528af5df->leave($__internal_9514710753d55cd612f99e721fea4b0370dd951d134aed2d42c5a2c5528af5df_prof);
+        $__internal_0aeb6b886d339e19d431376453e6991c1bd0f854b62fb8a26955a0c31b8b8020->leave($__internal_0aeb6b886d339e19d431376453e6991c1bd0f854b62fb8a26955a0c31b8b8020_prof);
 
     }
 
@@ -89,7 +92,7 @@ class __TwigTemplate_d6efcd65eaddf74438f38ddd5e712e20d5fcb3e00179c420e2569db3539
 
     public function getDebugInfo()
     {
-        return array (  74 => 29,  64 => 22,  51 => 12,  47 => 11,  43 => 10,  39 => 9,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
+        return array (  77 => 29,  67 => 22,  55 => 13,  51 => 12,  47 => 11,  43 => 10,  39 => 9,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -114,7 +117,7 @@ class __TwigTemplate_d6efcd65eaddf74438f38ddd5e712e20d5fcb3e00179c420e2569db3539
             <li ><a href=\"{{path('list_form_utilisateur')}}\"><span class=\"glyphicon glyphicon-cog\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Users</a></li>    </br>       
             <li><a href=\"{{path('list_form_filiere')}}\"><span class=\"glyphicon glyphicon-book\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer fili&egrave;r</a></li></br>
             <li ><a  href=\"{{path('list_form_typeens')}}\"><span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></span>&nbsp;  Type Enseignement</a></li></br>
-            <li><a href=\"\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br> 
+            <li><a href=\"{{path('annee_suivante')}}\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br> 
         </ul>
     </div>
 </div>\t

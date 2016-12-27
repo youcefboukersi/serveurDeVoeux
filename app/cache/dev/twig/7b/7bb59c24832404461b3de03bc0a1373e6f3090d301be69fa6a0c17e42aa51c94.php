@@ -15,11 +15,11 @@ class __TwigTemplate_f8eded35fad093df127b8a80192ef9cc0ceb387b8e6bb4465987e5e676d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_da19e2de33cb81f69946854d3a841513a882e87e09aab9262ab1b4bfb057e282 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_da19e2de33cb81f69946854d3a841513a882e87e09aab9262ab1b4bfb057e282->enter($__internal_da19e2de33cb81f69946854d3a841513a882e87e09aab9262ab1b4bfb057e282_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:responsable:MatiereResponsable.html.twig"));
+        $__internal_7400e96d3e1653d67ac64385016afab44e343e311f1e4109c2fa07787e839ca3 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7400e96d3e1653d67ac64385016afab44e343e311f1e4109c2fa07787e839ca3->enter($__internal_7400e96d3e1653d67ac64385016afab44e343e311f1e4109c2fa07787e839ca3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:responsable:MatiereResponsable.html.twig"));
 
         // line 1
-        $this->loadTemplate("SRVDVServerBundle:responsable:MenuResponsable.html.twig", "SRVDVServerBundle:responsable:MatiereResponsable.html.twig", 1)->display($context);
+        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:responsable:MatiereResponsable.html.twig", 1)->display($context);
         // line 2
         echo "
 
@@ -165,7 +165,7 @@ class __TwigTemplate_f8eded35fad093df127b8a80192ef9cc0ceb387b8e6bb4465987e5e676d
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
             // line 70
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["u"], "Filiere", array()), "User", array()), "dateUtilisateur", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["u"], "Filiere", array()), "anneeFiliere", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
             // line 71
@@ -227,7 +227,7 @@ function SupprimerUser(id){
         // line 107
         $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:responsable:MatiereResponsable.html.twig", 107)->display($context);
         
-        $__internal_da19e2de33cb81f69946854d3a841513a882e87e09aab9262ab1b4bfb057e282->leave($__internal_da19e2de33cb81f69946854d3a841513a882e87e09aab9262ab1b4bfb057e282_prof);
+        $__internal_7400e96d3e1653d67ac64385016afab44e343e311f1e4109c2fa07787e839ca3->leave($__internal_7400e96d3e1653d67ac64385016afab44e343e311f1e4109c2fa07787e839ca3_prof);
 
     }
 
@@ -256,7 +256,7 @@ function SupprimerUser(id){
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% include \"SRVDVServerBundle:responsable:MenuResponsable.html.twig\" %}
+        return new Twig_Source("{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
 
 
 <div id=\"nav\" >
@@ -325,7 +325,7 @@ function SupprimerUser(id){
 \t\t\t\t\t\t\t\t<td>{{ u.nom }}</td>
 \t\t\t\t\t\t\t\t<td>{{ u.nbrHeurGroupe }}</td>
 \t\t\t\t\t\t\t\t<td>{{ u.NombreGroupe }}</td>
-\t\t\t\t\t\t\t\t<td>{{ u.Filiere.User.dateUtilisateur }}</td>
+\t\t\t\t\t\t\t\t<td>{{ u.Filiere.anneeFiliere }}</td>
 \t\t\t\t\t\t\t\t<td>{{ u.semestre }}</td>
 \t\t\t\t\t\t\t\t<td>{{ u.Filiere.nom}}</td>
 \t\t\t\t\t\t\t\t<td>{{ u.TypeEnseignant.libelle }}</td>

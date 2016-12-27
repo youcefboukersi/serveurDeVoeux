@@ -43,9 +43,22 @@ class Filiere
      */
     private $User;
 
-public function __toString(){
+    /**
+     * @ORM\ManyToOne(targetEntity="Annee")
+     */
+    private $anneeFiliere;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="niveau", type="string", length=50)
+     */
+    private $niveau;
+
+    public function __toString(){
                 
-            return $this->nom .'  '.$this->User;
+            return $this->niveau.'  '.$this->nom.' ( '.$this->anneeFiliere.' )';
         }
 
     /**
@@ -128,5 +141,56 @@ public function __toString(){
     public function getUser()
     {
         return $this->User;
+    }
+
+
+
+    
+    /**
+     * Set niveau
+     *
+     * @param string $niveau
+     * @return Filiere
+     */
+    public function setNiveau($niveau)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return string 
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    
+
+    /**
+     * Set anneeFiliere
+     *
+     * @param \SRVDV\ServerBundle\Entity\Annee $anneeFiliere
+     * @return Filiere
+     */
+    public function setAnneeFiliere(\SRVDV\ServerBundle\Entity\Annee $anneeFiliere = null)
+    {
+        $this->anneeFiliere = $anneeFiliere;
+
+        return $this;
+    }
+
+    /**
+     * Get anneeFiliere
+     *
+     * @return \SRVDV\ServerBundle\Entity\Annee 
+     */
+    public function getAnneeFiliere()
+    {
+        return $this->anneeFiliere;
     }
 }
