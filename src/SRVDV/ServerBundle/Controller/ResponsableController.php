@@ -36,7 +36,7 @@ class ResponsableController extends Controller
            -> add('nom','text' )
            -> add('nbrHeurGroupe','integer')
            -> add('NombreGroupe','integer')
-           -> add('AnneeMatiere','integer')
+           
            -> add('semestre','integer')
            -> add('Filiere','entity',array(
                 "class" => "SRVDV\ServerBundle\Entity\Filiere",
@@ -77,7 +77,7 @@ class ResponsableController extends Controller
     }
 
     /**
-     * @Route("/responsable/ModMatiere/{id}")
+     * @Route("/responsable/ModMatiere/{id}" ,name="Modifier_Matiere")
      * @Template()
      */
     public function ModmatiereAction(Matiere $m ,Request $req)
@@ -91,7 +91,7 @@ class ResponsableController extends Controller
            -> add('nom','text' )
            -> add('nbrHeurGroupe','integer')
            -> add('NombreGroupe','integer')
-           -> add('AnneeMatiere','integer')
+           
            -> add('semestre','integer')
            -> add('Filiere','entity',array(
                 "class" => "SRVDV\ServerBundle\Entity\Filiere",
@@ -148,7 +148,15 @@ class ResponsableController extends Controller
     }
 
 
+/**
+     * @Route("responsable/EditPofile", name="form_profile_user_resp")
+     * @Template()
+     */
+    public function EditPofileAction()
+    {      
 
+            return $this->render('SRVDVServerBundle:responsable:ProfileResponsable.html.twig' );
+    }
 
    /**
     * @Route("/responsable/inscription" ,name="list_form_inscription")
@@ -163,21 +171,19 @@ class ResponsableController extends Controller
 
              $res->setDateInscription($a);
 
+             //session
+              $user = $this->container->get('security.context')->getToken()->getUser();
+
+             $res->setUser($user);
+
     // On crée le FormBuilder grâce au service form factory
     $formBuilder = $this->get('form.factory')->createBuilder('form',  $res);
 
     $formBuilder
 
      -> add('nbHeur','integer')
-     -> add('Utilisateur','entity',array(
-      "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
-                          'query_builder'=>function(EntityRepository $er){
-                            return $er->createQueryBuilder('u')->where('u.role <> 1');                                  
-                           },
-          
-      ))
-              
-     -> add('Matier','entity',array(
+                 
+     -> add('Matiere','entity',array(
           "class" => "SRVDV\ServerBundle\Entity\Matiere",
           
           ))
@@ -224,15 +230,9 @@ class ResponsableController extends Controller
 
     $formBuilder
      -> add('nbHeur','integer')
-     -> add('Utilisateur','entity',array(
-      "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
-                          'query_builder'=>function(EntityRepository $er){
-                            return $er->createQueryBuilder('u')->where('u.role <> 1');                                  
-                           },
-          
-      ))
+     
               
-     -> add('Matier','entity',array(
+     -> add('Matiere','entity',array(
           "class" => "SRVDV\ServerBundle\Entity\Matiere",
           
           ))

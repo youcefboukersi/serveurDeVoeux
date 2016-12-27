@@ -43,14 +43,14 @@ class Inscription
     private $TypeEnseignant;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
+     * @ORM\ManyToOne(targetEntity="User")
      */
-    private $Utilisateur;
+    private $User;
 
     /**
      * @ORM\ManyToOne(targetEntity="Matiere")
      */
-    private $Matier;
+    private $Matiere;
 
 
     /**
@@ -133,48 +133,48 @@ class Inscription
     }
 
     /**
-     * Set Utilisateur
+     * Set User
      *
-     * @param \SRVDV\ServerBundle\Entity\Utilisateur $utilisateur
+     * @param \SRVDV\ServerBundle\Entity\User $user
      * @return Inscription
      */
-    public function setUtilisateur(\SRVDV\ServerBundle\Entity\Utilisateur $utilisateur = null)
+    public function setUser(\SRVDV\ServerBundle\Entity\User $user = null)
     {
-        $this->Utilisateur = $utilisateur;
+        $this->User = $user;
 
         return $this;
     }
 
     /**
-     * Get Utilisateur
+     * Get User
      *
-     * @return \SRVDV\ServerBundle\Entity\Utilisateur 
+     * @return \SRVDV\ServerBundle\Entity\User 
      */
-    public function getUtilisateur()
+    public function getUser()
     {
-        return $this->Utilisateur;
+        return $this->User;
     }
 
     /**
-     * Set Matier
+     * Set Matiere
      *
-     * @param \SRVDV\ServerBundle\Entity\Matiere $matier
+     * @param \SRVDV\ServerBundle\Entity\Matiere $matiere
      * @return Inscription
      */
-    public function setMatier(\SRVDV\ServerBundle\Entity\Matiere $matier = null)
+    public function setMatiere(\SRVDV\ServerBundle\Entity\Matiere $matiere = null)
     {
-        $this->Matier = $matier;
+        $this->Matiere = $matiere;
 
         return $this;
     }
 
     /**
-     * Get Matier
+     * Get Matiere
      *
      * @return mixed
      */
-    public function getMatier()
+    public function getMatiere()
     {
-        return $this->Matier;
+        return $this->Matiere;
     }
 }

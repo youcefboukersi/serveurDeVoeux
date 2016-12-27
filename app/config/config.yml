@@ -17,7 +17,7 @@ framework:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
     form:            ~
-    csrf_protection: true
+    csrf_protection: ~
     validation:      { enable_annotations: true }
     serializer:      { enable_annotations: true }
     templating:
@@ -75,8 +75,10 @@ fos_user:
         form:
             type: srvdv_user_registration
         confirmation:
-            # confirmation par mail lors de l'ajout d'un users
-            enabled:    true          
+            enabled:    false
+    profile:
+        form:
+            type: srvdv_user_profile            
     from_email:
         address:        confirmation@serveurdevoeur.com
         sender_name:    Confirmation   

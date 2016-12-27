@@ -14,9 +14,10 @@ namespace SRVDV\ServerBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Doctrine\ORM\EntityRepository;
 
 use SRVDV\ServerBundle\Entity\User;
-use SRVDV\ServerBundle\Entity\Role;
+use SRVDV\ServerBundle\Entity\Annee;
 use SRVDV\ServerBundle\Entity\TypeUtilisateur;
 use SRVDV\ServerBundle\Entity\Filiere;
 use SRVDV\ServerBundle\Entity\TypeEnseignant;
@@ -28,9 +29,18 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateUtilisateur')
+            -> add('dateUtilisateur','entity',array(
+                "class" => "SRVDV\ServerBundle\Entity\Annee",
+               
+                'query_builder'=>function(EntityRepository $er){
+                                             return $er->createQueryBuilder('u')                                             
+                                             ->where("u.etat = 1  ");                               
+                                       },
+                
+            ))
             ->add('nom')
             ->add('prenom')
+             ->add('nombreHeurTheo')
             -> add('type','entity',array(
                 "class" => "SRVDV\ServerBundle\Entity\TypeUtilisateur",
                 "property" => "libelle"
@@ -47,7 +57,7 @@ class RegistrationType extends AbstractType
                    )
                )
             )
-            ->add('nombreHeurTheo')
+           
             ;
     }
 

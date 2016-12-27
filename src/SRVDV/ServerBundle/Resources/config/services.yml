@@ -10,3 +10,7 @@ services:
         class: SRVDV\ServerBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: srvdv_user_registration }
+    app.form.profile:
+        class: SRVDV\ServerBundle\Form\ProfileType
+        tags:
+            - { name: form.type, alias: srvdv_user_profile }

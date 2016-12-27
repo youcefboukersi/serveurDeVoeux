@@ -35,12 +35,7 @@ class Matiere
      */
     private $nbrHeurGroupe;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="AnneeMatiere", type="integer")
-     */
-    private $AnneeMatiere;
+    
 
     /**
      * @var integer
@@ -69,7 +64,7 @@ class Matiere
 
     public function __toString(){
                 $heures = $this->nbrHeurGroupe * $this->NombreGroupe;
-            return $this->TypeEnseignant->getLibelle() .' ('.$heures.') '.$this->nom.' ('.$this->AnneeMatiere.')  ';
+            return $this->TypeEnseignant->getLibelle() .' ('.$heures.') '.$this->nom.' ('.$this->Filiere.')  ';
         }
 
     /**
@@ -105,28 +100,7 @@ class Matiere
         return $this->nom;
     }
 
-     /**
-     * Set AnneeMatiere
-     *
-     * @param integer $AnneeMatiere
-     * @return Matiere
-     */
-    public function setAnneeMatiere($AnneeMatiere)
-    {
-        $this->AnneeMatiere = $AnneeMatiere;
-    
-        return $this;
-    }
-
-    /**
-     * Get AnneeMatiere
-     *
-     * @return integer 
-     */
-    public function getAnneeMatiere()
-    {
-        return $this->AnneeMatiere;
-    }
+   
 
     /**
      * Set nbrHeurGroupe

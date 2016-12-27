@@ -20,9 +20,7 @@ class User extends BaseUser {
     protected $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="DateUtilisateur", type="integer")
+     * @ORM\ManyToOne(targetEntity="Annee")
      */
     private $dateUtilisateur;
 
@@ -52,6 +50,12 @@ class User extends BaseUser {
      */
     private $nombreHeurTheo;
 
+      public function __toString(){
+                
+            return $this->nom.'  '.$this->prenom;
+        }
+
+
     public function __construct() {
         parent::__construct();
         // your own logic
@@ -61,9 +65,10 @@ class User extends BaseUser {
     /**
      * Set dateUtilisateur
      *
-     * @param integer $dateUtilisateur
+     * @param \SRVDV\ServerBundle\Entity\Annee $dateUtilisateur
      * @return User
      */
+    
     public function setDateUtilisateur($dateUtilisateur) {
         $this->dateUtilisateur = $dateUtilisateur;
 
@@ -73,7 +78,7 @@ class User extends BaseUser {
     /**
      * Get dateUtilisateur
      *
-     * @return integer 
+     * @return \SRVDV\ServerBundle\Entity\Annee 
      */
     public function getDateUtilisateur() {
         return $this->dateUtilisateur;

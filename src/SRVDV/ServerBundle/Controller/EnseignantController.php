@@ -21,38 +21,54 @@ use SRVDV\ServerBundle\Entity\Inscription;
 class EnseignantController extends Controller
 {
    
+    /**
+    * @Route("/enseignant/ChoixFiliereEns" ,name="ChoixFiliereEns_enseignant")
+    * @Template()
+    */
+    public function ChoixFiliereEnsAction()
+    {
+
+            
+          $Filieres=$this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findAll();            
+           return $this->render('SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig', array(
+                        'Filieres' => $Filieres,
+
+            ) );
+      
+
+    }
 
     
    /**
-    * @Route("/enseignant/inscription" ,name="list_form_inscription_enseignant")
+    * @Route("/enseignant/inscription/{id}" ,name="list_form_inscription_enseignant")
     * @Template()
     */
-    public function InscriptionEnsAction(Request $req)
+    public function InscriptionEnsAction(Filiere $filiere,Request $req)
     {
-
+             $iden=$filiere->getId();
             $res = new Inscription();
 
              $a=new \Datetime("Y");                 
 
              $res->setDateInscription($a);
 
+             $user = $this->container->get('security.context')->getToken()->getUser();
+
+             $res->setUser($user);
+
     // On crée le FormBuilder grâce au service form factory
-    $formBuilder = $this->get('form.factory')->createBuilder('form',  $res);
+    $formBuilder = $this->get('form.factory')->createBuilder('form',  $res );
 
     $formBuilder
 
      
      -> add('nbHeur','integer')
-     -> add('Utilisateur','entity',array(
-      "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
-                          'query_builder'=>function(EntityRepository $er){
-                            return $er->createQueryBuilder('u')->where('u.role <> 1');                                  
-                           },
-          
-      ))
-              
-     -> add('Matier','entity',array(
+           
+     -> add('Matiere','entity',array(
           "class" => "SRVDV\ServerBundle\Entity\Matiere",
+          'query_builder'=>function(EntityRepository $er )use ($filiere){
+                                             return $er->createQueryBuilder('u')                                             
+                                             ->where("u.Filiere = ".$filiere->getId());},
           
           ))
      -> add('save','submit')
@@ -78,6 +94,7 @@ class EnseignantController extends Controller
            return $this->render('SRVDVServerBundle:enseignant:ReserveEnseignant.html.twig', array(
             'f' => $form->createView(),
             'reservations' => $reservations,
+            'fil'=>$filiere,
 
             ) );
       }
@@ -92,21 +109,17 @@ class EnseignantController extends Controller
     public function ModInscriptionEnsAction(Inscription $res,Request $req)
     {
 
+      $user = $this->container->get('security.context')->getToken()->getUser();
 
+             $res->setUser($user);
     // On crée le FormBuilder grâce au service form factory
     $formBuilder = $this->get('form.factory')->createBuilder('form',  $res);
 
     $formBuilder
 
      -> add('nbHeur','integer')
-     -> add('Utilisateur','entity',array(
-      "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
-       'query_builder'=>function(EntityRepository $er){
-                            return $er->createQueryBuilder('u')->where('u.role <> 1');                                  
-                           },
-         
-      ))              
-     -> add('Matier','entity',array(
+                
+     -> add('Matiere','entity',array(
           "class" => "SRVDV\ServerBundle\Entity\Matiere",
          
       ))     
@@ -117,11 +130,7 @@ class EnseignantController extends Controller
           "class" => "SRVDV\ServerBundle\Entity\TypeEnseignant",
           "property" => "libelle"
       ))
-     -> add('Utilisateur','entity',array(
-      "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
-      "property" => "nom"
-          
-      ))
+     
               
      -> add('Matiere','entity',array(
           "class" => "SRVDV\ServerBundle\Entity\Matiere",
@@ -152,6 +161,7 @@ class EnseignantController extends Controller
            return $this->render('SRVDVServerBundle:enseignant:ReserveEnseignant.html.twig', array(
             'f' => $form->createView(),
             'reservations' => $reservations,
+            'fil'=>$res->Matiere->Filiere,
 
             ) );
       }
@@ -159,7 +169,15 @@ class EnseignantController extends Controller
 
     }
 
+/**
+     * @Route("enseignant/EditPofile", name="form_profile_user_ens")
+     * @Template()
+     */
+    public function EditPofileAction()
+    {      
 
+            return $this->render('SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig' );
+    }
     /**
      * @Route("enseignant/SuppInscription/{id}")
      * @Template()

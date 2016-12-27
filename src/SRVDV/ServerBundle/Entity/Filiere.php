@@ -28,12 +28,7 @@ class Filiere
      */
     private $dateFiliere;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="AnneeFiliere", type="integer")
-     */
-    private $anneeFiliere;
+    
 
     /**
      * @var string
@@ -44,10 +39,14 @@ class Filiere
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
+     * @ORM\ManyToOne(targetEntity="User")
      */
-    private $Utilisateur;
+    private $User;
 
+public function __toString(){
+                
+            return $this->nom .'  '.$this->User;
+        }
 
     /**
      * Get id
@@ -59,13 +58,16 @@ class Filiere
         return $this->id;
     }
 
+   
+
     /**
      * Set dateFiliere
      *
-     * @param \DateTime $dateFiliere
+     * @param integer $dateFiliere
      * @return Filiere
      */
     public function setDateFiliere($dateFiliere)
+
     {
         $this->dateFiliere = $dateFiliere;
     
@@ -75,35 +77,11 @@ class Filiere
     /**
      * Get dateFiliere
      *
-     * @return \DateTime 
+     * @return integer 
      */
     public function getDateFiliere()
     {
         return $this->dateFiliere;
-    }
-
-    /**
-     * Set anneeFiliere
-     *
-     * @param integer $anneeFiliere
-     * @return Filiere
-     */
-    public function setAnneeFiliere($anneeFiliere)
-
-    {
-        $this->anneeFiliere = $anneeFiliere;
-    
-        return $this;
-    }
-
-    /**
-     * Get anneeFiliere
-     *
-     * @return integer 
-     */
-    public function getAnneeFiliere()
-    {
-        return $this->anneeFiliere;
     }
 
     /**
@@ -130,25 +108,25 @@ class Filiere
     }
 
     /**
-     * Set Utilisateur
+     * Set User
      *
-     * @param Utilisateur $Utilisateur
+     * @param User $User
      * @return Filiere
      */
-    public function setUtilisateur($Utilisateur)
+    public function setUser($User)
     {
-        $this->Utilisateur = $Utilisateur;
+        $this->User = $User;
     
         return $this;
     }
 
     /**
-     * Get Utilisateur
+     * Get User
      *
      * @return mixed 
      */
-    public function getUtilisateur()
+    public function getUser()
     {
-        return $this->Utilisateur;
+        return $this->User;
     }
 }

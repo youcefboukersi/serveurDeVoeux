@@ -11,9 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Doctrine\ORM\EntityRepository;
 
-use SRVDV\ServerBundle\Entity\Utilisateur;
-use SRVDV\ServerBundle\Entity\Role;
-use SRVDV\ServerBundle\Entity\TypeUtilisateur;
+use SRVDV\ServerBundle\Entity\User;
+use SRVDV\ServerBundle\Entity\Annee;
 use SRVDV\ServerBundle\Entity\Filiere;
 use SRVDV\ServerBundle\Entity\TypeEnseignant;
 
@@ -37,7 +36,7 @@ class AdminController extends Controller
      }
 
     /**
-     * @Route("admin/ModUsers/{id}")
+     * @Route("admin/ModUsers/{id}" ,name="Modifier_Users")
      * @Template()
      */
     public function ModUsersAction(User $u,Request $req)
@@ -51,7 +50,15 @@ class AdminController extends Controller
            -> add('nom','text' , array('label' => 'Nom', 'translation_domain' => 'FOSUserBundle'))
            -> add('prenom','text')
            -> add('username','text')
-          -> add('dateUtilisateur','integer') 
+          -> add('dateUtilisateur','entity',array(
+                "class" => "SRVDV\ServerBundle\Entity\Annee",
+               
+                'query_builder'=>function(EntityRepository $er){
+                                             return $er->createQueryBuilder('u')                                             
+                                             ->where("u.etat = 1  ");                               
+                                       },
+                
+            ))
           -> add('password','text')
            -> add('email','text')         
            -> add('roles','text')
@@ -108,35 +115,41 @@ class AdminController extends Controller
     }
 
 /**
-     * @Route("/listUsers/")
+     * @Route("admin/EditPofile", name="form_profile_user")
      * @Template()
      */
-    public function listUsersAction()
+    public function EditPofileAction()
     {      
 
             $Users=$this->getDoctrine()->getManager()->getRepository("SRVDVServerBundle:User")->findAll();
 
-         return $this->render('SRVDVServerBundle:admin:UsersAdmin.html.twig', array(
+         return $this->render('SRVDVServerBundle:admin:ProfileAdmin.html.twig', array(
           'Users' => $Users,
           ) );
     }
 
-    /**
-     * 
-     * @Route("/admin/addrole", name="list_form_Role")
+   
+   /**
+     * @Route("/admin/addAnnee" , name="list_form_Annee")
      * @Template()
      */
-    public function addRoleAction(Request $req)
+    public function addAnneeAction(Request $req)
     {
-         $role = new Role();
+         $annee = new Annee();
 
             // On crée le FormBuilder grâce au service form factory
-          $formBuilder = $this->get('form.factory')->createBuilder('form', $role);
+          $formBuilder = $this->get('form.factory')->createBuilder('form', $annee);
 
           $formBuilder
-           -> add('nomRole','text')         
-           -> add('save','submit')
-           -> add('reset','reset');
+           -> add('annee','integer')
+             ->add('etat', 'choice', array(
+                    'label' => 'Êtes vous OK ?',
+                    'choices' => array(1 => 'Oui', 0 => 'Non'),
+                    'expanded' => true,
+                    'multiple' => false,
+                    'required' => true
+                ))         
+           -> add('save','submit');
           
                // À partir du formBuilder, on génère le formulaire
          $form = $formBuilder->getForm();
@@ -146,30 +159,41 @@ class AdminController extends Controller
             if ($form->isValid()) {
                 // On l'enregistre notre objet $advert dans la base de données, par exemple
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($role);
+                $em->persist($annee);
                 $em->flush();
+                $url = $this->get('router')->generate('list_form_Annee');
+    
+                 return new RedirectResponse($url);
+            }else{
+                  $Annees=$this->getDoctrine()->getManager()->getRepository("SRVDVServerBundle:Annee")->findAll();
+               return $this->render('SRVDVServerBundle:admin:AnneeAdmin.html.twig', array(
+                'f' => $form->createView(),
+                'Annees' => $Annees,
+                ) );
             }
-            $Roles=$this->getDoctrine()->getManager()->getRepository("SRVDVServerBundle:Role")->findAll();
-         return $this->render('SRVDVServerBundle:admin:RoleAdmin.html.twig', array(
-          'f' => $form->createView(),
-          'Roles' => $Roles,
-          ) );
     }
-
-/**
-     * @Route("/admin/ModRole/{id}")
+       
+       /**
+     * @Route("/admin/ModAnnee/{id}" , name="Modifier_Annee")
      * @Template()
      */
-    public function ModRoleAction(Role $role,Request $req)
+    public function ModAnneeAction(Annee $annee ,Request $req)
     {
          
+
             // On crée le FormBuilder grâce au service form factory
-          $formBuilder = $this->get('form.factory')->createBuilder('form', $role);
+          $formBuilder = $this->get('form.factory')->createBuilder('form', $annee);
 
           $formBuilder
-           -> add('nomRole','text')         
-           -> add('save','submit')
-           -> add('reset','reset');
+           -> add('annee','integer')
+           ->add('etat', 'choice', array(
+                    'label' => 'Êtes vous OK ?',
+                    'choices' => array(1 => 'Oui', 0 => 'Non'),
+                    'expanded' => true,
+                    'multiple' => false,
+                    'required' => true
+                ))          
+           -> add('save','submit');
           
                // À partir du formBuilder, on génère le formulaire
          $form = $formBuilder->getForm();
@@ -179,38 +203,39 @@ class AdminController extends Controller
             if ($form->isValid()) {
                 // On l'enregistre notre objet $advert dans la base de données, par exemple
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($role);
+                $em->persist($annee);
                 $em->flush();
-
-                 $url = $this->get('router')->generate('list_form_Role');
+                $url = $this->get('router')->generate('list_form_Annee');
     
-    return new RedirectResponse($url);
+                 return new RedirectResponse($url);
+            }else{
+                  $Annees=$this->getDoctrine()->getManager()->getRepository("SRVDVServerBundle:Annee")->findAll();
+               return $this->render('SRVDVServerBundle:admin:AnneeAdmin.html.twig', array(
+                'f' => $form->createView(),
+                'Annees' => $Annees,
+                ) );
             }
-            $Roles=$this->getDoctrine()->getManager()->getRepository("SRVDVServerBundle:Role")->findAll();
-         return $this->render('SRVDVServerBundle:admin:RoleAdmin.html.twig', array(
-          'f' => $form->createView(),
-          'Roles' => $Roles,
-          ) );
     }
 
     /**
-     * @Route("admin/suppRole/{id}"  )
+     * @Route("admin/suppAnnee/{id}"  )
      * @Template()
      */
-    public function SuppRoleAction(Role $r,Request $req)
+    public function SuppAnneeAction(Annee $annee,Request $req)
     {      
 
             $em=$this->getDoctrine()->getManager();
-            $em->remove($r);
+            $em->remove($annee);
             $em->flush();
 
-        $url = $this->get('router')->generate('list_form_Role');
+        $url = $this->get('router')->generate('list_form_Annee');
     
     return new RedirectResponse($url);
           
     }
 
-    /**
+
+      /**
      * @Route("/admin/addtype" , name="list_form_Type")
      * @Template()
      */
@@ -250,7 +275,7 @@ class AdminController extends Controller
     }
          
          /**
-     * @Route("/admin/ModType/{id}")
+     * @Route("/admin/ModType/{id}", name="Modifier_TypeEns")
      * @Template()
      */
     public function ModTypeAction(TypeUtilisateur $type , Request $req)
@@ -313,10 +338,7 @@ class AdminController extends Controller
          $filiere = new Filiere();
 
          $a=new \Datetime("Y");
-         $ann= date('Y');
-
-
-          $filiere->setAnneeFiliere($ann);
+         
           $filiere->setDateFiliere($a);
 
             // On crée le FormBuilder grâce au service form factory
@@ -324,15 +346,14 @@ class AdminController extends Controller
 
           $formBuilder
            -> add('nom','text' , array('label' => 'Nom', 'translation_domain' => 'FOSUserBundle'))
-           -> add('dateFiliere','date')
-           -> add('anneeFiliere','integer')               
-            -> add('Utilisateur','entity',array(
-            "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
-            'query_builder'=>function(EntityRepository $er){
+                         
+            -> add('User','entity',array(
+            "class" => "SRVDV\ServerBundle\Entity\User",
+                       'query_builder'=>function(EntityRepository $er){
                                              return $er->createQueryBuilder('u')                                             
-                                             ->where('u.role =2');                                     
+                                             ->where("u.roles like '%RESP%' ");                                     
                                        
-                          },
+                         },
                 
             ))
            -> add('save','submit')
@@ -368,24 +389,26 @@ class AdminController extends Controller
 
     
     /**
-     * @Route("/admin/ModFiliere/{id}")
+     * @Route("/admin/ModFiliere/{id}" ,name="Modifier_filiere")
      * @Template()
      */
     public function ModFiliereAction(Filiere $filiere,Request $req)
     {
-         
-
-
-            // On crée le FormBuilder grâce au service form factory
+           // On crée le FormBuilder grâce au service form factory
           $formBuilder = $this->get('form.factory')->createBuilder('form', $filiere);
 
           $formBuilder
            -> add('nom','text' , array('label' => 'Nom', 'translation_domain' => 'FOSUserBundle'))
-           -> add('dateFiliere','date')
-           -> add('anneeFiliere','integer')               
-            -> add('Utilisateur','entity',array(
-            "class" => "SRVDV\ServerBundle\Entity\Utilisateur",
-            "property" => "nom"
+           
+                         
+            -> add('User','entity',array(
+            "class" => "SRVDV\ServerBundle\Entity\User",
+            'query_builder'=>function(EntityRepository $er){
+                                             return $er->createQueryBuilder('u')                                             
+                                             ->where("u.roles like '%RESP%' ");                                     
+                                       
+                         },
+            
                 
             ))
            -> add('save','submit')
@@ -420,7 +443,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("admin/suppFiliere/{id}"  )
+     * @Route("admin/suppFiliere/{id}" ,name="Supprimer_filiere"  )
      * @Template()
      */
     public function SuppFiliereAction(Filiere $filiere,Request $req)
@@ -485,7 +508,7 @@ class AdminController extends Controller
          
     }
  /**
-     * @Route("/admin/ModTypeEns/{id}")
+     * @Route("/admin/ModTypeEns/{id}" ,name="Modifier_TypeEnseignant")
      * @Template()
      */
     public function ModTypeEnsAction(TypeEnseignant $typeens,Request $req)

@@ -6,28 +6,7 @@
 	<link rel=stylesheet type="text/css" href="http://localhost:8181/serveurdevoeux/web/bootstrap/css/bootstrap.min.css"/>
 	<script type="text/javascript" src="http://localhost:8181/serveurdevoeux/web/assets/javascript/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="http://localhost:8181/serveurdevoeux/web/assets/javascript/search.js"></script>
-	<script type="text/javascript" src="http://localhost:8181/serveurdevoeux/web/assets/javascript/VerifFormulaire.js"></script>
-"fnRowCallback": function( nRow, aData ) {
-
-var id = aData.myID; // ID is returned by the server as part of the data
-
-var $nRow = $(nRow); // cache the row wrapped up in jQuery
-
-if (id == "1") { 
-
-$nRow.css({"background-color":"red"})
-
-}
-
-else if (id == "2") {
-
-$nRow.css({"background-color":"blue"}) 
-
-}
-
-return nRow
-
-}	<script type="text/javascript" src="http://localhost:8181/serveurdevoeux/web/assets/javascript/Desinscription.js"></script>
+	<script type="text/javascript" src="http://localhost:8181/serveurdevoeux/web/assets/javascript/VerifFormulaire.js"></script><script type="text/javascript" src="http://localhost:8181/serveurdevoeux/web/assets/javascript/Desinscription.js"></script>
 	<script type="text/javascript" src="http://localhost:8181/serveurdevoeux/web/assets/javascript/Notification.js"></script>
 
 
@@ -40,16 +19,6 @@ return nRow
 		<script type="text/javascript" src="http://localhost:8181/serveurdevoeux/web/assets/javascript/isResp.js"></script>;
 	<script type="text/javascript" src="http://localhost:8181/serveurdevoeux/web/assets/javascript/Resp.js"></script>;
 	
-	<style>
-	
-		.centreVerticalement {
-		display: inline-block;
-		vertical-align: top;
-		float: none;
-		}
-
-
-</style>
 	
 </head>
 <body>
@@ -66,9 +35,12 @@ return nRow
 </div>
 
 <p id="deconnexion">
-	<a>
-             {{ 'layout.login'|trans({}, 'FOSUserBundle') }}!! <!-- pour se connecter -->
-        </a>
+</br>
+	<b><a>
+            {{ 'layout.login'|trans({}, 'FOSUserBundle') }} <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> <!-- pour se connecter -->
+        </a></b>
+
+       
 	
 </p>
 

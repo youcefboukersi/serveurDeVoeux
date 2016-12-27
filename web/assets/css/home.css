@@ -38,6 +38,7 @@ width:170px;
 
 #connect{
 	width:200px;
+        align-content: center;
 }
 
 #recup{
@@ -553,7 +554,7 @@ overflow: auto;
 top:90px;
 }
 
-<<<<<<< HEAD
+
 #contenthome{
 margin-top: 100px;
 margin-left: 0px;
@@ -562,8 +563,6 @@ background: #f4f4f4;
 top:100px;
 }
 
-=======
->>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
 
 
 

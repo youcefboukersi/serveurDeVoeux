@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Doctrine\ORM\EntityRepository;
 
-use SRVDV\ServerBundle\Entity\Utilisateur;
+use SRVDV\ServerBundle\Entity\User;
 use SRVDV\ServerBundle\Entity\Role;
 use SRVDV\ServerBundle\Entity\TypeUtilisateur;
 use SRVDV\ServerBundle\Entity\Filiere;
@@ -33,26 +33,12 @@ class DefaultController extends Controller
 
 
          $Reserves=$this->getDoctrine()->getRepository("SRVDVServerBundle:Inscription")->findAll(); 
-         $Matieres=$this->getDoctrine()->getRepository("SRVDVServerBundle:Matiere")->findAll(); 
-
+         
                  return $this->render('SRVDVServerBundle:home:index.html.twig', array(
-                  'Reserves' => $Reserves,
-                  'Matieres' => $Matieres,));
+                  'Reserves' => $Reserves,));
 
     
-
-    
-
-         return $this->render('SRVDVServerBundle:home:index.html.twig');
     }
 
-    /**
-     * @Route("/accueil/{a}/{b}")
-     * @Template()
-     */
-    public function accueilAction($a,$b)
-    {
-    	 $somme=$a+$b;
-        return array('somme' => $somme);
-    }
+   
 }

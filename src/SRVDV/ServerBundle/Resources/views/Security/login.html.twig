@@ -1,5 +1,9 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "FOSUserBundle:Connexion:index.html.twig" %}
+
+
 
 {% block fos_user_content %}
+    <h3>Connectez-vous :</h3> 
     {{ include('FOSUserBundle:Security:login_content.html.twig') }}
+        <p ><a  href={{path ('fos_user_resetting_request')}}>Mot de passe oubli&eacute; ?</a></p>
 {% endblock fos_user_content %}

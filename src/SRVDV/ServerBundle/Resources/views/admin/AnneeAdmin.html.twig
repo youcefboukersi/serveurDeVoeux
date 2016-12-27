@@ -5,8 +5,8 @@
 		<h3>Administrateur</h3>
 		<ul>
 			<li  ><a href="{{path('form_profile_user')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  &nbsp; Mon profil</a></li></br>
-			<li><a href="{{path('list_form_Annee')}}"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;  G&eacute;rer Année</a></li></br>
-            <li class="active"><a href="{{path('list_form_Type')}}"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;  G&eacute;rer statut</a></li></br>
+			<li class="active" ><a href="{{path('list_form_Annee')}}"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;  G&eacute;rer Année</a></li></br>
+            <li><a href="{{path('list_form_Type')}}"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;  G&eacute;rer statut</a></li></br>
             <li ><a href="{{path('list_form_utilisateur')}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp; G&eacute;rer Users</a></li>	</br>		
             <li><a href="{{path('list_form_filiere')}}"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;  G&eacute;rer fili&egrave;r</a></li></br>
             <li ><a  href="{{path('list_form_typeens')}}"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>&nbsp;  Type Enseignement</a></li></br>
@@ -23,20 +23,16 @@
 		<div class="col-xs-2 col-md-4 col-lg-3 centreVerticalement">	  
             {{ form_start(f,{'attr':{'novalidate':'novalidate'}})}}
 					<div class="form-group">
-					{{ form_label(f.code,'Code : ')}}
-					{{ form_widget(f.code,{'attr':{'class':'form-control'}})}}
+					{{ form_label(f.annee,'Année : ')}}
+					{{ form_widget(f.annee,{'attr':{'class':'form-control'}})}}
 					</div>
 					<div class="form-group">
-					{{ form_label(f.libelle,'Libelle : ')}}
-					{{ form_widget(f.libelle,{'attr':{'class':'form-control'}})}}
-					</div>
-					<div class="form-group">
-					{{ form_label(f.nbrHeures,'Nombre heures : ')}}
-					{{ form_widget(f.nbrHeures,{'attr':{'class':'form-control'}})}}
+					{{ form_label(f.etat,'Actif: ')}}
+					{{ form_widget(f.etat,{'attr':{'class':'form-control'}})}}
 					</div>
 					
-					<div class="form-group">
 					
+					<div class="form-group">
 					{{ form_widget(f.save,{'attr':{'class':'btn btn-success'}})}}
 					
 					</div>
@@ -48,18 +44,21 @@
 			<div class="table-responsive">
                 <table id="example" class="display" cellspacing="0" width="100%" >
                 	<thead>
-					<tr><th>#</th><th>Code</th><th>Libelle</th><th>Nombre heures</th><th>Mod</th><th>Supp</th></tr>
+					<tr><th>#</th><th>nom</th><th>Coefficient</th><th>Mod</th><th>Supp</th></tr>
 				   </thead>
 				   <tbody>
-						{% for t in Types %}
+						{% for u in Annees %}
 							<tr>
-								<td>{{ t.id }}</td>
-								<td>{{ t.code }}</td>
-								<td>{{ t.libelle }}</td>
-								<td>{{ t.nbrHeures }}</td>
-															
-								<td><button  type="button" class="btn btn-primary" onclick="window.location.href ='{{path('Modifier_Typeens',{'id':t.id }) }}'"><b ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></b></button></td>
-								<td><button type="button" class="btn btn-warning"  onclick="SupprimerType({{ t.id }})"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></button></td>
+								<td>{{ u.id }}</td>
+								<td>{{ u.annee }}</td>
+								<td>
+								{% if u.etat == 1 %}
+                                 OUI
+                                {% endif %}</td>
+								
+								
+								<td><button  type="button" class="btn btn-primary" onclick="window.location.href ='{{path('Modifier_Annee',{'id':u.id }) }}'"><b ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></b></button></td>
+								<td><button type="button" class="btn btn-warning"  onclick="SupprimerUser({{ u.id }})"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></button></td>
 							</tr>	
 						{% endfor %}
                    </tbody>
@@ -77,12 +76,12 @@ $(document).ready(function() {
     $('#example').DataTable();
 } );
 
-function SupprimerType(id){
+function SupprimerUser(id){
 
 	var rep=confirm('Clickez sur "OK" si vous voulez vraiment cet utilisateur' ) ;
 
 	if(rep){
-        window.location.href ='suppType/'+id;
+        window.location.href ='suppAnnee/'+id;
 	}
 
 }
