@@ -49,7 +49,7 @@
 								<td>{{ r.User.email}}</td>
 								<td>{{ r.User.type.libelle}}</td>
 								<td>{{ r.Matiere.semestre }}</td>
-								<td>{{ r.Matiere.nom}}&nbsp;({{ r.Matiere.AnneeMatiere}})</td>
+								<td>{{ r.Matiere.nom}}&nbsp;({{ r.Matiere.Filiere.User.dateUtilisateur}})</td>
 								<td>{{ r.Matiere.filiere.nom }}</td>
 								<td>{{ r.Matiere.TypeEnseignant.libelle }}</td>
 								<td>{{ tempArray['_'~r.Matiere.id]  }}</td>

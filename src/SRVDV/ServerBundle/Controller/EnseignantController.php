@@ -69,6 +69,7 @@ class EnseignantController extends Controller
           'query_builder'=>function(EntityRepository $er )use ($filiere){
                                              return $er->createQueryBuilder('u')                                             
                                              ->where("u.Filiere = ".$filiere->getId());},
+
           
           ))
      -> add('save','submit')
@@ -85,7 +86,7 @@ class EnseignantController extends Controller
           $em->persist($res);
           $em->flush();
 
-          $url = $this->get('router')->generate('list_form_inscription_enseignant');
+          $url = $this->get('router')->generate('list_form_inscription_enseignant',  array('id' =>$filiere->getId()) );
 
           return new RedirectResponse($url);
 
@@ -103,41 +104,28 @@ class EnseignantController extends Controller
     }
 
     /**
-    * @Route("/enseignant/ModInscription/{id}")
+    * @Route("/enseignant/ModInscription/{id}" ,name="Modifier_inscription")
     * @Template()
     */
     public function ModInscriptionEnsAction(Inscription $res,Request $req)
     {
 
-      $user = $this->container->get('security.context')->getToken()->getUser();
-
-             $res->setUser($user);
+      $filiere=$res->getMatiere()->getFiliere();
     // On crée le FormBuilder grâce au service form factory
     $formBuilder = $this->get('form.factory')->createBuilder('form',  $res);
 
     $formBuilder
 
      -> add('nbHeur','integer')
-                
+           
      -> add('Matiere','entity',array(
           "class" => "SRVDV\ServerBundle\Entity\Matiere",
-         
-      ))     
+          'query_builder'=>function(EntityRepository $er )use ($filiere){
+                                             return $er->createQueryBuilder('u')                                             
+                                             ->where("u.Filiere = ".$filiere->getId());},
 
-     -> add('dateInscription','date' )
-     -> add('nbHeur','integer')
-     -> add('TypeEnseignant','entity',array(
-          "class" => "SRVDV\ServerBundle\Entity\TypeEnseignant",
-          "property" => "libelle"
-      ))
-     
-              
-     -> add('Matiere','entity',array(
-          "class" => "SRVDV\ServerBundle\Entity\Matiere",
-          "property" => "nom"
-      ))
-     
-
+          
+          ))
      -> add('save','submit')
      -> add('reset','reset');
 
@@ -152,7 +140,7 @@ class EnseignantController extends Controller
           $em->persist($res);
           $em->flush();
 
-          $url = $this->get('router')->generate('list_form_inscription_enseignant');
+         $url = $this->get('router')->generate('list_form_inscription_enseignant', array('id' =>$filiere->getId()));
 
           return new RedirectResponse($url);
 
@@ -161,7 +149,8 @@ class EnseignantController extends Controller
            return $this->render('SRVDVServerBundle:enseignant:ReserveEnseignant.html.twig', array(
             'f' => $form->createView(),
             'reservations' => $reservations,
-            'fil'=>$res->Matiere->Filiere,
+             'fil'=>$filiere,
+
 
             ) );
       }
@@ -179,17 +168,17 @@ class EnseignantController extends Controller
             return $this->render('SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig' );
     }
     /**
-     * @Route("enseignant/SuppInscription/{id}")
+     * @Route("enseignant/SuppInscription/{id}" )
      * @Template()
      */
     public function SuppInscripEnsAction(Inscription $res,Request $req)
     {      
-
+           $id=$res->getMatiere()->getFiliere()->getId();
             $em=$this->getDoctrine()->getManager();
             $em->remove($res);
             $em->flush();
 
-         $url = $this->get('router')->generate('list_form_inscription_enseignant');
+         $url = $this->get('router')->generate('list_form_inscription_enseignant', array('id' =>$id));
     
     return new RedirectResponse($url);
           

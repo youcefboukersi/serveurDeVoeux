@@ -15,6 +15,7 @@ use SRVDV\ServerBundle\Entity\User;
 use SRVDV\ServerBundle\Entity\Annee;
 use SRVDV\ServerBundle\Entity\Filiere;
 use SRVDV\ServerBundle\Entity\TypeEnseignant;
+use SRVDV\ServerBundle\Entity\TypeUtilisateur;
 
 use SRVDV\ServerBundle\Entity\Inscription;
 
@@ -275,7 +276,7 @@ class AdminController extends Controller
     }
          
          /**
-     * @Route("/admin/ModType/{id}", name="Modifier_TypeEns")
+     * @Route("/admin/ModType/{id}", name="Modifier_TypeUtilisateur")
      * @Template()
      */
     public function ModTypeAction(TypeUtilisateur $type , Request $req)

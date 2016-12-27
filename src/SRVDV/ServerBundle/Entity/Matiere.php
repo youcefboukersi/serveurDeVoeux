@@ -64,7 +64,7 @@ class Matiere
 
     public function __toString(){
                 $heures = $this->nbrHeurGroupe * $this->NombreGroupe;
-            return $this->TypeEnseignant->getLibelle() .' ('.$heures.') '.$this->nom.' ('.$this->Filiere.')  ';
+            return $this->TypeEnseignant->getLibelle() .' ('.$heures.') '.$this->nom.' ( sem:  '.$this->semestre.')  ';
         }
 
     /**
