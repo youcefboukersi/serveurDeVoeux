@@ -4573,3 +4573,9 @@ a8e998,127.0.0.1,GET,http://localhost:8181/serveurdevoeux/web/app_dev.php/_fragm
 46ae0c,::1,GET,http://localhost:8181/serveurdevoeux/web/app_dev.php/admin/users,1482848433,,200
 c93414,127.0.0.1,GET,http://localhost:8181/serveurdevoeux/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Dfr%26_controller%3DFOSUserBundle%253AProfile%253Aedit,1482848489,cdc474,200
 cdc474,::1,GET,http://localhost:8181/serveurdevoeux/web/app_dev.php/admin/EditPofile,1482848489,,200
+feef21,::1,GET,http://localhost:8181/serveurdevoeux/web/app_dev.php/Deconnexion,1482848861,,302
+e76d8f,::1,GET,http://localhost:8181/serveurdevoeux/web/app_dev.php/Connexion,1482848862,,200
+da163a,::1,POST,http://localhost:8181/serveurdevoeux/web/app_dev.php/login_check,1482848879,,302
+a6cac5,::1,GET,http://localhost:8181/serveurdevoeux/web/app_dev.php/Connexion,1482848880,,200
+a3c59e,::1,POST,http://localhost:8181/serveurdevoeux/web/app_dev.php/login_check,1482848893,,302
+6d0c65,::1,GET,http://localhost:8181/serveurdevoeux/web/app_dev.php/responsable/Matiere,1482848895,,200
