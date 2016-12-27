@@ -29,7 +29,7 @@ class ResponsableController extends Controller
 
             
           $Filieres=$this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findAll();            
-           return $this->render('SRVDVServerBundle:enseignant:ChoixFiliereResponsable.html.twig', array(
+           return $this->render('SRVDVServerBundle:responsable:ChoixFiliereResponsable.html.twig', array(
                         'Filieres' => $Filieres,
 
             ) );
@@ -217,7 +217,7 @@ class ResponsableController extends Controller
           $em->persist($res);
           $em->flush();
 
-          $url = $this->get('router')->generate('list_form_inscription');
+          $url = $this->get('router')->generate('list_form_inscription' ,  array('id' =>$filiere->getId()));
 
           return new RedirectResponse($url);
 
@@ -235,13 +235,13 @@ class ResponsableController extends Controller
     }
 
     /**
-    * @Route("/responsable/ModInscription/{id}")
+    * @Route("/responsable/ModInscription/{id}" , name="ModInscription_responsable")
     * @Template()
     */
     public function ModInscriptionAction(Inscription $res,Request $req)
     {
 
-
+       $filiere=$res->getMatiere()->getFiliere();
     // On crée le FormBuilder grâce au service form factory
     $formBuilder = $this->get('form.factory')->createBuilder('form',  $res);
 
@@ -267,7 +267,7 @@ class ResponsableController extends Controller
           $em->persist($res);
           $em->flush();
 
-          $url = $this->get('router')->generate('list_form_inscription');
+          $url = $this->get('router')->generate('list_form_inscription' ,  array('id' =>$filiere->getId()));
 
           return new RedirectResponse($url);
 
@@ -290,12 +290,12 @@ class ResponsableController extends Controller
      */
     public function SuppInscripAction(Inscription $res,Request $req)
     {      
-
+              $filiere=$res->getMatiere()->getFiliere();
             $em=$this->getDoctrine()->getManager();
             $em->remove($res);
             $em->flush();
 
-         $url = $this->get('router')->generate('list_form_inscription');
+         $url = $this->get('router')->generate('list_form_inscription' ,  array('id' =>$filiere->getId()));
     
     return new RedirectResponse($url);
           

@@ -25,7 +25,7 @@ use SRVDV\ServerBundle\Entity\Inscription;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/home/")
+     * @Route("/home/", name="home")
      * @Template()
      */
     public function indexAction()

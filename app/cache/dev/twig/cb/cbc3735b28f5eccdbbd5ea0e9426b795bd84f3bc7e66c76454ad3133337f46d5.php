@@ -15,85 +15,102 @@ class __TwigTemplate_1f9beaa20f9f696d2679c0efe9d7c6702ebc59734f5726de6e4573dbbd9
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_4e27517e0a103db299f6d66d3653b3e58d1f911ae736d9b007068bb5bba12f0e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_4e27517e0a103db299f6d66d3653b3e58d1f911ae736d9b007068bb5bba12f0e->enter($__internal_4e27517e0a103db299f6d66d3653b3e58d1f911ae736d9b007068bb5bba12f0e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:MenuAdmin.html.twig"));
+        $__internal_d4241a28d5e0cabf4efae89b674e56ace235f9c2e697a77269168cff308c2663 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d4241a28d5e0cabf4efae89b674e56ace235f9c2e697a77269168cff308c2663->enter($__internal_d4241a28d5e0cabf4efae89b674e56ace235f9c2e697a77269168cff308c2663_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:MenuAdmin.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
 <html lang=\"fr\">
     <head>
         <title>SVEDI - Admin</title>
-        <link rel=stylesheet type=\"text/css\" href=\"http://localhost:8181/serveurdevoeux/web/assets/css/home.css\"/>
-        <link rel=stylesheet type=\"text/css\" href=\"http://localhost:8181/serveurdevoeux/web/bootstrap/css/bootstrap.min.css\"/>
+        <link rel=stylesheet type=\"text/css\" href=\"";
+        // line 5
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("assets/css/home.css"), "html", null, true);
+        echo "\"/>
+        <link rel=stylesheet type=\"text/css\" href=\"";
+        // line 6
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/css/bootstrap.min.css"), "html", null, true);
+        echo "\"/>
         <script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/jquery-2.1.1.min.js\"></script>
         <script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/search.js\"></script>
         <script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/VerifFormulaire.js\"></script>
         <script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/Desinscription.js\"></script>
         <script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/Notification.js\"></script>
-        
-        
+
+
         <link rel=stylesheet type=\"text/css\" href=\"//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css\"/>
         <link rel=stylesheet type=\"text/css\" href=\"https://cdn.datatables.net/1.10.13/css/dataTables.jqueryui.min.css\"/>
         <script type=\"text/javascript\" src=\"//code.jquery.com/jquery-1.12.4.js\"></script>
         <script type=\"text/javascript\" src=\"https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js\"></script>
         <script type=\"text/javascript\" src=\"https://cdn.datatables.net/1.10.13/js/dataTables.jqueryui.min.js\"></script>
-        
-        echo '<script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/isResp.js\"></script>';
-        echo '<script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/Resp.js\"></script>';
-        
+
         <style>
-            
+
             .centreVerticalement {
                 display: inline-block;
                 vertical-align: top;
                 float: none;
             }
-            
-            
+
+
         </style>
-        
+
     </head>
     <body>
-        
-        
-        
-        <header>
-            <div id=\"logo\">
-                <a href=\"http://localhost:8181/serveurdevoeux/web/app_dev.php/home/\"><img alt=\"svedi\" src=\"http://localhost:8181/serveurdevoeux/web/assets/images/SVEDI-small.png\"/></a>
-                
-            </div>
-            <div id=\"searchBar\">
-                <form id=\"newsearch\" method=\"get\" action=\"../controleurRecherche/\">
-                    <input type=\"text\" value=\"\" class=\"textinput\" name=\"search\" size=\"35\" maxlength=\"120\"><input id=\"btnLoupe\" type=\"submit\" value=\"\" class=\"buttonSearch\">
-                    <img id=\"loupeSearchBar\" alt=\"loupe\" src=\"http://localhost:8181/serveurdevoeux/web/assets/images/loupe.png\"/>
-                </form>
-                
-            </div>
-            
-            <p id=\"deconnexion\">
-                <a href=\"";
-        // line 53
+
+
+<nav class=\"navbar navbar-default\">
+    <div class=\"container-fluid\">
+        <div class=\"navbar-header\">
+            <a  href=\"";
+        // line 38
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("home");
+        echo "\"> <img alt=\"serveur_voeux\" src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("assets/images/SVEDI-small.png"), "html", null, true);
+        echo "\" /></a>
+        </div>
+        &nbsp;
+        <div class=\"container\" style=\"font-size:17px\">
+            <ul class=\"nav navbar-nav\" >
+                <li class=\"active\" ><a href=\"#\"><span class=\"glyphicon glyphicon-home\"></span>&nbsp;  Accueil</a></li>
+                <li ><a href=\"#\"> <span class=\"glyphicon glyphicon-list\"></span> &nbsp; Liste des utilisateurs</a></li>
+                <li ><a href=\"#\"><span class=\"glyphicon glyphicon-folder-close\"></span>&nbsp; Liste des filière</a></li>
+            </ul>
+            <ul class=\"nav navbar-nav navbar-right\" >
+                <li ><a href=\"";
+        // line 48
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("form_profile_user");
+        echo "\"><span class=\"glyphicon glyphicon-user\"></span> 
+                        ";
+        // line 49
+        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN")) {
+            // line 50
+            echo "                             ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "nom", array()), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "prenom", array()), "html", null, true);
+            echo "
+                        ";
+        }
+        // line 51
+        echo "</a></li>
+                <li><a href=\"";
+        // line 52
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
         echo "\">
-                    ";
-        // line 54
+                        ";
+        // line 53
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
         echo "
-                </a>
-                <a href=\"http://localhost:8181/serveurdevoeux/web/app_dev.php/enseignant/inscription\">Enseignant </a>
-                <a href=\"http://localhost:8181/serveurdevoeux/web/app_dev.php/responsable/inscription\">Responsable</a>
-                <a href=\"http://localhost:8181/serveurdevoeux/web/app_dev.php/admin/users\">Admin</a>
-            </p>
-            
-        </header>
+                        <span class=\"glyphicon glyphicon-log-out\"></span>
+
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+</nav>";
         
-        
-        
-        
-        
-";
-        
-        $__internal_4e27517e0a103db299f6d66d3653b3e58d1f911ae736d9b007068bb5bba12f0e->leave($__internal_4e27517e0a103db299f6d66d3653b3e58d1f911ae736d9b007068bb5bba12f0e_prof);
+        $__internal_d4241a28d5e0cabf4efae89b674e56ace235f9c2e697a77269168cff308c2663->leave($__internal_d4241a28d5e0cabf4efae89b674e56ace235f9c2e697a77269168cff308c2663_prof);
 
     }
 
@@ -109,7 +126,7 @@ class __TwigTemplate_1f9beaa20f9f696d2679c0efe9d7c6702ebc59734f5726de6e4573dbbd9
 
     public function getDebugInfo()
     {
-        return array (  80 => 54,  76 => 53,  22 => 1,);
+        return array (  103 => 53,  99 => 52,  96 => 51,  88 => 50,  86 => 49,  82 => 48,  67 => 38,  32 => 6,  28 => 5,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -126,68 +143,61 @@ class __TwigTemplate_1f9beaa20f9f696d2679c0efe9d7c6702ebc59734f5726de6e4573dbbd9
 <html lang=\"fr\">
     <head>
         <title>SVEDI - Admin</title>
-        <link rel=stylesheet type=\"text/css\" href=\"http://localhost:8181/serveurdevoeux/web/assets/css/home.css\"/>
-        <link rel=stylesheet type=\"text/css\" href=\"http://localhost:8181/serveurdevoeux/web/bootstrap/css/bootstrap.min.css\"/>
+        <link rel=stylesheet type=\"text/css\" href=\"{{ asset('assets/css/home.css') }}\"/>
+        <link rel=stylesheet type=\"text/css\" href=\"{{ asset('bootstrap/css/bootstrap.min.css') }}\"/>
         <script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/jquery-2.1.1.min.js\"></script>
         <script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/search.js\"></script>
         <script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/VerifFormulaire.js\"></script>
         <script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/Desinscription.js\"></script>
         <script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/Notification.js\"></script>
-        
-        
+
+
         <link rel=stylesheet type=\"text/css\" href=\"//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css\"/>
         <link rel=stylesheet type=\"text/css\" href=\"https://cdn.datatables.net/1.10.13/css/dataTables.jqueryui.min.css\"/>
         <script type=\"text/javascript\" src=\"//code.jquery.com/jquery-1.12.4.js\"></script>
         <script type=\"text/javascript\" src=\"https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js\"></script>
         <script type=\"text/javascript\" src=\"https://cdn.datatables.net/1.10.13/js/dataTables.jqueryui.min.js\"></script>
-        
-        echo '<script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/isResp.js\"></script>';
-        echo '<script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/Resp.js\"></script>';
-        
+
         <style>
-            
+
             .centreVerticalement {
                 display: inline-block;
                 vertical-align: top;
                 float: none;
             }
-            
-            
+
+
         </style>
-        
+
     </head>
     <body>
-        
-        
-        
-        <header>
-            <div id=\"logo\">
-                <a href=\"http://localhost:8181/serveurdevoeux/web/app_dev.php/home/\"><img alt=\"svedi\" src=\"http://localhost:8181/serveurdevoeux/web/assets/images/SVEDI-small.png\"/></a>
-                
-            </div>
-            <div id=\"searchBar\">
-                <form id=\"newsearch\" method=\"get\" action=\"../controleurRecherche/\">
-                    <input type=\"text\" value=\"\" class=\"textinput\" name=\"search\" size=\"35\" maxlength=\"120\"><input id=\"btnLoupe\" type=\"submit\" value=\"\" class=\"buttonSearch\">
-                    <img id=\"loupeSearchBar\" alt=\"loupe\" src=\"http://localhost:8181/serveurdevoeux/web/assets/images/loupe.png\"/>
-                </form>
-                
-            </div>
-            
-            <p id=\"deconnexion\">
-                <a href=\"{{ path('fos_user_security_logout') }}\">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-                <a href=\"http://localhost:8181/serveurdevoeux/web/app_dev.php/enseignant/inscription\">Enseignant </a>
-                <a href=\"http://localhost:8181/serveurdevoeux/web/app_dev.php/responsable/inscription\">Responsable</a>
-                <a href=\"http://localhost:8181/serveurdevoeux/web/app_dev.php/admin/users\">Admin</a>
-            </p>
-            
-        </header>
-        
-        
-        
-        
-        
-", "SRVDVServerBundle:admin:MenuAdmin.html.twig", "D:\\wamp64\\www\\serveurDeVoeux\\src\\SRVDV\\ServerBundle/Resources/views/admin/MenuAdmin.html.twig");
+
+
+<nav class=\"navbar navbar-default\">
+    <div class=\"container-fluid\">
+        <div class=\"navbar-header\">
+            <a  href=\"{{ path('home')}}\"> <img alt=\"serveur_voeux\" src=\"{{ asset ('assets/images/SVEDI-small.png') }}\" /></a>
+        </div>
+        &nbsp;
+        <div class=\"container\" style=\"font-size:17px\">
+            <ul class=\"nav navbar-nav\" >
+                <li class=\"active\" ><a href=\"#\"><span class=\"glyphicon glyphicon-home\"></span>&nbsp;  Accueil</a></li>
+                <li ><a href=\"#\"> <span class=\"glyphicon glyphicon-list\"></span> &nbsp; Liste des utilisateurs</a></li>
+                <li ><a href=\"#\"><span class=\"glyphicon glyphicon-folder-close\"></span>&nbsp; Liste des filière</a></li>
+            </ul>
+            <ul class=\"nav navbar-nav navbar-right\" >
+                <li ><a href=\"{{path('form_profile_user')}}\"><span class=\"glyphicon glyphicon-user\"></span> 
+                        {% if is_granted(\"ROLE_ADMIN\") %}
+                             {{ app.user.nom }} {{ app.user.prenom }}
+                        {% endif %}</a></li>
+                <li><a href=\"{{ path('fos_user_security_logout') }}\">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        <span class=\"glyphicon glyphicon-log-out\"></span>
+
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+</nav>", "SRVDVServerBundle:admin:MenuAdmin.html.twig", "D:\\wamp64\\www\\serveurDeVoeux\\src\\SRVDV\\ServerBundle/Resources/views/admin/MenuAdmin.html.twig");
     }
 }

@@ -15,8 +15,8 @@ class __TwigTemplate_aeb817a5c7a4fc6398aaf9fb029947fb5aa79bd78b5fc8c55287a7bb684
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a11307d76e77c449e1a1d70a48eb50d2e8f183e6f0252bbfffdc380ace150091 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a11307d76e77c449e1a1d70a48eb50d2e8f183e6f0252bbfffdc380ace150091->enter($__internal_a11307d76e77c449e1a1d70a48eb50d2e8f183e6f0252bbfffdc380ace150091_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:responsable:ProfileResponsable.html.twig"));
+        $__internal_7152b7650cae6641e641f86647e2acf1a8cdf0fd0831b951ad71a006e86fe1ce = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7152b7650cae6641e641f86647e2acf1a8cdf0fd0831b951ad71a006e86fe1ce->enter($__internal_7152b7650cae6641e641f86647e2acf1a8cdf0fd0831b951ad71a006e86fe1ce_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:responsable:ProfileResponsable.html.twig"));
 
         // line 1
         $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:responsable:ProfileResponsable.html.twig", 1)->display($context);
@@ -36,7 +36,7 @@ class __TwigTemplate_aeb817a5c7a4fc6398aaf9fb029947fb5aa79bd78b5fc8c55287a7bb684
         echo "\"><span class=\"glyphicon glyphicon-th-large\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Matières</a></li></br>
             <li  ><a href=\"";
         // line 9
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_inscription");
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("ChoixFiliereEns_enseignant");
         echo "\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br> 
         </ul>
     </div>
@@ -59,7 +59,7 @@ class __TwigTemplate_aeb817a5c7a4fc6398aaf9fb029947fb5aa79bd78b5fc8c55287a7bb684
         // line 24
         $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:responsable:ProfileResponsable.html.twig", 24)->display($context);
         
-        $__internal_a11307d76e77c449e1a1d70a48eb50d2e8f183e6f0252bbfffdc380ace150091->leave($__internal_a11307d76e77c449e1a1d70a48eb50d2e8f183e6f0252bbfffdc380ace150091_prof);
+        $__internal_7152b7650cae6641e641f86647e2acf1a8cdf0fd0831b951ad71a006e86fe1ce->leave($__internal_7152b7650cae6641e641f86647e2acf1a8cdf0fd0831b951ad71a006e86fe1ce_prof);
 
     }
 
@@ -96,7 +96,7 @@ class __TwigTemplate_aeb817a5c7a4fc6398aaf9fb029947fb5aa79bd78b5fc8c55287a7bb684
         <ul>
           <li  class=\"active\"><a href=\"{{ path('form_profile_user_resp')}}\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
             <li   ><a href=\"{{ path('list_form_Matiere')}}\"><span class=\"glyphicon glyphicon-th-large\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Matières</a></li></br>
-            <li  ><a href=\"{{path('list_form_inscription')}}\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br> 
+            <li  ><a href=\"{{path('ChoixFiliereEns_enseignant')}}\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br> 
         </ul>
     </div>
 </div>\t

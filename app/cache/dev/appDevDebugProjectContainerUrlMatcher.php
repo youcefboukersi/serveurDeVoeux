@@ -188,13 +188,13 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // srvdv_server_default_index
+        // home
         if (rtrim($pathinfo, '/') === '/home') {
             if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'srvdv_server_default_index');
+                return $this->redirect($pathinfo.'/', 'home');
             }
 
-            return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::indexAction',  '_route' => 'srvdv_server_default_index',);
+            return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::indexAction',  '_route' => 'home',);
         }
 
         if (0 === strpos($pathinfo, '/enseignant')) {
@@ -226,6 +226,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         if (0 === strpos($pathinfo, '/responsable')) {
+            // ChoixFiliereEns_responsable
+            if ($pathinfo === '/responsable/ChoixFiliereEns') {
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::ChoixFiliereEnsAction',  '_route' => 'ChoixFiliereEns_responsable',);
+            }
+
             if (0 === strpos($pathinfo, '/responsable/M')) {
                 // list_form_Matiere
                 if ($pathinfo === '/responsable/Matiere') {
@@ -250,13 +255,13 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
 
             // list_form_inscription
-            if ($pathinfo === '/responsable/inscription') {
-                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::InscriptionAction',  '_route' => 'list_form_inscription',);
+            if (0 === strpos($pathinfo, '/responsable/inscription') && preg_match('#^/responsable/inscription/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'list_form_inscription')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::InscriptionAction',));
             }
 
-            // srvdv_server_responsable_modinscription
+            // ModInscription_responsable
             if (0 === strpos($pathinfo, '/responsable/ModInscription') && preg_match('#^/responsable/ModInscription/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_responsable_modinscription')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::ModInscriptionAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ModInscription_responsable')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::ModInscriptionAction',));
             }
 
             // srvdv_server_responsable_suppinscrip

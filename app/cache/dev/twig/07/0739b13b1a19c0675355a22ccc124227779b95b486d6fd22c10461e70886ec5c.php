@@ -15,8 +15,8 @@ class __TwigTemplate_44f6e3f59ccc391b844dea927a53d98d60dc383d7d7802a018c715ca83c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ceafde62a9bf770dd6b4be6bb7adc486cf6775807ffd0c2640c103b16e23b4ee = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_ceafde62a9bf770dd6b4be6bb7adc486cf6775807ffd0c2640c103b16e23b4ee->enter($__internal_ceafde62a9bf770dd6b4be6bb7adc486cf6775807ffd0c2640c103b16e23b4ee_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:responsable:ReserveResponsable.html.twig"));
+        $__internal_ef893cc5a6bbbcb82c3d9f635fcb920ef9526011d930d45182091d22435208f1 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ef893cc5a6bbbcb82c3d9f635fcb920ef9526011d930d45182091d22435208f1->enter($__internal_ef893cc5a6bbbcb82c3d9f635fcb920ef9526011d930d45182091d22435208f1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:responsable:ReserveResponsable.html.twig"));
 
         // line 1
         $this->loadTemplate("SRVDVServerBundle:responsable:MenuResponsable.html.twig", "SRVDVServerBundle:responsable:ReserveResponsable.html.twig", 1)->display($context);
@@ -36,7 +36,7 @@ class __TwigTemplate_44f6e3f59ccc391b844dea927a53d98d60dc383d7d7802a018c715ca83c
         echo "\"><span class=\"glyphicon glyphicon-th-large\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Matières</a></li></br>
 \t\t\t<li  class=\"active\"><a href=\"";
         // line 9
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_inscription");
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("ChoixFiliereEns_responsable");
         echo "\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br>
 \t\t\t\t\t\t
 \t\t</ul>
@@ -141,9 +141,9 @@ class __TwigTemplate_44f6e3f59ccc391b844dea927a53d98d60dc383d7d7802a018c715ca83c
             echo "</td>
 
 \t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='ModInscription/";
+\t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='";
             // line 61
-            echo twig_escape_filter($this->env, $this->getAttribute($context["u"], "id", array()), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("ModInscription_responsable", array("id" => $this->getAttribute($context["u"], "id", array()))), "html", null, true);
             echo "'\"><b ><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></b></button></td>
 \t\t\t\t\t\t\t\t<td><button type=\"button\" class=\"btn btn-warning\"  onclick=\"SupprimerUser(";
             // line 62
@@ -197,7 +197,7 @@ function SupprimerUser(id){
         echo ">>>>>>> c42f38fdc8f038834e4adf77a1d6da15dfccc51c
 ";
         
-        $__internal_ceafde62a9bf770dd6b4be6bb7adc486cf6775807ffd0c2640c103b16e23b4ee->leave($__internal_ceafde62a9bf770dd6b4be6bb7adc486cf6775807ffd0c2640c103b16e23b4ee_prof);
+        $__internal_ef893cc5a6bbbcb82c3d9f635fcb920ef9526011d930d45182091d22435208f1->leave($__internal_ef893cc5a6bbbcb82c3d9f635fcb920ef9526011d930d45182091d22435208f1_prof);
 
     }
 
@@ -234,7 +234,7 @@ function SupprimerUser(id){
 \t\t<ul>
 \t\t\t<li  ><a href=\"{{ path('form_profile_user_resp')}}\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
 \t\t\t<li   ><a href=\"{{ path('list_form_Matiere')}}\"><span class=\"glyphicon glyphicon-th-large\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Matières</a></li></br>
-\t\t\t<li  class=\"active\"><a href=\"{{path('list_form_inscription')}}\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br>
+\t\t\t<li  class=\"active\"><a href=\"{{path('ChoixFiliereEns_responsable')}}\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br>
 \t\t\t\t\t\t
 \t\t</ul>
 \t</div>
@@ -286,7 +286,7 @@ function SupprimerUser(id){
 \t\t\t\t\t\t\t\t<td>{{ u.Matiere.nbrHeurGroupe * u.Matiere.NombreGroupe }}</td>
 
 \t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='ModInscription/{{ u.id }}'\"><b ><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></b></button></td>
+\t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='{{path('ModInscription_responsable',{'id':u.id }) }}'\"><b ><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></b></button></td>
 \t\t\t\t\t\t\t\t<td><button type=\"button\" class=\"btn btn-warning\"  onclick=\"SupprimerUser({{ u.id }})\"><b><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></b></button></td>
 \t\t\t\t\t\t\t</tr>\t
 \t\t\t\t\t\t{% endfor %}
