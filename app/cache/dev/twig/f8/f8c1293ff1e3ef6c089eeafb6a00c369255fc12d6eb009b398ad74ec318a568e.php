@@ -8,7 +8,7 @@ class __TwigTemplate_cfe4aba37c93054ad7048f61c5c65bfea20f176dee173414e42e5ac57a2
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "@SRVDVServer/Resetting/checkEmail.html.twig", 1);
+        $this->parent = $this->loadTemplate("FOSUserBundle:Connexion:index.html.twig", "@SRVDVServer/Resetting/checkEmail.html.twig", 1);
         $this->blocks = array(
             'fos_user_content' => array($this, 'block_fos_user_content'),
         );
@@ -16,25 +16,25 @@ class __TwigTemplate_cfe4aba37c93054ad7048f61c5c65bfea20f176dee173414e42e5ac57a2
 
     protected function doGetParent(array $context)
     {
-        return "FOSUserBundle::layout.html.twig";
+        return "FOSUserBundle:Connexion:index.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_032944748f042e8340eb5c8e59716c3f39ba919c1707623eb915863dfcd94a69 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_032944748f042e8340eb5c8e59716c3f39ba919c1707623eb915863dfcd94a69->enter($__internal_032944748f042e8340eb5c8e59716c3f39ba919c1707623eb915863dfcd94a69_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@SRVDVServer/Resetting/checkEmail.html.twig"));
+        $__internal_63b7d13344a8d0d1d22c4361718b466c6af61e450c26d2e914e53eca434e7df7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_63b7d13344a8d0d1d22c4361718b466c6af61e450c26d2e914e53eca434e7df7->enter($__internal_63b7d13344a8d0d1d22c4361718b466c6af61e450c26d2e914e53eca434e7df7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@SRVDVServer/Resetting/checkEmail.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_032944748f042e8340eb5c8e59716c3f39ba919c1707623eb915863dfcd94a69->leave($__internal_032944748f042e8340eb5c8e59716c3f39ba919c1707623eb915863dfcd94a69_prof);
+        $__internal_63b7d13344a8d0d1d22c4361718b466c6af61e450c26d2e914e53eca434e7df7->leave($__internal_63b7d13344a8d0d1d22c4361718b466c6af61e450c26d2e914e53eca434e7df7_prof);
 
     }
 
     // line 5
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_c23b15048ec44efa511a9e347cdd106c36a5b1bf0260d72bcd445421ff2165c5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_c23b15048ec44efa511a9e347cdd106c36a5b1bf0260d72bcd445421ff2165c5->enter($__internal_c23b15048ec44efa511a9e347cdd106c36a5b1bf0260d72bcd445421ff2165c5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_5fd294add5c3a11c2eaebcb463d39f720114ec71d330bd05ad79f06bb5ac264c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_5fd294add5c3a11c2eaebcb463d39f720114ec71d330bd05ad79f06bb5ac264c->enter($__internal_5fd294add5c3a11c2eaebcb463d39f720114ec71d330bd05ad79f06bb5ac264c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 6
         echo "<p>
@@ -45,7 +45,7 @@ class __TwigTemplate_cfe4aba37c93054ad7048f61c5c65bfea20f176dee173414e42e5ac57a2
 </p>
 ";
         
-        $__internal_c23b15048ec44efa511a9e347cdd106c36a5b1bf0260d72bcd445421ff2165c5->leave($__internal_c23b15048ec44efa511a9e347cdd106c36a5b1bf0260d72bcd445421ff2165c5_prof);
+        $__internal_5fd294add5c3a11c2eaebcb463d39f720114ec71d330bd05ad79f06bb5ac264c->leave($__internal_5fd294add5c3a11c2eaebcb463d39f720114ec71d330bd05ad79f06bb5ac264c_prof);
 
     }
 
@@ -74,7 +74,7 @@ class __TwigTemplate_cfe4aba37c93054ad7048f61c5c65bfea20f176dee173414e42e5ac57a2
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% extends \"FOSUserBundle::layout.html.twig\" %}
+        return new Twig_Source("{% extends \"FOSUserBundle:Connexion:index.html.twig\" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 

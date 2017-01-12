@@ -1,24 +1,11 @@
-{% include "SRVDVServerBundle:admin:MenuAdmin.html.twig" %}
-
-<div id="nav" >
-	<div id="enseignant" class="ouvert">
-		<h3>Administrateur</h3>
-		<ul>
-			<li  ><a href="{{path('form_profile_user')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  &nbsp; Mon profil</a></li></br>
-			<li  ><a href="{{path('list_form_Annee')}}"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;  G&eacute;rer Année</a></li></br>
-            <li><a href="{{path('list_form_Type')}}"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;  G&eacute;rer statut</a></li></br>
-            <li ><a href="{{path('list_form_utilisateur')}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp; G&eacute;rer Users</a></li>	</br>		
-            <li><a href="{{path('list_form_filiere')}}"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;  G&eacute;rer fili&egrave;r</a></li></br>
-            <li ><a  href="{{path('list_form_typeens')}}"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>&nbsp;  Type Enseignement</a></li></br>
-			<li class="active" ><a href="{{path('annee_suivante')}}"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br>
-			
-		</ul>
-	</div>
-	
-</div>	
+<html>
+{{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 40 })) }}
 
 
-<div id="content">
+
+
+
+<div id="content" aligne="center">
 	</br>
 		
 
@@ -27,29 +14,55 @@
 			<div class="table-responsive">
                 <table id="example" class="display" cellspacing="0" width="100%" >
                 	<thead>
-					<tr><th>#</th><th>nom</th><th>Coefficient</th><th>Basculer</th></tr>
+					<tr><th>#</th><th>Date</th><th>nom</th><th>Responsable</th></tr>
 				   </thead>
 				   <tbody>
-						{% for u in Annee %}
-							<tr>
-								<td>{{ u.id }}</td>
-								<td>{{ u.annee }}</td>
-								<td>
-								{% if u.etat == 1 %}
-                                 OUI
-                                {% endif %}</td>
-								
-								
-								<td>
-           							{% if u.etat == 0 %}
-                                 <button  type="button" class="btn btn-danger" onclick="window.location.href ='{{path('generate_Annee_users',{'id':u.id }) }}'"><b ><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></b></button>
-                                {% endif %}
-								
 
-								</td>
+
+						{% for u in Filieres %}
+							<tr>
+								
+								<td>
+									{{ u.anneeFiliere }} &nbsp;&nbsp;{% if u.anneeFiliere.etat == 1 %}
+	                                 OUI
+	                                {% endif %} &nbsp;&nbsp;
+	                                {% if u.anneeFiliere.etat == 0 %}
+	                                 <button  type="button" class="btn btn-danger" onclick="window.location.href ='{{path('generate_Annee_users',{'id':u.anneeFiliere.id }) }}'"><b ><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></b></button>
+	                                 	&nbsp;&nbsp;
+	                                 <button type="button" class="btn btn-warning"  onclick="window.location.href ='{{path('supprimer_generate_Annee',{'id': u.anneeFiliere.id }) }}'"
+	                                 ><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></button>
+	                                {% endif %}
+
+                           	    </td>
+								<td>{{ u.dateFiliere|date('d/m/Y') }}</td>
+								<td>{{ u.nom }}</td>
+								<td>{{ u.User.nom }}&nbsp;{{ u.user.prenom }}</td>
+
 								
 							</tr>	
 						{% endfor %}
+
+						{% for f in Annees %}
+						<tr>
+
+						<td>
+									{{ f.annee }} &nbsp;&nbsp;{% if f.etat == 1 %}
+	                                 OUI
+	                                {% endif %} &nbsp;&nbsp;
+	                                {% if f.etat == 0 %}
+	                                 <button  type="button" class="btn btn-danger" onclick="window.location.href ='{{path('generate_Annee_users',{'id':f.id }) }}'"><b ><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></b></button>
+	                                 	&nbsp;&nbsp;
+	                                 <button type="button" class="btn btn-warning"  onclick="window.location.href ='{{path('supprimer_generate_Annee',{'id': f.id }) }}'"
+	                                 ><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></button>
+	                                {% endif %}
+
+                           	    </td>
+								<td></td>
+								<td></td>
+								<td></td>
+								</tr>	
+						{% endfor %}
+
                    </tbody>
 				</table> 
             </div>
@@ -62,17 +75,40 @@
 
 <script>
 $(document).ready(function() {
-    $('#example').DataTable();
+    var table = $('#example').DataTable({
+        "columnDefs": [
+            { "visible": false, "targets": 0 }
+        ],
+        "order": [[ 0, 'asc' ]],
+        "displayLength": 25,
+        "drawCallback": function ( settings ) {
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;
+ 
+            api.column(0, {page:'current'} ).data().each( function ( group, i ) {
+                if ( last !== group ) {
+                    $(rows).eq( i ).before(
+                        '<tr class="group"><td colspan="6" align="center" style="background-color:#81F7BE">'+group+'</td></tr>'
+                    );
+ 
+                    last = group;
+                }
+            } );
+        }
+    } );
+ 
+    // Order by the grouping
+    $('#example tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+            table.order( [ 0, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ 0, 'asc' ] ).draw();
+        }
+    } );
 } );
 
-function SupprimerUser(id){
-
-	var rep=confirm('Clickez sur "OK" si vous voulez vraiment cet utilisateur' ) ;
-
-	if(rep){
-        window.location.href ='suppAnnee/'+id;
-	}
-
-}
 </script>
 {% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}

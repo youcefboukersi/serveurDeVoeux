@@ -1,23 +1,26 @@
-{% include "SRVDVServerBundle:admin:MenuAdmin.html.twig" %}
+<html>
+{{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 21 })) }}
 
-<div id="nav" >
-    <div id="enseignant" class="ouvert">
-        <h3>Enseignant</h3>
-        <ul>
-          <li  class="active"><a href="{{ path('form_profile_user_ens')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  &nbsp; Mon profil</a></li></br>   
-            <li  ><a href="{{path('ChoixFiliereEns_enseignant')}}"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;  Résérvation</a></li></br>
-        </ul>
-    </div>
-</div>	
 
-<div id="content">
+
+<div align="center">
     </br>
         
-    <div class="col-xs-5 col-md-5 col-lg-5">
-        {{ render (controller("FOSUserBundle:Profile:edit")) }}
-    </div>
+   
+  
+            {% if profile is defined %}
+             <P style="color:green;" >Votre Profile a été  modifier avec success !</P>
+            {% else %}
+            
+            {% block fos_user_content %}
+            {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+            {% endblock fos_user_content %}
+
+
+            {% endif %}
         
+    </div>
     
-</div>
+
 
 {% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}

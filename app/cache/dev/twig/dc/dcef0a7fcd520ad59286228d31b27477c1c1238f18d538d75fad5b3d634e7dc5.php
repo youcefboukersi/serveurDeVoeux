@@ -15,8 +15,8 @@ class __TwigTemplate_ee87ca1276c469cff541d1e12dea9564a46b3f7a2c94c797765576b3a0f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_52543896c2a516ae32428b4073edb152967e44b175e364576b1bff9c33157dbb = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_52543896c2a516ae32428b4073edb152967e44b175e364576b1bff9c33157dbb->enter($__internal_52543896c2a516ae32428b4073edb152967e44b175e364576b1bff9c33157dbb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:Connexion:vueFooter.html.twig"));
+        $__internal_8c75a056036db1d5f6a0c0594f6dbc634e927c18b1dc68ee4c1a2f0f0c6f4186 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8c75a056036db1d5f6a0c0594f6dbc634e927c18b1dc68ee4c1a2f0f0c6f4186->enter($__internal_8c75a056036db1d5f6a0c0594f6dbc634e927c18b1dc68ee4c1a2f0f0c6f4186_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:Connexion:vueFooter.html.twig"));
 
         // line 1
         echo "<footer>
@@ -26,7 +26,7 @@ class __TwigTemplate_ee87ca1276c469cff541d1e12dea9564a46b3f7a2c94c797765576b3a0f
 </html>
 ";
         
-        $__internal_52543896c2a516ae32428b4073edb152967e44b175e364576b1bff9c33157dbb->leave($__internal_52543896c2a516ae32428b4073edb152967e44b175e364576b1bff9c33157dbb_prof);
+        $__internal_8c75a056036db1d5f6a0c0594f6dbc634e927c18b1dc68ee4c1a2f0f0c6f4186->leave($__internal_8c75a056036db1d5f6a0c0594f6dbc634e927c18b1dc68ee4c1a2f0f0c6f4186_prof);
 
     }
 

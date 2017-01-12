@@ -28,8 +28,15 @@ class EnseignantController extends Controller
     public function ChoixFiliereEnsAction()
     {
 
-            
-          $Filieres=$this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findAll();            
+             $annee_actuelle= $this->getDoctrine()->getRepository("SRVDVServerBundle:Annee")->findBy( array('etat' => 1)); 
+
+                foreach ($annee_actuelle as $key => $value) {
+                    $idAnnee=$value->getId();
+                }
+
+
+         $Filieres=$this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findBy( array('anneeFiliere' =>  $idAnnee )); 
+                
            return $this->render('SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig', array(
                         'Filieres' => $Filieres,
 
@@ -56,6 +63,7 @@ class EnseignantController extends Controller
 
              $res->setUser($user);
 
+     
     // On crée le FormBuilder grâce au service form factory
     $formBuilder = $this->get('form.factory')->createBuilder('form',  $res );
 
@@ -165,7 +173,23 @@ class EnseignantController extends Controller
     public function EditPofileAction()
     {      
 
-            return $this->render('SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig' );
+            return $this->render('SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig', array(
+       
+          'profile'=>1,
+          ) );
+    }
+
+    /**
+     * @Route("enseignant/EditPofileMP", name="form_profile_user_ens_motDePasse")
+     * @Template()
+     */
+    public function EditPofileMPAction()
+    {      
+
+            return $this->render('SRVDVServerBundle:enseignant:MotDePasse.html.twig' , array(
+       
+          'motDePasse'=>1,
+          ));
     }
     /**
      * @Route("enseignant/SuppInscription/{id}" )

@@ -30,9 +30,12 @@ class AnneeSuivanteController extends Controller
     public function indexAction(Request $req){         
           
          
-                $Annee = $this->getDoctrine()->getRepository("SRVDVServerBundle:Annee")->findAll();          
+                $Filieres = $this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findAll(); 
+                $Annees = $this->getDoctrine()->getRepository("SRVDVServerBundle:Annee")->findAll();    
+
                  return $this->render('SRVDVServerBundle:admin:anneeSuivanteAdmin.html.twig', array(                  
-                  'Annee' => $Annee,
+                  'Filieres' => $Filieres,
+                      'Annees' => $Annees,
                   ) );       
     
      }
@@ -46,60 +49,132 @@ class AnneeSuivanteController extends Controller
      * @Route("/admin/generateUsers/{id}",name="generate_Annee_users")
      * @Template()
      */
-    public function generateUsersAction(Annee $annee , Request $req){         
-          
-                 $annee_actuelle= $this->getDoctrine()->getRepository("SRVDVServerBundle:Annee")->findBy( array('etat' => 1)); 
+    public function generateUsersAction(Annee $annee , Request $req){ 
 
-                foreach ($annee_actuelle as $key => $value) {
-                    $idAnnee=$value->getId();
-                }
+    $filiere_annee_Suivante = $this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findBy( array('anneeFiliere' =>  $annee->getId() )); 
 
-                $annee_filiere_actuelle = $this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findBy( array('anneeFiliere' =>  $idAnnee )); 
+            if(empty($filiere_annee_Suivante)) {
+
+
                   
+                               $annee_actuelle= $this->getDoctrine()->getRepository("SRVDVServerBundle:Annee")->findBy( array('etat' => 1)); 
+
+                              foreach ($annee_actuelle as $key => $value) {
+                                  $idAnnee=$value->getId();
+                              }
+
+                              $annee_filiere_actuelle = $this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findBy( array('anneeFiliere' =>  $idAnnee )); 
+                                
 
 
-                  foreach ($annee_filiere_actuelle as $key => $value) {
+                                foreach ($annee_filiere_actuelle as $key => $value) {
+                                  
+
+                                  $filiere = new Filiere();
+                                  $filiere->setDateFiliere(new \Datetime("Y")); 
+                                  $filiere->setNom($value->getNom());
+                                    $filiere->setUser($value->getUser());
+                                    $filiere->setNiveau($value->getNiveau());
+
+                                     $filiere->setAnneeFiliere($annee);
+
+                                      $em = $this->getDoctrine()->getManager();
+                                      $em->persist($filiere);
+                                     $em->flush();
+
+                                        $Matiere_actuelle = $this->getDoctrine()->getRepository("SRVDVServerBundle:Matiere")->findBy( array('Filiere' => $value->getId() )); 
+                              
+
+
+                                          foreach ($Matiere_actuelle as $key => $val) {
+                                             $matiere= new Matiere();
+                                                $matiere->setNom($val->getNom());
+                                                 $matiere->setNbrHeurGroupe($val->getNbrHeurGroupe());
+                                                  $matiere->setNombreGroupe($val->getNombreGroupe());
+                                                   $matiere->setFiliere($filiere);
+                                                   $matiere->setTypeEnseignant($val->getTypeEnseignant());
+                                                   $matiere->setSemestre($val->getSemestre());
+                                                 $em = $this->getDoctrine()->getManager();
+                                                  $em->persist($matiere);
+                                                 $em->flush();
+                                          } 
+
+                                     
+
+                              }
+
+                
                     
 
-                    $filiere = new Filiere();
-                    $filiere->setDateFiliere(new \Datetime("Y")); 
-                    $filiere->setNom($value->getNom());
-                      $filiere->setUser($value->getUser());
-                      $filiere->setNiveau($value->getNiveau());
+              }
+             
 
-                       $filiere->setAnneeFiliere($annee);
-
-                        $em = $this->getDoctrine()->getManager();
-                        $em->persist($filiere);
-                       $em->flush();
-
-                          $Matiere_actuelle = $this->getDoctrine()->getRepository("SRVDVServerBundle:Matiere")->findBy( array('Filiere' => $value->getId() )); 
-                
-
-
-                            foreach ($Matiere_actuelle as $key => $val) {
-                               $matiere= new Matiere();
-                                  $matiere->setNom($val->getNom());
-                                   $matiere->setNbrHeurGroupe($val->getNbrHeurGroupe());
-                                    $matiere->setNombreGroupe($val->getNombreGroupe());
-                                     $matiere->setFiliere($filiere);
-                                     $matiere->setTypeEnseignant($val->getTypeEnseignant());
-                                     $matiere->setSemestre($val->getSemestre());
-                                   $em = $this->getDoctrine()->getManager();
-                                    $em->persist($matiere);
-                                   $em->flush();
-                            } 
-
-                       
-
-                }
-
-                  $filiere_annee_Suivante = $this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findBy( array('anneeFiliere' =>  $annee->getId() )); 
-                  
+              $Matieres = $this->getDoctrine()->getRepository("SRVDVServerBundle:Matiere")->findAll();   
                  return $this->render('SRVDVServerBundle:admin:NouveauxUsersAdmin.html.twig', array(                  
-                  'filiere_annee_Suivante' => $filiere_annee_Suivante
-                  ) );       
+                  'Matieres' => $Matieres,
+                   'idAnnee'=>$annee->getId(),
+                   ) ); 
+
     
      }
+
+
+    
+         /**
+     * @Route("/admin/SupprimerGenerate/{id}",name="supprimer_generate_Annee")
+     * @Template()
+     */
+    public function SupprimerGenerateAction(Annee $annee , Request $req){ 
+
+    $filiere_annee_Suivante = $this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findBy( array('anneeFiliere' =>  $annee->getId() )); 
+
+            if(!empty($filiere_annee_Suivante)) {
+
+
+                                  $idAnnee=$annee->getId();
+                              
+
+                              $annee_filiere_actuelle = $this->getDoctrine()->getRepository("SRVDVServerBundle:Filiere")->findBy( array('anneeFiliere' =>  $idAnnee )); 
+                                
+
+
+                                foreach ($annee_filiere_actuelle as $key => $value) {
+                                  
+
+                                      
+
+                                        $Matiere_actuelle = $this->getDoctrine()->getRepository("SRVDVServerBundle:Matiere")->findBy( array('Filiere' => $value->getId() )); 
+                              
+
+
+                                          foreach ($Matiere_actuelle as $key => $val) {
+                                            
+                                                 $em = $this->getDoctrine()->getManager();
+                                                  $em->remove($val);
+                                                 $em->flush();
+                                          } 
+                            
+
+                            $em = $this->getDoctrine()->getManager();
+                                      $em->remove($value);
+                                     $em->flush();
+                                     
+
+                              }
+
+                
+                    
+
+              }
+             
+
+              $url = $this->get('router')->generate('annee_suivante' );
+
+          return new RedirectResponse($url);
+
+
+    
+     }
+
 
  }

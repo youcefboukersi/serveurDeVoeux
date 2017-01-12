@@ -121,9 +121,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_admin_suppusers')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppUsersAction',));
             }
 
-            // form_profile_user
-            if ($pathinfo === '/admin/EditPofile') {
-                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::EditPofileAction',  '_route' => 'form_profile_user',);
+            if (0 === strpos($pathinfo, '/admin/EditPofile')) {
+                // form_profile_user
+                if ($pathinfo === '/admin/EditPofile') {
+                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::EditPofileAction',  '_route' => 'form_profile_user',);
+                }
+
+                // form_profile_user_motDePasse
+                if ($pathinfo === '/admin/EditPofileMP') {
+                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::EditPofileMPAction',  '_route' => 'form_profile_user_motDePasse',);
+                }
+
             }
 
             // list_form_Annee
@@ -196,15 +204,41 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'generate_Annee_users')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AnneeSuivanteController::generateUsersAction',));
             }
 
-        }
-
-        // home
-        if (rtrim($pathinfo, '/') === '/home') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'home');
+            // supprimer_generate_Annee
+            if (0 === strpos($pathinfo, '/admin/SupprimerGenerate') && preg_match('#^/admin/SupprimerGenerate/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_generate_Annee')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AnneeSuivanteController::SupprimerGenerateAction',));
             }
 
-            return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::indexAction',  '_route' => 'home',);
+        }
+
+        if (0 === strpos($pathinfo, '/home')) {
+            // home_nbr_inscription
+            if (0 === strpos($pathinfo, '/home/nombreInscription') && preg_match('#^/home/nombreInscription/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'home_nbr_inscription')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::nombreInscriptionAction',));
+            }
+
+            // home
+            if (rtrim($pathinfo, '/') === '/home') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'home');
+                }
+
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::indexAction',  '_route' => 'home',);
+            }
+
+            if (0 === strpos($pathinfo, '/home/Liste')) {
+                // home_ListeUsers
+                if ($pathinfo === '/home/ListeUsers') {
+                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::ListeUsersAction',  '_route' => 'home_ListeUsers',);
+                }
+
+                // home_ListeFilieres
+                if ($pathinfo === '/home/ListeFilieres') {
+                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::ListeFilieresAction',  '_route' => 'home_ListeFilieres',);
+                }
+
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/enseignant')) {
@@ -223,9 +257,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'Modifier_inscription')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::ModInscriptionEnsAction',));
             }
 
-            // form_profile_user_ens
-            if ($pathinfo === '/enseignant/EditPofile') {
-                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::EditPofileAction',  '_route' => 'form_profile_user_ens',);
+            if (0 === strpos($pathinfo, '/enseignant/EditPofile')) {
+                // form_profile_user_ens
+                if ($pathinfo === '/enseignant/EditPofile') {
+                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::EditPofileAction',  '_route' => 'form_profile_user_ens',);
+                }
+
+                // form_profile_user_ens_motDePasse
+                if ($pathinfo === '/enseignant/EditPofileMP') {
+                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::EditPofileMPAction',  '_route' => 'form_profile_user_ens_motDePasse',);
+                }
+
             }
 
             // srvdv_server_enseignant_suppinscripens
@@ -259,9 +301,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_responsable_suppusers')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::SuppUsersAction',));
             }
 
-            // form_profile_user_resp
-            if ($pathinfo === '/responsable/EditPofile') {
-                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::EditPofileAction',  '_route' => 'form_profile_user_resp',);
+            if (0 === strpos($pathinfo, '/responsable/EditPofile')) {
+                // form_profile_user_resp
+                if ($pathinfo === '/responsable/EditPofile') {
+                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::EditPofileAction',  '_route' => 'form_profile_user_resp',);
+                }
+
+                // form_profile_user_resp_motDePasse
+                if ($pathinfo === '/responsable/EditPofileMP') {
+                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::EditPofileMPAction',  '_route' => 'form_profile_user_resp_motDePasse',);
+                }
+
             }
 
             // list_form_inscription
@@ -277,6 +327,29 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // srvdv_server_responsable_suppinscrip
             if (0 === strpos($pathinfo, '/responsable/SuppInscription') && preg_match('#^/responsable/SuppInscription/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_responsable_suppinscrip')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::SuppInscripAction',));
+            }
+
+            // Etat_matieres_responsable
+            if ($pathinfo === '/responsable/EtatMatiere') {
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::EtatMatiereAction',  '_route' => 'Etat_matieres_responsable',);
+            }
+
+            if (0 === strpos($pathinfo, '/responsable/inscriptionMatiere')) {
+                // modifier_inscription_matieres_etat
+                if (0 === strpos($pathinfo, '/responsable/inscriptionMatiereModifier') && preg_match('#^/responsable/inscriptionMatiereModifier/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'modifier_inscription_matieres_etat')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::inscriptionMatiereMODAction',));
+                }
+
+                // list_form_inscription_matieres_etat
+                if (preg_match('#^/responsable/inscriptionMatiere/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'list_form_inscription_matieres_etat')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::inscriptionMatiereAction',));
+                }
+
+                // supprimer_matiere_inscription
+                if (0 === strpos($pathinfo, '/responsable/inscriptionMatiere/SuppInscriptionMatiere') && preg_match('#^/responsable/inscriptionMatiere/SuppInscriptionMatiere/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_matiere_inscription')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::SuppInscriptionMatiereAction',));
+                }
+
             }
 
         }
@@ -364,7 +437,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $this->redirect($pathinfo.'/', 'fos_user_registration_register');
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'fos_user_registration_register',);
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::indexAction',  '_route' => 'fos_user_registration_register',);
             }
             not_fos_user_registration_register:
 
@@ -376,7 +449,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         goto not_fos_user_registration_check_email;
                     }
 
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
+                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
                 }
                 not_fos_user_registration_check_email:
 

@@ -56,6 +56,11 @@ class User extends BaseUser {
         parent::__construct();
         // your own logic
         $this->roles = array();
+        $this->nom = 'XXXXX';
+        $this->prenom = 'XXXXX';
+        $this->nombreHeurTheo = 10;
+        
+
     }
 
     

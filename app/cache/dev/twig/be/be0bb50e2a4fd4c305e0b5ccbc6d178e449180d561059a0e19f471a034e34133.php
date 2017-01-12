@@ -10,52 +10,74 @@ class __TwigTemplate_a75aa604a5dd5f971be21b8517e9405053db2e5f78a9b97ff73a48afe75
         $this->parent = false;
 
         $this->blocks = array(
+            'fos_user_content' => array($this, 'block_fos_user_content'),
         );
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_50f61e203b443f9847c6aa331d708caa5b899419a19174e2ba796649ceb8000c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_50f61e203b443f9847c6aa331d708caa5b899419a19174e2ba796649ceb8000c->enter($__internal_50f61e203b443f9847c6aa331d708caa5b899419a19174e2ba796649ceb8000c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig"));
+        $__internal_9f86bebd67187766c34c727cdf3fbb5e92859bf215dbd0b311421147d28ef03d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_9f86bebd67187766c34c727cdf3fbb5e92859bf215dbd0b311421147d28ef03d->enter($__internal_9f86bebd67187766c34c727cdf3fbb5e92859bf215dbd0b311421147d28ef03d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig"));
 
         // line 1
-        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig", 1)->display($context);
+        echo "<html>
+";
         // line 2
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->renderFragment($this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->controller("SRVDVServerBundle:Default:nombreInscription", array("id" => 21)));
         echo "
-<div id=\"nav\" >
-    <div id=\"enseignant\" class=\"ouvert\">
-        <h3>Enseignant</h3>
-        <ul>
-          <li  class=\"active\"><a href=\"";
-        // line 7
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("form_profile_user_ens");
-        echo "\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>   
-            <li  ><a href=\"";
-        // line 8
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("ChoixFiliereEns_enseignant");
-        echo "\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br>
-        </ul>
-    </div>
-</div>\t
 
-<div id=\"content\">
+
+
+<div align=\"center\">
     </br>
         
-    <div class=\"col-xs-5 col-md-5 col-lg-5\">
-        ";
-        // line 17
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->renderFragment($this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->controller("FOSUserBundle:Profile:edit"));
-        echo "
+   
+   <fieldset class=\"well the-fieldset\">
+            <legend > Modifier Profile:</legend>
+            ";
+        // line 12
+        if (array_key_exists("profile", $context)) {
+            // line 13
+            echo "             <P style=\"color:green;\" >Votre Profile a été  modifier avec success !</P>
+            ";
+        } else {
+            // line 15
+            echo "            
+            ";
+            // line 16
+            $this->displayBlock('fos_user_content', $context, $blocks);
+            // line 19
+            echo "
+
+            ";
+        }
+        // line 22
+        echo "        </fieldset>
     </div>
-        
     
-</div>
+
 
 ";
-        // line 23
-        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig", 23)->display($context);
+        // line 27
+        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig", 27)->display($context);
         
-        $__internal_50f61e203b443f9847c6aa331d708caa5b899419a19174e2ba796649ceb8000c->leave($__internal_50f61e203b443f9847c6aa331d708caa5b899419a19174e2ba796649ceb8000c_prof);
+        $__internal_9f86bebd67187766c34c727cdf3fbb5e92859bf215dbd0b311421147d28ef03d->leave($__internal_9f86bebd67187766c34c727cdf3fbb5e92859bf215dbd0b311421147d28ef03d_prof);
+
+    }
+
+    // line 16
+    public function block_fos_user_content($context, array $blocks = array())
+    {
+        $__internal_37dd954641a35bedb4ffd69684db930bd80c94e5956ab5dfbb54d56662258e52 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_37dd954641a35bedb4ffd69684db930bd80c94e5956ab5dfbb54d56662258e52->enter($__internal_37dd954641a35bedb4ffd69684db930bd80c94e5956ab5dfbb54d56662258e52_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+
+        // line 17
+        echo "            ";
+        $this->loadTemplate("FOSUserBundle:Profile:edit_content.html.twig", "SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig", 17)->display($context);
+        // line 18
+        echo "            ";
+        
+        $__internal_37dd954641a35bedb4ffd69684db930bd80c94e5956ab5dfbb54d56662258e52->leave($__internal_37dd954641a35bedb4ffd69684db930bd80c94e5956ab5dfbb54d56662258e52_prof);
 
     }
 
@@ -71,7 +93,7 @@ class __TwigTemplate_a75aa604a5dd5f971be21b8517e9405053db2e5f78a9b97ff73a48afe75
 
     public function getDebugInfo()
     {
-        return array (  56 => 23,  47 => 17,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
+        return array (  78 => 18,  75 => 17,  69 => 16,  62 => 27,  55 => 22,  50 => 19,  48 => 16,  45 => 15,  41 => 13,  39 => 12,  26 => 2,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -84,27 +106,31 @@ class __TwigTemplate_a75aa604a5dd5f971be21b8517e9405053db2e5f78a9b97ff73a48afe75
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
+        return new Twig_Source("<html>
+{{ render (controller(\"SRVDVServerBundle:Default:nombreInscription\", { 'id': 21 })) }}
 
-<div id=\"nav\" >
-    <div id=\"enseignant\" class=\"ouvert\">
-        <h3>Enseignant</h3>
-        <ul>
-          <li  class=\"active\"><a href=\"{{ path('form_profile_user_ens')}}\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>   
-            <li  ><a href=\"{{path('ChoixFiliereEns_enseignant')}}\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br>
-        </ul>
-    </div>
-</div>\t
 
-<div id=\"content\">
+
+<div align=\"center\">
     </br>
         
-    <div class=\"col-xs-5 col-md-5 col-lg-5\">
-        {{ render (controller(\"FOSUserBundle:Profile:edit\")) }}
+   
+   <fieldset class=\"well the-fieldset\">
+            <legend > Modifier Profile:</legend>
+            {% if profile is defined %}
+             <P style=\"color:green;\" >Votre Profile a été  modifier avec success !</P>
+            {% else %}
+            
+            {% block fos_user_content %}
+            {% include \"FOSUserBundle:Profile:edit_content.html.twig\" %}
+            {% endblock fos_user_content %}
+
+
+            {% endif %}
+        </fieldset>
     </div>
-        
     
-</div>
+
 
 {% include \"SRVDVServerBundle:admin:footerAdmin.html.twig\" %}", "SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig", "D:\\wamp64\\www\\serveurDeVoeux\\src\\SRVDV\\ServerBundle/Resources/views/enseignant/ProfileEnseignant.html.twig");
     }

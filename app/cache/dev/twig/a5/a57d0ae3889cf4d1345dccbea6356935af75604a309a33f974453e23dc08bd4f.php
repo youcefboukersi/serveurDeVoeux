@@ -15,8 +15,8 @@ class __TwigTemplate_46229c491d4fd88ea146b91857db25ba37d28d872211e90f7f84728ad38
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6160a663f6b358440b0b8dd42660c53256c7011e5e11fcd3bcd7ec8c52aec487 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_6160a663f6b358440b0b8dd42660c53256c7011e5e11fcd3bcd7ec8c52aec487->enter($__internal_6160a663f6b358440b0b8dd42660c53256c7011e5e11fcd3bcd7ec8c52aec487_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Security:login_content.html.twig"));
+        $__internal_ba867c705528817fc017e8ab40dc6abe85afece10a63746253fb9004ae83d2fc = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ba867c705528817fc017e8ab40dc6abe85afece10a63746253fb9004ae83d2fc->enter($__internal_ba867c705528817fc017e8ab40dc6abe85afece10a63746253fb9004ae83d2fc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Security:login_content.html.twig"));
 
         // line 2
         echo "
@@ -24,7 +24,7 @@ class __TwigTemplate_46229c491d4fd88ea146b91857db25ba37d28d872211e90f7f84728ad38
         // line 3
         if (($context["error"] ?? $this->getContext($context, "error"))) {
             // line 4
-            echo "    <div>";
+            echo "    <div style=\"color:red\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans($this->getAttribute(($context["error"] ?? $this->getContext($context, "error")), "messageKey", array()), $this->getAttribute(($context["error"] ?? $this->getContext($context, "error")), "messageData", array()), "security"), "html", null, true);
             echo "</div>
 ";
@@ -34,7 +34,7 @@ class __TwigTemplate_46229c491d4fd88ea146b91857db25ba37d28d872211e90f7f84728ad38
 <form action=\"";
         // line 7
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_check");
-        echo "\" method=\"post\">
+        echo "\" method=\"post\"  class=\"form-horizontal\">
     ";
         // line 8
         if (($context["csrf_token"] ?? $this->getContext($context, "csrf_token"))) {
@@ -46,34 +46,28 @@ class __TwigTemplate_46229c491d4fd88ea146b91857db25ba37d28d872211e90f7f84728ad38
         }
         // line 11
         echo "
-    <label for=\"username\">";
-        // line 12
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("security.login.username", array(), "FOSUserBundle"), "html", null, true);
-        echo "</label>
+
+ <div class=\"input-group col-xs-3 \">   
+    <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>
     <input type=\"text\" id=\"username\" name=\"_username\" value=\"";
-        // line 13
-        echo twig_escape_filter($this->env, ($context["last_username"] ?? $this->getContext($context, "last_username")), "html", null, true);
-        echo "\" required=\"required\" />
-
-    <label for=\"password\">";
         // line 15
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("security.login.password", array(), "FOSUserBundle"), "html", null, true);
-        echo "</label>
-    <input type=\"password\" id=\"password\" name=\"_password\" required=\"required\" />
+        echo twig_escape_filter($this->env, ($context["last_username"] ?? $this->getContext($context, "last_username")), "html", null, true);
+        echo "\" required=\"required\" class=\"form-control\" placeholder=\"username/email\" />
+ </div>
 
-    <input type=\"checkbox\" id=\"remember_me\" name=\"_remember_me\" value=\"on\" />
-    <label for=\"remember_me\">";
-        // line 19
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("security.login.remember_me", array(), "FOSUserBundle"), "html", null, true);
-        echo "</label>
-    
+   
+  <div class=\"input-group col-xs-3\">  
+    <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-lock\"></i></span>
+    <input type=\"password\" id=\"password\" name=\"_password\" required=\"required\"  class=\"form-control\" placeholder=\"Password\" />
+</div>
+   </br>
     <input type=\"submit\" id=\"_submit\" name=\"_submit\" value=\"";
-        // line 21
+        // line 24
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("security.login.submit", array(), "FOSUserBundle"), "html", null, true);
-        echo "\" />
+        echo "\" class=\"btn btn-danger\" />
 </form>";
         
-        $__internal_6160a663f6b358440b0b8dd42660c53256c7011e5e11fcd3bcd7ec8c52aec487->leave($__internal_6160a663f6b358440b0b8dd42660c53256c7011e5e11fcd3bcd7ec8c52aec487_prof);
+        $__internal_ba867c705528817fc017e8ab40dc6abe85afece10a63746253fb9004ae83d2fc->leave($__internal_ba867c705528817fc017e8ab40dc6abe85afece10a63746253fb9004ae83d2fc_prof);
 
     }
 
@@ -89,7 +83,7 @@ class __TwigTemplate_46229c491d4fd88ea146b91857db25ba37d28d872211e90f7f84728ad38
 
     public function getDebugInfo()
     {
-        return array (  72 => 21,  67 => 19,  60 => 15,  55 => 13,  51 => 12,  48 => 11,  42 => 9,  40 => 8,  36 => 7,  33 => 6,  27 => 4,  25 => 3,  22 => 2,);
+        return array (  66 => 24,  54 => 15,  48 => 11,  42 => 9,  40 => 8,  36 => 7,  33 => 6,  27 => 4,  25 => 3,  22 => 2,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -105,24 +99,27 @@ class __TwigTemplate_46229c491d4fd88ea146b91857db25ba37d28d872211e90f7f84728ad38
         return new Twig_Source("{% trans_default_domain 'FOSUserBundle' %}
 
 {% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    <div style=\"color:red\">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-<form action=\"{{ path(\"fos_user_security_check\") }}\" method=\"post\">
+<form action=\"{{ path(\"fos_user_security_check\") }}\" method=\"post\"  class=\"form-horizontal\">
     {% if csrf_token %}
         <input type=\"hidden\" name=\"_csrf_token\" value=\"{{ csrf_token }}\" />
     {% endif %}
 
-    <label for=\"username\">{{ 'security.login.username'|trans }}</label>
-    <input type=\"text\" id=\"username\" name=\"_username\" value=\"{{ last_username }}\" required=\"required\" />
 
-    <label for=\"password\">{{ 'security.login.password'|trans }}</label>
-    <input type=\"password\" id=\"password\" name=\"_password\" required=\"required\" />
+ <div class=\"input-group col-xs-3 \">   
+    <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>
+    <input type=\"text\" id=\"username\" name=\"_username\" value=\"{{ last_username }}\" required=\"required\" class=\"form-control\" placeholder=\"username/email\" />
+ </div>
 
-    <input type=\"checkbox\" id=\"remember_me\" name=\"_remember_me\" value=\"on\" />
-    <label for=\"remember_me\">{{ 'security.login.remember_me'|trans }}</label>
-    
-    <input type=\"submit\" id=\"_submit\" name=\"_submit\" value=\"{{ 'security.login.submit'|trans }}\" />
+   
+  <div class=\"input-group col-xs-3\">  
+    <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-lock\"></i></span>
+    <input type=\"password\" id=\"password\" name=\"_password\" required=\"required\"  class=\"form-control\" placeholder=\"Password\" />
+</div>
+   </br>
+    <input type=\"submit\" id=\"_submit\" name=\"_submit\" value=\"{{ 'security.login.submit'|trans }}\" class=\"btn btn-danger\" />
 </form>", "FOSUserBundle:Security:login_content.html.twig", "D:\\wamp64\\www\\serveurDeVoeux\\src\\SRVDV\\ServerBundle/Resources/views/Security/login_content.html.twig");
     }
 }

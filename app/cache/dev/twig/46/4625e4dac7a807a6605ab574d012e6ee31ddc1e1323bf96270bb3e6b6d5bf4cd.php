@@ -15,43 +15,50 @@ class __TwigTemplate_1a26f8c7b180ae6850184deec6457c9cf0ebe1f84b7e4655bbdd4e379ac
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d68fbe75927472af46ce50818ff6a7e36db20c139ce66ccaa32ffaf89f5eb19a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_d68fbe75927472af46ce50818ff6a7e36db20c139ce66ccaa32ffaf89f5eb19a->enter($__internal_d68fbe75927472af46ce50818ff6a7e36db20c139ce66ccaa32ffaf89f5eb19a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:NouveauxUsersAdmin.html.twig"));
+        $__internal_3711ee97007de175203b317a98d5cd67e1700ddcb4af750342217093b17f9e52 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_3711ee97007de175203b317a98d5cd67e1700ddcb4af750342217093b17f9e52->enter($__internal_3711ee97007de175203b317a98d5cd67e1700ddcb4af750342217093b17f9e52_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:NouveauxUsersAdmin.html.twig"));
 
         // line 1
-        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:admin:NouveauxUsersAdmin.html.twig", 1)->display($context);
+        echo "<html>
+";
         // line 2
+        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:admin:NouveauxUsersAdmin.html.twig", 2)->display($context);
+        // line 3
         echo "
 <div id=\"nav\" >
 \t<div id=\"enseignant\" class=\"ouvert\">
 \t\t<h3>Administrateur</h3>
 \t\t<ul>
-\t\t\t<li  ><a href=\"";
-        // line 7
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("form_profile_user");
-        echo "\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
-\t\t\t<li  ><a href=\"";
+\t\t\t <li><a href=\"";
         // line 8
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
+        echo "\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
+            <li  ><a href=\"";
+        // line 9
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_change_password");
+        echo "\"><span class=\"glyphicon glyphicon-lock\" aria-hidden=\"true\"></span>  &nbsp; Mot de passe</a></li></br>
+\t\t\t<li  ><a href=\"";
+        // line 10
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_Annee");
         echo "\"><span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer Année</a></li></br>
             <li><a href=\"";
-        // line 9
+        // line 11
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_Type");
         echo "\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer statut</a></li></br>
             <li ><a href=\"";
-        // line 10
+        // line 12
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_utilisateur");
         echo "\"><span class=\"glyphicon glyphicon-cog\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Users</a></li>\t</br>\t\t
             <li><a href=\"";
-        // line 11
+        // line 13
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_filiere");
         echo "\"><span class=\"glyphicon glyphicon-book\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer fili&egrave;r</a></li></br>
             <li ><a  href=\"";
-        // line 12
+        // line 14
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_typeens");
         echo "\"><span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></span>&nbsp;  Type Enseignement</a></li></br>
 \t\t\t<li class=\"active\" ><a href=\"";
-        // line 13
+        // line 15
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("annee_suivante");
         echo "\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br>
 \t\t\t
@@ -68,60 +75,79 @@ class __TwigTemplate_1a26f8c7b180ae6850184deec6457c9cf0ebe1f84b7e4655bbdd4e379ac
 \t\t<div class=\" centreVerticalement\">
 
 \t\t<div class=\"table-responsive\">
-                <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"100%\" >
+                <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"98%\" >
                 \t<thead>
-\t\t\t\t\t<tr><th>#</th><th>Niveau</th><th>Filiere</th><th>nom</th><th><th>Annee Filiere</th>Coefficient</th><th>Basculer</th></tr>
+\t\t\t\t\t<tr><th>#Filiere</th><th>Matiere</th><th>Nombre de groupe</th><th>heures/groupe</th><th>Type Enseignant (Coef)</th><th>Semestre</th></tr>
 \t\t\t\t   </thead>
 \t\t\t\t   <tbody>
 \t\t\t\t\t\t";
-        // line 33
+        // line 35
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["filiere_annee_Suivante"] ?? $this->getContext($context, "filiere_annee_Suivante")));
-        foreach ($context['_seq'] as $context["_key"] => $context["f"]) {
-            // line 34
-            echo "\t\t\t\t\t\t\t<tr>
-\t\t\t\t\t\t\t\t<td>";
-            // line 35
-            echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "id", array()), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t\t\t<td>";
-            // line 36
-            echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "niveau", array()), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t\t\t<td>";
+        $context['_seq'] = twig_ensure_traversable(($context["Matieres"] ?? $this->getContext($context, "Matieres")));
+        foreach ($context['_seq'] as $context["_key"] => $context["r"]) {
+            echo "\t\t\t\t
+
+\t\t\t\t\t\t\t";
             // line 37
-            echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "nom", array()), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t\t\t<td>
-\t\t\t\t\t\t\t\t";
-            // line 39
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["f"], "User", array()), "nom", array()), "html", null, true);
-            echo " ";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["f"], "User", array()), "prenom", array()), "html", null, true);
-            echo "
-\t\t\t\t\t\t\t\t</td>
+            if ((($context["idAnnee"] ?? $this->getContext($context, "idAnnee")) == $this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "filiere", array()), "anneeFiliere", array()), "id", array()))) {
+                // line 38
+                echo "\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t\t<tr >
+\t\t\t\t\t\t\t\t\t<td>";
+                // line 40
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["r"], "filiere", array()), "niveau", array()), "html", null, true);
+                echo "&nbsp;";
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["r"], "filiere", array()), "nom", array()), "html", null, true);
+                echo "&nbsp;";
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["r"], "filiere", array()), "anneeFiliere", array()), "html", null, true);
+                echo "&nbsp;&nbsp;(";
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "filiere", array()), "User", array()), "nom", array()), "html", null, true);
+                echo "&nbsp;";
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "filiere", array()), "User", array()), "prenom", array()), "html", null, true);
+                echo ")
+\t\t\t\t\t \t\t\t\t\t                    
+\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t<td>";
+                // line 43
+                echo twig_escape_filter($this->env, $this->getAttribute($context["r"], "nom", array()), "html", null, true);
+                echo "</td>
+\t\t\t\t\t\t\t\t\t<td>";
+                // line 44
+                echo twig_escape_filter($this->env, $this->getAttribute($context["r"], "NombreGroupe", array()), "html", null, true);
+                echo "</td>
+\t\t\t\t\t\t\t\t\t<td>";
+                // line 45
+                echo twig_escape_filter($this->env, $this->getAttribute($context["r"], "nbrHeurGroupe", array()), "html", null, true);
+                echo "</td>
+\t\t\t\t\t\t\t\t\t<td>";
+                // line 46
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["r"], "TypeEnseignant", array()), "libelle", array()), "html", null, true);
+                echo " &nbsp;(";
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["r"], "TypeEnseignant", array()), "coef", array()), "html", null, true);
+                echo ")</td>
+\t\t\t\t\t\t\t\t\t<td>";
+                // line 47
+                echo twig_escape_filter($this->env, $this->getAttribute($context["r"], "semestre", array()), "html", null, true);
+                echo "</td>\t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t<td>
-           \t\t\t\t\t\t\t";
-            // line 44
-            echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "anneeFiliere", array()), "html", null, true);
-            echo "
-\t\t\t\t\t\t\t\t</td>
-\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t</tr>\t
+\t\t\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t\t</tr>
+\t\t\t\t\t\t\t";
+            }
+            // line 51
+            echo "\t
 \t\t\t\t\t\t";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['f'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['r'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 49
+        // line 53
         echo "                   </tbody>
 \t\t\t\t</table> 
-            </div>
-
-\t\t\t
+            
 \t\t</div>
+
+
 \t
 </div>
 
@@ -130,24 +156,47 @@ class __TwigTemplate_1a26f8c7b180ae6850184deec6457c9cf0ebe1f84b7e4655bbdd4e379ac
 
 <script>
 \$(document).ready(function() {
-    \$('#example').DataTable();
+    var table = \$('#example').DataTable({
+        \"columnDefs\": [
+            { \"visible\": false, \"targets\": 0 }
+        ],
+        \"order\": [[ 0, 'asc' ]],
+        \"displayLength\": 25,
+        \"drawCallback\": function ( settings ) {
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;
+ 
+            api.column(0, {page:'current'} ).data().each( function ( group, i ) {
+                if ( last !== group ) {
+                    \$(rows).eq( i ).before(
+                        '<tr class=\"group\"><td colspan=\"6\" align=\"center\" style=\"background-color:#81F7BE\">'+group+'</td></tr>'
+                    );
+ 
+                    last = group;
+                }
+            } );
+        }
+    } );
+ 
+    // Order by the grouping
+    \$('#example tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+            table.order( [ 0, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ 0, 'asc' ] ).draw();
+        }
+    } );
 } );
 
-function SupprimerUser(id){
-
-\tvar rep=confirm('Clickez sur \"OK\" si vous voulez vraiment cet utilisateur' ) ;
-
-\tif(rep){
-        window.location.href ='suppAnnee/'+id;
-\t}
-
-}
 </script>
 ";
-        // line 76
-        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:admin:NouveauxUsersAdmin.html.twig", 76)->display($context);
+        // line 103
+        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:admin:NouveauxUsersAdmin.html.twig", 103)->display($context);
         
-        $__internal_d68fbe75927472af46ce50818ff6a7e36db20c139ce66ccaa32ffaf89f5eb19a->leave($__internal_d68fbe75927472af46ce50818ff6a7e36db20c139ce66ccaa32ffaf89f5eb19a_prof);
+        $__internal_3711ee97007de175203b317a98d5cd67e1700ddcb4af750342217093b17f9e52->leave($__internal_3711ee97007de175203b317a98d5cd67e1700ddcb4af750342217093b17f9e52_prof);
 
     }
 
@@ -163,7 +212,7 @@ function SupprimerUser(id){
 
     public function getDebugInfo()
     {
-        return array (  148 => 76,  119 => 49,  108 => 44,  98 => 39,  93 => 37,  89 => 36,  85 => 35,  82 => 34,  78 => 33,  55 => 13,  51 => 12,  47 => 11,  43 => 10,  39 => 9,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
+        return array (  197 => 103,  145 => 53,  138 => 51,  130 => 47,  124 => 46,  120 => 45,  116 => 44,  112 => 43,  98 => 40,  94 => 38,  92 => 37,  85 => 35,  62 => 15,  58 => 14,  54 => 13,  50 => 12,  46 => 11,  42 => 10,  38 => 9,  34 => 8,  27 => 3,  25 => 2,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -176,13 +225,15 @@ function SupprimerUser(id){
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
+        return new Twig_Source("<html>
+{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
 
 <div id=\"nav\" >
 \t<div id=\"enseignant\" class=\"ouvert\">
 \t\t<h3>Administrateur</h3>
 \t\t<ul>
-\t\t\t<li  ><a href=\"{{path('form_profile_user')}}\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
+\t\t\t <li><a href=\"{{path('fos_user_profile_edit')}}\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
+            <li  ><a href=\"{{path('fos_user_change_password')}}\"><span class=\"glyphicon glyphicon-lock\" aria-hidden=\"true\"></span>  &nbsp; Mot de passe</a></li></br>
 \t\t\t<li  ><a href=\"{{path('list_form_Annee')}}\"><span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer Année</a></li></br>
             <li><a href=\"{{path('list_form_Type')}}\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer statut</a></li></br>
             <li ><a href=\"{{path('list_form_utilisateur')}}\"><span class=\"glyphicon glyphicon-cog\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Users</a></li>\t</br>\t\t
@@ -203,33 +254,35 @@ function SupprimerUser(id){
 \t\t<div class=\" centreVerticalement\">
 
 \t\t<div class=\"table-responsive\">
-                <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"100%\" >
+                <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"98%\" >
                 \t<thead>
-\t\t\t\t\t<tr><th>#</th><th>Niveau</th><th>Filiere</th><th>nom</th><th><th>Annee Filiere</th>Coefficient</th><th>Basculer</th></tr>
+\t\t\t\t\t<tr><th>#Filiere</th><th>Matiere</th><th>Nombre de groupe</th><th>heures/groupe</th><th>Type Enseignant (Coef)</th><th>Semestre</th></tr>
 \t\t\t\t   </thead>
 \t\t\t\t   <tbody>
-\t\t\t\t\t\t{% for f in filiere_annee_Suivante %}
-\t\t\t\t\t\t\t<tr>
-\t\t\t\t\t\t\t\t<td>{{ f.id}}</td>
-\t\t\t\t\t\t\t\t<td>{{ f.niveau }}</td>
-\t\t\t\t\t\t\t\t<td>{{ f.nom }}</td>
-\t\t\t\t\t\t\t\t<td>
-\t\t\t\t\t\t\t\t{{ f.User.nom }} {{ f.User.prenom }}
-\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t{% for r in Matieres %}\t\t\t\t
+
+\t\t\t\t\t\t\t{% if idAnnee  == r.filiere.anneeFiliere.id  %}
+\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t\t<tr >
+\t\t\t\t\t\t\t\t\t<td>{{ r.filiere.niveau }}&nbsp;{{ r.filiere.nom }}&nbsp;{{ r.filiere.anneeFiliere}}&nbsp;&nbsp;({{ r.filiere.User.nom}}&nbsp;{{ r.filiere.User.prenom}})
+\t\t\t\t\t \t\t\t\t\t                    
+\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t<td>{{ r. nom}}</td>
+\t\t\t\t\t\t\t\t\t<td>{{ r.NombreGroupe}}</td>
+\t\t\t\t\t\t\t\t\t<td>{{ r.nbrHeurGroupe}}</td>
+\t\t\t\t\t\t\t\t\t<td>{{ r.TypeEnseignant.libelle}} &nbsp;({{ r.TypeEnseignant.coef}})</td>
+\t\t\t\t\t\t\t\t\t<td>{{ r.semestre}}</td>\t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t<td>
-           \t\t\t\t\t\t\t{{ f.anneeFiliere }}
-\t\t\t\t\t\t\t\t</td>
-\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t</tr>\t
+\t\t\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t\t</tr>
+\t\t\t\t\t\t\t{% endif %}\t
 \t\t\t\t\t\t{% endfor %}
                    </tbody>
 \t\t\t\t</table> 
-            </div>
-
-\t\t\t
+            
 \t\t</div>
+
+
 \t
 </div>
 
@@ -238,18 +291,41 @@ function SupprimerUser(id){
 
 <script>
 \$(document).ready(function() {
-    \$('#example').DataTable();
+    var table = \$('#example').DataTable({
+        \"columnDefs\": [
+            { \"visible\": false, \"targets\": 0 }
+        ],
+        \"order\": [[ 0, 'asc' ]],
+        \"displayLength\": 25,
+        \"drawCallback\": function ( settings ) {
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;
+ 
+            api.column(0, {page:'current'} ).data().each( function ( group, i ) {
+                if ( last !== group ) {
+                    \$(rows).eq( i ).before(
+                        '<tr class=\"group\"><td colspan=\"6\" align=\"center\" style=\"background-color:#81F7BE\">'+group+'</td></tr>'
+                    );
+ 
+                    last = group;
+                }
+            } );
+        }
+    } );
+ 
+    // Order by the grouping
+    \$('#example tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+            table.order( [ 0, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ 0, 'asc' ] ).draw();
+        }
+    } );
 } );
 
-function SupprimerUser(id){
-
-\tvar rep=confirm('Clickez sur \"OK\" si vous voulez vraiment cet utilisateur' ) ;
-
-\tif(rep){
-        window.location.href ='suppAnnee/'+id;
-\t}
-
-}
 </script>
 {% include \"SRVDVServerBundle:admin:footerAdmin.html.twig\" %}", "SRVDVServerBundle:admin:NouveauxUsersAdmin.html.twig", "D:\\wamp64\\www\\serveurDeVoeux\\src\\SRVDV\\ServerBundle/Resources/views/admin/NouveauxUsersAdmin.html.twig");
     }

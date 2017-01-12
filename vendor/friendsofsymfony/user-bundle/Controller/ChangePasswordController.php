@@ -66,8 +66,22 @@ class ChangePasswordController extends Controller
 
             $userManager->updateUser($user);
 
-            if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_profile_show');
+            if (null === $response = $event->getResponse()) {               
+                
+                                $roles=$user->getRoles();
+                                
+                              
+                              if($roles[0]=="ROLE_ADMIN"){
+                                   $url = $this->generateUrl('form_profile_user_motDePasse' );
+                              }
+                              if($roles[0]=="ROLE_RESP"){
+                                   $url = $this->generateUrl('form_profile_user_resp_motDePasse' );
+                              }
+                              if($roles[0]=="ROLE_ENSEIG"){
+                                   $url = $this->generateUrl('form_profile_user_ens_motDePasse' );
+                              }
+
+             
                 $response = new RedirectResponse($url);
             }
 
@@ -76,8 +90,25 @@ class ChangePasswordController extends Controller
             return $response;
         }
 
-        return $this->render('FOSUserBundle:ChangePassword:changePassword.html.twig', array(
-            'form' => $form->createView()
-        ));
+
+  $roles=$user->getRoles();
+                                
+                              
+                              if($roles[0]=="ROLE_ADMIN"){
+                                   return $this->render('SRVDVServerBundle:admin:MotDePass.html.twig', array(
+                                        'form' => $form->createView()
+                                    ));
+                              }
+                              if($roles[0]=="ROLE_RESP"){
+                                   return $this->render('SRVDVServerBundle:responsable:MotDePasse.html.twig', array(
+                                        'form' => $form->createView()
+                                    ));
+                              }
+                              if($roles[0]=="ROLE_ENSEIG"){
+                                   return $this->render('SRVDVServerBundle:enseignant:MotDePasse.html.twig', array(
+                                      'form' => $form->createView()
+                                  ));
+                              }
+        
     }
 }

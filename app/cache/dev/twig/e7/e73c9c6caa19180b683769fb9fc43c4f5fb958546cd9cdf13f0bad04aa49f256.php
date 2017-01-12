@@ -15,23 +15,26 @@ class __TwigTemplate_66e3a8af8e3e24b36f4607eb993903f70c2d8916ed131170b14fed5998b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_dfcee18567735b169427956507bafda0906a3f13b83c75d0983b0064ffd5c59f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_dfcee18567735b169427956507bafda0906a3f13b83c75d0983b0064ffd5c59f->enter($__internal_dfcee18567735b169427956507bafda0906a3f13b83c75d0983b0064ffd5c59f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig"));
+        $__internal_000a7fa90d3fa9bd1b9ddb260ab93bad8ef8d1ff780f2b0b2a9aa5b37a5efa3e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_000a7fa90d3fa9bd1b9ddb260ab93bad8ef8d1ff780f2b0b2a9aa5b37a5efa3e->enter($__internal_000a7fa90d3fa9bd1b9ddb260ab93bad8ef8d1ff780f2b0b2a9aa5b37a5efa3e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig"));
 
         // line 1
-        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig", 1)->display($context);
+        echo "<html>
+";
         // line 2
+        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig", 2)->display($context);
+        // line 3
         echo "
 <div id=\"nav\" >
 \t<div id=\"enseignant\" class=\"ouvert\">
 \t\t<h3>Enseignant</h3>
 \t\t<ul>
 \t\t\t<li  ><a href=\"";
-        // line 7
+        // line 8
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("form_profile_user_ens");
         echo "\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>\t
 \t\t\t<li  class=\"active\"><a href=\"";
-        // line 8
+        // line 9
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("ChoixFiliereEns_enseignant");
         echo "\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br>
 \t\t\t\t\t\t
@@ -46,45 +49,47 @@ class __TwigTemplate_66e3a8af8e3e24b36f4607eb993903f70c2d8916ed131170b14fed5998b
 
 
 \t\t\t<div class=\"table-responsive\">
-                <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"100%\" >
+                <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"98%\" >
                 \t<thead>
-\t\t\t\t\t<tr><th>#</th><th>Date de création </th><th>nom</th><th>responsable</th><th>Année</th><<th>res</th>/tr>
+\t\t\t\t\t<tr><th>#</th><th>Date de création </th><th>nom</th><th>responsable</th><th>Année</th><th>res</th></tr>
 
 \t\t\t\t   </thead>
 \t\t\t\t   <tbody>
 \t\t\t\t\t\t";
-        // line 27
+        // line 28
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["Filieres"] ?? $this->getContext($context, "Filieres")));
         foreach ($context['_seq'] as $context["_key"] => $context["f"]) {
-            // line 28
+            // line 29
             echo "\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>";
-            // line 29
+            // line 30
             echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "id", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 30
+            // line 31
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["f"], "dateFiliere", array()), "Y-m-d"), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 31
+            // line 32
+            echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "niveau", array()), "html", null, true);
+            echo "&nbsp;&nbsp;";
             echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "nom", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 32
+            // line 33
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["f"], "User", array()), "nom", array()), "html", null, true);
             echo "&nbsp;";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["f"], "User", array()), "prenom", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 33
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["f"], "User", array()), "dateUtilisateur", array()), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='";
             // line 34
+            echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "anneeFiliere", array()), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-danger\" onclick=\"window.location.href ='";
+            // line 35
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_inscription_enseignant", array("id" => $this->getAttribute($context["f"], "id", array()))), "html", null, true);
-            echo "'\"><b ><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></b></button></td>
+            echo "'\"><b ><span class=\"glyphicon glyphicon-send\" aria-hidden=\"true\"></span>&nbsp; Réserver</b></button></td>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t</tr>\t
@@ -93,7 +98,7 @@ class __TwigTemplate_66e3a8af8e3e24b36f4607eb993903f70c2d8916ed131170b14fed5998b
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['f'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
+        // line 40
         echo "                   </tbody>
 \t\t\t\t</table> 
             </div>
@@ -114,13 +119,13 @@ class __TwigTemplate_66e3a8af8e3e24b36f4607eb993903f70c2d8916ed131170b14fed5998b
 </script>
 
 ";
-        // line 58
-        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig", 58)->display($context);
         // line 59
+        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:enseignant:ChoixFiliereEnseignant.html.twig", 59)->display($context);
+        // line 60
         echo "
 ";
         
-        $__internal_dfcee18567735b169427956507bafda0906a3f13b83c75d0983b0064ffd5c59f->leave($__internal_dfcee18567735b169427956507bafda0906a3f13b83c75d0983b0064ffd5c59f_prof);
+        $__internal_000a7fa90d3fa9bd1b9ddb260ab93bad8ef8d1ff780f2b0b2a9aa5b37a5efa3e->leave($__internal_000a7fa90d3fa9bd1b9ddb260ab93bad8ef8d1ff780f2b0b2a9aa5b37a5efa3e_prof);
 
     }
 
@@ -136,7 +141,7 @@ class __TwigTemplate_66e3a8af8e3e24b36f4607eb993903f70c2d8916ed131170b14fed5998b
 
     public function getDebugInfo()
     {
-        return array (  120 => 59,  118 => 58,  97 => 39,  86 => 34,  82 => 33,  76 => 32,  72 => 31,  68 => 30,  64 => 29,  61 => 28,  57 => 27,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
+        return array (  125 => 60,  123 => 59,  102 => 40,  91 => 35,  87 => 34,  81 => 33,  75 => 32,  71 => 31,  67 => 30,  64 => 29,  60 => 28,  38 => 9,  34 => 8,  27 => 3,  25 => 2,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -149,7 +154,8 @@ class __TwigTemplate_66e3a8af8e3e24b36f4607eb993903f70c2d8916ed131170b14fed5998b
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
+        return new Twig_Source("<html>
+{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
 
 <div id=\"nav\" >
 \t<div id=\"enseignant\" class=\"ouvert\">
@@ -169,9 +175,9 @@ class __TwigTemplate_66e3a8af8e3e24b36f4607eb993903f70c2d8916ed131170b14fed5998b
 
 
 \t\t\t<div class=\"table-responsive\">
-                <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"100%\" >
+                <table id=\"example\" class=\"display\" cellspacing=\"0\" width=\"98%\" >
                 \t<thead>
-\t\t\t\t\t<tr><th>#</th><th>Date de création </th><th>nom</th><th>responsable</th><th>Année</th><<th>res</th>/tr>
+\t\t\t\t\t<tr><th>#</th><th>Date de création </th><th>nom</th><th>responsable</th><th>Année</th><th>res</th></tr>
 
 \t\t\t\t   </thead>
 \t\t\t\t   <tbody>
@@ -179,10 +185,10 @@ class __TwigTemplate_66e3a8af8e3e24b36f4607eb993903f70c2d8916ed131170b14fed5998b
 \t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>{{ f.id }}</td>
 \t\t\t\t\t\t\t\t<td>{{ f.dateFiliere | date('Y-m-d') }}</td>
-\t\t\t\t\t\t\t\t<td>{{ f.nom }}</td>
+\t\t\t\t\t\t\t\t<td>{{ f.niveau}}&nbsp;&nbsp;{{ f.nom }}</td>
 \t\t\t\t\t\t\t\t<td>{{ f.User.nom }}&nbsp;{{ f.User.prenom }}</td>
-\t\t\t\t\t\t\t\t<td>{{ f.User.dateUtilisateur}}</td>
-\t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='{{path('list_form_inscription_enseignant',{'id':f.id }) }}'\"><b ><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></b></button></td>
+\t\t\t\t\t\t\t\t<td>{{ f.anneeFiliere}}</td>
+\t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-danger\" onclick=\"window.location.href ='{{path('list_form_inscription_enseignant',{'id':f.id }) }}'\"><b ><span class=\"glyphicon glyphicon-send\" aria-hidden=\"true\"></span>&nbsp; Réserver</b></button></td>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t</tr>\t

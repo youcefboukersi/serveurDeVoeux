@@ -10,6 +10,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Doctrine\ORM\EntityRepository;
+use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
+
 
 use SRVDV\ServerBundle\Entity\User;
 use SRVDV\ServerBundle\Entity\Annee;
@@ -26,15 +35,111 @@ class AdminController extends Controller
      * @Route("/admin/users",name="list_form_utilisateur")
      * @Template()
      */
-    public function indexAction(Request $req){         
+    public function indexAction(Request $request){         
           
-         
-                $Users = $this->getDoctrine()->getRepository("SRVDVServerBundle:User")->findAll();            
-                 return $this->render('SRVDVServerBundle:admin:UsersAdmin.html.twig', array(                  
-                  'Users' => $Users,
-                  ) );       
+          /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+        $userManager = $this->get('fos_user.user_manager');
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
+
+        $user = $userManager->createUser();
+        $user->setEnabled(true);
+
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
+
+        if (null !== $event->getResponse()) {
+           return $event->getResponse();
+        }
+
+        $form = $formFactory->createForm();
+        $form->setData($user);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+
+            $userManager->updateUser($user);
+
+            if (null === $response = $event->getResponse()) {
+                $url = $this->generateUrl('list_form_utilisateur');
+                $response = new RedirectResponse($url);
+            }
+
+           // $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
+            return $response;
+        }
+
+         $Users = $this->getDoctrine()->getRepository("SRVDVServerBundle:User")->findAll();  
+        return $this->render('SRVDVServerBundle:admin:UsersAdmin.html.twig', array(
+            'form' => $form->createView(),
+            'Users' => $Users,
+            'email'=>0,
+        ));
+                         
+                   
     
      }
+
+
+      /**
+     * Tell the user to check his email provider
+     */
+    public function checkEmailAction(Request $request)
+    {
+       
+          /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
+        $formFactory = $this->get('fos_user.registration.form.factory');
+        /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+        $userManager = $this->get('fos_user.user_manager');
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
+
+        $user = $userManager->createUser();
+        $user->setEnabled(true);
+
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
+
+        if (null !== $event->getResponse()) {
+           return $event->getResponse();
+        }
+
+        $form = $formFactory->createForm();
+        $form->setData($user);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+
+            $userManager->updateUser($user);
+
+            if (null === $response = $event->getResponse()) {
+                $url = $this->generateUrl('list_form_utilisateur');
+                $response = new RedirectResponse($url);
+            }
+
+           // $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
+            return $response;
+        }
+
+         $Users = $this->getDoctrine()->getRepository("SRVDVServerBundle:User")->findAll();  
+        return $this->render('SRVDVServerBundle:admin:UsersAdmin.html.twig', array(
+            'form' => $form->createView(),
+            'Users' => $Users,
+            'email'=>1,
+        ));
+                         
+             
+    }
 
     /**
      * @Route("admin/ModUsers/{id}" ,name="Modifier_Users")
@@ -43,49 +148,26 @@ class AdminController extends Controller
     public function ModUsersAction(User $u,Request $req)
     {      
 
+             $enbledUsers = $u->isEnabled();
+
+            if ($enbledUsers == 1 ) {
                 
-                // On crée le FormBuilder grâce au service form factory
-          $formBuilder = $this->get('form.factory')->createBuilder('form', $u);
+              $u->setEnabled(false);
+                  /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+                  $userManager = $this->get('fos_user.user_manager');
+                  $userManager->updateUser($u);
 
-          $formBuilder
-           -> add('nom','text' , array('label' => 'Nom', 'translation_domain' => 'FOSUserBundle'))
-           -> add('prenom','text')
-           -> add('username','text')
-         
-          -> add('password','text')
-           -> add('email','text')         
-           -> add('roles','text')
-           -> add('type','entity',array(
-                "class" => "SRVDV\ServerBundle\Entity\TypeUtilisateur",
-                "property" => "libelle"
-            ))
-           -> add('nombreHeurTheo','integer')
-           -> add('save','submit')
-           -> add('reset','reset');
-          
-               // À partir du formBuilder, on génère le formulaire
-         $form = $formBuilder->getForm();
-
-         $form->handleRequest($req);
-
-            if ($form->isValid()) {
-                // On l'enregistre notre objet $advert dans la base de données, par exemple
-                $em = $this->getDoctrine()->getManager();
-                //$em->persist($u);
-                $em->flush();
+            }else{
+               
+               $u->setEnabled(true);
+                  /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
+                  $userManager = $this->get('fos_user.user_manager');
+                  $userManager->updateUser($u);
+            }
 
                 $url = $this->get('router')->generate('list_form_utilisateur');
     
                 return new RedirectResponse($url);
-
-            }else{
-                $Users=$this->getDoctrine()->getRepository("SRVDVServerBundle:User")->findAll();            
-                 return $this->render('SRVDVServerBundle:admin:UsersAdmin.html.twig', array(
-                  'f' => $form->createView(),
-                  'Users' => $Users,
-
-                  ) );
-            }
           
     }
 
@@ -111,13 +193,30 @@ class AdminController extends Controller
      * @Route("admin/EditPofile", name="form_profile_user")
      * @Template()
      */
-    public function EditPofileAction()
+    public function EditPofileAction( )
     {      
 
             $Users=$this->getDoctrine()->getManager()->getRepository("SRVDVServerBundle:User")->findAll();
 
          return $this->render('SRVDVServerBundle:admin:ProfileAdmin.html.twig', array(
           'Users' => $Users,
+          'profile'=> 1,
+          ) );
+    }
+
+
+/**
+     * @Route("admin/EditPofileMP", name="form_profile_user_motDePasse")
+     * @Template()
+     */
+    public function EditPofileMPAction()
+    {      
+
+            $Users=$this->getDoctrine()->getManager()->getRepository("SRVDVServerBundle:User")->findAll();
+
+         return $this->render('SRVDVServerBundle:admin:MotDePass.html.twig', array(
+          'Users' => $Users,
+          'motDePasse'=>1,
           ) );
     }
 
@@ -140,7 +239,8 @@ class AdminController extends Controller
                     'choices' => array(1 => 'Oui', 0 => 'Non'),
                     'expanded' => true,
                     'multiple' => false,
-                    'required' => true
+                    'required' => true,
+                    'data' => '0'
                 ))         
            -> add('save','submit');
           
@@ -150,6 +250,8 @@ class AdminController extends Controller
          $form->handleRequest($req);
 
             if ($form->isValid()) {
+
+              $annee -> setEtat(0);
                 // On l'enregistre notre objet $advert dans la base de données, par exemple
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($annee);
@@ -194,7 +296,28 @@ class AdminController extends Controller
          $form->handleRequest($req);
 
             if ($form->isValid()) {
-                // On l'enregistre notre objet $advert dans la base de données, par exemple
+
+              ///
+                  if ($annee->getEtat() == 1) {
+                       
+
+                       $AnneesEtat=$this->getDoctrine()->getManager()->getRepository("SRVDVServerBundle:Annee")->findAll();
+                       foreach ($AnneesEtat as $key => $value) {
+
+                          if ($annee->getId() != $value->getId()  ) {
+                              
+                               $value -> setEtat(0);
+                              $em = $this->getDoctrine()->getManager();
+                              $em->persist($value);
+                              $em->flush();
+
+
+                          }
+                       }
+
+                  }
+
+              ////  // On l'enregistre notre objet $advert dans la base de données, par exemple
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($annee);
                 $em->flush();

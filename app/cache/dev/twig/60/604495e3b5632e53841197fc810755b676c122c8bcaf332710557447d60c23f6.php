@@ -15,76 +15,43 @@ class __TwigTemplate_f233ba09f7332a44eef086310ef7a9efffb1ee5d0a4ea2e9cd98d30bff3
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_86d2a193f82602c647735daa1219cc3bf611fa512ca9bf540ff6bf9042c0426a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_86d2a193f82602c647735daa1219cc3bf611fa512ca9bf540ff6bf9042c0426a->enter($__internal_86d2a193f82602c647735daa1219cc3bf611fa512ca9bf540ff6bf9042c0426a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:TypeEnsAdmin.html.twig"));
+        $__internal_ceeb869d775b773bb58ff714c990372ce5a819486daabe63e3a026cc59e1fdd7 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ceeb869d775b773bb58ff714c990372ce5a819486daabe63e3a026cc59e1fdd7->enter($__internal_ceeb869d775b773bb58ff714c990372ce5a819486daabe63e3a026cc59e1fdd7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:TypeEnsAdmin.html.twig"));
 
         // line 1
-        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:admin:TypeEnsAdmin.html.twig", 1)->display($context);
-        // line 2
         echo "
-<div id=\"nav\" >
-\t<div id=\"enseignant\" class=\"ouvert\">
-\t\t<h3>Administrateur</h3>
-\t\t<ul>
-\t\t\t<li  ><a href=\"";
-        // line 7
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("form_profile_user");
-        echo "\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
-\t\t\t<li><a href=\"";
-        // line 8
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_Annee");
-        echo "\"><span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer Année</a></li></br>
-            <li><a href=\"";
-        // line 9
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_Type");
-        echo "\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer statut</a></li></br>
-            <li ><a href=\"";
-        // line 10
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_utilisateur");
-        echo "\"><span class=\"glyphicon glyphicon-cog\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Users</a></li>\t</br>\t\t
-            <li><a href=\"";
-        // line 11
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_filiere");
-        echo "\"><span class=\"glyphicon glyphicon-book\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer fili&egrave;r</a></li></br>
-            <li class=\"active\"><a  href=\"";
-        // line 12
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_typeens");
-        echo "\"><span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></span>&nbsp;  Type Enseignement</a></li></br>
-\t\t\t<li><a href=\"";
-        // line 13
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("annee_suivante");
-        echo "\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br>
-\t\t\t
-\t\t</ul>
-\t</div>
-\t
-</div>\t
+<html>
+";
+        // line 3
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->renderFragment($this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->controller("SRVDVServerBundle:Default:nombreInscription", array("id" => 41)));
+        echo "
+
 
 
 <div id=\"content\">
 \t</br>
 \t\t<div class=\"col-xs-2 col-md-4 col-lg-3 centreVerticalement\">\t  
             ";
-        // line 24
+        // line 10
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock(($context["f"] ?? $this->getContext($context, "f")), 'form_start', array("attr" => array("novalidate" => "novalidate")));
         echo "
 \t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t";
-        // line 26
+        // line 12
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "libelle", array()), 'label', array("label" => "Libelle : "));
         echo "
 \t\t\t\t\t";
-        // line 27
+        // line 13
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "libelle", array()), 'widget', array("attr" => array("class" => "form-control")));
         echo "
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t";
-        // line 30
+        // line 16
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "coef", array()), 'label', array("label" => "Coefficient: "));
         echo "
 \t\t\t\t\t";
-        // line 31
+        // line 17
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "coef", array()), 'widget', array("attr" => array("class" => "form-control")));
         echo "
 \t\t\t\t\t</div>
@@ -92,16 +59,16 @@ class __TwigTemplate_f233ba09f7332a44eef086310ef7a9efffb1ee5d0a4ea2e9cd98d30bff3
 \t\t\t\t\t
 \t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t";
-        // line 36
+        // line 22
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "save", array()), 'widget', array("attr" => array("class" => "btn btn-success")));
         echo "
 \t\t\t\t\t";
-        // line 37
+        // line 23
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->searchAndRenderBlock($this->getAttribute(($context["f"] ?? $this->getContext($context, "f")), "reset", array()), 'widget', array("attr" => array("class" => "btn btn-info")));
         echo "
 \t\t\t\t\t</div>
 \t\t\t";
-        // line 39
+        // line 25
         echo         $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock(($context["f"] ?? $this->getContext($context, "f")), 'form_end');
         echo "\t\t
 \t\t</div>
@@ -115,32 +82,32 @@ class __TwigTemplate_f233ba09f7332a44eef086310ef7a9efffb1ee5d0a4ea2e9cd98d30bff3
 \t\t\t\t   </thead>
 \t\t\t\t   <tbody>
 \t\t\t\t\t\t";
-        // line 50
+        // line 36
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["Typesens"] ?? $this->getContext($context, "Typesens")));
         foreach ($context['_seq'] as $context["_key"] => $context["u"]) {
-            // line 51
+            // line 37
             echo "\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>";
-            // line 52
+            // line 38
             echo twig_escape_filter($this->env, $this->getAttribute($context["u"], "id", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 53
+            // line 39
             echo twig_escape_filter($this->env, $this->getAttribute($context["u"], "libelle", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 54
+            // line 40
             echo twig_escape_filter($this->env, $this->getAttribute($context["u"], "coef", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t<td><button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='";
-            // line 57
+            // line 43
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("Modifier_TypeEnseignant", array("id" => $this->getAttribute($context["u"], "id", array()))), "html", null, true);
             echo "'\"><b ><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></b></button></td>
 \t\t\t\t\t\t\t\t<td><button type=\"button\" class=\"btn btn-warning\"  onclick=\"SupprimerUser(";
-            // line 58
+            // line 44
             echo twig_escape_filter($this->env, $this->getAttribute($context["u"], "id", array()), "html", null, true);
             echo ")\"><b><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></b></button></td>
 \t\t\t\t\t\t\t</tr>\t
@@ -149,7 +116,7 @@ class __TwigTemplate_f233ba09f7332a44eef086310ef7a9efffb1ee5d0a4ea2e9cd98d30bff3
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['u'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 61
+        // line 47
         echo "                   </tbody>
 \t\t\t\t</table> 
             </div>
@@ -176,10 +143,10 @@ function SupprimerUser(id){
 }
 </script>
 ";
-        // line 86
-        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:admin:TypeEnsAdmin.html.twig", 86)->display($context);
+        // line 72
+        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:admin:TypeEnsAdmin.html.twig", 72)->display($context);
         
-        $__internal_86d2a193f82602c647735daa1219cc3bf611fa512ca9bf540ff6bf9042c0426a->leave($__internal_86d2a193f82602c647735daa1219cc3bf611fa512ca9bf540ff6bf9042c0426a_prof);
+        $__internal_ceeb869d775b773bb58ff714c990372ce5a819486daabe63e3a026cc59e1fdd7->leave($__internal_ceeb869d775b773bb58ff714c990372ce5a819486daabe63e3a026cc59e1fdd7_prof);
 
     }
 
@@ -195,7 +162,7 @@ function SupprimerUser(id){
 
     public function getDebugInfo()
     {
-        return array (  180 => 86,  153 => 61,  144 => 58,  140 => 57,  134 => 54,  130 => 53,  126 => 52,  123 => 51,  119 => 50,  105 => 39,  100 => 37,  96 => 36,  88 => 31,  84 => 30,  78 => 27,  74 => 26,  69 => 24,  55 => 13,  51 => 12,  47 => 11,  43 => 10,  39 => 9,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
+        return array (  147 => 72,  120 => 47,  111 => 44,  107 => 43,  101 => 40,  97 => 39,  93 => 38,  90 => 37,  86 => 36,  72 => 25,  67 => 23,  63 => 22,  55 => 17,  51 => 16,  45 => 13,  41 => 12,  36 => 10,  26 => 3,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -208,24 +175,10 @@ function SupprimerUser(id){
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
+        return new Twig_Source("
+<html>
+{{ render (controller(\"SRVDVServerBundle:Default:nombreInscription\", { 'id': 41 })) }}
 
-<div id=\"nav\" >
-\t<div id=\"enseignant\" class=\"ouvert\">
-\t\t<h3>Administrateur</h3>
-\t\t<ul>
-\t\t\t<li  ><a href=\"{{path('form_profile_user')}}\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
-\t\t\t<li><a href=\"{{path('list_form_Annee')}}\"><span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer Année</a></li></br>
-            <li><a href=\"{{path('list_form_Type')}}\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer statut</a></li></br>
-            <li ><a href=\"{{path('list_form_utilisateur')}}\"><span class=\"glyphicon glyphicon-cog\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Users</a></li>\t</br>\t\t
-            <li><a href=\"{{path('list_form_filiere')}}\"><span class=\"glyphicon glyphicon-book\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer fili&egrave;r</a></li></br>
-            <li class=\"active\"><a  href=\"{{path('list_form_typeens')}}\"><span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></span>&nbsp;  Type Enseignement</a></li></br>
-\t\t\t<li><a href=\"{{path('annee_suivante')}}\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br>
-\t\t\t
-\t\t</ul>
-\t</div>
-\t
-</div>\t
 
 
 <div id=\"content\">

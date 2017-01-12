@@ -15,14 +15,14 @@ class __TwigTemplate_ee0953b441521b629d15e397cc38944e2a012ea7fed76330b743f89774c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a6650788fc03d3ffce65b7505fcdd360dfc0431b9c879588417c3cbc2b382083 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a6650788fc03d3ffce65b7505fcdd360dfc0431b9c879588417c3cbc2b382083->enter($__internal_a6650788fc03d3ffce65b7505fcdd360dfc0431b9c879588417c3cbc2b382083_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@SRVDVServer/admin/MenuAdmin.html.twig"));
+        $__internal_8bad1aabb4cc7ca9800181f37a9b64d103c741cc2c5a43f179b7a611cece52a8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8bad1aabb4cc7ca9800181f37a9b64d103c741cc2c5a43f179b7a611cece52a8->enter($__internal_8bad1aabb4cc7ca9800181f37a9b64d103c741cc2c5a43f179b7a611cece52a8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@SRVDVServer/admin/MenuAdmin.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
 <html lang=\"fr\">
     <head>
-        <title>SVEDI - Admin</title>
+        <title>SRV-Voeux</title>
         <link rel=stylesheet type=\"text/css\" href=\"";
         // line 5
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("assets/css/home.css"), "html", null, true);
@@ -50,6 +50,7 @@ class __TwigTemplate_ee0953b441521b629d15e397cc38944e2a012ea7fed76330b743f89774c
                 display: inline-block;
                 vertical-align: top;
                 float: none;
+              
             }
 
 
@@ -58,12 +59,21 @@ class __TwigTemplate_ee0953b441521b629d15e397cc38944e2a012ea7fed76330b743f89774c
     </head>
     <body>
 
-
-<nav class=\"navbar navbar-default\">
+";
+        // line 35
+        if (array_key_exists("etatConnect", $context)) {
+            // line 36
+            $context["etat"] = ($context["etatConnect"] ?? $this->getContext($context, "etatConnect"));
+        } else {
+            // line 38
+            $context["etat"] = "connect";
+        }
+        // line 40
+        echo "<nav class=\"navbar navbar-default\">
     <div class=\"container-fluid\">
         <div class=\"navbar-header\">
             <a  href=\"";
-        // line 38
+        // line 43
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("home");
         echo "\"> <img alt=\"serveur_voeux\" src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("assets/images/SVEDI-small.png"), "html", null, true);
@@ -72,45 +82,143 @@ class __TwigTemplate_ee0953b441521b629d15e397cc38944e2a012ea7fed76330b743f89774c
         &nbsp;
         <div class=\"container\" style=\"font-size:17px\">
             <ul class=\"nav navbar-nav\" >
-                <li ><a href=\"#\"><span class=\"glyphicon glyphicon-home\"></span>&nbsp;  Accueil</a></li>
-                <li ><a href=\"#\"> <span class=\"glyphicon glyphicon-list\"></span> &nbsp; Liste des utilisateurs</a></li>
-                <li ><a href=\"#\"><span class=\"glyphicon glyphicon-folder-close\"></span>&nbsp; Liste des filière</a></li>
+                <li  ";
+        // line 48
+        if ((($context["etat"] ?? $this->getContext($context, "etat")) == "Accueil")) {
+            echo " class=\"active\"   ";
+        }
+        echo "><a href=\"";
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("home");
+        echo "\"><span class=\"glyphicon glyphicon-home\"></span>&nbsp;  Accueil</a></li>
+                <li ";
+        // line 49
+        if ((($context["etat"] ?? $this->getContext($context, "etat")) == "users")) {
+            echo " class=\"active\"   ";
+        }
+        echo "><a href=\"";
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("home_ListeUsers");
+        echo "\"> <span class=\"glyphicon glyphicon-list\"></span> &nbsp; Liste des utilisateurs</a></li>
+                <li ";
+        // line 50
+        if ((($context["etat"] ?? $this->getContext($context, "etat")) == "Filieres")) {
+            echo " class=\"active\"   ";
+        }
+        echo "><a href=\"";
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("home_ListeFilieres");
+        echo "\"><span class=\"glyphicon glyphicon-folder-close\"></span>&nbsp; Liste des filière</a></li>
             </ul>
             <ul class=\"nav navbar-nav navbar-right\" >
-                <li class=\"active\"  ><a href=\"";
-        // line 48
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("form_profile_user");
-        echo "\"><span class=\"glyphicon glyphicon-user\"></span> 
-                        ";
-        // line 49
-        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN")) {
-            // line 50
-            echo "                             ";
+                
+                    
+                     ";
+        // line 55
+        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ENSEIG")) {
+            echo "  
+                       <li ";
+            // line 56
+            if ((($context["etat"] ?? $this->getContext($context, "etat")) == "connect")) {
+                echo " class=\"active\"   ";
+            }
+            echo " ><a  href=\" ";
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
+            echo "\" ><span class=\"glyphicon glyphicon-user\"></span>   ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "nom", array()), "html", null, true);
             echo " ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "prenom", array()), "html", null, true);
-            echo "
-                        ";
+            echo "  (ENS)  </a></li>
+                     ";
         }
-        // line 51
-        echo "</a></li>
-                <li><a href=\"";
-        // line 52
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
-        echo "\">
-                        ";
-        // line 53
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
-        echo "
-                        <span class=\"glyphicon glyphicon-log-out\"></span>
+        // line 58
+        echo "                                 
 
-                    </a></li>
+                    ";
+        // line 60
+        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN")) {
+            echo "  
+                       <li ";
+            // line 61
+            if ((($context["etat"] ?? $this->getContext($context, "etat")) == "connect")) {
+                echo " class=\"active\"   ";
+            }
+            echo " >
+                    <a  href=\"";
+            // line 62
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
+            echo "\" > <span class=\"glyphicon glyphicon-user\"></span>   
+                     ";
+            // line 63
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "nom", array()), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "prenom", array()), "html", null, true);
+            echo " (Admin) </a></li>
+                        
+                    ";
+        }
+        // line 66
+        echo "                                       
+                         
+                    ";
+        // line 68
+        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_RESP")) {
+            echo "  
+                       <li ";
+            // line 69
+            if ((($context["etat"] ?? $this->getContext($context, "etat")) == "connect")) {
+                echo " class=\"active\"   ";
+            }
+            echo " >
+                    <a  href=\" ";
+            // line 70
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_edit");
+            echo "\" >  <span class=\"glyphicon glyphicon-user\"></span>  
+                     ";
+            // line 71
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "nom", array()), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "prenom", array()), "html", null, true);
+            echo " (RESP)   </a></li>                  
+                          
+                    ";
+        }
+        // line 74
+        echo "                    
+                    
+                    ";
+        // line 76
+        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_FULLY")) {
+            echo "  
+                        <li><a href=\"";
+            // line 77
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
+            echo "\">
+                            ";
+            // line 78
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
+            echo "
+                        <span class=\"glyphicon glyphicon-log-out\"></span>
+                      ";
+        } else {
+            // line 81
+            echo "                      
+                      <li><a href=\"";
+            // line 82
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_login");
+            echo "\">
+                            ";
+            // line 83
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("layout.login", array(), "FOSUserBundle"), "html", null, true);
+            echo "
+                        <span class=\"glyphicon glyphicon-log-in\"></span>  
+                     ";
+        }
+        // line 86
+        echo "                    </a></li>
             </ul>
         </div>
     </div>
 </nav>";
         
-        $__internal_a6650788fc03d3ffce65b7505fcdd360dfc0431b9c879588417c3cbc2b382083->leave($__internal_a6650788fc03d3ffce65b7505fcdd360dfc0431b9c879588417c3cbc2b382083_prof);
+        $__internal_8bad1aabb4cc7ca9800181f37a9b64d103c741cc2c5a43f179b7a611cece52a8->leave($__internal_8bad1aabb4cc7ca9800181f37a9b64d103c741cc2c5a43f179b7a611cece52a8_prof);
 
     }
 
@@ -126,7 +234,7 @@ class __TwigTemplate_ee0953b441521b629d15e397cc38944e2a012ea7fed76330b743f89774c
 
     public function getDebugInfo()
     {
-        return array (  103 => 53,  99 => 52,  96 => 51,  88 => 50,  86 => 49,  82 => 48,  67 => 38,  32 => 6,  28 => 5,  22 => 1,);
+        return array (  215 => 86,  209 => 83,  205 => 82,  202 => 81,  196 => 78,  192 => 77,  188 => 76,  184 => 74,  176 => 71,  172 => 70,  166 => 69,  162 => 68,  158 => 66,  150 => 63,  146 => 62,  140 => 61,  136 => 60,  132 => 58,  119 => 56,  115 => 55,  103 => 50,  95 => 49,  87 => 48,  77 => 43,  72 => 40,  69 => 38,  66 => 36,  64 => 35,  32 => 6,  28 => 5,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -142,7 +250,7 @@ class __TwigTemplate_ee0953b441521b629d15e397cc38944e2a012ea7fed76330b743f89774c
         return new Twig_Source("<!DOCTYPE html>
 <html lang=\"fr\">
     <head>
-        <title>SVEDI - Admin</title>
+        <title>SRV-Voeux</title>
         <link rel=stylesheet type=\"text/css\" href=\"{{ asset('assets/css/home.css') }}\"/>
         <link rel=stylesheet type=\"text/css\" href=\"{{ asset('bootstrap/css/bootstrap.min.css') }}\"/>
         <script type=\"text/javascript\" src=\"http://localhost:8181/serveurdevoeux/web/assets/javascript/jquery-2.1.1.min.js\"></script>
@@ -164,6 +272,7 @@ class __TwigTemplate_ee0953b441521b629d15e397cc38944e2a012ea7fed76330b743f89774c
                 display: inline-block;
                 vertical-align: top;
                 float: none;
+              
             }
 
 
@@ -172,7 +281,11 @@ class __TwigTemplate_ee0953b441521b629d15e397cc38944e2a012ea7fed76330b743f89774c
     </head>
     <body>
 
-
+{% if etatConnect is defined %}
+{% set etat= etatConnect %}
+{% else %}
+{% set etat= 'connect' %}
+{% endif %}
 <nav class=\"navbar navbar-default\">
     <div class=\"container-fluid\">
         <div class=\"navbar-header\">
@@ -181,19 +294,44 @@ class __TwigTemplate_ee0953b441521b629d15e397cc38944e2a012ea7fed76330b743f89774c
         &nbsp;
         <div class=\"container\" style=\"font-size:17px\">
             <ul class=\"nav navbar-nav\" >
-                <li ><a href=\"#\"><span class=\"glyphicon glyphicon-home\"></span>&nbsp;  Accueil</a></li>
-                <li ><a href=\"#\"> <span class=\"glyphicon glyphicon-list\"></span> &nbsp; Liste des utilisateurs</a></li>
-                <li ><a href=\"#\"><span class=\"glyphicon glyphicon-folder-close\"></span>&nbsp; Liste des filière</a></li>
+                <li  {% if etat == 'Accueil' %} class=\"active\"   {% endif %}><a href=\"{{ path('home')}}\"><span class=\"glyphicon glyphicon-home\"></span>&nbsp;  Accueil</a></li>
+                <li {% if etat == 'users' %} class=\"active\"   {% endif %}><a href=\"{{ path('home_ListeUsers')}}\"> <span class=\"glyphicon glyphicon-list\"></span> &nbsp; Liste des utilisateurs</a></li>
+                <li {% if etat == 'Filieres' %} class=\"active\"   {% endif %}><a href=\"{{ path('home_ListeFilieres')}}\"><span class=\"glyphicon glyphicon-folder-close\"></span>&nbsp; Liste des filière</a></li>
             </ul>
             <ul class=\"nav navbar-nav navbar-right\" >
-                <li class=\"active\"  ><a href=\"{{path('form_profile_user')}}\"><span class=\"glyphicon glyphicon-user\"></span> 
-                        {% if is_granted(\"ROLE_ADMIN\") %}
-                             {{ app.user.nom }} {{ app.user.prenom }}
-                        {% endif %}</a></li>
-                <li><a href=\"{{ path('fos_user_security_logout') }}\">
-                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                        <span class=\"glyphicon glyphicon-log-out\"></span>
+                
+                    
+                     {% if is_granted(\"ROLE_ENSEIG\") %}  
+                       <li {% if etat == 'connect' %} class=\"active\"   {% endif %} ><a  href=\" {{path('fos_user_profile_edit')}}\" ><span class=\"glyphicon glyphicon-user\"></span>   {{ app.user.nom }} {{ app.user.prenom }}  (ENS)  </a></li>
+                     {% endif %}
+                                 
 
+                    {% if is_granted(\"ROLE_ADMIN\") %}  
+                       <li {% if etat == 'connect' %} class=\"active\"   {% endif %} >
+                    <a  href=\"{{path('fos_user_profile_edit')}}\" > <span class=\"glyphicon glyphicon-user\"></span>   
+                     {{ app.user.nom }} {{ app.user.prenom }} (Admin) </a></li>
+                        
+                    {% endif %}
+                                       
+                         
+                    {% if is_granted(\"ROLE_RESP\") %}  
+                       <li {% if etat == 'connect' %} class=\"active\"   {% endif %} >
+                    <a  href=\" {{path('fos_user_profile_edit')}}\" >  <span class=\"glyphicon glyphicon-user\"></span>  
+                     {{ app.user.nom }} {{ app.user.prenom }} (RESP)   </a></li>                  
+                          
+                    {% endif %}
+                    
+                    
+                    {% if is_granted(\"IS_AUTHENTICATED_FULLY\") %}  
+                        <li><a href=\"{{ path('fos_user_security_logout') }}\">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        <span class=\"glyphicon glyphicon-log-out\"></span>
+                      {% else %}
+                      
+                      <li><a href=\"{{ path('fos_user_security_login') }}\">
+                            {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+                        <span class=\"glyphicon glyphicon-log-in\"></span>  
+                     {% endif %}
                     </a></li>
             </ul>
         </div>

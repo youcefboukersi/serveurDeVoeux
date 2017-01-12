@@ -1,10 +1,12 @@
-{% include "SRVDVServerBundle:admin:MenuAdmin.html.twig" %}
+<html>
+{{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 40 })) }}
 
 <div id="nav" >
 	<div id="enseignant" class="ouvert">
 		<h3>Administrateur</h3>
 		<ul>
-			<li  ><a href="{{path('form_profile_user')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  &nbsp; Mon profil</a></li></br>
+			 <li><a href="{{path('fos_user_profile_edit')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  &nbsp; Mon profil</a></li></br>
+            <li  ><a href="{{path('fos_user_change_password')}}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>  &nbsp; Mot de passe</a></li></br>
 			<li  ><a href="{{path('list_form_Annee')}}"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;  G&eacute;rer Année</a></li></br>
             <li><a href="{{path('list_form_Type')}}"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;  G&eacute;rer statut</a></li></br>
             <li ><a href="{{path('list_form_utilisateur')}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> &nbsp; G&eacute;rer Users</a></li>	</br>		
@@ -25,33 +27,35 @@
 		<div class=" centreVerticalement">
 
 		<div class="table-responsive">
-                <table id="example" class="display" cellspacing="0" width="100%" >
+                <table id="example" class="display" cellspacing="0" width="98%" >
                 	<thead>
-					<tr><th>#</th><th>Niveau</th><th>Filiere</th><th>nom</th><th><th>Annee Filiere</th>Coefficient</th><th>Basculer</th></tr>
+					<tr><th>#Filiere</th><th>Matiere</th><th>Nombre de groupe</th><th>heures/groupe</th><th>Type Enseignant (Coef)</th><th>Semestre</th></tr>
 				   </thead>
 				   <tbody>
-						{% for f in filiere_annee_Suivante %}
-							<tr>
-								<td>{{ f.id}}</td>
-								<td>{{ f.niveau }}</td>
-								<td>{{ f.nom }}</td>
-								<td>
-								{{ f.User.nom }} {{ f.User.prenom }}
-								</td>
+						{% for r in Matieres %}				
+
+							{% if idAnnee  == r.filiere.anneeFiliere.id  %}
+							
+								<tr >
+									<td>{{ r.filiere.niveau }}&nbsp;{{ r.filiere.nom }}&nbsp;{{ r.filiere.anneeFiliere}}&nbsp;&nbsp;({{ r.filiere.User.nom}}&nbsp;{{ r.filiere.User.prenom}})
+					 					                    
+									</td>
+									<td>{{ r. nom}}</td>
+									<td>{{ r.NombreGroupe}}</td>
+									<td>{{ r.nbrHeurGroupe}}</td>
+									<td>{{ r.TypeEnseignant.libelle}} &nbsp;({{ r.TypeEnseignant.coef}})</td>
+									<td>{{ r.semestre}}</td>								
 								
-								
-								<td>
-           							{{ f.anneeFiliere }}
-								</td>
-								
-							</tr>	
+									
+								</tr>
+							{% endif %}	
 						{% endfor %}
                    </tbody>
 				</table> 
-            </div>
-
-			
+            
 		</div>
+
+
 	
 </div>
 
@@ -60,17 +64,40 @@
 
 <script>
 $(document).ready(function() {
-    $('#example').DataTable();
+    var table = $('#example').DataTable({
+        "columnDefs": [
+            { "visible": false, "targets": 0 }
+        ],
+        "order": [[ 0, 'asc' ]],
+        "displayLength": 25,
+        "drawCallback": function ( settings ) {
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;
+ 
+            api.column(0, {page:'current'} ).data().each( function ( group, i ) {
+                if ( last !== group ) {
+                    $(rows).eq( i ).before(
+                        '<tr class="group"><td colspan="6" align="center" style="background-color:#81F7BE">'+group+'</td></tr>'
+                    );
+ 
+                    last = group;
+                }
+            } );
+        }
+    } );
+ 
+    // Order by the grouping
+    $('#example tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+            table.order( [ 0, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ 0, 'asc' ] ).draw();
+        }
+    } );
 } );
 
-function SupprimerUser(id){
-
-	var rep=confirm('Clickez sur "OK" si vous voulez vraiment cet utilisateur' ) ;
-
-	if(rep){
-        window.location.href ='suppAnnee/'+id;
-	}
-
-}
 </script>
 {% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}

@@ -8,7 +8,7 @@ class __TwigTemplate_e2358764f4b53281b2d669d4773bf8362320a9fadcefae6abf8803f7f9c
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "SRVDVServerBundle:Resetting:checkEmail.html.twig", 1);
+        $this->parent = $this->loadTemplate("FOSUserBundle:Connexion:index.html.twig", "SRVDVServerBundle:Resetting:checkEmail.html.twig", 1);
         $this->blocks = array(
             'fos_user_content' => array($this, 'block_fos_user_content'),
         );
@@ -16,25 +16,25 @@ class __TwigTemplate_e2358764f4b53281b2d669d4773bf8362320a9fadcefae6abf8803f7f9c
 
     protected function doGetParent(array $context)
     {
-        return "FOSUserBundle::layout.html.twig";
+        return "FOSUserBundle:Connexion:index.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_df8e4632aa882d239796f02c33c590b986918c715ff6e71ef597415f59b2e09f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_df8e4632aa882d239796f02c33c590b986918c715ff6e71ef597415f59b2e09f->enter($__internal_df8e4632aa882d239796f02c33c590b986918c715ff6e71ef597415f59b2e09f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:Resetting:checkEmail.html.twig"));
+        $__internal_292358c56c8b6d5e41e057ce379c94d59c147a7e778e43221e5150c0dfb2f911 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_292358c56c8b6d5e41e057ce379c94d59c147a7e778e43221e5150c0dfb2f911->enter($__internal_292358c56c8b6d5e41e057ce379c94d59c147a7e778e43221e5150c0dfb2f911_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:Resetting:checkEmail.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_df8e4632aa882d239796f02c33c590b986918c715ff6e71ef597415f59b2e09f->leave($__internal_df8e4632aa882d239796f02c33c590b986918c715ff6e71ef597415f59b2e09f_prof);
+        $__internal_292358c56c8b6d5e41e057ce379c94d59c147a7e778e43221e5150c0dfb2f911->leave($__internal_292358c56c8b6d5e41e057ce379c94d59c147a7e778e43221e5150c0dfb2f911_prof);
 
     }
 
     // line 5
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_1c60df59fd3929dafc1dbaf6f5484bd6df529c3dbc752f8611a74c82b054bb01 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_1c60df59fd3929dafc1dbaf6f5484bd6df529c3dbc752f8611a74c82b054bb01->enter($__internal_1c60df59fd3929dafc1dbaf6f5484bd6df529c3dbc752f8611a74c82b054bb01_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_a742073daadaac2b1ec4190543bfbaeeb82c87c60746ca3f6bf13a2fe5f1479c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a742073daadaac2b1ec4190543bfbaeeb82c87c60746ca3f6bf13a2fe5f1479c->enter($__internal_a742073daadaac2b1ec4190543bfbaeeb82c87c60746ca3f6bf13a2fe5f1479c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 6
         echo "<p>
@@ -45,7 +45,7 @@ class __TwigTemplate_e2358764f4b53281b2d669d4773bf8362320a9fadcefae6abf8803f7f9c
 </p>
 ";
         
-        $__internal_1c60df59fd3929dafc1dbaf6f5484bd6df529c3dbc752f8611a74c82b054bb01->leave($__internal_1c60df59fd3929dafc1dbaf6f5484bd6df529c3dbc752f8611a74c82b054bb01_prof);
+        $__internal_a742073daadaac2b1ec4190543bfbaeeb82c87c60746ca3f6bf13a2fe5f1479c->leave($__internal_a742073daadaac2b1ec4190543bfbaeeb82c87c60746ca3f6bf13a2fe5f1479c_prof);
 
     }
 
@@ -74,7 +74,7 @@ class __TwigTemplate_e2358764f4b53281b2d669d4773bf8362320a9fadcefae6abf8803f7f9c
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% extends \"FOSUserBundle::layout.html.twig\" %}
+        return new Twig_Source("{% extends \"FOSUserBundle:Connexion:index.html.twig\" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 

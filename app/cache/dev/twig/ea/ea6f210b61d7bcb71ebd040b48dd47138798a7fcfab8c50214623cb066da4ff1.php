@@ -16,8 +16,8 @@ class __TwigTemplate_743a655d6e7bbcb914d122c4e5feda9e6f2c99c78138bfce3324e4bfda6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e4dc56a9836f6f0fc57c17bd28a2ef519ca4865820ee9aee09844b06c6c2dc16 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e4dc56a9836f6f0fc57c17bd28a2ef519ca4865820ee9aee09844b06c6c2dc16->enter($__internal_e4dc56a9836f6f0fc57c17bd28a2ef519ca4865820ee9aee09844b06c6c2dc16_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Connexion:index.html.twig"));
+        $__internal_b14bcd515e99bc3d8eafbaf729d56eff8e8134c6d2db0907c43d230bac63dd3a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b14bcd515e99bc3d8eafbaf729d56eff8e8134c6d2db0907c43d230bac63dd3a->enter($__internal_b14bcd515e99bc3d8eafbaf729d56eff8e8134c6d2db0907c43d230bac63dd3a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle:Connexion:index.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -28,38 +28,43 @@ class __TwigTemplate_743a655d6e7bbcb914d122c4e5feda9e6f2c99c78138bfce3324e4bfda6
         // line 5
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("assets/css/home.css"), "html", null, true);
         echo "\" />
-        <script type=\"text/javascript\" src=\"";
+              <link rel=stylesheet type=\"text/css\" href=\"";
         // line 6
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/css/bootstrap.min.css"), "html", null, true);
+        echo "\"/>
+        <script type=\"text/javascript\" src=\"";
+        // line 7
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("assets/javascript/jquery-2.1.1.min.js"), "html", null, true);
         echo "\"></script>
         <script type=\"text/javascript\" src=\"";
-        // line 7
+        // line 8
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("assets/javascript/connexion.js"), "html", null, true);
         echo "\"></script>
     </head>
         
     <body>       
         <div id=\"svedi\">
-            <img src=\"";
-        // line 12
+            <a href=\"";
+        // line 13
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("home");
+        echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("assets/images/svediMoyen.png"), "html", null, true);
-        echo "\"/>
+        echo "\"/></a>
         </div>
             
         <div id=\"connexion\">
             <img src=\"";
-        // line 16
+        // line 17
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("assets/images/connexionTop.png"), "html", null, true);
         echo "\"/>
             <div>
                 <div align=\"center\">
                     
-                    <div>
                         ";
         // line 21
         $this->displayBlock('fos_user_content', $context, $blocks);
         // line 23
-        echo "                    </div>
+        echo "                   
                     
                         
                         
@@ -77,20 +82,20 @@ class __TwigTemplate_743a655d6e7bbcb914d122c4e5feda9e6f2c99c78138bfce3324e4bfda6
     </body>
 </html>";
         
-        $__internal_e4dc56a9836f6f0fc57c17bd28a2ef519ca4865820ee9aee09844b06c6c2dc16->leave($__internal_e4dc56a9836f6f0fc57c17bd28a2ef519ca4865820ee9aee09844b06c6c2dc16_prof);
+        $__internal_b14bcd515e99bc3d8eafbaf729d56eff8e8134c6d2db0907c43d230bac63dd3a->leave($__internal_b14bcd515e99bc3d8eafbaf729d56eff8e8134c6d2db0907c43d230bac63dd3a_prof);
 
     }
 
     // line 21
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_fd5af4b06912a460b8f5fa64848361f25a9c749b22c4e81b769dffcd1e9d7ecc = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_fd5af4b06912a460b8f5fa64848361f25a9c749b22c4e81b769dffcd1e9d7ecc->enter($__internal_fd5af4b06912a460b8f5fa64848361f25a9c749b22c4e81b769dffcd1e9d7ecc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_5b7dd21b1021bf988db3bb89101ed56e88a64b8e0964b3de424ed4ed1f62d1b0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_5b7dd21b1021bf988db3bb89101ed56e88a64b8e0964b3de424ed4ed1f62d1b0->enter($__internal_5b7dd21b1021bf988db3bb89101ed56e88a64b8e0964b3de424ed4ed1f62d1b0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 22
         echo "                        ";
         
-        $__internal_fd5af4b06912a460b8f5fa64848361f25a9c749b22c4e81b769dffcd1e9d7ecc->leave($__internal_fd5af4b06912a460b8f5fa64848361f25a9c749b22c4e81b769dffcd1e9d7ecc_prof);
+        $__internal_5b7dd21b1021bf988db3bb89101ed56e88a64b8e0964b3de424ed4ed1f62d1b0->leave($__internal_5b7dd21b1021bf988db3bb89101ed56e88a64b8e0964b3de424ed4ed1f62d1b0_prof);
 
     }
 
@@ -106,7 +111,7 @@ class __TwigTemplate_743a655d6e7bbcb914d122c4e5feda9e6f2c99c78138bfce3324e4bfda6
 
     public function getDebugInfo()
     {
-        return array (  91 => 22,  85 => 21,  74 => 33,  62 => 23,  60 => 21,  52 => 16,  45 => 12,  37 => 7,  33 => 6,  29 => 5,  23 => 1,);
+        return array (  96 => 22,  90 => 21,  79 => 33,  67 => 23,  65 => 21,  58 => 17,  49 => 13,  41 => 8,  37 => 7,  33 => 6,  29 => 5,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -124,13 +129,14 @@ class __TwigTemplate_743a655d6e7bbcb914d122c4e5feda9e6f2c99c78138bfce3324e4bfda6
     <head>
         <title>SVEDI</title>
         <link rel=stylesheet type=\"text/css\" href=\"{{ asset('assets/css/home.css') }}\" />
+              <link rel=stylesheet type=\"text/css\" href=\"{{ asset('bootstrap/css/bootstrap.min.css') }}\"/>
         <script type=\"text/javascript\" src=\"{{ asset('assets/javascript/jquery-2.1.1.min.js')}}\"></script>
         <script type=\"text/javascript\" src=\"{{ asset('assets/javascript/connexion.js')}}\"></script>
     </head>
         
     <body>       
         <div id=\"svedi\">
-            <img src=\"{{ asset('assets/images/svediMoyen.png')}}\"/>
+            <a href=\"{{ path('home')}}\"><img src=\"{{ asset('assets/images/svediMoyen.png')}}\"/></a>
         </div>
             
         <div id=\"connexion\">
@@ -138,10 +144,9 @@ class __TwigTemplate_743a655d6e7bbcb914d122c4e5feda9e6f2c99c78138bfce3324e4bfda6
             <div>
                 <div align=\"center\">
                     
-                    <div>
                         {% block fos_user_content %}
                         {% endblock fos_user_content %}
-                    </div>
+                   
                     
                         
                         

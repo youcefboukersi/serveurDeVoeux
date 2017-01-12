@@ -81,17 +81,54 @@ class ProfileController extends Controller
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('list_form_utilisateur');
+
+                  $roles=$user->getRoles();
+                                 
+                              
+                              if($roles[0]=="ROLE_ADMIN"){
+                                   $url = $this->generateUrl('form_profile_user' );
+                              }
+                              if($roles[0]=="ROLE_RESP"){
+                                   $url = $this->generateUrl('form_profile_user_resp' );
+                              }
+                              if($roles[0]=="ROLE_ENSEIG"){
+                                   $url = $this->generateUrl('form_profile_user_ens' );
+                              }
+
                 $response = new RedirectResponse($url);
             }
 
-           // $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+            $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
             return $response;
         }
 
-        return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-            'form' => $form->createView()
-        ));
+           $roles=$user->getRoles();
+                               
+                              
+                              if($roles[0]=="ROLE_ADMIN"){
+                                   return $this->render('SRVDVServerBundle:admin:ProfileAdmin.html.twig', array(
+                                   'form' => $form->createView()
+                                    
+                                    ) );
+                              }
+                              if($roles[0]=="ROLE_RESP"){
+                                   return $this->render('SRVDVServerBundle:responsable:ProfileResponsable.html.twig', array(
+                                   'form' => $form->createView()
+                                    
+                                    ) );
+                              }
+                              if($roles[0]=="ROLE_ENSEIG"){
+                                return $this->render('SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig', array(
+                                 'form' => $form->createView()
+                                  
+                                  ) );
+                              }
+
+ 
+          
+        
+
+        
     }
 }

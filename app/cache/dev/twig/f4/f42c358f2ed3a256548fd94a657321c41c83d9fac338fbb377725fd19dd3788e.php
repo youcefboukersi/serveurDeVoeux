@@ -8,7 +8,7 @@ class __TwigTemplate_97e9e28557809a18bdbb154ea1cd32f7292260a94c35252d1bfa2349917
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("FOSUserBundle::layout.html.twig", "SRVDVServerBundle:Resetting:passwordAlreadyRequested.html.twig", 1);
+        $this->parent = $this->loadTemplate("FOSUserBundle:Connexion:index.html.twig", "SRVDVServerBundle:Resetting:passwordAlreadyRequested.html.twig", 1);
         $this->blocks = array(
             'fos_user_content' => array($this, 'block_fos_user_content'),
         );
@@ -16,25 +16,25 @@ class __TwigTemplate_97e9e28557809a18bdbb154ea1cd32f7292260a94c35252d1bfa2349917
 
     protected function doGetParent(array $context)
     {
-        return "FOSUserBundle::layout.html.twig";
+        return "FOSUserBundle:Connexion:index.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_cbb8b5986b61c3613a88a96db655f2721f2852ff474dcbfd6d9868468a7e4503 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_cbb8b5986b61c3613a88a96db655f2721f2852ff474dcbfd6d9868468a7e4503->enter($__internal_cbb8b5986b61c3613a88a96db655f2721f2852ff474dcbfd6d9868468a7e4503_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:Resetting:passwordAlreadyRequested.html.twig"));
+        $__internal_66197f216feaa278a983e2873f83b3d78f7f025d321b0fc1a054e9505903c17f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_66197f216feaa278a983e2873f83b3d78f7f025d321b0fc1a054e9505903c17f->enter($__internal_66197f216feaa278a983e2873f83b3d78f7f025d321b0fc1a054e9505903c17f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:Resetting:passwordAlreadyRequested.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_cbb8b5986b61c3613a88a96db655f2721f2852ff474dcbfd6d9868468a7e4503->leave($__internal_cbb8b5986b61c3613a88a96db655f2721f2852ff474dcbfd6d9868468a7e4503_prof);
+        $__internal_66197f216feaa278a983e2873f83b3d78f7f025d321b0fc1a054e9505903c17f->leave($__internal_66197f216feaa278a983e2873f83b3d78f7f025d321b0fc1a054e9505903c17f_prof);
 
     }
 
     // line 5
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_9fb80bbb9c1cbe13fa0a860229f3710334609b1fa910422f12f22d228e000d8c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_9fb80bbb9c1cbe13fa0a860229f3710334609b1fa910422f12f22d228e000d8c->enter($__internal_9fb80bbb9c1cbe13fa0a860229f3710334609b1fa910422f12f22d228e000d8c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_e6984c7ebca3d3e55c85ecb8b4a4a7a894b23fee373c385e356409e408800d68 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e6984c7ebca3d3e55c85ecb8b4a4a7a894b23fee373c385e356409e408800d68->enter($__internal_e6984c7ebca3d3e55c85ecb8b4a4a7a894b23fee373c385e356409e408800d68_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 6
         echo "<p>";
@@ -42,7 +42,7 @@ class __TwigTemplate_97e9e28557809a18bdbb154ea1cd32f7292260a94c35252d1bfa2349917
         echo "</p>
 ";
         
-        $__internal_9fb80bbb9c1cbe13fa0a860229f3710334609b1fa910422f12f22d228e000d8c->leave($__internal_9fb80bbb9c1cbe13fa0a860229f3710334609b1fa910422f12f22d228e000d8c_prof);
+        $__internal_e6984c7ebca3d3e55c85ecb8b4a4a7a894b23fee373c385e356409e408800d68->leave($__internal_e6984c7ebca3d3e55c85ecb8b4a4a7a894b23fee373c385e356409e408800d68_prof);
 
     }
 
@@ -71,7 +71,7 @@ class __TwigTemplate_97e9e28557809a18bdbb154ea1cd32f7292260a94c35252d1bfa2349917
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% extends \"FOSUserBundle::layout.html.twig\" %}
+        return new Twig_Source("{% extends \"FOSUserBundle:Connexion:index.html.twig\" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 

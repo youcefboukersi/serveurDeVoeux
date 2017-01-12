@@ -75,7 +75,7 @@ fos_user:
         form:
             type: srvdv_user_registration
         confirmation:
-            enabled:    false
+            enabled:    true
     profile:
         form:
             type: srvdv_user_profile            

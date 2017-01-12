@@ -16,8 +16,8 @@ class __TwigTemplate_6d790a1a355609c1caa679d0b2af9dcdd3f4fc867dbcf9abcbd606d46aa
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_93540bebab837a988dbe6cfade8f8667b9ed75f897b4822af3375b88720c1bba = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_93540bebab837a988dbe6cfade8f8667b9ed75f897b4822af3375b88720c1bba->enter($__internal_93540bebab837a988dbe6cfade8f8667b9ed75f897b4822af3375b88720c1bba_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@SRVDVServer/Connexion/index.html.twig"));
+        $__internal_223053bde9f17ca1abc37789b7334c8e5e262c2aeb9aa74db051422dcf19c861 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_223053bde9f17ca1abc37789b7334c8e5e262c2aeb9aa74db051422dcf19c861->enter($__internal_223053bde9f17ca1abc37789b7334c8e5e262c2aeb9aa74db051422dcf19c861_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@SRVDVServer/Connexion/index.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -40,10 +40,12 @@ class __TwigTemplate_6d790a1a355609c1caa679d0b2af9dcdd3f4fc867dbcf9abcbd606d46aa
         
     <body>       
         <div id=\"svedi\">
-            <img src=\"";
+            <a href=\"";
         // line 12
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("home");
+        echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("assets/images/svediMoyen.png"), "html", null, true);
-        echo "\"/>
+        echo "\"/></a>
         </div>
             
         <div id=\"connexion\">
@@ -77,20 +79,20 @@ class __TwigTemplate_6d790a1a355609c1caa679d0b2af9dcdd3f4fc867dbcf9abcbd606d46aa
     </body>
 </html>";
         
-        $__internal_93540bebab837a988dbe6cfade8f8667b9ed75f897b4822af3375b88720c1bba->leave($__internal_93540bebab837a988dbe6cfade8f8667b9ed75f897b4822af3375b88720c1bba_prof);
+        $__internal_223053bde9f17ca1abc37789b7334c8e5e262c2aeb9aa74db051422dcf19c861->leave($__internal_223053bde9f17ca1abc37789b7334c8e5e262c2aeb9aa74db051422dcf19c861_prof);
 
     }
 
     // line 21
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_628bf738886ae1108bab19b7ce1287ca8ef91899fd396b006b6493d316466b6b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_628bf738886ae1108bab19b7ce1287ca8ef91899fd396b006b6493d316466b6b->enter($__internal_628bf738886ae1108bab19b7ce1287ca8ef91899fd396b006b6493d316466b6b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_cc7fdac9776c7befc116d297036e1a5acae7262a6d876de88a9a2f472762b4c4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_cc7fdac9776c7befc116d297036e1a5acae7262a6d876de88a9a2f472762b4c4->enter($__internal_cc7fdac9776c7befc116d297036e1a5acae7262a6d876de88a9a2f472762b4c4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 22
         echo "                        ";
         
-        $__internal_628bf738886ae1108bab19b7ce1287ca8ef91899fd396b006b6493d316466b6b->leave($__internal_628bf738886ae1108bab19b7ce1287ca8ef91899fd396b006b6493d316466b6b_prof);
+        $__internal_cc7fdac9776c7befc116d297036e1a5acae7262a6d876de88a9a2f472762b4c4->leave($__internal_cc7fdac9776c7befc116d297036e1a5acae7262a6d876de88a9a2f472762b4c4_prof);
 
     }
 
@@ -106,7 +108,7 @@ class __TwigTemplate_6d790a1a355609c1caa679d0b2af9dcdd3f4fc867dbcf9abcbd606d46aa
 
     public function getDebugInfo()
     {
-        return array (  91 => 22,  85 => 21,  74 => 33,  62 => 23,  60 => 21,  52 => 16,  45 => 12,  37 => 7,  33 => 6,  29 => 5,  23 => 1,);
+        return array (  93 => 22,  87 => 21,  76 => 33,  64 => 23,  62 => 21,  54 => 16,  45 => 12,  37 => 7,  33 => 6,  29 => 5,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -130,7 +132,7 @@ class __TwigTemplate_6d790a1a355609c1caa679d0b2af9dcdd3f4fc867dbcf9abcbd606d46aa
         
     <body>       
         <div id=\"svedi\">
-            <img src=\"{{ asset('assets/images/svediMoyen.png')}}\"/>
+            <a href=\"{{ path('home')}}\"><img src=\"{{ asset('assets/images/svediMoyen.png')}}\"/></a>
         </div>
             
         <div id=\"connexion\">

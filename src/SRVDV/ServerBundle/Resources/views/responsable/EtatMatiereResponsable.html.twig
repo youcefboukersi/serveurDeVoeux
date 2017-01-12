@@ -1,0 +1,123 @@
+<html>
+{{ render (controller("SRVDVServerBundle:Default:nombreInscription" , { 'id': 30 })) }}
+
+
+
+<div id="content">
+	
+ </br>
+        
+	{% set tempArray = {} %}
+    {% for item in Reserves %}
+
+        {% if tempArray['_'~item.Matiere.id] is defined %}
+            {% set tempArray = tempArray|merge({('_'~item.Matiere.id):(tempArray['_'~item.Matiere.id]+item.nbHeur)}) %}
+        {% else %}
+            {% set tempArray = tempArray|merge({('_'~item.Matiere.id):(item.nbHeur)}) %}
+        {% endif %}
+
+            
+    {% endfor %}
+
+
+			<div class="table-responsive">
+                <table id="example" class="display" cellspacing="0" width="99%" >
+                	<thead>
+                		
+					<tr><th>#Filiere</th><th>Matiere</th><th>Type Enseignant (Coef)</th><th>Res</th><th>Total</th><th>Nombre de groupe</th><th>heures/groupe</th><th>Semestre</th></tr>
+				   </thead>
+
+				   <tbody>
+						{% for r in matieres %}				
+
+							{% if idAnnee  == r.filiere.anneeFiliere.id and r.filiere.User.id == app.user.id  %}
+
+								{% if tempArray['_'~r.id] is not defined %}
+ 							{% set tempArray = tempArray|merge({('_'~r.id):0}) %}
+ 							{% endif %}
+
+								{% if tempArray['_'~r.id] >  (r.nbrHeurGroupe * r.NombreGroupe )%}
+									{% set color21='#FE2E2E' %}						
+								{% endif %}
+								{% if tempArray['_'~r.id] ==  (r.nbrHeurGroupe * r.NombreGroupe ) %}
+									{% set color21='#58FA58' %}						
+								{% endif %}
+
+								{% if tempArray['_'~r.id] <  (r.nbrHeurGroupe * r.NombreGroupe ) %}
+									{% set color21='#F3F781' %}						
+								{% endif %}
+                                 
+							
+								<tr style="background-color:{{color21}}">
+									<td>{{ r.filiere.niveau }}&nbsp;{{ r.filiere.nom }}&nbsp;{{ r.filiere.anneeFiliere}}&nbsp;&nbsp;({{ r.filiere.User.nom}}&nbsp;{{ r.filiere.User.prenom}})
+					 				
+					                      
+					                          
+					                   
+
+					                   
+                    
+									</td>
+									<td> <button  type="button" class="btn btn-danger" onclick="window.location.href ='{{path('list_form_inscription_matieres_etat',{'id':r.id}) }}'"><b ><span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp; Réserver</b></button>&nbsp;  &nbsp; {{ r. nom}}  </td>
+									<td>{{ r.TypeEnseignant.libelle}} &nbsp;({{ r.TypeEnseignant.coef}})</td>
+										<td>{{ tempArray['_'~r.id]}}</td>
+									<td>{{ r.nbrHeurGroupe * r.NombreGroupe  }}</td>
+									<td>{{ r.NombreGroupe}}</td>
+									<td>{{ r.nbrHeurGroupe}}</td>									
+									<td>{{ r.semestre}}</td>								
+								
+									
+								</tr>
+							{% endif %}	
+						{% endfor %}
+                   </tbody>
+				</table> 
+            </div>
+</div>
+	
+
+
+
+
+
+<script type="text/javascript" charset="utf-8" >
+
+$(document).ready(function() {
+    var table = $('#example').DataTable({
+        "columnDefs": [
+            { "visible": false, "targets": 0 }
+        ],
+        "order": [[ 0, 'asc' ]],
+        "displayLength": 25,
+        "drawCallback": function ( settings ) {
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;
+ 
+            api.column(0, {page:'current'} ).data().each( function ( group, i ) {
+                if ( last !== group ) {
+                    $(rows).eq( i ).before(
+                        '<tr class="group"><td colspan="6" align="center" >'+group+'</td></tr>'
+                    );
+ 
+                    last = group;
+                }
+            } );
+        }
+    } );
+ 
+    // Order by the grouping
+    $('#example tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+            table.order( [ 0, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ 0, 'asc' ] ).draw();
+        }
+    } );
+} );
+
+</script>
+
+{% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}

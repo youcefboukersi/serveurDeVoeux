@@ -1,14 +1,17 @@
 <?php
 
 {%- block form_widget_simple -%}
+<div class="form-group">
     {%- set type = type|default('text') -%}
     <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} class="form-control" />
+</div>    
 {%- endblock form_widget_simple -%}
 
 {%- block choice_widget_collapsed -%}
     {%- if required and placeholder is none and not placeholder_in_choices and not multiple and (attr.size is not defined or attr.size <= 1) -%}
         {% set required = false %}
     {%- endif -%}
+    <div class="form-group">
     <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %} class="form-control">
         {%- if placeholder is not none -%}
             <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? (translation_domain is same as(false) ? placeholder : placeholder|trans({}, translation_domain)) }}</option>
@@ -23,4 +26,5 @@
         {%- set options = choices -%}
         {{- block('choice_widget_options') -}}
     </select>
+    </div>    
 {%- endblock choice_widget_collapsed -%}

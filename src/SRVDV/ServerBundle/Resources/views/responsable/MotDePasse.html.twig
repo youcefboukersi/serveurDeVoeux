@@ -1,0 +1,30 @@
+<html>
+{{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 33 })) }}
+
+
+
+<div >
+    </br>
+        
+
+
+            {% if motDePasse is defined %}
+             <P style="color:green;" >Mot de passe modifier avec success !</P>
+
+        
+            {% else %}
+                
+                {% block fos_user_content %}
+                 {% include "FOSUserBundle:ChangePassword:changePassword_content.html.twig" %}
+                 {% endblock fos_user_content %}
+
+              {% endif %}
+
+    </div>
+
+
+    
+</div>
+
+
+{% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}

@@ -1,10 +1,16 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
+<div class="container">
+   <fieldset class="well the-fieldset">
+            <legend > Modifier Profile:</legend>
 {% form_theme form ":FormTemplate:bootstrap.html.twig" %}
-<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit form-horizontal" >
     {{ form_widget(form) }}
     </br>
     <div>
         <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-success" />
     </div>
+
 </form>
+</fieldset>
+
+ </div>

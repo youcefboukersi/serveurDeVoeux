@@ -10,73 +10,75 @@ class __TwigTemplate_d6efcd65eaddf74438f38ddd5e712e20d5fcb3e00179c420e2569db3539
         $this->parent = false;
 
         $this->blocks = array(
+            'fos_user_content' => array($this, 'block_fos_user_content'),
         );
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0aeb6b886d339e19d431376453e6991c1bd0f854b62fb8a26955a0c31b8b8020 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_0aeb6b886d339e19d431376453e6991c1bd0f854b62fb8a26955a0c31b8b8020->enter($__internal_0aeb6b886d339e19d431376453e6991c1bd0f854b62fb8a26955a0c31b8b8020_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:ProfileAdmin.html.twig"));
+        $__internal_79587c960c0b88c4ad55f25c5a28bf8247ab7319636899eef708d00c4e638444 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_79587c960c0b88c4ad55f25c5a28bf8247ab7319636899eef708d00c4e638444->enter($__internal_79587c960c0b88c4ad55f25c5a28bf8247ab7319636899eef708d00c4e638444_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:ProfileAdmin.html.twig"));
 
         // line 1
-        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "SRVDVServerBundle:admin:ProfileAdmin.html.twig", 1)->display($context);
+        echo "<html>
+";
         // line 2
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->renderFragment($this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->controller("SRVDVServerBundle:Default:nombreInscription", array("id" => 47)));
         echo "
-<div id=\"nav\" >
-    <div id=\"enseignant\" class=\"ouvert\">
-        <h3>Administrateur</h3>
-        <ul>
-            <li class=\"active\"><a href=\"";
-        // line 7
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("form_profile_user");
-        echo "\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
-            <li><a href=\"";
-        // line 8
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_Annee");
-        echo "\"><span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer Année</a></li></br>
-           <li ><a href=\"";
-        // line 9
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_Type");
-        echo "\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer statut</a></li></br>
-            <li ><a href=\"";
-        // line 10
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_utilisateur");
-        echo "\"><span class=\"glyphicon glyphicon-cog\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Users</a></li>    </br>       
-            <li><a href=\"";
-        // line 11
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_filiere");
-        echo "\"><span class=\"glyphicon glyphicon-book\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer fili&egrave;r</a></li></br>
-            <li ><a  href=\"";
-        // line 12
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_typeens");
-        echo "\"><span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></span>&nbsp;  Type Enseignement</a></li></br>
-            <li><a href=\"";
-        // line 13
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("annee_suivante");
-        echo "\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br> 
-        </ul>
-    </div>
-</div>\t
+
 
 <div id=\"content\">
     </br>
         
-    <div class=\"col-xs-5 col-md-5 col-lg-5\">
-        ";
-        // line 22
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->renderFragment($this->env->getExtension('Symfony\Bridge\Twig\Extension\HttpKernelExtension')->controller("FOSUserBundle:Profile:edit"));
-        echo "
-    </div>
+    <div class=\"col-xs-4 col-md- col-lg-4\">
+     
         
+    </div>
+          <div class=\"col-xs-3 col-md-3 col-lg-3\">
+
+            ";
+        // line 14
+        if (array_key_exists("profile", $context)) {
+            // line 15
+            echo "             <P style=\"color:green;\" >Votre Profile a été  modifier avec success !</P>
+            ";
+        } else {
+            // line 17
+            echo "            
+            ";
+            // line 18
+            $this->displayBlock('fos_user_content', $context, $blocks);
+            // line 21
+            echo "
+            ";
+        }
+        // line 23
+        echo "    </div>
     
 </div>
 
 
 ";
-        // line 29
-        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:admin:ProfileAdmin.html.twig", 29)->display($context);
+        // line 28
+        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:admin:ProfileAdmin.html.twig", 28)->display($context);
         
-        $__internal_0aeb6b886d339e19d431376453e6991c1bd0f854b62fb8a26955a0c31b8b8020->leave($__internal_0aeb6b886d339e19d431376453e6991c1bd0f854b62fb8a26955a0c31b8b8020_prof);
+        $__internal_79587c960c0b88c4ad55f25c5a28bf8247ab7319636899eef708d00c4e638444->leave($__internal_79587c960c0b88c4ad55f25c5a28bf8247ab7319636899eef708d00c4e638444_prof);
+
+    }
+
+    // line 18
+    public function block_fos_user_content($context, array $blocks = array())
+    {
+        $__internal_93413651df4e82f3d4c6eeabc2338aadb0c560ee77db1cce51dbce0690e4e31b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_93413651df4e82f3d4c6eeabc2338aadb0c560ee77db1cce51dbce0690e4e31b->enter($__internal_93413651df4e82f3d4c6eeabc2338aadb0c560ee77db1cce51dbce0690e4e31b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+
+        // line 19
+        echo "            ";
+        $this->loadTemplate("FOSUserBundle:Profile:edit_content.html.twig", "SRVDVServerBundle:admin:ProfileAdmin.html.twig", 19)->display($context);
+        // line 20
+        echo "            ";
+        
+        $__internal_93413651df4e82f3d4c6eeabc2338aadb0c560ee77db1cce51dbce0690e4e31b->leave($__internal_93413651df4e82f3d4c6eeabc2338aadb0c560ee77db1cce51dbce0690e4e31b_prof);
 
     }
 
@@ -92,7 +94,7 @@ class __TwigTemplate_d6efcd65eaddf74438f38ddd5e712e20d5fcb3e00179c420e2569db3539
 
     public function getDebugInfo()
     {
-        return array (  77 => 29,  67 => 22,  55 => 13,  51 => 12,  47 => 11,  43 => 10,  39 => 9,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
+        return array (  79 => 20,  76 => 19,  70 => 18,  63 => 28,  56 => 23,  52 => 21,  50 => 18,  47 => 17,  43 => 15,  41 => 14,  26 => 2,  23 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -105,30 +107,29 @@ class __TwigTemplate_d6efcd65eaddf74438f38ddd5e712e20d5fcb3e00179c420e2569db3539
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
+        return new Twig_Source("<html>
+{{ render (controller(\"SRVDVServerBundle:Default:nombreInscription\", { 'id': 47 })) }}
 
-<div id=\"nav\" >
-    <div id=\"enseignant\" class=\"ouvert\">
-        <h3>Administrateur</h3>
-        <ul>
-            <li class=\"active\"><a href=\"{{path('form_profile_user')}}\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
-            <li><a href=\"{{path('list_form_Annee')}}\"><span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer Année</a></li></br>
-           <li ><a href=\"{{path('list_form_Type')}}\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer statut</a></li></br>
-            <li ><a href=\"{{path('list_form_utilisateur')}}\"><span class=\"glyphicon glyphicon-cog\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Users</a></li>    </br>       
-            <li><a href=\"{{path('list_form_filiere')}}\"><span class=\"glyphicon glyphicon-book\" aria-hidden=\"true\"></span>&nbsp;  G&eacute;rer fili&egrave;r</a></li></br>
-            <li ><a  href=\"{{path('list_form_typeens')}}\"><span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></span>&nbsp;  Type Enseignement</a></li></br>
-            <li><a href=\"{{path('annee_suivante')}}\"><span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>&nbsp;  Basculer sur la nouvelle ann&eacute;e</a></li></br> 
-        </ul>
-    </div>
-</div>\t
 
 <div id=\"content\">
     </br>
         
-    <div class=\"col-xs-5 col-md-5 col-lg-5\">
-        {{ render (controller(\"FOSUserBundle:Profile:edit\")) }}
-    </div>
+    <div class=\"col-xs-4 col-md- col-lg-4\">
+     
         
+    </div>
+          <div class=\"col-xs-3 col-md-3 col-lg-3\">
+
+            {% if profile is defined %}
+             <P style=\"color:green;\" >Votre Profile a été  modifier avec success !</P>
+            {% else %}
+            
+            {% block fos_user_content %}
+            {% include \"FOSUserBundle:Profile:edit_content.html.twig\" %}
+            {% endblock fos_user_content %}
+
+            {% endif %}
+    </div>
     
 </div>
 

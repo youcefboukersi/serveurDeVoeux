@@ -15,8 +15,8 @@ class __TwigTemplate_f68a6cc02377ebdfae25267cac25ab29aa943b0de0ce818e11d35cdbe84
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9ba0a7e8623de04cb84df6265b1621b3f6b0389d1a2806da0d891bc7cf794882 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_9ba0a7e8623de04cb84df6265b1621b3f6b0389d1a2806da0d891bc7cf794882->enter($__internal_9ba0a7e8623de04cb84df6265b1621b3f6b0389d1a2806da0d891bc7cf794882_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:Default:index.html.twig"));
+        $__internal_1d52a63d1f5a44448e0a9f8034412a99a5f5b3840b40888af68ad62d06df1d5c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_1d52a63d1f5a44448e0a9f8034412a99a5f5b3840b40888af68ad62d06df1d5c->enter($__internal_1d52a63d1f5a44448e0a9f8034412a99a5f5b3840b40888af68ad62d06df1d5c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:Default:index.html.twig"));
 
         // line 1
         echo "<html>
@@ -60,7 +60,7 @@ class __TwigTemplate_f68a6cc02377ebdfae25267cac25ab29aa943b0de0ce818e11d35cdbe84
 </body>
 </html>";
         
-        $__internal_9ba0a7e8623de04cb84df6265b1621b3f6b0389d1a2806da0d891bc7cf794882->leave($__internal_9ba0a7e8623de04cb84df6265b1621b3f6b0389d1a2806da0d891bc7cf794882_prof);
+        $__internal_1d52a63d1f5a44448e0a9f8034412a99a5f5b3840b40888af68ad62d06df1d5c->leave($__internal_1d52a63d1f5a44448e0a9f8034412a99a5f5b3840b40888af68ad62d06df1d5c_prof);
 
     }
 

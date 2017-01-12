@@ -70,7 +70,7 @@ class RegistrationController extends Controller
             return $response;
         }
 
-        return $this->render('FOSUserBundle:Registration:register.html.twig', array(
+        return $this->render('SRVDVServerBundle:admin:UsersAdmin.html.twig', array(
             'form' => $form->createView(),
         ));
     }

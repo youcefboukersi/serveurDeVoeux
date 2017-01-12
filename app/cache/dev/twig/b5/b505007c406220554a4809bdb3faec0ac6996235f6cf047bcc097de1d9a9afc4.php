@@ -15,26 +15,32 @@ class __TwigTemplate_39746d6ddab85558972577ab1f3f690578ffd18b45b2f3e0893f9daf98f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e4df401873fc0fd8a92836fef0916d464cffff7b290e1204ea9ff3484f684187 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_e4df401873fc0fd8a92836fef0916d464cffff7b290e1204ea9ff3484f684187->enter($__internal_e4df401873fc0fd8a92836fef0916d464cffff7b290e1204ea9ff3484f684187_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@SRVDVServer/responsable/ChoixFiliereResponsable.html.twig"));
+        $__internal_fb36f56eda99a2962c443df6fe7ed0d945e48f6f02866008286a01a1453452ed = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_fb36f56eda99a2962c443df6fe7ed0d945e48f6f02866008286a01a1453452ed->enter($__internal_fb36f56eda99a2962c443df6fe7ed0d945e48f6f02866008286a01a1453452ed_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@SRVDVServer/responsable/ChoixFiliereResponsable.html.twig"));
 
         // line 1
-        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "@SRVDVServer/responsable/ChoixFiliereResponsable.html.twig", 1)->display($context);
+        echo "<html>
+";
         // line 2
+        $this->loadTemplate("SRVDVServerBundle:admin:MenuAdmin.html.twig", "@SRVDVServer/responsable/ChoixFiliereResponsable.html.twig", 2)->display($context);
+        // line 3
         echo "
 <div id=\"nav\" >
 \t<div id=\"enseignant\" class=\"ouvert\">
-\t\t<h3>Enseignant</h3>
+\t\t<h3>Responsable</h3>
 \t\t<ul>
-\t\t\t<li ><a href=\"";
-        // line 7
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("form_profile_user_ens");
-        echo "\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>\t
-\t\t\t<li  class=\"active\"><a href=\"";
+\t\t\t<li  ><a href=\"";
         // line 8
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("ChoixFiliereEns_enseignant");
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("form_profile_user_resp");
+        echo "\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
+\t\t\t<li   ><a href=\"";
+        // line 9
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_Matiere");
+        echo "\"><span class=\"glyphicon glyphicon-th-large\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Matières</a></li></br>
+\t\t\t<li  class=\"active\"><a href=\"";
+        // line 10
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("ChoixFiliereEns_responsable");
         echo "\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br>
-\t\t\t\t\t\t
 \t\t</ul>
 \t</div>
 \t
@@ -59,40 +65,42 @@ class __TwigTemplate_39746d6ddab85558972577ab1f3f690578ffd18b45b2f3e0893f9daf98f
 
 \t\t\t\t   <tbody>
 \t\t\t\t\t\t";
-        // line 33
+        // line 34
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["Filieres"] ?? $this->getContext($context, "Filieres")));
         foreach ($context['_seq'] as $context["_key"] => $context["f"]) {
-            // line 34
+            // line 35
             echo "\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>";
-            // line 35
+            // line 36
             echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "id", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 36
+            // line 37
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["f"], "dateFiliere", array()), "Y-m-d"), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 37
+            // line 38
+            echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "niveau", array()), "html", null, true);
+            echo "&nbsp;";
             echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "nom", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 38
+            // line 39
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["f"], "User", array()), "nom", array()), "html", null, true);
             echo "&nbsp;";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["f"], "User", array()), "prenom", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 39
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["f"], "User", array()), "dateUtilisateur", array()), "html", null, true);
+            // line 40
+            echo twig_escape_filter($this->env, $this->getAttribute($context["f"], "anneeFiliere", array()), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>
 
-\t\t\t\t\t\t\t\t<button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='";
-            // line 42
+\t\t\t\t\t\t\t\t<button  type=\"button\" class=\"btn btn-danger\" onclick=\"window.location.href ='";
+            // line 43
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("list_form_inscription", array("id" => $this->getAttribute($context["f"], "id", array()))), "html", null, true);
-            echo "'\"><b ><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></b></button>
+            echo "'\"><b ><span class=\"glyphicon glyphicon-send\" aria-hidden=\"true\"></span>&nbsp; Réserver</b></button>
 
 \t\t\t\t\t\t\t\t</td>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t
@@ -104,7 +112,7 @@ class __TwigTemplate_39746d6ddab85558972577ab1f3f690578ffd18b45b2f3e0893f9daf98f
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['f'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 50
+        // line 51
         echo "                   </tbody>
 \t\t\t\t</table> 
             </div>
@@ -125,13 +133,13 @@ class __TwigTemplate_39746d6ddab85558972577ab1f3f690578ffd18b45b2f3e0893f9daf98f
 </script>
 
 ";
-        // line 69
-        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "@SRVDVServer/responsable/ChoixFiliereResponsable.html.twig", 69)->display($context);
         // line 70
+        $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "@SRVDVServer/responsable/ChoixFiliereResponsable.html.twig", 70)->display($context);
+        // line 71
         echo "
 ";
         
-        $__internal_e4df401873fc0fd8a92836fef0916d464cffff7b290e1204ea9ff3484f684187->leave($__internal_e4df401873fc0fd8a92836fef0916d464cffff7b290e1204ea9ff3484f684187_prof);
+        $__internal_fb36f56eda99a2962c443df6fe7ed0d945e48f6f02866008286a01a1453452ed->leave($__internal_fb36f56eda99a2962c443df6fe7ed0d945e48f6f02866008286a01a1453452ed_prof);
 
     }
 
@@ -147,7 +155,7 @@ class __TwigTemplate_39746d6ddab85558972577ab1f3f690578ffd18b45b2f3e0893f9daf98f
 
     public function getDebugInfo()
     {
-        return array (  131 => 70,  129 => 69,  108 => 50,  94 => 42,  88 => 39,  82 => 38,  78 => 37,  74 => 36,  70 => 35,  67 => 34,  63 => 33,  35 => 8,  31 => 7,  24 => 2,  22 => 1,);
+        return array (  139 => 71,  137 => 70,  116 => 51,  102 => 43,  96 => 40,  90 => 39,  84 => 38,  80 => 37,  76 => 36,  73 => 35,  69 => 34,  42 => 10,  38 => 9,  34 => 8,  27 => 3,  25 => 2,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -160,15 +168,16 @@ class __TwigTemplate_39746d6ddab85558972577ab1f3f690578ffd18b45b2f3e0893f9daf98f
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
+        return new Twig_Source("<html>
+{% include \"SRVDVServerBundle:admin:MenuAdmin.html.twig\" %}
 
 <div id=\"nav\" >
 \t<div id=\"enseignant\" class=\"ouvert\">
-\t\t<h3>Enseignant</h3>
+\t\t<h3>Responsable</h3>
 \t\t<ul>
-\t\t\t<li ><a href=\"{{ path('form_profile_user_ens')}}\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>\t
-\t\t\t<li  class=\"active\"><a href=\"{{path('ChoixFiliereEns_enseignant')}}\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br>
-\t\t\t\t\t\t
+\t\t\t<li  ><a href=\"{{ path('form_profile_user_resp')}}\"><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span>  &nbsp; Mon profil</a></li></br>
+\t\t\t<li   ><a href=\"{{ path('list_form_Matiere')}}\"><span class=\"glyphicon glyphicon-th-large\" aria-hidden=\"true\"></span> &nbsp; G&eacute;rer Matières</a></li></br>
+\t\t\t<li  class=\"active\"><a href=\"{{path('ChoixFiliereEns_responsable')}}\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span>&nbsp;  Résérvation</a></li></br>
 \t\t</ul>
 \t</div>
 \t
@@ -196,12 +205,12 @@ class __TwigTemplate_39746d6ddab85558972577ab1f3f690578ffd18b45b2f3e0893f9daf98f
 \t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>{{ f.id }}</td>
 \t\t\t\t\t\t\t\t<td>{{ f.dateFiliere | date('Y-m-d') }}</td>
-\t\t\t\t\t\t\t\t<td>{{ f.nom }}</td>
+\t\t\t\t\t\t\t\t<td>{{ f.niveau }}&nbsp;{{ f.nom }}</td>
 \t\t\t\t\t\t\t\t<td>{{ f.User.nom }}&nbsp;{{ f.User.prenom }}</td>
-\t\t\t\t\t\t\t\t<td>{{ f.User.dateUtilisateur}}</td>
+\t\t\t\t\t\t\t\t<td>{{ f.anneeFiliere}}</td>
 \t\t\t\t\t\t\t\t<td>
 
-\t\t\t\t\t\t\t\t<button  type=\"button\" class=\"btn btn-primary\" onclick=\"window.location.href ='{{path('list_form_inscription',{'id':f.id }) }}'\"><b ><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></b></button>
+\t\t\t\t\t\t\t\t<button  type=\"button\" class=\"btn btn-danger\" onclick=\"window.location.href ='{{path('list_form_inscription',{'id':f.id }) }}'\"><b ><span class=\"glyphicon glyphicon-send\" aria-hidden=\"true\"></span>&nbsp; Réserver</b></button>
 
 \t\t\t\t\t\t\t\t</td>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t
