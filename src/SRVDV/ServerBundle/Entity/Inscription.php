@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Inscription
-{
+class Inscription {
+
     /**
      * @var integer
      *
@@ -28,7 +28,6 @@ class Inscription
      */
     private $dateInscription;
 
-
     /**
      * @var integer
      *
@@ -36,8 +35,7 @@ class Inscription
      */
     private $nbHeur;
 
-
-   /**
+    /**
      * @ORM\ManyToOne(targetEntity="TypeEnseignant")
      */
     private $TypeEnseignant;
@@ -52,14 +50,12 @@ class Inscription
      */
     private $Matiere;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -69,8 +65,7 @@ class Inscription
      * @param \DateTime $dateInscription
      * @return Inscription
      */
-    public function setDateInscription($dateInscription)
-    {
+    public function setDateInscription($dateInscription) {
         $this->dateInscription = $dateInscription;
 
         return $this;
@@ -81,8 +76,7 @@ class Inscription
      *
      * @return \DateTime 
      */
-    public function getDateInscription()
-    {
+    public function getDateInscription() {
         return $this->dateInscription;
     }
 
@@ -92,8 +86,7 @@ class Inscription
      * @param integer $nbHeur
      * @return Inscription
      */
-    public function setNbHeur($nbHeur)
-    {
+    public function setNbHeur($nbHeur) {
         $this->nbHeur = $nbHeur;
 
         return $this;
@@ -104,8 +97,7 @@ class Inscription
      *
      * @return integer 
      */
-    public function getNbHeur()
-    {
+    public function getNbHeur() {
         return $this->nbHeur;
     }
 
@@ -115,8 +107,7 @@ class Inscription
      * @param \SRVDV\ServerBundle\Entity\TypeEnseignant $typeEnseignant
      * @return Inscription
      */
-    public function setTypeEnseignant(\SRVDV\ServerBundle\Entity\TypeEnseignant $typeEnseignant = null)
-    {
+    public function setTypeEnseignant(\SRVDV\ServerBundle\Entity\TypeEnseignant $typeEnseignant = null) {
         $this->TypeEnseignant = $typeEnseignant;
 
         return $this;
@@ -127,8 +118,7 @@ class Inscription
      *
      * @return \SRVDV\ServerBundle\Entity\TypeEnseignant 
      */
-    public function getTypeEnseignant()
-    {
+    public function getTypeEnseignant() {
         return $this->TypeEnseignant;
     }
 
@@ -138,8 +128,7 @@ class Inscription
      * @param \SRVDV\ServerBundle\Entity\User $user
      * @return Inscription
      */
-    public function setUser(\SRVDV\ServerBundle\Entity\User $user = null)
-    {
+    public function setUser(\SRVDV\ServerBundle\Entity\User $user = null) {
         $this->User = $user;
 
         return $this;
@@ -150,8 +139,7 @@ class Inscription
      *
      * @return \SRVDV\ServerBundle\Entity\User 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->User;
     }
 
@@ -161,8 +149,7 @@ class Inscription
      * @param \SRVDV\ServerBundle\Entity\Matiere $matiere
      * @return Inscription
      */
-    public function setMatiere(\SRVDV\ServerBundle\Entity\Matiere $matiere = null)
-    {
+    public function setMatiere(\SRVDV\ServerBundle\Entity\Matiere $matiere = null) {
         $this->Matiere = $matiere;
 
         return $this;
@@ -173,8 +160,8 @@ class Inscription
      *
      * @return mixed
      */
-    public function getMatiere()
-    {
+    public function getMatiere() {
         return $this->Matiere;
     }
+
 }

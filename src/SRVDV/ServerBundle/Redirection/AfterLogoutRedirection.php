@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 
  * @package    SRVDV\ServerBundle\Redirection
@@ -7,15 +8,14 @@
 
 namespace SRVDV\ServerBundle\Redirection;
 
-
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Http\Logout\LogoutSuccessHandlerInterface;
 
-class AfterLogoutRedirection implements LogoutSuccessHandlerInterface
-{
+class AfterLogoutRedirection implements LogoutSuccessHandlerInterface {
+
     /**
      * @var \Symfony\Component\Routing\RouterInterface
      */
@@ -29,8 +29,7 @@ class AfterLogoutRedirection implements LogoutSuccessHandlerInterface
     /**
      * @param SecurityContextInterface $security
      */
-    public function __construct(RouterInterface $router, SecurityContextInterface $security)
-    {
+    public function __construct(RouterInterface $router, SecurityContextInterface $security) {
         $this->router = $router;
         $this->security = $security;
     }
@@ -39,13 +38,12 @@ class AfterLogoutRedirection implements LogoutSuccessHandlerInterface
      * @param Request $request
      * @return RedirectResponse
      */
-    public function onLogoutSuccess(Request $request)
-    {
+    public function onLogoutSuccess(Request $request) {
         // Get list of roles for current user
         $roles = $this->security->getToken()->getRoles();
         // Tranform this list in array
-        $rolesTab = array_map(function($role){ 
-            return $role->getRole(); 
+        $rolesTab = array_map(function($role) {
+            return $role->getRole();
         }, $roles);
         // If is a commercial user or admin or super admin we redirect to the login area. Here we used FoseUserBundle bundle
         if (in_array('ROLE_RESP', $rolesTab, true) || in_array('ROLE_ADMIN', $rolesTab, true) || in_array('ROLE_ENSEIG', $rolesTab, true))
@@ -56,4 +54,5 @@ class AfterLogoutRedirection implements LogoutSuccessHandlerInterface
 
         return $response;
     }
-} 
+
+}

@@ -14,3 +14,10 @@ services:
         class: SRVDV\ServerBundle\Form\ProfileType
         tags:
             - { name: form.type, alias: srvdv_user_profile }
+    app.form.update:
+        class: SRVDV\ServerBundle\Form\UpdateType
+        tags:
+            - { name: form.type, alias: srvdv_user_update }
+    import.csvtoarray:
+        class: SRVDV\ServerBundle\Services\ConvertCsvToArray         
+    

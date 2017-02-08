@@ -1,28 +1,42 @@
 <html>
-{{ render (controller("SRVDVServerBundle:Default:nombreInscription", {'id': 32 })) }}
+  {{ render (controller("SRVDVServerBundle:Default:nombreInscription", {'id': 32 })) }}
 
+{% if supprimer == 0  %}
+        <input id="iddudiv" type="hidden"   data-toggle="modal" data-target="#myModalEnvoiEmail" />
+        <div id="myModalEnvoiEmail" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  Impossible de supprimer cete Matière </br>
+                  Elle est ratachée à un Voeux!!
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          document.getElementById('iddudiv').click();
+        </script>
+      {% endif %}
 
-
-
-
-<div align="center">
-	</br>
-		<div class=" centreVerticalement">
-
-  
-            {{ form_start(f,{'attr':{'novalidate':'novalidate'}})}}
-            <fieldset class="well the-fieldset">
-    <legend > Ajouter une matière:</legend>
-					<div class="form-group">
-					{{ form_label(f.nom,'Nom : ')}}
-					{{ form_widget(f.nom,{'attr':{'class':'form-control'}})}}
-					</div>
-					<div class="form-group">
-					{{ form_label(f.NombreGroupe,'Nombre de groupe : ')}}
-					{{ form_widget(f.NombreGroupe,{'attr':{'class':'form-control'}})}}
-					</div>
-					<div class="form-group">
-					{{ form_label(f.nbrHeurGroupe,'Nombre d\'heures par groupe : ')}}
+  <div align="center">
+    </br>
+    <div class=" centreVerticalement">
+      {% if ListeFiliere == 0 %}
+      {{ form_start(f)}}
+      <fieldset class="well the-fieldset">
+        <legend > Ajouter une matière:</legend>
+        <div class="form-group">
+          {{ form_label(f.nom,'Nom : ')}}
+          {{ form_widget(f.nom,{'attr':{'class':'form-control'}})}}
+        </div>
+        <div class="form-group">
+          {{ form_label(f.NombreGroupe,'Nombre de groupe : ')}}
+          {{ form_widget(f.NombreGroupe,{'attr':{'class':'form-control'}})}}
+        </div>
+        <div class="form-group">
+          {{ form_label(f.nbrHeurGroupe,'Nombre d\'heures par groupe : ')}}
 					{{ form_widget(f.nbrHeurGroupe,{'attr':{'class':'form-control'}})}}
 					</div>
 					
@@ -42,74 +56,109 @@
 					<div class="form-group">
 					
 					{{ form_widget(f.save,{'attr':{'class':'btn btn-success'}})}}
-					{{ form_widget(f.reset,{'attr':{'class':'btn btn-info'}})}}
 					</div>
 					  </fieldset>
 
-			{{ form_end(f)}}		
+			{{ form_end(f)}}
+      {% else %} 
+
+       <input id="iddudiv" type="hidden"   data-toggle="modal" data-target="#myModalEnvoiEmail" />
+        <div id="myModalEnvoiEmail" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  Vous ne pouvez pas faire des modifications sur ces matières </br>
+                  Vous étes responsable d'aucune des filières !!</Br>
+                  Merci pour votre compréhension
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          document.getElementById('iddudiv').click();
+        </script>
+
+      {% endif %}	
 		</div>
 <div class=" centreVerticalement">&nbsp;&nbsp;&nbsp;&nbsp;</div>
-
 		<div class=" centreVerticalement">
-
 			<div class="table-responsive">
                 <table id="example" class="display" cellspacing="0" width="100%" >
                 	<thead>
                 		<tr ><th align="center" colspan="20" >Liste des matières</th></tr>
-					<tr><th>nom</th><th>h/groupe</th><th>groupes</th><th>Année</th><th>semestre</th><th>Filiere</th><th>Type-Ens</th><th>Mod</th><th>Supp</th></tr>
+					<tr><th>Matiére</th><th>Type</th><th>H/Groupe</th><th>Groupes</th><th>Années</th><th>Semestre</th><th>Filieres</th><th>Modifier</th><th>Supprimer</th></tr>
 				   </thead>
 				   <tbody>
 						{% for u in ListeMatieres %}
 						{% if u.Filiere.anneeFiliere.id == idAnnee %}
-
 							<tr>
 								<td>{{ u.nom }}</td>
+                  <td>{{ u.TypeEnseignant.libelle }}</td> 
 								<td>{{ u.nbrHeurGroupe }}</td>
 								<td>{{ u.NombreGroupe }}</td>
 								<td>{{ u.Filiere.anneeFiliere }}</td>
 								<td>{{ u.semestre }}</td>
 								<td>{{ u.Filiere.niveau}}&nbsp;{{ u.Filiere.nom}}</td>
-								<td>{{ u.TypeEnseignant.libelle }}</td>
-								
+							
+
+                       {% set access = 0 %} 
+                    			{% for user in u.Filiere.user %}	
+                          {% if app.user.id  == user.id  %}
+                            {% set access = 1 %}            
+                          
+                          {% endif %} 
+                       {% endfor %}	
 								<td>
-									{% if app.user.id  == u.Filiere.user.id  %}
+									{% if access == 1 or  app.user.roles[0]=='ROLE_ADMIN' %}
 									 	<button  type="button" class="btn btn-primary" onclick="window.location.href ='{{path('Modifier_Matiere',{'id':u.id }) }}'"><b ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></b></button>
- 									{% endif %}	
-								</td>
-								<td>
-									{% if app.user.id  == u.Filiere.user.id  %}
-									<button type="button" class="btn btn-warning"  onclick="SupprimerUser({{ u.id }})"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></button>
-									{% endif %}	
-								</td>
-							</tr>
-							{% endif %}	
-						{% endfor %}
-                   </tbody>
-				</table> 
-            </div>
-		</div>
-	
-</div>
+            {% endif %}	
+            </td>
+            <td>
+              {% if access == 1 or  app.user.roles[0]=='ROLE_ADMIN' %}
+                <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal{{ u.id }}" ><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></button>
 
+                <div id="myModal{{ u.id }}" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Vous voulez vraiment supprimer cette matière ?</h4>
+                      </div>
+                      <div class="modal-footer">
+                        <button  type="button" class="btn btn-danger" onclick="window.location.href = '{{ path('supprimer_matieres_responsable',{'id':u.id }) }}'"><b >Delete ! </b></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div>
 
+                  </div>
+                </div>									
+              {% endif %}	
+            </td>
+            </tr>
+            {% endif %}	
+              {% endfor %}
+                </tbody>
+                </table> 
+              </div>
+          </div>
+        </div>
+        <script>
 
+          $(document).ready(function () {
+            $('#example').DataTable();
+          });
 
-<script>
+          function SupprimerUser(id) {
 
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
+            var rep = confirm('Clickez sur "OK" si vous voulez vraiment cet utilisateur');
 
-function SupprimerUser(id){
+            if (rep) {
+              window.location.href = "SuppMatiere/" + id;
+            }
 
-	var rep=confirm('Clickez sur "OK" si vous voulez vraiment cet utilisateur' ) ;
-
-	if(rep){
-        window.location.href ="SuppMatiere/"+id;
-	}
-
-}
-</script>
-
-
-{% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}
+          }
+        </script>
+        {% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}

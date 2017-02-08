@@ -1,47 +1,55 @@
 <html>
-{{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 20 })) }}
-<div align="centre">
-	 </br>
-        
+  {{ render (controller("SRVDVServerBundle:Default:nombreInscription" , { 'id': 20 })) }}
+  <div class="container">
+    </br>
+    <h4 align="center"> Choisissez une filière :  </h4>
+    </br>
+     <div class="table-responsive">
+      <table id="example" class="display" cellspacing="0" width="100%" >
+        <thead>
+          <tr>
+            <th>Date de création </th>
+            <th>Nom</th>
+            <th>Responsables</th>
+            <th>Année</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for f in Filieres %}
+            <tr>
+
+              <td>{{ f.dateFiliere | date('Y-m-d') }}</td>
+              <td>{{ f.niveau }}&nbsp;{{ f.nom }}</td>
+
+              <td>
+                  {% set i = 1 %}
+                {% for user in f.User %}
+                
+                  {{ i }} - {{ user.nom }}  {{ user.prenom }} </br>{% set i = i +1  %}
+                {% endfor %}
+                </td>
+              <td>{{ f.anneeFiliere}}</td>
+              <td>
+
+                <button  type="button" class="btn btn-danger" onclick="window.location.href = '{{path('Etat_reservation_responsable',{'id':f.id }) }}'"><b ><span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp; Select</b></button>
+
+              </td>
+            </tr>	
+          {% endfor %}
+        </tbody>
+      </table> 
+    </div>
+  </div>
+  <script>
+
+    $(document).ready(function () {
+      $('#example').DataTable();
+    });
 
 
-			<div class="table-responsive">
-                <table id="example" class="display" cellspacing="0" width="98%" >
-                	<thead>
-					<tr><th>#</th><th>Date de création </th><th>nom</th><th>responsable</th><th>Année</th><th>res</th></tr>
+  </script>
 
-				   </thead>
-				   <tbody>
-						{% for f in Filieres %}
-							<tr>
-								<td>{{ f.id }}</td>
-								<td>{{ f.dateFiliere | date('Y-m-d') }}</td>
-								<td>{{ f.niveau}}&nbsp;&nbsp;{{ f.nom }}</td>
-								<td>{{ f.User.nom }}&nbsp;{{ f.User.prenom }}</td>
-								<td>{{ f.anneeFiliere}}</td>
-								<td><button  type="button" class="btn btn-danger" onclick="window.location.href ='{{path('list_form_inscription_enseignant',{'id':f.id }) }}'"><b ><span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp; Select</b></button></td>
-														
-								
-							</tr>	
-						{% endfor %}
-                   </tbody>
-				</table> 
-            </div>
-</div>
-	
-
-
-
-
-
-<script>
-
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
-
-
-</script>
-
-{% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}
+  {% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}
 

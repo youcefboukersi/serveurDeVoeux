@@ -1,63 +1,77 @@
 <html>
-{% if is_granted("IS_AUTHENTICATED_FULLY") %}  
-                   {{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 'users' })) }}
-                      {% else %}
-                      
-                     {% include "SRVDVServerBundle:admin:MenuAdmin.html.twig" %}
-                     {% endif %}
+  {% if is_granted("IS_AUTHENTICATED_FULLY") %}  
+    {{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 'users' })) }}
+  {% else %}
 
-</br>
-<div>
+    {% include "SRVDVServerBundle:admin:MenuAdmin.html.twig" %}
+  {% endif %}
 
-					<div class="table-responsive">
-                <table id="example" class="display" cellspacing="0" width="98%" >
-                	<thead>
-					<tr><th># </th><th>Nom lyes </th><th>Prenom</th><th>enseignant</th><th>Roles</th></tr>
-				   </thead>
-				   <tbody>
-						{% for r in users %}				
 
-						
-						
-							<tr >
-								
-								<td>{{ r.id }}</td>
-								<td>{{ r.nom }}</td>
-								<td>{{ r.prenom }}</td>
-								
-								<td>{{ r.type.libelle}}</td>								
-								<td>
-                                {% for role in r.roles %}
-                                    {{ role }}
-                                {% endfor %}
-                            </td>
-							
-								
-							</tr>	
-						{% endfor %}
-                   </tbody>
-				</table> 
+  {% set tempArray = {} %}
+  {% for item in Reserves %}
+   {% if IdAnnee  == item.Matiere.filiere.anneeFiliere.id  %}
+    {% if tempArray['_'~item.User.id] is defined %}
+       {% set value = item.nbHeur*item.matiere.TypeEnseignant.coef %}
+      {% set tempArray = tempArray|merge({('_'~item.User.id):(tempArray['_'~item.User.id]+value)}) %}
+    {% else %}
+       {% set value = item.nbHeur*item.matiere.TypeEnseignant.coef %}
+      {% set tempArray = tempArray|merge({('_'~item.User.id):(item.nbHeur)}) %}
+    {% endif %}
+  {% endif %}
+  {% endfor %}
+
+  </br>
+  <div class="container">
+
+    <div class="table-responsive">
+      <table id="example" class="display" cellspacing="0" width="98%" >
+        <thead>
+          <tr><th>Nom</th><th>Prénom</th><th>Heures</th><th>Heures theo</th><th>Enseignant</th></tr>
+        </thead>
+        <tbody>
+          {% for r in users %}				
+
+
+
+            <tr >
+
+              <td>
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}  
+                  <a href="{{path('Liste_ReservationProf',{'id':r.id })}}" >{{ r.nom }}</a>
+                {% else %}
+                      {{ r.nom }}
+                {% endif %}
+              </td>
+              <td>{{ r.prenom }}</td>
+              <td>
+                {% if tempArray['_'~r.id] is defined %}
+                {{ tempArray['_'~r.id] | round }}
+                {% endif %}
+              </td>
+              <td>{{ r.nombreHeurTheo }}</td>
+
+              <td>{{ r.type.libelle}}</td>								
             
-		</div>
-	
-</div>
-
-<script type="text/javascript" charset="utf-8" >
-
-$(document).ready(function() {
-    $('#example').DataTable(
-      
-      
-         
-
-    );
-} );
 
 
-</script>
+            </tr>	
+          {% endfor %}
+        </tbody>
+      </table> 
 
+    </div>
 
-{% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}
+  </div>
+
+  <script type="text/javascript" charset="utf-8" >
+
+    $(document).ready(function () {
+      $('#example').DataTable(
+              );
+    });
+
+  </script>
+  {% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}
 
 
 

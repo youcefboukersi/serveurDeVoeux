@@ -1,26 +1,23 @@
 <html>
-{{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 21 })) }}
+  {{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 21 })) }}
+
+  </br>
+
+  <div class="container" align="center">
+
+    {% if profile is defined %}
+      <P style="color:green;" >Votre Profile a été  modifier avec success !</P>
+      {% else %}
+
+      {% block fos_user_content %}
+        {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+      {% endblock fos_user_content %}
 
 
-
-<div align="center">
-    </br>
-        
-   
-  
-            {% if profile is defined %}
-             <P style="color:green;" >Votre Profile a été  modifier avec success !</P>
-            {% else %}
-            
-            {% block fos_user_content %}
-            {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
-            {% endblock fos_user_content %}
+    {% endif %}
 
 
-            {% endif %}
-        
-    </div>
-    
+  </div>
 
 
-{% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}
+  {% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}

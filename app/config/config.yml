@@ -78,11 +78,12 @@ fos_user:
             enabled:    true
     profile:
         form:
-            type: srvdv_user_profile            
+            type: srvdv_user_profile                    
     from_email:
         address:        confirmation@serveurdevoeur.com
         sender_name:    Confirmation   
     resetting:
+        token_ttl:  8
         email:
             from_email:
                 address:        resetting-password@serveurdevoeur.com
@@ -90,5 +91,3 @@ fos_user:
     service:
         #default implementation, and uses Swiftmailer to send emails.
         mailer: fos_user.mailer.default
-                
-    

@@ -1,0 +1,92 @@
+<html>
+  {{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 23 })) }}
+
+
+<div class="container">
+  <div align="center">
+
+    </br>
+    <h4 align="center"> La liste des Réservations de :  " {{ user.nom }} &nbsp;{{user.prenom}} " </h4>
+    </br>
+   
+
+	
+
+			<div class="table-responsive">
+                <table id="example" class="display" cellspacing="0" width="100%" >
+                	<thead>
+                		
+					<tr><th>Annee </th><th>Date </th><th>Matiere</th><th>Type </th><th>Nombre d\'heures </th><th>Heures Total</th>
+            <th>Filiére</th></tr>
+
+				   </thead>
+				   <tbody>
+						{% for u in reservations %}
+						
+							<tr>
+					<td>{{ u.Matiere.Filiere.anneeFiliere.annee }}</td>			
+					<td>{{ u.dateInscription | date('Y-m-d') }}</td>       
+          <td><a href="{{path('list_form_inscription',{'id':u.Matiere.id}) }}">{{ u.Matiere.nom}}</a></td>
+          <td>{{ u.Matiere.TypeEnseignant.libelle }}</td>
+          <td>{{ u.nbHeur }}</td>  
+          <td>{{ u.Matiere.nbrHeurGroupe * u.Matiere.NombreGroupe }}</td>
+          <td>{{ u.Matiere.Filiere.niveau }}&nbsp;{{ u.Matiere.Filiere.nom }} </td> 
+          
+
+
+         
+          </tr>
+      	
+            {% endfor %}
+              </tbody>
+              </table> 
+            </div>
+  
+
+      </div>
+    </div>
+
+
+
+
+      
+<script type="text/javascript" charset="utf-8" >
+  $(document).ready(function () {
+    var table = $('#example').DataTable({
+      "columnDefs": [
+        {"visible": false, "targets": 0}
+      ],
+      "order": [[0, 'asc']],
+      "displayLength": 25,
+      "drawCallback": function (settings) {
+        var api = this.api();
+        var rows = api.rows({page: 'current'}).nodes();
+        var last = null;
+
+        api.column(0, {page: 'current'}).data().each(function (group, i) {
+          if (last !== group) {
+            $(rows).eq(i).before(
+                    '<tr class="group"><td colspan="16" align="center" style="background-color:#81F7BE" >' + group + '</td></tr>'
+                    );
+
+            last = group;
+          }
+        });
+      }
+    });
+
+    // Order by the grouping
+    $('#example tbody').on('click', 'tr.group', function () {
+      var currentOrder = table.order()[0];
+      if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+        table.order([0, 'desc']).draw();
+      } else {
+        table.order([0, 'asc']).draw();
+      }
+ 
+ });
+
+
+ });
+ </script>
+      {% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}

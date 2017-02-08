@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Matiere
-{
+class Matiere {
+
     /**
      * @var integer
      *
@@ -34,8 +34,6 @@ class Matiere
      * @ORM\Column(name="nbrHeurGroupe", type="integer")
      */
     private $nbrHeurGroupe;
-
-    
 
     /**
      * @var integer
@@ -61,19 +59,17 @@ class Matiere
      */
     private $semestre;
 
-
-    public function __toString(){
-                $heures = $this->nbrHeurGroupe * $this->NombreGroupe;
-            return $this->TypeEnseignant->getLibelle() .' ('.$heures.') '.$this->nom.' ( sem:  '.$this->semestre.')  ';
-        }
+    public function __toString() {
+        $heures = $this->nbrHeurGroupe * $this->NombreGroupe;
+        return $this->nom . ' ( sem:  ' . $this->semestre . ') ' . $this->TypeEnseignant->getLibelle() . ' (' . $heures . ')  ';
+    }
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -83,10 +79,9 @@ class Matiere
      * @param string $nom
      * @return Matiere
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
@@ -95,12 +90,9 @@ class Matiere
      *
      * @return string 
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
-
-   
 
     /**
      * Set nbrHeurGroupe
@@ -108,10 +100,9 @@ class Matiere
      * @param integer $nbrHeurGroupe
      * @return Matiere
      */
-    public function setNbrHeurGroupe($nbrHeurGroupe)
-    {
+    public function setNbrHeurGroupe($nbrHeurGroupe) {
         $this->nbrHeurGroupe = $nbrHeurGroupe;
-    
+
         return $this;
     }
 
@@ -120,21 +111,19 @@ class Matiere
      *
      * @return integer 
      */
-    public function getNbrHeurGroupe()
-    {
+    public function getNbrHeurGroupe() {
         return $this->nbrHeurGroupe;
     }
 
-/**
+    /**
      * Set NombreGroupe
      *
      * @param integer $NombreGroupe
      * @return Matiere
      */
-    public function setNombreGroupe($NombreGroupe)
-    {
+    public function setNombreGroupe($NombreGroupe) {
         $this->NombreGroupe = $NombreGroupe;
-    
+
         return $this;
     }
 
@@ -143,11 +132,9 @@ class Matiere
      *
      * @return integer 
      */
-    public function getNombreGroupe()
-    {
+    public function getNombreGroupe() {
         return $this->NombreGroupe;
-    } 
-    
+    }
 
     /**
      * Set Filiere
@@ -155,10 +142,9 @@ class Matiere
      * @param Filiere $Filiere
      * @return Matiere
      */
-    public function setFiliere($Filiere)
-    {
+    public function setFiliere($Filiere) {
         $this->Filiere = $Filiere;
-    
+
         return $this;
     }
 
@@ -167,21 +153,19 @@ class Matiere
      *
      * @return mixed 
      */
-    public function getFiliere()
-    {
+    public function getFiliere() {
         return $this->Filiere;
     }
 
-     /**
+    /**
      * Set TypeEnseignant
      *
      * @param TypeEnseignant $TypeEnseignant
      * @return Matiere
      */
-    public function setTypeEnseignant($TypeEnseignant)
-    {
+    public function setTypeEnseignant($TypeEnseignant) {
         $this->TypeEnseignant = $TypeEnseignant;
-    
+
         return $this;
     }
 
@@ -190,8 +174,7 @@ class Matiere
      *
      * @return mixed 
      */
-    public function getTypeEnseignant()
-    {
+    public function getTypeEnseignant() {
         return $this->TypeEnseignant;
     }
 
@@ -201,10 +184,9 @@ class Matiere
      * @param integer $semestre
      * @return Matiere
      */
-    public function setSemestre($semestre)
-    {
+    public function setSemestre($semestre) {
         $this->semestre = $semestre;
-    
+
         return $this;
     }
 
@@ -213,8 +195,8 @@ class Matiere
      *
      * @return integer 
      */
-    public function getSemestre()
-    {
+    public function getSemestre() {
         return $this->semestre;
     }
+
 }

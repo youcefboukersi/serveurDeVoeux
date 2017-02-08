@@ -2,35 +2,23 @@
 <html lang="fr">
     <head>
         <title>SVEDI</title>
+        <link rel="shortcut icon" href="{{ asset('assets/images/runtime_favico.ico')}}">
         <link rel=stylesheet type="text/css" href="{{ asset('assets/css/home.css') }}" />
-              <link rel=stylesheet type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}"/>
+        <link rel=stylesheet type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}"/>
         <script type="text/javascript" src="{{ asset('assets/javascript/jquery-2.1.1.min.js')}}"></script>
         <script type="text/javascript" src="{{ asset('assets/javascript/connexion.js')}}"></script>
     </head>
-        
-    <body>       
-        <div id="svedi">
-            <a href="{{ path('home')}}"><img src="{{ asset('assets/images/svediMoyen.png')}}"/></a>
-        </div>
-            
-        <div id="connexion">
-            <img src="{{ asset('assets/images/connexionTop.png')}}"/>
-            <div>
-                <div align="center">
-                    
-                        {% block fos_user_content %}
-                        {% endblock fos_user_content %}
-                   
-                    
-                        
-                        
-                </div>
-                    
-                    
-                    
-                    
+    <body> 
+        <div align="center">      
+            <div id="svedi">
+                <a href="{{ path('home')}}"><img titre="home" src="{{ asset('assets/images/svediMoyen.png')}}"/></a>
             </div>
-            <img src="{{ asset('assets/images/connexionBtm.png')}}"/>
+            <div id="connexion">
+                <img src="{{ asset('assets/images/connexionTop.png')}}"/>
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
+                <img src="{{ asset('assets/images/connexionBtm.png')}}"/>
+            </div>
         </div>
     </body>
 </html>

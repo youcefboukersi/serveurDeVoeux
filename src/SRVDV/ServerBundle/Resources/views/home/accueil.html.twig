@@ -1,0 +1,42 @@
+<html>
+  {{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 'Accueil' })) }}
+
+  <div class="container">
+       </br></br>
+        <h1 align = "center"> Bienvenue sur le  Serveur de Voeux des Enseignants du Département Informatique 
+        </h1>
+      </br></br></br>
+      
+        <div class="panel-group">
+          {% for alert in Alertes %}
+
+            {% if alert.typeAlerte == 'Tres_importants' %}
+
+              <div class="panel panel-danger">
+                <div class="panel-heading">Alerte  Trés importante créee par {{ alert.user.nom }} {{ alert.user.prenom }}  le  {{ alert.dateCreation | date('Y-m-d')  }}</div>
+                <div class="panel-body">  {{ alert.message }}</div>
+              </div>
+            {% endif %}
+          {% endfor %}
+          {% for alert in Alertes %}
+            {% if alert.typeAlerte == 'Importants' %}
+              <div class="panel panel-warning">
+                <div class="panel-heading">Alerte importante crée par {{ alert.user.nom }} {{ alert.user.prenom }}  le  {{ alert.dateCreation | date('Y-m-d')  }}</div>
+                <div class="panel-body">  {{ alert.message }}</div>
+              </div>
+            {% endif %}
+          {% endfor %}
+          {% for alert in Alertes %}
+            {% if alert.typeAlerte == 'information' %}
+
+              <div class="panel panel-info">
+                <div class="panel-heading">Information crée par {{ alert.user.nom }} {{ alert.user.prenom }}  le  {{ alert.dateCreation | date('Y-m-d')  }}</div>
+                <div class="panel-body">  {{ alert.message }}</div>
+              </div>
+            {% endif %}
+          {% endfor %}
+
+        </div>  
+  </div>  
+        
+{% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}

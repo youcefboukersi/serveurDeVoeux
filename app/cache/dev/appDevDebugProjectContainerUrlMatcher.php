@@ -111,27 +111,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::indexAction',  '_route' => 'list_form_utilisateur',);
             }
 
+            // modifier_user_admin
+            if (0 === strpos($pathinfo, '/admin/Updateuser') && preg_match('#^/admin/Updateuser/(?P<user>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'modifier_user_admin')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::ModifierUsersAction',));
+            }
+
             // Modifier_Users
             if (0 === strpos($pathinfo, '/admin/ModUsers') && preg_match('#^/admin/ModUsers/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'Modifier_Users')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::ModUsersAction',));
             }
 
-            // srvdv_server_admin_suppusers
+            // supprimer_utilisateur_admin
             if (0 === strpos($pathinfo, '/admin/suppUsers') && preg_match('#^/admin/suppUsers/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_admin_suppusers')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppUsersAction',));
-            }
-
-            if (0 === strpos($pathinfo, '/admin/EditPofile')) {
-                // form_profile_user
-                if ($pathinfo === '/admin/EditPofile') {
-                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::EditPofileAction',  '_route' => 'form_profile_user',);
-                }
-
-                // form_profile_user_motDePasse
-                if ($pathinfo === '/admin/EditPofileMP') {
-                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::EditPofileMPAction',  '_route' => 'form_profile_user_motDePasse',);
-                }
-
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_utilisateur_admin')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppUsersAction',));
             }
 
             // list_form_Annee
@@ -144,9 +136,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'Modifier_Annee')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::ModAnneeAction',));
             }
 
-            // srvdv_server_admin_suppannee
+            // supprimer_annee_admin
             if (0 === strpos($pathinfo, '/admin/suppAnnee') && preg_match('#^/admin/suppAnnee/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_admin_suppannee')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppAnneeAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_annee_admin')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppAnneeAction',));
             }
 
             // list_form_Type
@@ -159,9 +151,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'Modifier_TypeUtilisateur')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::ModTypeAction',));
             }
 
-            // srvdv_server_admin_supptype
+            // supprimer_statut_admin
             if (0 === strpos($pathinfo, '/admin/suppType') && preg_match('#^/admin/suppType/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_admin_supptype')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppTypeAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_statut_admin')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppTypeAction',));
             }
 
             // list_form_filiere
@@ -174,9 +166,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'Modifier_filiere')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::ModFiliereAction',));
             }
 
-            // Supprimer_filiere
+            // supprimer_filiere_admin
             if (0 === strpos($pathinfo, '/admin/suppFiliere') && preg_match('#^/admin/suppFiliere/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'Supprimer_filiere')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppFiliereAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_filiere_admin')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppFiliereAction',));
             }
 
             // list_form_typeens
@@ -189,9 +181,24 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'Modifier_TypeEnseignant')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::ModTypeEnsAction',));
             }
 
-            // srvdv_server_admin_supptypeens
+            // supprimer_type_enseig_admin
             if (0 === strpos($pathinfo, '/admin/suppTypeEns') && preg_match('#^/admin/suppTypeEns/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_admin_supptypeens')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppTypeEnsAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_type_enseig_admin')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::SuppTypeEnsAction',));
+            }
+
+            // alertes_admin
+            if ($pathinfo === '/admin/Alertes') {
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::alertAction',  '_route' => 'alertes_admin',);
+            }
+
+            // Modifier_alerte
+            if (0 === strpos($pathinfo, '/admin/modifier_alertes') && preg_match('#^/admin/modifier_alertes/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'Modifier_alerte')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::modifAlertAction',));
+            }
+
+            // supprimer_alerte
+            if (0 === strpos($pathinfo, '/admin/supprimer_alertes') && preg_match('#^/admin/supprimer_alertes/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_alerte')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\AdminController::supprimerAlertAction',));
             }
 
             // annee_suivante
@@ -226,30 +233,47 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::indexAction',  '_route' => 'home',);
             }
 
-            if (0 === strpos($pathinfo, '/home/Liste')) {
-                // home_ListeUsers
-                if ($pathinfo === '/home/ListeUsers') {
-                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::ListeUsersAction',  '_route' => 'home_ListeUsers',);
-                }
+        }
 
-                // home_ListeFilieres
-                if ($pathinfo === '/home/ListeFilieres') {
-                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::ListeFilieresAction',  '_route' => 'home_ListeFilieres',);
-                }
+        // Reservations
+        if (rtrim($pathinfo, '/') === '/reservation') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'Reservations');
+            }
 
+            return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::reservationAction',  '_route' => 'Reservations',);
+        }
+
+        if (0 === strpos($pathinfo, '/home/Liste')) {
+            // home_ListeUsers
+            if ($pathinfo === '/home/ListeUsers') {
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::ListeUsersAction',  '_route' => 'home_ListeUsers',);
+            }
+
+            // home_ListeFilieres
+            if ($pathinfo === '/home/ListeFilieres') {
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\DefaultController::ListeFilieresAction',  '_route' => 'home_ListeFilieres',);
             }
 
         }
 
         if (0 === strpos($pathinfo, '/enseignant')) {
-            // ChoixFiliereEns_enseignant
-            if ($pathinfo === '/enseignant/ChoixFiliereEns') {
-                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::ChoixFiliereEnsAction',  '_route' => 'ChoixFiliereEns_enseignant',);
+            if (0 === strpos($pathinfo, '/enseignant/Choix')) {
+                // ChoixFiliereEns_enseignant
+                if ($pathinfo === '/enseignant/ChoixFiliereEns') {
+                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::ChoixFiliereEnsAction',  '_route' => 'ChoixFiliereEns_enseignant',);
+                }
+
+                // Etat_reservation_responsable
+                if (0 === strpos($pathinfo, '/enseignant/ChoixMatiereEns') && preg_match('#^/enseignant/ChoixMatiereEns/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'Etat_reservation_responsable')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::EtatMatiereAction',));
+                }
+
             }
 
-            // list_form_inscription_enseignant
+            // list_form_inscription
             if (0 === strpos($pathinfo, '/enseignant/inscription') && preg_match('#^/enseignant/inscription/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'list_form_inscription_enseignant')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::InscriptionEnsAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'list_form_inscription')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::InscriptionEnsAction',));
             }
 
             // Modifier_inscription
@@ -270,19 +294,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             }
 
-            // srvdv_server_enseignant_suppinscripens
+            // supp_incription_responsable
             if (0 === strpos($pathinfo, '/enseignant/SuppInscription') && preg_match('#^/enseignant/SuppInscription/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_enseignant_suppinscripens')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::SuppInscripEnsAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'supp_incription_responsable')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::SuppInscripEnsAction',));
+            }
+
+            // Liste_ReservationProf
+            if (0 === strpos($pathinfo, '/enseignant/ReservationProf') && preg_match('#^/enseignant/ReservationProf/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'Liste_ReservationProf')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\EnseignantController::ReservationProfAction',));
             }
 
         }
 
         if (0 === strpos($pathinfo, '/responsable')) {
-            // ChoixFiliereEns_responsable
-            if ($pathinfo === '/responsable/ChoixFiliereEns') {
-                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::ChoixFiliereEnsAction',  '_route' => 'ChoixFiliereEns_responsable',);
-            }
-
             if (0 === strpos($pathinfo, '/responsable/M')) {
                 // list_form_Matiere
                 if ($pathinfo === '/responsable/Matiere') {
@@ -296,37 +320,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             }
 
-            // srvdv_server_responsable_suppusers
+            // supprimer_matieres_responsable
             if (0 === strpos($pathinfo, '/responsable/SuppMatiere') && preg_match('#^/responsable/SuppMatiere/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_responsable_suppusers')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::SuppUsersAction',));
-            }
-
-            if (0 === strpos($pathinfo, '/responsable/EditPofile')) {
-                // form_profile_user_resp
-                if ($pathinfo === '/responsable/EditPofile') {
-                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::EditPofileAction',  '_route' => 'form_profile_user_resp',);
-                }
-
-                // form_profile_user_resp_motDePasse
-                if ($pathinfo === '/responsable/EditPofileMP') {
-                    return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::EditPofileMPAction',  '_route' => 'form_profile_user_resp_motDePasse',);
-                }
-
-            }
-
-            // list_form_inscription
-            if (0 === strpos($pathinfo, '/responsable/inscription') && preg_match('#^/responsable/inscription/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'list_form_inscription')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::InscriptionAction',));
-            }
-
-            // ModInscription_responsable
-            if (0 === strpos($pathinfo, '/responsable/ModInscription') && preg_match('#^/responsable/ModInscription/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ModInscription_responsable')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::ModInscriptionAction',));
-            }
-
-            // srvdv_server_responsable_suppinscrip
-            if (0 === strpos($pathinfo, '/responsable/SuppInscription') && preg_match('#^/responsable/SuppInscription/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'srvdv_server_responsable_suppinscrip')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::SuppInscripAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_matieres_responsable')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::SuppUsersAction',));
             }
 
             // Etat_matieres_responsable
@@ -345,11 +341,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'list_form_inscription_matieres_etat')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::inscriptionMatiereAction',));
                 }
 
-                // supprimer_matiere_inscription
-                if (0 === strpos($pathinfo, '/responsable/inscriptionMatiere/SuppInscriptionMatiere') && preg_match('#^/responsable/inscriptionMatiere/SuppInscriptionMatiere/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_matiere_inscription')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::SuppInscriptionMatiereAction',));
-                }
+            }
 
+            // supprimer_matiere_inscription
+            if (0 === strpos($pathinfo, '/responsable/SuppInscriptionMatiere') && preg_match('#^/responsable/SuppInscriptionMatiere/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_matiere_inscription')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResponsableController::SuppInscriptionMatiereAction',));
             }
 
         }
@@ -370,7 +366,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 goto not_fos_user_security_login;
             }
 
-            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
+            return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
         }
         not_fos_user_security_login:
 
@@ -381,7 +377,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 goto not_fos_user_security_check;
             }
 
-            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
+            return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
         }
         not_fos_user_security_check:
 
@@ -392,7 +388,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 goto not_fos_user_security_logout;
             }
 
-            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
+            return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
         }
         not_fos_user_security_logout:
 
@@ -408,7 +404,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $this->redirect($pathinfo.'/', 'fos_user_profile_show');
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'fos_user_profile_show',);
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ProfileController::showAction',  '_route' => 'fos_user_profile_show',);
             }
             not_fos_user_profile_show:
 
@@ -419,7 +415,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     goto not_fos_user_profile_edit;
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
             }
             not_fos_user_profile_edit:
 
@@ -461,7 +457,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                             goto not_fos_user_registration_confirm;
                         }
 
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_registration_confirm')), array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmAction',));
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_registration_confirm')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\RegistrationController::confirmAction',));
                     }
                     not_fos_user_registration_confirm:
 
@@ -490,7 +486,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     goto not_fos_user_resetting_request;
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::requestAction',  '_route' => 'fos_user_resetting_request',);
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResettingController::requestAction',  '_route' => 'fos_user_resetting_request',);
             }
             not_fos_user_resetting_request:
 
@@ -501,7 +497,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     goto not_fos_user_resetting_send_email;
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::sendEmailAction',  '_route' => 'fos_user_resetting_send_email',);
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResettingController::sendEmailAction',  '_route' => 'fos_user_resetting_send_email',);
             }
             not_fos_user_resetting_send_email:
 
@@ -512,7 +508,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     goto not_fos_user_resetting_check_email;
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::checkEmailAction',  '_route' => 'fos_user_resetting_check_email',);
+                return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResettingController::checkEmailAction',  '_route' => 'fos_user_resetting_check_email',);
             }
             not_fos_user_resetting_check_email:
 
@@ -523,7 +519,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     goto not_fos_user_resetting_reset;
                 }
 
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_resetting_reset')), array (  '_controller' => 'FOS\\UserBundle\\Controller\\ResettingController::resetAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_resetting_reset')), array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ResettingController::resetAction',));
             }
             not_fos_user_resetting_reset:
 
@@ -536,7 +532,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 goto not_fos_user_change_password;
             }
 
-            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ChangePasswordController::changePasswordAction',  '_route' => 'fos_user_change_password',);
+            return array (  '_controller' => 'SRVDV\\ServerBundle\\Controller\\ChangePasswordController::changePasswordAction',  '_route' => 'fos_user_change_password',);
         }
         not_fos_user_change_password:
 

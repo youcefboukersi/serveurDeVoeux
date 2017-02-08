@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class TypeUtilisateur
-{
+class TypeUtilisateur {
+
     /**
      * @var integer
      *
@@ -42,16 +42,12 @@ class TypeUtilisateur
      */
     private $nbrHeures;
 
-
-      
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -61,10 +57,9 @@ class TypeUtilisateur
      * @param string $code
      * @return TypeUtilisateur
      */
-    public function setCode($code)
-    {
+    public function setCode($code) {
         $this->code = $code;
-    
+
         return $this;
     }
 
@@ -73,8 +68,7 @@ class TypeUtilisateur
      *
      * @return string 
      */
-    public function getCode()
-    {
+    public function getCode() {
         return $this->code;
     }
 
@@ -84,10 +78,9 @@ class TypeUtilisateur
      * @param string $libelle
      * @return TypeUtilisateur
      */
-    public function setLibelle($libelle)
-    {
+    public function setLibelle($libelle) {
         $this->libelle = $libelle;
-    
+
         return $this;
     }
 
@@ -96,8 +89,7 @@ class TypeUtilisateur
      *
      * @return string 
      */
-    public function getLibelle()
-    {
+    public function getLibelle() {
         return $this->libelle;
     }
 
@@ -107,10 +99,9 @@ class TypeUtilisateur
      * @param integer $nbrHeures
      * @return TypeUtilisateur
      */
-    public function setNbrHeures($nbrHeures)
-    {
+    public function setNbrHeures($nbrHeures) {
         $this->nbrHeures = $nbrHeures;
-    
+
         return $this;
     }
 
@@ -119,8 +110,8 @@ class TypeUtilisateur
      *
      * @return integer 
      */
-    public function getNbrHeures()
-    {
+    public function getNbrHeures() {
         return $this->nbrHeures;
     }
+
 }

@@ -82,18 +82,8 @@ class ProfileController extends Controller
 
             if (null === $response = $event->getResponse()) {
 
-                  $roles=$user->getRoles();
-                                 
-                              
-                              if($roles[0]=="ROLE_ADMIN"){
-                                   $url = $this->generateUrl('form_profile_user' );
-                              }
-                              if($roles[0]=="ROLE_RESP"){
-                                   $url = $this->generateUrl('form_profile_user_resp' );
-                              }
-                              if($roles[0]=="ROLE_ENSEIG"){
                                    $url = $this->generateUrl('form_profile_user_ens' );
-                              }
+                              
 
                 $response = new RedirectResponse($url);
             }
@@ -103,32 +93,12 @@ class ProfileController extends Controller
             return $response;
         }
 
-           $roles=$user->getRoles();
-                               
-                              
-                              if($roles[0]=="ROLE_ADMIN"){
-                                   return $this->render('SRVDVServerBundle:admin:ProfileAdmin.html.twig', array(
-                                   'form' => $form->createView()
-                                    
-                                    ) );
-                              }
-                              if($roles[0]=="ROLE_RESP"){
-                                   return $this->render('SRVDVServerBundle:responsable:ProfileResponsable.html.twig', array(
-                                   'form' => $form->createView()
-                                    
-                                    ) );
-                              }
-                              if($roles[0]=="ROLE_ENSEIG"){
                                 return $this->render('SRVDVServerBundle:enseignant:ProfileEnseignant.html.twig', array(
                                  'form' => $form->createView()
                                   
                                   ) );
-                              }
-
- 
-          
-        
-
-        
+            
     }
+
+
 }

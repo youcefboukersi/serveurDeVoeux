@@ -2,9 +2,10 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: srvvoeux
+    database_name: srvvoeux_pre_prod
     database_user: root
     database_password: null
+    
     mailer_transport: gmail
     mailer_host:    smtp.gmail.com
     mailer_user: serveurdevoeux

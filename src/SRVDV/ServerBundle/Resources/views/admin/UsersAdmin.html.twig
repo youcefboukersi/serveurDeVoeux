@@ -1,67 +1,216 @@
 <html>
-{{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 43 })) }}
-
-<div id="content">
-    </br>
-        
-    <div class="col-xs-2 col-md-4 col-lg-2 centreVerticalement">
-      
-{% block fos_user_content %}
-{% include "FOSUserBundle:Registration:register_content.html.twig" %}
-{% endblock fos_user_content %}
-    </div>
-        
-    <div class=" centreVerticalement"> 
-        <div class="table-responsive">
-            <table id="example" class="display" cellspacing="0" width="100%" >
-                <thead>
-                    <tr><th>#</th><th>nom</th><th>prenom</th><th>username</th><th>mail</th><th>role</th><th>type</th><th>H</th><th>Mod</th><th>Supp</th></tr>
-                </thead>
-                <tbody>
-                    {% for u in Users %}
-                        <tr>
-                            <td>{{ u.id }}</td>
-                            <td>{{ u.nom }}</td>
-                            <td>{{ u.prenom }}</td>
-                            <td>{{ u.username }}</td>
-                            <td>{{ u.email }}</td>
-                            <td>
-                                {% for role in u.roles %}
-                                    {{ role }}
-                                {% endfor %}
-                            </td>
-                            <td>{{ u.type.libelle }}</td>
-                            <td>{{ u.nombreHeurTheo }}</td>
-                            <td>
-                                {% if u.enabled == 1 %}
-                            <button  type="button" class="btn btn-success" onclick="window.location.href ='{{path('Modifier_Users',{'id':u.id }) }}'"><b ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></b></button>
-                                 {% else %}
-                                 <button  type="button" class="btn btn-danger" onclick="window.location.href ='{{path('Modifier_Users',{'id':u.id }) }}'"><b ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></b></button>
-                                 {% endif %}
-
-                           </td>
-                            <td><button type="button" class="btn btn-warning"  onclick="SupprimerUser({{ u.id }})"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></button></td>
-                        </tr>	
-                    {% endfor %}
-                </tbody>
-            </table> 
+  {{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 43 })) }}
+  
+  {% if supprimer == 0  %}
+        <input id="iddudiv" type="hidden"   data-toggle="modal" data-target="#myModalEnvoiEmail" />
+        <div id="myModalEnvoiEmail" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  Impossible de supprimer cet Utilisateur  </br>
+                    Il est rataché à une Filière !!
+              </div>
+            </div>
+          </div>
         </div>
-        <h1>Etat mail :: {{email}}</h1>
+        <script>
+          document.getElementById('iddudiv').click();
+        </script>
+      {% endif %}
+      
+  <div align="center">
+    </br>
+    <div class="centreVerticalement">
+    </div>          
+    <div class=" centreVerticalement"> 
+      <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#myModalAjout" ><span class="glyphicon glyphicon-plus"></span>&nbsp; Ajouter un utilisateur </button>
+      <div id="myModalAjout" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <fieldset class="well the-fieldset">
+                <legend > Ajouter un utilisateur:</legend>
+                {% block fos_user_content %}
+                  {% include "SRVDVServerBundle:Registration:register_content.html.twig" %}
+                {% endblock fos_user_content %}
+              </fieldset>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </br>
+      {% if email == 1  %}
+        <input id="iddudiv" type="hidden"   data-toggle="modal" data-target="#myModalEnvoiEmail" />
+        <div id="myModalEnvoiEmail" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  Utilisateur inscrit !!
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          document.getElementById('iddudiv').click();
+        </script>
+      {% endif %}
+      </br>
+      <div class="table-responsive">
+        <table id="example" class="display" cellspacing="0" width="100%" >
+          <thead>
+            <tr><th>Noms</th><th>Prenoms</th><th>Logins</th><th>Emails</th><th>Rôles</th><th>Types utilisateurs</th><th>Heures théoriques</th><th>Last login</th><th>Actif/</th><th>Modifier</th><th>Supprimer</th></tr>
+          </thead>
+          <tbody>
+            {% for u in Users %}
+              <tr>
+                <td>{{ u.nom }}</td>
+                <td>{{ u.prenom }}</td>
+                <td>{{ u.username }}</td>
+                <td>{{ u.email }}</td>
+                <td>
+                  {% if u.roles[0] == "ROLE_ADMIN" %}ADMIN {% endif %}
+                  {% if u.roles[0] == "ROLE_ENSEIG" %}ENSEIG {% endif %}
+                  {% if u.roles[0] == "ROLE_RESP" %}RESP {% endif %}
+
+                </td>
+                <td>{{ u.type.libelle }}</td>
+                <td>{{ u.nombreHeurTheo }}</td>
+                <td>
+                  {% if u.lastlogin != '' %}
+                    {{ u.lastlogin|date('Y-m-d h:m:s')  }}
+                  {% endif %}
+                </td>
+                <td>
+                  {% if u.enabled == 1 %}
+                    <button  type="button" class="btn btn-success" onclick="window.location.href = '{{path('Modifier_Users',{'id':u.id }) }}'"><b ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></b></button>
+                      {% else %}
+                    <button  type="button" class="btn btn-danger" onclick="window.location.href = '{{path('Modifier_Users',{'id':u.id }) }}'"><b ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></b></button>
+                      {% endif %}
+                </td>
+                <td>
+                  <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalModifier{{ u.id }}"><b ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></b></button>
+                  <div id="myModalModifier{{ u.id }}" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                          <form method="GET" action="{{path('modifier_user_admin',{'user':u.id }) }}">
+                            <fieldset class="well the-fieldset">
+                              <legend > modifier utilisateur:</legend>
+
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" name="email" id="exampleInputEmail1" value="{{u.email}}" >                        
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Username</label>
+                                <input  name="username"class="form-control" id="exampleInputEmail1" value="{{u.username}}" >                        
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Nom</label>
+                                <input  name="nom" class="form-control" id="exampleInputEmail1" value="{{u.nom}}" >                        
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Prenom</label>
+                                <input  name="prenom" class="form-control" id="exampleInputEmail1" value="{{u.prenom}}" >                        
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Nombre Heure Theo</label>
+                                <input type="number" name="nombreHeurTheo" class="form-control" id="exampleInputEmail1" value="{{u.nombreHeurTheo}}">                        
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">role</label>
+                                <select  name="roles"  class="form-control" >
+                                  <option></option>
+                                  <option {% if u.roles[0] == 'ROLE_ENSEIG'  %} selected {% endif %}>ROLE_ENSEIG</option>
+                                  <option  {% if u.roles[0] == 'ROLE_ADMIN'  %} selected{% endif %}>ROLE_ADMIN</option>
+                                  <option  {% if u.roles[0] == 'ROLE_RESP'  %} selected{% endif %} >ROLE_RESP</option>
+                                </select>
+
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">statut</label>
+
+                                <select name="type" class="form-control" >
+                                  {% for type in types %}
+                                    <option value="{{type.id}}" {% if u.type.libelle == type.libelle  %} selected {% endif %}>{{type.libelle}}</option>
+                                  {% endfor %}
+                                </select>                  
+                              </div>                
+                              <div class="form-group">
+                                <input type="submit" value="mettre a jour" class="btn btn-success"/>
+                              </div>
+                            </fieldset>
+                          </form> 
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#myModal{{ u.id }}" >
+                    <b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b>
+                  </button>
+
+
+                  <div id="myModal{{ u.id }}" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Vous voulez vraiment supprimer cette Utilisatuer ?</ut>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button  type="button" class="btn btn-danger" onclick="window.location.href = '{{ path('supprimer_utilisateur_admin',{'id':u.id }) }}'"><b >Delete ! </b></button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </td>
+              </tr>	
+            {% endfor %}
+          </tbody>
+        </table> 
+      </div>
+
     </div>
-</div>
+  </div>
 
 
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    } );
-    function SupprimerUser(id){
-        
-        var rep=confirm('Clickez sur "OK" si vous voulez vraiment cet utilisateur' ) ;
-        
-        if(rep){
-            window.location.href ='suppUsers/'+id;
-        }
+
+  <script>
+    $(document).ready(function () {
+      $('#example').DataTable({
+        "displayLength": 50,
+      });
+    });
+    function SupprimerUser(id) {
+
+      var rep = confirm('Clickez sur "OK" si vous voulez vraiment cet utilisateur');
+
+      if (rep) {
+        window.location.href = 'suppUsers/' + id;
+      }
     }
-</script>
-{% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}
+  </script>
+  {% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}

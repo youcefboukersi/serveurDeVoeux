@@ -1,170 +1,163 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <title>SRV-Voeux-Admin</title>
-       
-        <link rel=stylesheet type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}"/>
+  <head>
+    <title>SRV-Voeux-Admin</title>
+    <link rel="shortcut icon" href="{{ asset('assets/images/runtime_favico.ico')}}">
+    <link rel=stylesheet type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}"/>
+    <link rel=stylesheet type="text/css" href="{{ asset('assets/css/home.css') }}"/>
+    <link rel=stylesheet type="text/css" href="{{ asset('assets/css/menu.css') }}"/>
+    <link rel=stylesheet type="text/css" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+    <link rel=stylesheet type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.jqueryui.min.css"/>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.jqueryui.min.js"></script>
 
-        <link rel=stylesheet type="text/css" href="{{ asset('assets/css/home.css') }}"/>
+    <style>
+      .centreVerticalement {
+        display: inline-block;
+        vertical-align: top;
+        float: none;
+      }
+      li.active{
+        background-color:orange;
+      }
+    </style>
 
-        <link rel=stylesheet type="text/css" href="{{ asset('assets/css/menu.css') }}"/>
+  </head>
+  <body  >
 
-        <link rel=stylesheet type="text/css" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
-        <link rel=stylesheet type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.jqueryui.min.css"/>
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.jqueryui.min.js"></script>
-
-        <style>
-
-            .centreVerticalement {
-                display: inline-block;
-                vertical-align: top;
-                float: none;
-              
-            }
-            li.active{
-                background-color:orange;
-            }
-            
-
-        </style>
-
-    </head>
-    <body>
-
-
-{% if etatConnect is defined %}
-{% set etat = etatConnect %}
-{% else %}
-{% set etat = 'connect' %}
-{% endif %}
+    {% if etatConnect is defined %}
+      {% set etat = etatConnect %}
+    {% else %}
+      {% set etatConnect = '' %}
+      {% set etat = 'connect' %}
+    {% endif %}
 
 
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a  href="{{ path('home')}}"><img class="image" src="{{ asset ('assets/images/SVEDI-small.png') }}"></a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="navbar-collapse style= collapse in" id="bs-megadropdown-tabs" style="
-    padding-left: 0px;
-">
-        <ul class="nav navbar-nav">
-           <li  {% if etat == 'Accueil' %} class="active"   {% endif %}><a href="{{ path('home')}}"><span class="glyphicon glyphicon-home"></span>&nbsp;  Accueil</a></li>
-                <li {% if etat == 'users' %} class="active"   {% endif %}><a href="{{ path('home_ListeUsers')}}"> <span class="glyphicon glyphicon-list"></span> &nbsp; Liste des utilisateurs</a></li>
-                <li {% if etat == 'Filieres' %} class="active"   {% endif %}><a href="{{ path('home_ListeFilieres')}}"><span class="glyphicon glyphicon-folder-close"></span>&nbsp; Liste des filière</a></li>       
-           
-        </ul>
-       
-        <ul class="nav navbar-nav navbar-right">
-         
-                    {% if is_granted("IS_AUTHENTICATED_FULLY") %} 
-                      <li {% if etatConnect >= 40 and  etatConnect < 60   %} class="active"   {% endif %} >
-                    <a  href="{{path('fos_user_profile_edit')}}" > <span class="glyphicon glyphicon-user"></span> 
-                     {{ app.user.nom }} {{ app.user.prenom }}  ({{ somme|round }}/{{ app.user.nombreHeurTheo }}) </a></li> 
-                        <li><a href="{{ path('fos_user_security_logout') }}">
-                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                        <span class="glyphicon glyphicon-log-out"></span>
-                      {% else %}
-
-                      
-
-                      <li><a href="{{ path('fos_user_security_login') }}">
-                            {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
-                        <span class="glyphicon glyphicon-log-in"></span>  
-                     {% endif %}
-                    </a></li>
-        </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-
-{% if etatConnect >= 40 and  etatConnect < 60   %}
-<div class="row">
-        <div class="btn-group btn-group-justified">
-
-            <div class="btn-group" onclick="self.location.href='{{path('fos_user_profile_edit')}}'" >
-                <button  type="button"  {% if etatConnect == 47   %} class="btn btn-nav active" {% else %} class="btn btn-nav" {% endif %} >
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    <p >  Mon Profile</p>
-                </button>
-            </div>
-
-            <div class="btn-group" onclick="self.location.href='{{path('fos_user_change_password')}}'">
-                <button type="button" {% if etatConnect == 46  %} class="btn btn-nav active" {% else %} class="btn btn-nav" {% endif %}>
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                    <p>Mot De Passe</p>
-                </button>
-            </div>
-            <div class="btn-group" onclick="self.location.href='{{path('list_form_Annee')}}'">
-                <button type="button" {% if etatConnect == 45  %} class="btn btn-nav active" {% else %} class="btn btn-nav" {% endif %}>
-                    <span class="glyphicon glyphicon-time"></span>
-                    <p>G&eacute;rer Années</p>
-                </button>
-            </div>
-            <div class="btn-group" onclick="self.location.href='{{path('list_form_Type')}}'">
-                <button type="button" {% if etatConnect == 44  %} class="btn btn-nav active" {% else %} class="btn btn-nav" {% endif %}>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <p>G&eacute;rer Statut</p>
-                </button>
-            </div>
-            <div class="btn-group" onclick="self.location.href='{{path('fos_user_registration_register')}}'">
-                <button type="button" {% if etatConnect == 43   %} class="btn btn-nav active" {% else %} class="btn btn-nav" {% endif %}>
-                    <span class="glyphicon glyphicon-refresh"></span>
-                    <p>G&eacute;rer Users</p>
-                </button>
-            </div>
-            <div class="btn-group" onclick="self.location.href='{{path('list_form_filiere')}}'">
-                <button type="button" {% if etatConnect == 42   %} class="btn btn-nav active" {% else %} class="btn btn-nav" {% endif %}>
-                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    <p>G&eacute;rer Fili&egrave;re</p>
-                </button>
-            </div>
-             <div class="btn-group" onclick="self.location.href='{{path('list_form_typeens')}}'">
-                <button type="button" {% if etatConnect == 41   %} class="btn btn-nav active" {% else %} class="btn btn-nav" {% endif %}>
-                    <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
-                    <p>Type Enseignement</p>
-                </button>
-            </div>
-             <div class="btn-group" onclick="self.location.href='{{path('annee_suivante')}}'">
-                <button type="button" {% if etatConnect == 40  %} class="btn btn-nav active" {% else %} class="btn btn-nav" {% endif %}>
-                    <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-                    <p>Basculer</p>
-                </button>
-            </div>
-             <div class="btn-group" onclick="self.location.href='{{path('list_form_typeens')}}'">
-                <button type="button" {% if etatConnect == 41   %} class="btn btn-nav active" {% else %} class="btn btn-nav" {% endif %}>
-                    <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
-                    <p>Liste Matieres</p>
-                </button>
-            </div>
-             <div class="btn-group" onclick="self.location.href='{{path('annee_suivante')}}'">
-                <button type="button" {% if etatConnect == 40  %} class="btn btn-nav active" {% else %} class="btn btn-nav" {% endif %}>
-                    <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-                    <p>Réservation</p>
-                </button>
-            </div>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a  class="image" href="{{ path('home')}}"><img style="width:100px; height:70px;" src="{{ asset ('assets/images/SVEDI-small.png') }}"></a>
         </div>
-    </div>
- {% endif %} 
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse style= collapse in" id="bs-megadropdown-tabs" style="
+             padding-left: 0px;
+             ">
+          <ul class="nav navbar-nav">
+            <li  {% if etat == 'Accueil' %} class="active"   {% endif %} ><a href="{{ path('home')}}"><span class="glyphicon glyphicon-home"></span></br> Accueil</a></li>
+            <li  {% if etat == 'Reserves' %} class="active"   {% endif %} ><a href="{{ path('Reservations')}}"><span class="glyphicon glyphicon-link"></span></br> Réservations </a></li>
+            <li {% if etat == 'users' %} class="active"   {% endif %}><a href="{{ path('home_ListeUsers')}}"> <span class="glyphicon glyphicon-list"></span> </br>Liste des utilisateurs</a></li>
+            <li {% if etat == 'Filieres' %} class="active"   {% endif %}><a href="{{ path('home_ListeFilieres')}}"><span class="glyphicon glyphicon-folder-close"></span></br>Liste des filières</a></li> 
 
 
-</div>  
+            {% if is_granted("ROLE_ADMIN") %}
+              <li class="dropdown mega-dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" onmouseover="dropdown" > 
+                  {% if etatConnect == 21   %} <span class="glyphicon glyphicon-user"></span></br> Profile {% endif %}
+                  {% if etatConnect == 22   %} <span class="glyphicon glyphicon-lock"></span></br>Password {% endif %}
+                   {% if etatConnect == 23  %} <span class="glyphicon glyphicon-eye-open"></span></br>Etat Res {% endif %}
+                  {% if etatConnect == 45   %} <span class="glyphicon glyphicon-time"></span></br>Année {% endif %}
+                  {% if etatConnect == 44   %} <span class="glyphicon glyphicon-star"></span></br>Statut {% endif %}
+                  {% if etatConnect == 43   %} <span class="glyphicon glyphicon-globe"></span></br>Users {% endif %}
+                  {% if etatConnect == 42   %} <span class="glyphicon glyphicon-cog"></span></br>Fili&egrave;re {% endif %}
+                  {% if etatConnect == 41   %} <span class="glyphicon glyphicon-asterisk"></span></br>Type {% endif %}
+                  {% if etatConnect == 40   %} <span class="glyphicon glyphicon-share-alt"></span></br>Basculer {% endif %}
+                  {% if etatConnect == 32   %} <span class="glyphicon glyphicon-flag"></span></br>Matières {% endif %}
+                  {% if etatConnect == 30   %} <span class="glyphicon glyphicon-refresh"></span></br>Etat {% endif %}
+                  {% if etatConnect == 20   %} <span class="glyphicon glyphicon-signal"></span></br>Réserver {% endif %}
+                  {% if etatConnect == 51   %} <span class="glyphicon glyphicon-alert"></span></br>Alertes {% endif %}
 
 
+                  (Admin)<span class="caret"></span></a>               
+                <div id="filters" class="dropdown-menu mega-dropdown-menu">
+                  <div class="container-fluid2">
+                    <!-- Tab panes -->
+                    <div class="tab-content">                
+                      <div class="tab-pane active" id="kids">
+                        <ul class="nav-list list-inline">
 
+                          <div class="centreVerticalement">
+                          <li  {% if etatConnect == 21   %} class="active" {% endif %}><a data-filter=".89"  href="{{path('fos_user_profile_edit')}}"><span><span class="glyphicon glyphicon-user"></span> Mon profil</span></a></li>
+                          <li  {% if etatConnect == 22   %} class="active" {% endif %}><a  href="{{path('fos_user_change_password')}}"><span><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Mot de passe</span></a></li>
 
-    
-<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}">
+                          <li  {% if etatConnect == 23   %} class="active" {% endif %}><a  href="{{path('Liste_ReservationProf',{'id':app.user.id })}}"><span><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Liste Réservations</span></a></li>
 
-</script>
+                          <li  {% if etatConnect == 20   %} class="active" {% endif %}><a  href="{{path('ChoixFiliereEns_enseignant')}}"><span><span class="glyphicon glyphicon-signal"></span> Réservation</a></li>
+
+                          
+                        
+                        </div>
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                        <div class="centreVerticalement">
+                            <li  {% if etatConnect == 30   %} class="active" {% endif %}><a  href="{{path('Etat_matieres_responsable')}}"><span><span class="glyphicon glyphicon-refresh"></span> Etat des matières</a></li>
+                            <li  {% if etatConnect == 43   %} class="active" {% endif %}><a  href="{{path('fos_user_registration_register')}}"><span><span class="glyphicon glyphicon-globe"></span> Gestion des utilisateurs</a></li>
+
+                               <li  {% if etatConnect == 42   %} class="active" {% endif %}><a  href="{{path('list_form_filiere')}}"><span><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Gestions des filières</a></li>
+                                <li  {% if etatConnect == 32   %} class="active" {% endif %}><a  href="{{path('list_form_Matiere')}}"><span><span class="glyphicon glyphicon-flag"></span> Gestions des matières</span></a></li>
+                          
+                     
+                         
+                         
+                        
+                          
+                        </div>
+
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                        <div class="centreVerticalement">
+                          
+                          <li  {% if etatConnect == 51   %} class="active" {% endif %}><a  href="{{path('alertes_admin')}}"><span><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Alertes</a></li>
+                           <li  {% if etatConnect == 45   %} class="active" {% endif %}><a  href="{{path('list_form_Annee')}}"><span><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Gestion des années</span></a></li>
+                          <li  {% if etatConnect == 40   %} class="active" {% endif %}><a  href="{{path('annee_suivante')}}"><span><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Basculer vers une nouvelle annnée</a></li>
+
+                        </div>
+
+                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                        <div class="centreVerticalement">
+                       
+                          <li  {% if etatConnect == 44  %} class="active" {% endif %}><a  href="{{path('list_form_Type')}}"><span><span class="glyphicon glyphicon-star"></span> Gestion des statuts</a></li>
+                         
+                           
+                          <li  {% if etatConnect == 41  %} class="active" {% endif %}><a  href="{{path('list_form_typeens')}}"><span><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Type des enseignements</a></li>
+                          
+                        </div>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>              
+              </li>      
+            {% endif %} 
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if is_granted("IS_AUTHENTICATED_FULLY") %} 
+              <li {% if etatConnect >= 20 and  etatConnect < 60   %} class="active"   {% endif %} >
+                <a  href="{{path('fos_user_profile_edit')}}" > <span class="glyphicon glyphicon-user"></span> 
+                  </br>{{ app.user.nom }} {{ app.user.prenom }}  ({{ somme|round }}/{{ app.user.nombreHeurTheo }}) </a></li> 
+              <li><a href="{{ path('fos_user_security_logout') }}">
+                  <span class="glyphicon glyphicon-log-out"></span>
+                  </br>   {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                {% else %}
+                  <li><a href="{{ path('fos_user_security_login') }}">
+                      <span class="glyphicon glyphicon-log-in"></span> 
+                      </br> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+                    {% endif %}
+                  </a>
+                </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </div>  
+  <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}">
+  </script>
+
+  
+

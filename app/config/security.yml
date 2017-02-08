@@ -4,8 +4,8 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_ADMIN:         ROLE_ADMIN
-        ROLE_RESP:          ROLE_RESP
+        ROLE_ADMIN:         ROLE_ADMIN, ROLE_RESP,ROLE_ENSEIG
+        ROLE_RESP:          ROLE_RESP, ROLE_ENSEIG
         ROLE_ENSEIG:        ROLE_ENSEIG        
 
     providers:
@@ -52,5 +52,5 @@ security:
         # changement de mot de passe
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/responsable/, role: ROLE_RESP }
-        - { path: ^/enseignant/, role: ROLE_ENSEIG }
+        - { path: ^/responsable/, roles: [ROLE_RESP ,ROLE_ADMIN ]}
+        - { path: ^/enseignant/,  roles: [ROLE_ENSEIG,ROLE_RESP ,ROLE_ADMIN ] }

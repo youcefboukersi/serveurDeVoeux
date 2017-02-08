@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="annee")
  * @ORM\Entity(repositoryClass="SRVDV\ServerBundle\Repository\AnneeRepository")
  */
-class Annee
-{
+class Annee {
+
     /**
      * @var int
      *
@@ -35,19 +35,17 @@ class Annee
      */
     private $etat;
 
-     public function __toString(){
-                
-            return (string)  $this->annee ;
-        }
+    public function __toString() {
 
+        return (string) $this->annee;
+    }
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -57,8 +55,7 @@ class Annee
      * @param integer $annee
      * @return Annee
      */
-    public function setAnnee($annee)
-    {
+    public function setAnnee($annee) {
         $this->annee = $annee;
 
         return $this;
@@ -69,8 +66,7 @@ class Annee
      *
      * @return integer 
      */
-    public function getAnnee()
-    {
+    public function getAnnee() {
         return $this->annee;
     }
 
@@ -80,8 +76,7 @@ class Annee
      * @param boolean $etat
      * @return Annee
      */
-    public function setEtat($etat)
-    {
+    public function setEtat($etat) {
         $this->etat = $etat;
 
         return $this;
@@ -92,8 +87,8 @@ class Annee
      *
      * @return boolean 
      */
-    public function getEtat()
-    {
+    public function getEtat() {
         return $this->etat;
     }
+
 }

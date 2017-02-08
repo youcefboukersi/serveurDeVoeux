@@ -1,114 +1,117 @@
 <html>
-{{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 40 })) }}
-
-
-
-
-
-<div id="content" aligne="center">
-	</br>
-		
-
-		<div class=" centreVerticalement">
-
-			<div class="table-responsive">
-                <table id="example" class="display" cellspacing="0" width="100%" >
-                	<thead>
-					<tr><th>#</th><th>Date</th><th>nom</th><th>Responsable</th></tr>
-				   </thead>
-				   <tbody>
-
-
-						{% for u in Filieres %}
-							<tr>
-								
-								<td>
-									{{ u.anneeFiliere }} &nbsp;&nbsp;{% if u.anneeFiliere.etat == 1 %}
-	                                 OUI
-	                                {% endif %} &nbsp;&nbsp;
-	                                {% if u.anneeFiliere.etat == 0 %}
-	                                 <button  type="button" class="btn btn-danger" onclick="window.location.href ='{{path('generate_Annee_users',{'id':u.anneeFiliere.id }) }}'"><b ><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></b></button>
-	                                 	&nbsp;&nbsp;
-	                                 <button type="button" class="btn btn-warning"  onclick="window.location.href ='{{path('supprimer_generate_Annee',{'id': u.anneeFiliere.id }) }}'"
-	                                 ><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></button>
-	                                {% endif %}
-
-                           	    </td>
-								<td>{{ u.dateFiliere|date('d/m/Y') }}</td>
-								<td>{{ u.nom }}</td>
-								<td>{{ u.User.nom }}&nbsp;{{ u.user.prenom }}</td>
-
-								
-							</tr>	
-						{% endfor %}
-
-						{% for f in Annees %}
-						<tr>
-
-						<td>
-									{{ f.annee }} &nbsp;&nbsp;{% if f.etat == 1 %}
-	                                 OUI
-	                                {% endif %} &nbsp;&nbsp;
-	                                {% if f.etat == 0 %}
-	                                 <button  type="button" class="btn btn-danger" onclick="window.location.href ='{{path('generate_Annee_users',{'id':f.id }) }}'"><b ><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></b></button>
-	                                 	&nbsp;&nbsp;
-	                                 <button type="button" class="btn btn-warning"  onclick="window.location.href ='{{path('supprimer_generate_Annee',{'id': f.id }) }}'"
-	                                 ><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></button>
-	                                {% endif %}
-
-                           	    </td>
-								<td></td>
-								<td></td>
-								<td></td>
-								</tr>	
-						{% endfor %}
-
-                   </tbody>
-				</table> 
+  {{ render (controller("SRVDVServerBundle:Default:nombreInscription", { 'id': 40 })) }}
+  
+{% if supprimer == 1  %}
+        <input id="iddudiv" type="hidden"   data-toggle="modal" data-target="#myModalEnvoiEmail" />
+        <div id="myModalEnvoiEmail" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  Impossible de supprimer cette année. </br>!!
+                  Des Réservations et des matières lui sont affiliées  
+              </div>
             </div>
-		</div>
-	
-</div>
+          </div>
+        </div>
+        <script>
+          document.getElementById('iddudiv').click();
+        </script>
+      {% endif %}
 
+  <div align="center">
+    </br>
+    <div class=" centreVerticalement">
+      <div class="table-responsive">
+        <table id="example" class="display" cellspacing="0" width="100%" >
+          <thead>
+            <tr><th>#</th><th>Dates</th><th>Noms</th><th>Responsables</th></tr>
+          </thead>
+          <tbody>
+            {% for u in Filieres %}
+              <tr>
+                <td>
+                  {{ u.anneeFiliere }} &nbsp;&nbsp;{% if u.anneeFiliere.etat == 1 %}
+                    OUI
+                  {% endif %} &nbsp;&nbsp;
+                  {% if u.anneeFiliere.etat == 0 %}
+                    <button  type="button" class="btn btn-danger" onclick="window.location.href = '{{path('generate_Annee_users',{'id':u.anneeFiliere.id }) }}'"><b ><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></b></button>
+                    &nbsp;&nbsp;
+                    <button type="button" class="btn btn-warning"  onclick="window.location.href = '{{path('supprimer_generate_Annee',{'id': u.anneeFiliere.id }) }}'"
+                            ><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></button>
+                        {% endif %}
+                </td>
+                <td>{{ u.dateFiliere|date('d/m/Y') }}</td>
+                <td>{{ u.nom }}</td>
+                <td>
+                  {% set i = 1 %}
+                {% for user in u.User %}                
+                  {{ i }} - {{ user.nom }}  {{ user.prenom }}</br>
+                  {% set i = i +1  %}
+                {% endfor %}
+              </td>
+              </tr>	
+            {% endfor %}
+            {% for f in Annees %}
+              <tr>
+                <td>
+                  {{ f.annee }} &nbsp;&nbsp;{% if f.etat == 1 %}
+                    OUI
+                  {% endif %} &nbsp;&nbsp;
+                  {% if f.etat == 0 %}
+                    <button  type="button" class="btn btn-danger" onclick="window.location.href = '{{path('generate_Annee_users',{'id':f.id }) }}'"><b ><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></b></button>
+                    &nbsp;&nbsp;
+                    <button type="button" class="btn btn-warning"  onclick="window.location.href = '{{path('supprimer_generate_Annee',{'id': f.id }) }}'"
+                            ><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></button>
+                        {% endif %}
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>	
+            {% endfor %}
+          </tbody>
+        </table> 
+      </div>
+    </div>
+  </div>
 
-
-
-<script>
-$(document).ready(function() {
-    var table = $('#example').DataTable({
+  <script>
+    $(document).ready(function () {
+      var table = $('#example').DataTable({
         "columnDefs": [
-            { "visible": false, "targets": 0 }
+          {"visible": false, "targets": 0}
         ],
-        "order": [[ 0, 'asc' ]],
+        "order": [[0, 'asc']],
         "displayLength": 25,
-        "drawCallback": function ( settings ) {
-            var api = this.api();
-            var rows = api.rows( {page:'current'} ).nodes();
-            var last=null;
- 
-            api.column(0, {page:'current'} ).data().each( function ( group, i ) {
-                if ( last !== group ) {
-                    $(rows).eq( i ).before(
-                        '<tr class="group"><td colspan="6" align="center" style="background-color:#81F7BE">'+group+'</td></tr>'
-                    );
- 
-                    last = group;
-                }
-            } );
-        }
-    } );
- 
-    // Order by the grouping
-    $('#example tbody').on( 'click', 'tr.group', function () {
-        var currentOrder = table.order()[0];
-        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
-            table.order( [ 0, 'desc' ] ).draw();
-        }
-        else {
-            table.order( [ 0, 'asc' ] ).draw();
-        }
-    } );
-} );
+        "drawCallback": function (settings) {
+          var api = this.api();
+          var rows = api.rows({page: 'current'}).nodes();
+          var last = null;
 
-</script>
-{% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}
+          api.column(0, {page: 'current'}).data().each(function (group, i) {
+            if (last !== group) {
+              $(rows).eq(i).before(
+                      '<tr class="group"><td colspan="6" align="center" style="background-color:#81F7BE">' + group + '</td></tr>'
+                      );
+
+              last = group;
+            }
+          });
+        }
+      });
+
+// Order by the grouping
+      $('#example tbody').on('click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+          table.order([0, 'desc']).draw();
+        } else {
+          table.order([0, 'asc']).draw();
+        }
+      });
+    });
+
+  </script>
+  {% include "SRVDVServerBundle:admin:footerAdmin.html.twig" %}

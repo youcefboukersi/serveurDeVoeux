@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Filiere
-{
+class Filiere {
+
     /**
      * @var integer
      *
@@ -28,8 +28,6 @@ class Filiere
      */
     private $dateFiliere;
 
-    
-
     /**
      * @var string
      *
@@ -39,7 +37,7 @@ class Filiere
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToMany(targetEntity="User")
      */
     private $User;
 
@@ -48,7 +46,6 @@ class Filiere
      */
     private $anneeFiliere;
 
-
     /**
      * @var string
      *
@@ -56,22 +53,21 @@ class Filiere
      */
     private $niveau;
 
-    public function __toString(){
-                
-            return $this->niveau.'  '.$this->nom.' ( '.$this->anneeFiliere.' )';
-        }
+
+
+    public function __toString() {
+
+        return $this->niveau . '  ' . $this->nom . ' ( ' . $this->anneeFiliere . ' )';
+    }
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
-
-   
 
     /**
      * Set dateFiliere
@@ -79,11 +75,9 @@ class Filiere
      * @param integer $dateFiliere
      * @return Filiere
      */
-    public function setDateFiliere($dateFiliere)
-
-    {
+    public function setDateFiliere($dateFiliere) {
         $this->dateFiliere = $dateFiliere;
-    
+
         return $this;
     }
 
@@ -92,8 +86,7 @@ class Filiere
      *
      * @return integer 
      */
-    public function getDateFiliere()
-    {
+    public function getDateFiliere() {
         return $this->dateFiliere;
     }
 
@@ -103,10 +96,9 @@ class Filiere
      * @param string $nom
      * @return Filiere
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
@@ -115,8 +107,7 @@ class Filiere
      *
      * @return string 
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -126,10 +117,9 @@ class Filiere
      * @param User $User
      * @return Filiere
      */
-    public function setUser($User)
-    {
+    public function setUser($User) {
         $this->User = $User;
-    
+
         return $this;
     }
 
@@ -138,22 +128,17 @@ class Filiere
      *
      * @return mixed 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->User;
     }
 
-
-
-    
     /**
      * Set niveau
      *
      * @param string $niveau
      * @return Filiere
      */
-    public function setNiveau($niveau)
-    {
+    public function setNiveau($niveau) {
         $this->niveau = $niveau;
 
         return $this;
@@ -164,12 +149,9 @@ class Filiere
      *
      * @return string 
      */
-    public function getNiveau()
-    {
+    public function getNiveau() {
         return $this->niveau;
     }
-
-    
 
     /**
      * Set anneeFiliere
@@ -177,8 +159,7 @@ class Filiere
      * @param \SRVDV\ServerBundle\Entity\Annee $anneeFiliere
      * @return Filiere
      */
-    public function setAnneeFiliere(\SRVDV\ServerBundle\Entity\Annee $anneeFiliere = null)
-    {
+    public function setAnneeFiliere(\SRVDV\ServerBundle\Entity\Annee $anneeFiliere = null) {
         $this->anneeFiliere = $anneeFiliere;
 
         return $this;
@@ -189,8 +170,38 @@ class Filiere
      *
      * @return \SRVDV\ServerBundle\Entity\Annee 
      */
-    public function getAnneeFiliere()
-    {
+    public function getAnneeFiliere() {
         return $this->anneeFiliere;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->User = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add User
+     *
+     * @param \SRVDV\ServerBundle\Entity\User $user
+     * @return Filiere
+     */
+    public function addUser(\SRVDV\ServerBundle\Entity\User $user)
+    {
+        $this->User[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove User
+     *
+     * @param \SRVDV\ServerBundle\Entity\User $user
+     */
+    public function removeUser(\SRVDV\ServerBundle\Entity\User $user)
+    {
+        $this->User->removeElement($user);
     }
 }

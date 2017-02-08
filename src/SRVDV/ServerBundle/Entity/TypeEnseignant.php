@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class TypeEnseignant
-{
+class TypeEnseignant {
+
     /**
      * @var integer
      *
@@ -35,14 +35,12 @@ class TypeEnseignant
      */
     private $coef;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -52,10 +50,9 @@ class TypeEnseignant
      * @param string $libelle
      * @return TypeEnseignant
      */
-    public function setLibelle($libelle)
-    {
+    public function setLibelle($libelle) {
         $this->libelle = $libelle;
-    
+
         return $this;
     }
 
@@ -64,8 +61,7 @@ class TypeEnseignant
      *
      * @return string 
      */
-    public function getLibelle()
-    {
+    public function getLibelle() {
         return $this->libelle;
     }
 
@@ -75,10 +71,9 @@ class TypeEnseignant
      * @param float $coef
      * @return TypeEnseignant
      */
-    public function setCoef($coef)
-    {
+    public function setCoef($coef) {
         $this->coef = $coef;
-    
+
         return $this;
     }
 
@@ -87,8 +82,8 @@ class TypeEnseignant
      *
      * @return float 
      */
-    public function getCoef()
-    {
+    public function getCoef() {
         return $this->coef;
     }
+
 }
