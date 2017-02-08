@@ -15,8 +15,8 @@ class __TwigTemplate_13eb4e0f6c2d4cf70260b3a5bd67e1a7c2e7bce06a0dbe7e8f8a7a35a69
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5ae56484a8621343d7d06f0f0d9f7f14e2de38027abb963e9a2216120851eaf5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_5ae56484a8621343d7d06f0f0d9f7f14e2de38027abb963e9a2216120851eaf5->enter($__internal_5ae56484a8621343d7d06f0f0d9f7f14e2de38027abb963e9a2216120851eaf5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:MenuAdmin.html.twig"));
+        $__internal_4c27ff714f88231fae376ded673fa0d09a6535c8f67ce81d41efa1e83ad74d78 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_4c27ff714f88231fae376ded673fa0d09a6535c8f67ce81d41efa1e83ad74d78->enter($__internal_4c27ff714f88231fae376ded673fa0d09a6535c8f67ce81d41efa1e83ad74d78_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:admin:MenuAdmin.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -430,7 +430,7 @@ class __TwigTemplate_13eb4e0f6c2d4cf70260b3a5bd67e1a7c2e7bce06a0dbe7e8f8a7a35a69
 
 ";
         
-        $__internal_5ae56484a8621343d7d06f0f0d9f7f14e2de38027abb963e9a2216120851eaf5->leave($__internal_5ae56484a8621343d7d06f0f0d9f7f14e2de38027abb963e9a2216120851eaf5_prof);
+        $__internal_4c27ff714f88231fae376ded673fa0d09a6535c8f67ce81d41efa1e83ad74d78->leave($__internal_4c27ff714f88231fae376ded673fa0d09a6535c8f67ce81d41efa1e83ad74d78_prof);
 
     }
 
