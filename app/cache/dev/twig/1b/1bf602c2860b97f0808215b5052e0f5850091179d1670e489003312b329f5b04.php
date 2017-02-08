@@ -16,8 +16,8 @@ class __TwigTemplate_e5da0f0553fed635f2774271a2ef3982b389e99e651b1a8527dd0c0b6ca
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f51e859021c6050f12c7894c75abb36da850ed1fa2843cfafcf3987f84667d62 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_f51e859021c6050f12c7894c75abb36da850ed1fa2843cfafcf3987f84667d62->enter($__internal_f51e859021c6050f12c7894c75abb36da850ed1fa2843cfafcf3987f84667d62_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:ChangePassword:changePassword.html.twig"));
+        $__internal_dba29332523289305b524aa02b65cdc5bbca3fb6efbdc513d345b9889461d749 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_dba29332523289305b524aa02b65cdc5bbca3fb6efbdc513d345b9889461d749->enter($__internal_dba29332523289305b524aa02b65cdc5bbca3fb6efbdc513d345b9889461d749_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:ChangePassword:changePassword.html.twig"));
 
         // line 1
         echo "
@@ -26,20 +26,20 @@ class __TwigTemplate_e5da0f0553fed635f2774271a2ef3982b389e99e651b1a8527dd0c0b6ca
         // line 3
         $this->displayBlock('fos_user_content', $context, $blocks);
         
-        $__internal_f51e859021c6050f12c7894c75abb36da850ed1fa2843cfafcf3987f84667d62->leave($__internal_f51e859021c6050f12c7894c75abb36da850ed1fa2843cfafcf3987f84667d62_prof);
+        $__internal_dba29332523289305b524aa02b65cdc5bbca3fb6efbdc513d345b9889461d749->leave($__internal_dba29332523289305b524aa02b65cdc5bbca3fb6efbdc513d345b9889461d749_prof);
 
     }
 
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_720c4a9d6cb3f3f5f2a318d8544e0f69ed7bb9b9b1a8396a34313a81244f5e69 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_720c4a9d6cb3f3f5f2a318d8544e0f69ed7bb9b9b1a8396a34313a81244f5e69->enter($__internal_720c4a9d6cb3f3f5f2a318d8544e0f69ed7bb9b9b1a8396a34313a81244f5e69_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_88a9de92c19248f7d08ce7d00e126ae41ccc9a58d5b4ae6e4fbe4c1d49a1a1db = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_88a9de92c19248f7d08ce7d00e126ae41ccc9a58d5b4ae6e4fbe4c1d49a1a1db->enter($__internal_88a9de92c19248f7d08ce7d00e126ae41ccc9a58d5b4ae6e4fbe4c1d49a1a1db_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
         // line 4
         echo "    ";
         $this->loadTemplate("SRVDVServerBundle:ChangePassword:changePassword_content.html.twig", "SRVDVServerBundle:ChangePassword:changePassword.html.twig", 4)->display($context);
         
-        $__internal_720c4a9d6cb3f3f5f2a318d8544e0f69ed7bb9b9b1a8396a34313a81244f5e69->leave($__internal_720c4a9d6cb3f3f5f2a318d8544e0f69ed7bb9b9b1a8396a34313a81244f5e69_prof);
+        $__internal_88a9de92c19248f7d08ce7d00e126ae41ccc9a58d5b4ae6e4fbe4c1d49a1a1db->leave($__internal_88a9de92c19248f7d08ce7d00e126ae41ccc9a58d5b4ae6e4fbe4c1d49a1a1db_prof);
 
     }
 

@@ -15,8 +15,8 @@ class __TwigTemplate_788ef63b7cd483f7c8ff381d36561ff83b79328198353a9180325e72526
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_2155603a801ac76a25e84ee6221425e743db0716d1986217fccba722712f62ee = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_2155603a801ac76a25e84ee6221425e743db0716d1986217fccba722712f62ee->enter($__internal_2155603a801ac76a25e84ee6221425e743db0716d1986217fccba722712f62ee_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:home:index.html.twig"));
+        $__internal_bbb690afacdaaeb953e7ceecfc42e00620614023d48976a240715e54bb5405b9 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_bbb690afacdaaeb953e7ceecfc42e00620614023d48976a240715e54bb5405b9->enter($__internal_bbb690afacdaaeb953e7ceecfc42e00620614023d48976a240715e54bb5405b9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SRVDVServerBundle:home:index.html.twig"));
 
         // line 1
         echo "<html>
@@ -320,7 +320,7 @@ class __TwigTemplate_788ef63b7cd483f7c8ff381d36561ff83b79328198353a9180325e72526
         // line 141
         $this->loadTemplate("SRVDVServerBundle:admin:footerAdmin.html.twig", "SRVDVServerBundle:home:index.html.twig", 141)->display($context);
         
-        $__internal_2155603a801ac76a25e84ee6221425e743db0716d1986217fccba722712f62ee->leave($__internal_2155603a801ac76a25e84ee6221425e743db0716d1986217fccba722712f62ee_prof);
+        $__internal_bbb690afacdaaeb953e7ceecfc42e00620614023d48976a240715e54bb5405b9->leave($__internal_bbb690afacdaaeb953e7ceecfc42e00620614023d48976a240715e54bb5405b9_prof);
 
     }
 
